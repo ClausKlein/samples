@@ -39,7 +39,9 @@ static long readConfigDataFromString(const char *str) {
                 sum += value;
             } else {
                 //TODO format error ...
-                cerr << "ERROR line " << line << " near : " << comment << endl;
+                const char old_fill = cerr.fill('0');
+                cerr << "ERROR line " << cerr.width(1) << line << " near : " << comment << endl;
+                cerr.fill(old_fill);
                 //XXX break;
             }
         }

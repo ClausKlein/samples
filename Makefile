@@ -1,21 +1,29 @@
-CC:=clang
-CXX:=clang++
+# CC:=clang-mp-3.4
+# CXX:=clang++-mp-3.4
 
 CPPFLAGS:=-I/opt/local/include
 
 CFLAGS:=-g -Wall -Wextra -Wconversion -Wundef -std=c99
+##XXX CFLAGS+= -fsanitize=address
 
 CXXFLAGS:=-g -Wall -Wextra -std=c++98
 CXXFLAGS+= -Wconversion
 CXXFLAGS+= -Wundef
 CXXFLAGS+= -Wold-style-cast
 CXXFLAGS+= -Weffc++
+# see http://clang.llvm.org/docs/index.html
+##XXX CXXFLAGS+= -O1 -fsanitize=memory -fsanitize=address -fsanitize=thread -fno-omit-frame-pointer
+
+# LDFLAGS = -L /opt/local/libexec/llvm-3.4/lib/clang/3.4/lib/darwin/
+# export DYLD_LIBRARY_PATH=/opt/local/libexec/llvm-3.4/lib/clang/3.4/lib/darwin/
 
 # ls *.{c,cpp}
 SOUCES:= \
 NonVirtualBaseClassTest.cpp \
+byteorder.cpp \
 copy.cpp \
 exceptions.cpp \
+getaddrinfo.cpp \
 getline.cpp \
 sets.cpp \
 sortedset.cpp \

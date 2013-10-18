@@ -16,3 +16,6 @@ testiostream
 teststdio
 timevalue
 vokable2
+byteorder
+getaddrinfo
+test_iomanip
