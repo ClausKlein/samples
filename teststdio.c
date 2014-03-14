@@ -11,7 +11,7 @@ static long readConfigDataFromString(char *str) {
         int key = -1;
         int value = -1;
         int cnt;
-        char *sep = "\n";
+        const char *sep = "\n";
         char *line, *brkt;
 
         for (line = strtok_r(str, sep, &brkt);
@@ -65,42 +65,46 @@ int main() {
 
     // ==================================================
     // and again as row binary;
+    // FIXME not useable for large files! ck
     // ==================================================
     {
-        long length;
-        size_t len;
+        ssize_t fileSize;
+        size_t bufferLen;
         char * buffer;
         is = fopen("data.txt", "rb");
         if (is) {
             // get length of file:
             (void) fseek(is, 0L, SEEK_END);
-            length = ftell(is);
-            if (length == -1) {
+            fileSize = ftell(is);
+            if (fileSize == -1) {
                 perror("ftell");
                 return -1;
             }
             (void) fseek(is, 0L, SEEK_SET);    // same as: rewind(is);
 
             // allocate memory:
-            buffer = malloc(length);
-            assert(buffer);
+            bufferLen = (size_t) fileSize; //FIXME prefent warnings
+            buffer = malloc(bufferLen);
+            if (buffer) {
 
-            // read data as a block:
-            len = fread(buffer, 1, length , is);
-            if (len == 0) {
-                perror("read");
-            } else {
-                long sum;
-                buffer[length - 1] = 0; // termiantes as string
-                (void) fwrite(buffer, 1, len, stdout);
-                puts("-----------------------------");
-                sum = readConfigDataFromString(buffer);
-                assert(sum == 143);
-                fprintf(stdout, "sum=%ld\n", sum);
+                // read data as a block:
+                //NOTE: They return the number of objects read or written
+                size_t cnt = fread(buffer, 1, bufferLen , is);
+                if (cnt == 0) {
+                    perror("read");
+                } else {
+                    long sum;
+                    buffer[fileSize - 1] = 0; // termiantes as string
+                    (void) fwrite(buffer, 1, bufferLen, stdout);
+                    puts("-----------------------------");
+                    sum = readConfigDataFromString(buffer);
+                    assert(sum == 143);
+                    fprintf(stdout, "sum=%ld\n", sum);
+                }
+                fclose(is);
+
+                free(buffer);
             }
-            fclose(is);
-
-            free(buffer);
         }
     }
 

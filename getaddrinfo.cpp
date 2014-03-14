@@ -1,4 +1,9 @@
 #ifdef _WIN32
+#undef UNICODE
+
+// link with Ws2_32.lib
+#pragma comment (lib, "Ws2_32.lib")
+
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #else
@@ -12,8 +17,9 @@
 #include <string.h> // memset
 #include <stdint.h> // uint8_t
 
-
-
+//
+// see http://msdn.microsoft.com/en-us/library/windows/desktop/ms738520(v=vs.85).aspx
+//
 // Minimum system required are
 // Windows Server 2008 or Windows Vista
 // http://msdn.microsoft.com/en-us/library/aa383745.aspx

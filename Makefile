@@ -1,9 +1,13 @@
 # CC:=clang-mp-3.4
 # CXX:=clang++-mp-3.4
+CXX:=clang++
+# CC:=clang++
 
 CPPFLAGS:=-I/opt/local/include
 
-CFLAGS:=-g -Wall -Wextra -Wconversion -Wundef -std=c99
+CFLAGS:=-g -Wall -Wextra ###FIXME -std=c99
+CFLAGS+= -Wconversion
+CXXFLAGS+= -Wundef
 ##XXX CFLAGS+= -fsanitize=address
 
 CXXFLAGS:=-g -Wall -Wextra -std=c++98
@@ -22,6 +26,7 @@ SOUCES:= \
 NonVirtualBaseClassTest.cpp \
 byteorder.cpp \
 copy.cpp \
+copy_stdio.c \
 exceptions.cpp \
 getaddrinfo.cpp \
 getline.cpp \
@@ -40,11 +45,18 @@ CXX_SOURCES:=$(wildcard $(CURDIR)/*.cpp)
 PROGRAMS:=$(notdir $(CXX_SOURCES:.cpp=))
 C_SOURCES:=$(wildcard $(CURDIR)/*.c)
 PROGRAMS+=$(notdir $(C_SOURCES:.c=))
+DEPENDS:=$(PROGRAMS:=.d)
 
 .PHONY: all clean
 all:	$(PROGRAMS)
 
 clean:
-	$(RM) $(PROGRAMS) *~ *.orig *.exe 
+	$(RM) $(PROGRAMS) *~ *.orig *.exe *.o *.d
 	rm -rf *.dSYM
 
+# -include $(DEPENDS)
+
+%.d: %.c Makefile
+	@$(CPP) $(CPPFLAGS) -M -MP $< -o $@
+%.d: %.cpp Makefile
+	@$(CPP) $(CPPFLAGS) -M -MP $< -o $@

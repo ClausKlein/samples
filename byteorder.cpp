@@ -34,6 +34,7 @@ typedef union {
 } u;
 
 
+#ifndef __cplusplus
 /**
  * same ase gcc __builtin_bswap32()
  **/
@@ -43,7 +44,9 @@ uint32_t bswap32(uint32_t i) {
         c[3], c[2], c[1], c[0]
     };
 // FIXME byteorder.c:44: warning: ISO C90 forbids compound literals
+// FIXME byteorder.cpp|44 col 5| error: taking address of temporary array (c++11)
 }
+#endif
 
 
 #ifdef __cplusplus
@@ -159,21 +162,6 @@ int main(int argc, char **argv) {
     int i;
     char * last, *addr;
 
-    const uint16_t port = 162;
-    uint16_t sin_port = htons(port);
-    printf("sin_port(162)=0x%s\n", hexdump((uint8_t *)&sin_port, sizeof(sin_port)));
-    assert(port == ntohs(sin_port));
-#if 1
-    buf[0] = (ntohs(sin_port) & 0xff00) >> 8; // high byte
-    buf[1] = (ntohs(sin_port) & 0x00ff) >> 0; //  low byte
-#else
-    buf[0] = (htons(sin_port) & 0xff00) >> 8; // high byte
-    buf[1] = (htons(sin_port) & 0x00ff) >> 0; //  low byte
-#endif
-    printf("sin_port(162)=0x%s\n", hexdump(buf, 2));
-    uint16_t porttmp = uint16_t(buf[0] << 8) + uint16_t(buf[1]);    // ntohs()
-    assert(port == porttmp);
-
     // determine if ipv6 addess used:
     if (strchr(ptr, ':') != NULL) {
         protocol = AF_INET6;
@@ -189,6 +177,24 @@ int main(int argc, char **argv) {
     if (!addr || inet_pton(protocol, addr, buf) != 1) {
         perror("inet_pton()");
         exit(1);    //FIXME must be handeld right!
+    }
+
+    {
+        // show byteorder for port
+        const uint16_t port = 162;
+        uint16_t sin_port = htons(port);
+        printf("sin_port(162)=0x%s\n", hexdump((uint8_t *)&sin_port, sizeof(sin_port)));
+        assert(port == ntohs(sin_port));
+#if 1
+        buf[0] = (ntohs(sin_port) & 0xff00) >> 8; // high byte
+        buf[1] = (ntohs(sin_port) & 0x00ff) >> 0; //  low byte
+#else
+        buf[0] = (htons(sin_port) & 0xff00) >> 8; // high byte
+        buf[1] = (htons(sin_port) & 0x00ff) >> 0; //  low byte
+#endif
+        printf("sin_port(162)=0x%s\n", hexdump(buf, 2));
+        uint16_t porttmp = uint16_t(buf[0] << 8) + uint16_t(buf[1]);    // ntohs()
+        assert(port == porttmp);
     }
 
     // inet_pton('fe80:0000:0000:0000:0000:0000:0000:0000'): 0xfe800000000000000000000000000001
@@ -222,7 +228,7 @@ int main(int argc, char **argv) {
 
         }
 
-#ifdef __cplusplus
+#ifndef __cplusplus
         //XXX test only
         uint32_t swapped1 = bswap32(temp.i);
         uint32_t swapped2 = swap_endian<uint32_t>(temp.i);

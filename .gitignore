@@ -1,10 +1,12 @@
 filebuff
+*.orig
 *.dSym
 *~
 .*~
 .*.swp
 NonVirtualBaseClassTest
 copy
+copy_stdio
 exceptions
 getline
 sets

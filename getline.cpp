@@ -7,7 +7,7 @@ int main() {
     char buffer[23];
     int line = 0;
     while (cin.getline(buffer, sizeof(buffer), '\n') || (cin.gcount() > 0)) {
-        int count = cin.gcount();
+        streamsize count = cin.gcount();
         if (cin.eof()) {
             cout << "Last Line  ";    //NOTE: cin.fail() == false
         } else if (cin.fail()) {
