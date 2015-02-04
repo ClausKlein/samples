@@ -19,7 +19,8 @@
 
 inline int isLittleEndian() {
     const int i = 1;
-    const char *p = (const char *) &i;
+    const void *v;
+    const char *p = static_cast<const char *>(v = &i);
     if (p[0] == 1) {    // Lowest address contains the least significant byte
         return 1; // true;
     } else {
@@ -40,7 +41,7 @@ typedef union {
  **/
 uint32_t bswap32(uint32_t i) {
     uint8_t *c = (uint8_t *) &i;
-    return * (uint32_t *)(uint8_t[4]) {
+    return * static_cast<uint32_t *>(uint8_t[4]) {
         c[3], c[2], c[1], c[0]
     };
 // FIXME byteorder.c:44: warning: ISO C90 forbids compound literals
@@ -182,8 +183,10 @@ int main(int argc, char **argv) {
     {
         // show byteorder for port
         const uint16_t port = 162;
-        uint16_t sin_port = htons(port);
-        printf("sin_port(162)=0x%s\n", hexdump((uint8_t *)&sin_port, sizeof(sin_port)));
+        const uint16_t sin_port = htons(port);
+        const void * v;
+        //TODO  error: cannot cast from type 'uint16_t' (aka 'unsigned short') to pointer type 'const uint8_t *' (aka 'const unsigned char *')
+        printf("sin_port(162)=0x%s\n", hexdump(static_cast<const uint8_t *>(v = &sin_port), sizeof(sin_port)));
         assert(port == ntohs(sin_port));
 #if 1
         buf[0] = (ntohs(sin_port) & 0xff00) >> 8; // high byte

@@ -83,7 +83,7 @@ int main() {
             (void) fseek(is, 0L, SEEK_SET);    // same as: rewind(is);
 
             // allocate memory:
-            bufferLen = (size_t) fileSize; //FIXME prefent warnings
+            bufferLen = (size_t) fileSize; //FIXME prevent warnings
             buffer = malloc(bufferLen);
             if (buffer) {
 

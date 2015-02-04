@@ -15,7 +15,7 @@ union time_value {
     int64_t sec;
 
 #if defined(__LITTLE_ENDIAN__) || defined(__i386) || defined(_WIN32)
-#warning LittleEndian
+//XXX #warning LittleEndian
     struct {
         uint32_t low;
         uint32_t high;

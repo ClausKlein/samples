@@ -104,14 +104,20 @@ int main() {
 
         // read data to the allocated buffer:
         ifs.read(buffer, length);
+
+        clock_t t = clock();
         if (ifs.good()) {
             cout.write(buffer, length);
             cout << "-----------------------------" << endl;
+            t = clock() - t;
+            cerr << "Time used: " << static_cast<float>(t)/CLOCKS_PER_SEC << "seconds" << endl;
+
             buffer[length ] = 0; // termiantes as string
             long sum = readConfigDataFromString(buffer);
             assert(sum == 143);
             cerr << "sum=" << sum << endl;
         }
+
         delete[] buffer;
 
         ifs.close();

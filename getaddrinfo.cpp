@@ -103,13 +103,15 @@ int main(int argc, char *argv[]) {
         // Get the pointer to the address itself, different fields in IPv4 and IPv6
         if (p->ai_family == AF_INET) {
             // IPv4
-            struct sockaddr_in *ipv4 = (struct sockaddr_in *)p->ai_addr;
+            //TODO:  error: static_cast from 'struct sockaddr *' to 'struct sockaddr_in6 *' is not allowed
+            struct sockaddr_in *ipv4 = static_cast<struct sockaddr_in *>(addr = p->ai_addr);
             addr = &(ipv4->sin_addr);
             ss_len = sizeof(ipv4->sin_addr);
             ipver = "IPv4";
         } else {
             // IPv6
-            struct sockaddr_in6 *ipv6 = (struct sockaddr_in6 *)p->ai_addr;
+            //TODO:  error: static_cast from 'struct sockaddr *' to 'struct sockaddr_in6 *' is not allowed
+            struct sockaddr_in6 *ipv6 = static_cast<struct sockaddr_in6 *>(addr = p->ai_addr);
             addr = &(ipv6->sin6_addr);
             ss_len = sizeof(ipv6->sin6_addr);
         }

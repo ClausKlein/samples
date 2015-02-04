@@ -44,13 +44,14 @@ int main() {
 #else
     std::pair <std::set <MySpace::MyStruct>::iterator, bool> result;
 #endif
+
     s.insert(ms1);
     result = s.insert(ms2);
-    std::cout << "inserted ms2: " << result.second << std::endl;
+    std::cout << "inserted ms2: " << std::boolalpha << result.second << std::endl;
     result = s.insert(ms3);
-    std::cout << "inserted ms3: " << result.second << std::endl;
+    std::cout << "inserted ms3: " << std::boolalpha << result.second << std::endl;
     result = s.insert(ms4);
-    std::cout << "inserted ms4: " << result.second << std::endl;
+    std::cout << "inserted ms4: " << std::boolalpha << result.second << std::endl;
 
 #ifdef USE_MYCOMP
     for (std::set <MySpace::MyStruct, MyComp>::iterator it = s.begin(); it != s.end(); it++)
@@ -58,7 +59,8 @@ int main() {
     for (std::set <MySpace::MyStruct>::iterator it = s.begin(); it != s.end(); it++)
 #endif
     {
-        std::cout << it->x << std::endl;
+        std::cout << "it->x: " << it->x
+                  << "it->y: " << it->y << std::endl;
     }
 
 #ifdef USE_MYCOMP
@@ -66,7 +68,10 @@ int main() {
 #else
     std::set <MySpace::MyStruct>::iterator loc = s.find(ms2);
 #endif
-    std::cout << "loc->x: " << loc->x << std::endl;
+    if (loc != s.end()) {
+        std::cout << "loc->x: " << loc->x
+                  << "loc->y: " << loc->y << std::endl;
+    }
 
     return 0;
 

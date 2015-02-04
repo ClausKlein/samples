@@ -32,7 +32,7 @@ void myfunction() throw(int, bad_exception) {
 
 
 int foo(void *p) throw(invalid_argument) {
-    int a = (int)4.01;
+    int a = 4;
     int b = a;
     if (p == NULL) {
         throw invalid_argument("p must not NULL!");
