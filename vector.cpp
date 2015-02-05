@@ -14,11 +14,15 @@ std::ostream& operator<<(std::ostream& s, const std::vector<T>& v)
     }
     return s << '}';
 #else
-    s << '{' << *v.begin();
-    for (auto it = ++(v.begin()); it != v.end(); ++it) {
-        s << ", " << *it;
+    if (!v.empty()) {
+        s << '{' << *v.begin();
+        for (auto it = ++(v.begin()); it != v.end(); ++it) {
+            s << ", " << *it;
+        }
+        s << '}' << std::endl;
+    } else {
+        s << "{}" << std::endl;
     }
-    s << '}' << std::endl;
     return s;
 #endif
 }
@@ -44,4 +48,7 @@ int main()
     // ints is [0, 0, 0, 0, 0]
     std::vector<int> ints(5);
     std::cout << "ints: " << ints << std::endl;
+
+    std::vector<int> empty;
+    std::cout << "empty: " << empty << std::endl;
 }

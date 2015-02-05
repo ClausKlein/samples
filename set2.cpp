@@ -13,9 +13,14 @@
  */
 #include <string>
 #include <iostream>
+#include <strstream>
 #include <cassert>
 #include <boost/current_function.hpp>
 #include <boost/unordered_set.hpp>
+#include <boost/concept_check.hpp>
+#include <boost/concept/requires.hpp>
+
+#include <complex>
 
 #ifdef USE_SET
 #include <boost/container/set.hpp>
@@ -25,30 +30,82 @@ using namespace boost::container;
 using namespace std;
 #endif
 
+using namespace boost;
+
+#if 1
 // Helper function for printing containers.
-// TODO find a genereral template solution for all kind of containers! CK
 template<typename T>
 std::ostream& operator<<(std::ostream& stream, set<T>& c)
 {
-    stream << '{' << *c.begin();
-    for (typename set<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
-        stream << ", " << *it;
+    if (!c.empty()) {
+        stream << '{' << *c.begin();
+        for (typename set<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
+            stream << ", " << *it;
+        }
+        stream << '}' << std::endl;
     }
-    stream << '}' << std::endl;
     return stream;
 }
 
-using namespace boost;
 template<typename T>
 std::ostream& operator<<(std::ostream& stream, unordered_set<T>& c)
 {
-    stream << '{' << *c.begin();
-    for (typename unordered_set<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
-        stream << ", " << *it;
+    if (!c.empty()) {
+        stream << '{' << *c.begin();
+        for (typename unordered_set<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
+            stream << ", " << *it;
+        }
+        stream << '}' << std::endl;
     }
-    stream << '}' << std::endl;
     return stream;
 }
+#else
+// TODO find a genereral template solution for all kind of containers! CK
+template<typename T>
+std::ostream& operator<<(std::ostream& stream, Collection<T>& c)
+{
+    if (!c.empty()) {
+        stream << '{' << *c.begin();
+        for (typename Collection<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
+            stream << ", " << *it;
+        }
+        stream << '}' << std::endl;
+    }
+    return stream;
+}
+#endif
+
+
+namespace boost
+{
+
+template <class TT>
+struct Hashable {
+public:
+    BOOST_CONCEPT_USAGE(Hashable)
+    {
+        std::size_t hash = hash_value(a);  // require hash_value function
+        ignore_unused_variable_warning(hash);
+    }
+private:
+    TT a;
+};
+
+template <class TT>
+struct Ostreamable {
+public:
+    BOOST_CONCEPT_USAGE(Ostreamable)
+    {
+        std::ostrstream out; // dynamic buffer
+        out << a;  // require ostream operator
+        ignore_unused_variable_warning(out);
+    }
+private:
+    TT a;
+};
+
+} // namespace boost
+
 
 
 class Customer
@@ -82,6 +139,11 @@ public:
     {
         return strm << "[" << c.fname << "," << c.lname << "," << c.no << "]";
     }
+    friend bool operator!=(const Customer& c1, const Customer& c2)
+    {
+        std::cout << BOOST_CURRENT_FUNCTION << std::endl;
+        return !(c1 == c2);
+    }
     friend bool operator==(const Customer& c1, const Customer& c2)
     {
         std::cout << BOOST_CURRENT_FUNCTION << std::endl;
@@ -113,6 +175,19 @@ public:
 
 int main()
 {
+    BOOST_CONCEPT_ASSERT((boost::EqualityComparable<Customer>));
+    BOOST_CONCEPT_ASSERT((boost::LessThanComparable<Customer>));
+    boost::function_requires<boost::CopyConstructibleConcept<Customer> >();
+    //NO! boost::function_requires<boost::DefaultConstructible<Customer> >();
+    BOOST_CONCEPT_ASSERT((boost::Hashable< Customer >));
+
+    typedef std::pair<int, int> MyType;
+    BOOST_CONCEPT_ASSERT((boost::Hashable< MyType >));
+    //FIXME BOOST_CONCEPT_ASSERT((boost::Ostreamable< MyType >));
+
+    unordered_set<MyType> testOnly;
+    testOnly.insert(MyType(0,1));
+    //FIXME std::cout << testOnly << std::endl;
 
 #ifdef USE_SET
     // sorted set of unique objects of type Key.
@@ -123,6 +198,11 @@ int main()
     SetType custset;
     custset.reserve(16);
 #endif
+
+    BOOST_CONCEPT_ASSERT((boost::Collection< SetType >));
+
+    assert(custset.empty());
+    std::cout << custset << std::endl;  //print empty container
 
     custset.insert(Customer("Nico", "Josuttis", 42));
     custset.insert(Customer("Max", "Klein", 25));
@@ -160,6 +240,11 @@ int main()
     Customer key("Petra", "Klein", 56);
     Customer key2("Petra", "Klein", 67);
     assert(key < key2);
+
+    Customer key3(key);
+    assert(key == key3);
+    assert(!(key < key3) && !(key3 < key));
+    //TBD assert(hash_value(key) == hash_value(key3));
 
     std::size_t count = custset.erase(key);
     if (count) {
