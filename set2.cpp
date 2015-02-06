@@ -9,33 +9,32 @@
  * warranty, and with no claim as to its suitability for any purpose.
  *
  * compiles with c++98 using boost:
- * $> g++ -g -Wall -Wextra -std=c++98 -Weffc++ -I/opt/local/include -MMD -MP   set2.cpp   -o set2
+ * $> g++ -g -Wall -Wextra -std=c++98 -Weffc++ -I/opt/local/include set2.cpp -o set2
+ * $> g++ -g -Wall -Wextra -std=c++98 -Weffc++ -I/opt/local/include set2.cpp -o set2-E.cpp -E
+ *
  */
 #include <string>
 #include <iostream>
-#include <strstream>
 #include <cassert>
 #include <boost/current_function.hpp>
 #include <boost/unordered_set.hpp>
-#include <boost/concept_check.hpp>
-#include <boost/concept/requires.hpp>
 
-#include <complex>
+#include "concept_check_extension.hpp"
 
 #ifdef USE_SET
 #include <boost/container/set.hpp>
 using namespace boost::container;
 #else
+// workarount to compile only
 #include <set>
 using namespace std;
 #endif
 
-using namespace boost;
-
 #if 1
 // Helper function for printing containers.
 template<typename T>
-std::ostream& operator<<(std::ostream& stream, set<T>& c)
+BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream&))
+operator<<(std::ostream& stream, set<T>& c)
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
@@ -48,11 +47,12 @@ std::ostream& operator<<(std::ostream& stream, set<T>& c)
 }
 
 template<typename T>
-std::ostream& operator<<(std::ostream& stream, unordered_set<T>& c)
+BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream&))
+operator<<(std::ostream& stream, boost::unordered_set<T>& c)
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
-        for (typename unordered_set<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
+        for (typename boost::unordered_set<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
             stream << ", " << *it;
         }
         stream << '}' << std::endl;
@@ -74,38 +74,6 @@ std::ostream& operator<<(std::ostream& stream, Collection<T>& c)
     return stream;
 }
 #endif
-
-
-namespace boost
-{
-
-template <class TT>
-struct Hashable {
-public:
-    BOOST_CONCEPT_USAGE(Hashable)
-    {
-        std::size_t hash = hash_value(a);  // require hash_value function
-        ignore_unused_variable_warning(hash);
-    }
-private:
-    TT a;
-};
-
-template <class TT>
-struct Ostreamable {
-public:
-    BOOST_CONCEPT_USAGE(Ostreamable)
-    {
-        std::ostrstream out; // dynamic buffer
-        out << a;  // require ostream operator
-        ignore_unused_variable_warning(out);
-    }
-private:
-    TT a;
-};
-
-} // namespace boost
-
 
 
 class Customer
@@ -175,19 +143,24 @@ public:
 
 int main()
 {
-    BOOST_CONCEPT_ASSERT((boost::EqualityComparable<Customer>));
-    BOOST_CONCEPT_ASSERT((boost::LessThanComparable<Customer>));
-    boost::function_requires<boost::CopyConstructibleConcept<Customer> >();
-    //NO! boost::function_requires<boost::DefaultConstructible<Customer> >();
-    BOOST_CONCEPT_ASSERT((boost::Hashable< Customer >));
+    using namespace boost;
+
+    BOOST_CONCEPT_ASSERT((EqualityComparable<Customer>));
+    BOOST_CONCEPT_ASSERT((LessThanComparable<Customer>));
+    BOOST_CONCEPT_ASSERT((CopyConstructibleConcept<Customer>));
+    //NO! BOOST_CONCEPT_ASSERT((DefaultConstructible<Customer>));
+    BOOST_CONCEPT_ASSERT((Hashable< Customer >));
 
     typedef std::pair<int, int> MyType;
-    BOOST_CONCEPT_ASSERT((boost::Hashable< MyType >));
-    //FIXME BOOST_CONCEPT_ASSERT((boost::Ostreamable< MyType >));
+    BOOST_CONCEPT_ASSERT((Hashable< MyType >));
+    //TODO BOOST_CONCEPT_ASSERT((Ostreamable< MyType >));
 
     unordered_set<MyType> testOnly;
-    testOnly.insert(MyType(0,1));
-    //FIXME std::cout << testOnly << std::endl;
+    testOnly.insert(MyType(0, 1));
+    MyType myKey(1, 2);
+    testOnly.insert(myKey);
+    assert(testOnly.end() != testOnly.find(myKey));
+    //TODO std::cout << testOnly << std::endl;
 
 #ifdef USE_SET
     // sorted set of unique objects of type Key.
@@ -199,7 +172,7 @@ int main()
     custset.reserve(16);
 #endif
 
-    BOOST_CONCEPT_ASSERT((boost::Collection< SetType >));
+    BOOST_CONCEPT_ASSERT((Collection< SetType >));
 
     assert(custset.empty());
     std::cout << custset << std::endl;  //print empty container
@@ -244,7 +217,7 @@ int main()
     Customer key3(key);
     assert(key == key3);
     assert(!(key < key3) && !(key3 < key));
-    //TBD assert(hash_value(key) == hash_value(key3));
+    assert(hash_value(key) == hash_value(key3));
 
     std::size_t count = custset.erase(key);
     if (count) {
