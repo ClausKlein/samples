@@ -29,7 +29,7 @@ template <class T> struct hash
 
     std::size_t operator()(T const& val) const
     {
-        return boost:hash_value(val);
+        return boost::hash_value(val);
     }
 
 };

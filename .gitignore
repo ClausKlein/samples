@@ -1,9 +1,9 @@
-*.orig
-*.dSym
 *.d
+*.dSym
+*.orig
 *~
-.*~
 .*.swp
+.*~
 .DS_Store
 NonVirtualBaseClassTest
 bitset
@@ -16,6 +16,7 @@ getaddrinfo
 getline
 hash
 konto
+l1083
 map
 point
 set2
