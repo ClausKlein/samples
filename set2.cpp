@@ -21,6 +21,7 @@
 
 #include "concept_check_extension.hpp"
 
+#define USE_SET
 #ifdef USE_SET
 #include <boost/container/set.hpp>
 using namespace boost::container;

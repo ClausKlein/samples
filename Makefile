@@ -1,7 +1,7 @@
-# CC:=clang-mp-3.4
-# CXX:=clang++-mp-3.4
-CXX:=g++
-CC:=gcc
+# CC:=clang
+# CXX:=clang++
+CXX:=g++-mp-5
+CC:=gcc-mp-5
 
 CPPFLAGS:=-I/opt/local/include
 CPPFLAGS+= -MMD -MP
@@ -12,8 +12,8 @@ CFLAGS+= -Wconversion
 CXXFLAGS+= -Wundef
 ##XXX CFLAGS+= -fsanitize=address
 
-CXXFLAGS:=-g -Wall -Wextra -std=c++11
-##TBD CXXFLAGS+= -Wconversion
+CXXFLAGS:=-g -Wall -Wextra -std=c++14
+###TODO CXXFLAGS+= -Wconversion
 ##XXX CXXFLAGS+= -Wundef
 ##XXX CXXFLAGS+= -Wold-style-cast
 CXXFLAGS+= -Weffc++
@@ -24,7 +24,7 @@ CXXFLAGS+= -Weffc++
 # export DYLD_LIBRARY_PATH=/opt/local/libexec/llvm-3.4/lib/clang/3.4/lib/darwin/
 
 ### ls -1 *.{c,cpp}
-SOUCES:= \
+SOURCES:= \
 NonVirtualBaseClassTest.cpp \
 bitset.cpp \
 byteorder.cpp \
@@ -35,7 +35,8 @@ getaddrinfo.cpp \
 getline.cpp \
 hash.cpp \
 konto.cpp \
-map.cpp \
+l1083.cpp \
+map.cpp \ \
 point.cpp \
 set2.cpp \
 sets.cpp \
@@ -51,8 +52,6 @@ teststdio.c \
 timevalue.cpp \
 trim_example.cpp \
 unorderedmap.cpp \
-vector.cpp \
-vokable2.cpp \
 
 
 CXX_SOURCES:=$(wildcard $(CURDIR)/*.cpp)
@@ -61,14 +60,17 @@ C_SOURCES:=$(wildcard $(CURDIR)/*.c)
 PROGRAMS+=$(notdir $(C_SOURCES:.c=))
 DEPENDS:=$(PROGRAMS:=.d)
 
-.PHONY: all clean
+.PHONY: all clean distclean
 all:	$(PROGRAMS)
 
 clean:
-	$(RM) $(PROGRAMS) *~ *.orig *.exe *.o *.d
+	$(RM) $(PROGRAMS) *.exe *.o
 	rm -rf *.dSYM
 
-###TODO -include $(DEPENDS)
+distclean: clean
+	$(RM) $(PROGRAMS) *~ *.orig *.d
+
+-include $(DEPENDS)
 
 # %.d: %.c Makefile
 # 	@$(CPP) $(CPPFLAGS) -M -MP $< -o $@

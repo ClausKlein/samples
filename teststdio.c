@@ -36,7 +36,7 @@ int main() {
     int cnt;
 
     FILE *is;
-    char * comment;
+    // TODO char * comment;
 
     is = fopen("data.txt", "r");
     if (is) {
@@ -51,7 +51,7 @@ int main() {
                 // TODO read over non valid contents ...
                 //BSD only! size_t len;
                 //BSD only: comment = fgetln(is, &len);
-                comment = fgets(buf, sizeof(buf), is);
+                (void) fgets(buf, sizeof(buf), is);
                 //XXX break;  //TODO format error ...
             }
         } while (!feof(is));

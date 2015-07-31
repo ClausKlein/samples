@@ -5,7 +5,7 @@
 #include <boost/concept/requires.hpp>
 #include <boost/concept_check.hpp>
 
-#include <strstream>
+#include <sstream>
 
 namespace boost
 {
@@ -27,7 +27,7 @@ struct Ostreamable {
 public:
     BOOST_CONCEPT_USAGE(Ostreamable)
     {
-        std::ostrstream out; // dynamic buffer
+        std::stringstream out; // dynamic buffer
         out << a;  // require ostream operator
         ignore_unused_variable_warning(out);
     }
