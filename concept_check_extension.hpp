@@ -11,7 +11,8 @@ namespace boost
 {
 
 template <class TT>
-struct Hashable {
+struct Hashable
+{
 public:
     BOOST_CONCEPT_USAGE(Hashable)
     {
@@ -23,7 +24,8 @@ private:
 };
 
 template <class TT>
-struct Ostreamable {
+struct Ostreamable
+{
 public:
     BOOST_CONCEPT_USAGE(Ostreamable)
     {
@@ -42,18 +44,18 @@ private:
 // DEMO only
 namespace fake
 {
-  using namespace boost;
-  
-  template<typename RanIter>
-  BOOST_CONCEPT_REQUIRES(
-      ((Mutable_RandomAccessIterator<RanIter>))
-      ((LessThanComparable<typename Mutable_RandomAccessIterator<RanIter>::value_type>))
-    
+using namespace boost;
+
+template<typename RanIter>
+BOOST_CONCEPT_REQUIRES(
+    ((Mutable_RandomAccessIterator<RanIter>))
+    ((LessThanComparable<typename Mutable_RandomAccessIterator<RanIter>::value_type>))
+
     , (void))   // return value
-      sort(RanIter,RanIter)
-  {
- 
-  }
+sort(RanIter, RanIter)
+{
+
+}
 }
 
 #endif // BOOST_LIBS_CONCEPT_CHECK_EXTENSION_HPP

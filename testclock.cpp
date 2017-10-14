@@ -10,14 +10,12 @@
 // the function f() does some time-consuming work
 void f()
 {
-    //XXX volatile double d = 0;
-    static std::atomic<double> d(0);
+    static std::atomic<size_t> d(0);
 
-    for (int n = 0; n < 10000; ++n)
+    for (size_t n = 0; n < 10000; ++n)
     {
-        for (int m = 0; m < 10000; ++m)
+        for (size_t m = 0; m < 10000; ++m)
         {
-            //XXX d += d * n * m;
             d = d + (d * n * m);
         }
     }
@@ -43,3 +41,14 @@ int main()
               << duration_cast<milliseconds>(t_end - t_start).count()
               << " ms\n";
 }
+
+/***
+Claus-MBP:samples clausklein$ time ./testclock
+CPU time used: 11656.6 ms
+Wall clock time passed: 6139 ms
+
+real	0m6.158s
+user	0m11.597s
+sys	0m0.065s
+Claus-MBP:samples clausklein$
+ ***/

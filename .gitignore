@@ -38,7 +38,6 @@ set2
 sets
 sorted_map
 sorted_set
-sortedset
 stripws
 test_filbuf
 test_gcount

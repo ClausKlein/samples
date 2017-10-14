@@ -10,7 +10,9 @@
 template<typename T> void fill_queue(T& q)
 {
     for (size_t j = 0; j < 10; ++j)
-        q.push(rand()%10);
+    {
+        q.push(rand() % 10);
+    }
 }
 
 template<typename T> void print_queue(T& q)

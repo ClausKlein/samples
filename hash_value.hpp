@@ -25,7 +25,8 @@ std::size_t hash_value(std::complex<T> const& v)
 
 # 256 "/opt/local/include/boost/functional/hash/extensions.hpp"
 template <class T> struct hash
-        : std::unary_function<T, std::size_t> {
+    : std::unary_function<T, std::size_t>
+{
 
     std::size_t operator()(T const& val) const
     {
