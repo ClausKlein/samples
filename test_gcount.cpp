@@ -2,10 +2,12 @@
 #include <iostream>     // std::cout
 #include <fstream>      // std::ifstream
 
-int main() {
+int main()
+{
 
     std::ifstream is("data.txt", std::ifstream::binary);
-    if (is) {
+    if (is)
+    {
         // get length of file:
         is.seekg(0, is.end);
         off_t length = is.tellg();
@@ -18,9 +20,12 @@ int main() {
 //FIXME warning: implicit conversion loses integer precision: 'off_t' (aka 'long long') to 'streamsize' (aka 'int') [-Wshorten-64-to-32]
         is.read(buffer, length);
 
-        if (is) {
+        if (is)
+        {
             std::cerr << "all characters read successfully." << std::endl;
-        } else {
+        }
+        else
+        {
             std::cerr << "error: only " << is.gcount() << " could be read" << std::endl;
         }
         is.close();

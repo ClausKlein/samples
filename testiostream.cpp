@@ -7,10 +7,12 @@
 using namespace std;
 
 
-static long readConfigDataFromString(const char *str) {
+static long readConfigDataFromString(const char *str)
+{
     long sum = 0;
 
-    if (str) {
+    if (str)
+    {
         int key = -1;
         int value = -1;
         size_t line = 0;
@@ -28,16 +30,20 @@ static long readConfigDataFromString(const char *str) {
         //===========================================
 
         // for each line
-        while (iss.good()) {
+        while (iss.good())
+        {
             iss >> key >> col >> value >> end;
             // TODO read over non valid contents ...
             getline(iss, comment);   // or: getline(iss, s, '\n');
             line++;
-            if (iss.good() && col == ':' && end == ';') {
+            if (iss.good() && col == ':' && end == ';')
+            {
                 cout << key << ':' << value << ';' << endl;
                 sum += key;
                 sum += value;
-            } else {
+            }
+            else
+            {
                 //TODO format error ...
                 const char old_fill = cerr.fill('0');
                 cerr << "ERROR line " << cerr.width(1) << line << " near : " << comment << endl;
@@ -51,7 +57,8 @@ static long readConfigDataFromString(const char *str) {
 }
 
 
-int main() {
+int main()
+{
     int key = -1;
     int value = -1;
     long sum = 0;
@@ -64,16 +71,20 @@ int main() {
     ifs.open("data.txt");
 
     // for each line
-    while (ifs.good()) {
+    while (ifs.good())
+    {
         ifs >> key >> col >> value >> end;
         // TODO read over non valid contents ...
         getline(ifs, comment);   // or: getline(ifs, s, '\n');
         line++;
-        if (ifs.good() && col == ':' && end == ';') {
+        if (ifs.good() && col == ':' && end == ';')
+        {
             cout << key << ':' << value << ';' << endl;
             sum += key;
             sum += value;
-        } else {
+        }
+        else
+        {
             //TODO format error ...
             cerr << "ERROR line " << line << " near : " << comment << endl;
             //XXX break;
@@ -106,11 +117,12 @@ int main() {
         ifs.read(buffer, length);
 
         clock_t t = clock();
-        if (ifs.good()) {
+        if (ifs.good())
+        {
             cout.write(buffer, length);
             cout << "-----------------------------" << endl;
             t = clock() - t;
-            cerr << "Time used: " << static_cast<float>(t)/CLOCKS_PER_SEC << "seconds" << endl;
+            cerr << "Time used: " << static_cast<float>(t) / CLOCKS_PER_SEC << "seconds" << endl;
 
             buffer[length ] = 0; // termiantes as string
             long sum = readConfigDataFromString(buffer);

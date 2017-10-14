@@ -1,13 +1,14 @@
 #undef USE_BOOST
 #ifndef USE_BOOST
-#include <functional>
+    #include <functional>
 #else
-#include <boost/functional/hash.hpp>
+    #include <boost/functional/hash.hpp>
 #endif
 #include <string>
 #include <iostream>
 
-struct S {
+struct S
+{
     std::string first_name;
     std::string last_name;
 
@@ -38,7 +39,8 @@ struct S {
 namespace std
 {
 template<>
-struct hash<S> {
+struct hash<S>
+{
     typedef S argument_type;
     typedef std::size_t value_type;
 

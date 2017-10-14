@@ -4,13 +4,16 @@
 #include <stdint.h>
 
 
-namespace MySpace {
-struct MyStruct {
+namespace MySpace
+{
+struct MyStruct
+{
     uint32_t x;
     int32_t y;
 };
 
-bool operator < (const MyStruct& lhs, const MyStruct& rhs) {
+bool operator < (const MyStruct& lhs, const MyStruct& rhs)
+{
     return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y < rhs.y));
 }
 }
@@ -18,8 +21,10 @@ bool operator < (const MyStruct& lhs, const MyStruct& rhs) {
 
 #define USE_MYCOMP
 #ifdef USE_MYCOMP
-struct MyComp {
-    bool operator()(const MySpace::MyStruct& lhs, const MySpace::MyStruct& rhs) const {
+struct MyComp
+{
+    bool operator()(const MySpace::MyStruct& lhs, const MySpace::MyStruct& rhs) const
+    {
         //XXX return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y < rhs.y));
         return (lhs < rhs);
     }
@@ -27,7 +32,8 @@ struct MyComp {
 #endif
 
 
-int main() {
+int main()
+{
 
 #ifdef USE_MYCOMP
     std::set <MySpace::MyStruct, MyComp> s;
@@ -68,7 +74,8 @@ int main() {
 #else
     std::set <MySpace::MyStruct>::iterator loc = s.find(ms2);
 #endif
-    if (loc != s.end()) {
+    if (loc != s.end())
+    {
         std::cout << "loc->x: " << loc->x
                   << "loc->y: " << loc->y << std::endl;
     }

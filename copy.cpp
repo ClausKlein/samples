@@ -11,9 +11,11 @@
 using namespace std;
 
 int
-main(int argc, char *argv[]) {
+main(int argc, char *argv[])
+{
 
-    if (strcmp(argv[1], "--help") == 0) {
+    if (strcmp(argv[1], "--help") == 0)
+    {
         cerr << argv[0] << " [old-file [new-file]]" << endl;
         exit(EXIT_FAILURE);
     }
@@ -22,28 +24,37 @@ main(int argc, char *argv[]) {
     ostream &out(cout);
 
     // Open input and output files
-    if (argc > 1) {
+    if (argc > 1)
+    {
         cerr << argv[1] << endl;
         ifstream _in(argv[1], ios::in | ios::binary);
         //FIXME const in = _in;
-        if (argc > 2) {
+        if (argc > 2)
+        {
             cerr << argv[2] << endl;
             ofstream _out(argv[2], ios::out | ios::binary | ios::trunc);
             _out << _in.rdbuf();  // or: in >> out.rdbuf();
             //FIXME private operator= out=_out;
-        } else {
+        }
+        else
+        {
             cout << _in.rdbuf();
         }
-    } else {
+    }
+    else
+    {
         //FIXME Bus error cout << cin.rdbuf();  // or: cin >> cout.rdbuf();
     }
 
     // copy contents
     //XXX out << in.rdbuf();  // or: in >> out.rdbuf();
 
-    if (out && in) {
+    if (out && in)
+    {
         exit(EXIT_SUCCESS);
-    } else {
+    }
+    else
+    {
         exit(EXIT_FAILURE);
     }
 }

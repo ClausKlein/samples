@@ -6,7 +6,8 @@
 //FIXME #include <iomanipulator>    //hex
 #include <iostream>
 
-struct Key {
+struct Key
+{
     std::string title;
     std::string first;
     std::string second;
@@ -23,8 +24,10 @@ struct Key {
  id. If it was based on the object's name and author then the hash function
  should take them into account.
  ***/
-struct KeyHash {
-    std::size_t operator()(const Key& k) const {
+struct KeyHash
+{
+    std::size_t operator()(const Key& k) const
+    {
 #if 1
         return std::hash<std::string>()(k.title) ^ (
                    (std::hash<std::string>()(k.first) << 1) ^
@@ -35,15 +38,18 @@ struct KeyHash {
     }
 };
 
-struct KeyEqual {
-    bool operator()(const Key& lhs, const Key& rhs) const {
+struct KeyEqual
+{
+    bool operator()(const Key& lhs, const Key& rhs) const
+    {
         return lhs.title == rhs.title &&
                lhs.first == rhs.first &&
                lhs.second == rhs.second;
     }
 };
 
-std::ostream& operator<<(std::ostream& stream, const Key& k) {
+std::ostream& operator<<(std::ostream& stream, const Key& k)
+{
     stream << k.title;
     stream << ' ';
     stream << k.first;
@@ -53,12 +59,14 @@ std::ostream& operator<<(std::ostream& stream, const Key& k) {
 }
 
 
-int main() {
+int main()
+{
     // default constructor: empty map
     std::unordered_map<std::string, std::string> m1;
 
     // list constructor
-    std::unordered_map<int, std::string> m2 = {
+    std::unordered_map<int, std::string> m2 =
+    {
         {1, "foo"},
         {3, "bar"},
         {2, "baz"},
@@ -70,7 +78,8 @@ int main() {
     // move constructor
     std::unordered_map<int, std::string> m4 = std::move(m3);
 
-    for (const auto &p : m4) {
+    for (const auto &p : m4)
+    {
         std::cout << p.first << " => " << p.second << '\n';
     }
 
@@ -81,14 +90,16 @@ int main() {
     //
     // constructor for a custom type
     //
-    std::unordered_map<Key, std::string, KeyHash, KeyEqual> m6 = {
+    std::unordered_map<Key, std::string, KeyHash, KeyEqual> m6 =
+    {
         { {"", "", ""}, "default"},
         { {"Dr", "Peter", "Pan"}, "yet"},
         { {"Mr", "John", "Doe"}, "another"},
         { {"Mrs", "Mary", "Sue"}, "example"}
     };
 
-    for (const auto &p : m6) {
+    for (const auto &p : m6)
+    {
         std::cout << p.first << " => " << p.second;
         std::cout << "; hash=0x" << std::hex << KeyHash()(p.first) << '\n';
     }

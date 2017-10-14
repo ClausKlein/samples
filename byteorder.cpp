@@ -17,19 +17,24 @@
 // most of this demo program is ansi c;
 // only one template is used for test
 
-inline int isLittleEndian() {
+inline int isLittleEndian()
+{
     const int i = 1;
     const void *v;
     const char *p = static_cast<const char *>(v = &i);
-    if (p[0] == 1) {    // Lowest address contains the least significant byte
+    if (p[0] == 1)      // Lowest address contains the least significant byte
+    {
         return 1; // true;
-    } else {
+    }
+    else
+    {
         return 0; // false;
     }
 }
 
 
-typedef union {
+typedef union
+{
     uint32_t i;
     uint8_t c[4];
 } u;
@@ -39,9 +44,11 @@ typedef union {
 /**
  * same ase gcc __builtin_bswap32()
  **/
-uint32_t bswap32(uint32_t i) {
+uint32_t bswap32(uint32_t i)
+{
     uint8_t *c = (uint8_t *) &i;
-    return * static_cast<uint32_t *>(uint8_t[4]) {
+    return * static_cast<uint32_t *>(uint8_t[4])
+    {
         c[3], c[2], c[1], c[0]
     };
 // FIXME byteorder.c:44: warning: ISO C90 forbids compound literals
@@ -56,15 +63,18 @@ uint32_t bswap32(uint32_t i) {
  * generic version of gcc __builtin_bswap32()
  **/
 template <typename T>
-T swap_endian(T u) {
-    union {
+T swap_endian(T u)
+{
+    union
+    {
         T u;
         uint8_t u8[sizeof(T)];
     } source, dest;
 
     source.u = u;
 
-    for (size_t k = 0; k < sizeof(T); k++) {
+    for (size_t k = 0; k < sizeof(T); k++)
+    {
         dest.u8[k] = source.u8[sizeof(T) - k - 1];
     }
 
@@ -73,7 +83,8 @@ T swap_endian(T u) {
 #endif
 
 
-const char *hexdump(const uint8_t *binbuf, size_t binbuflen) {
+const char *hexdump(const uint8_t *binbuf, size_t binbuflen)
+{
     /* FIXME: this isn't thead-safe! */
     static char hexbuf[INET6_ADDRSTRLEN * 2 + 1];
     size_t i, j = 0;
@@ -82,11 +93,13 @@ const char *hexdump(const uint8_t *binbuf, size_t binbuflen) {
     const uint8_t *ibuf = binbuf;
     const char *hexchar = "0123456789abcdef";
 
-    if (NULL == binbuf || 0 == binbuflen) {
+    if (NULL == binbuf || 0 == binbuflen)
+    {
         return "";
     }
 
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < len; i++)
+    {
         hexbuf[j++] = hexchar[(ibuf[i] & 0xf0) >> 4];
         hexbuf[j++] = hexchar[ibuf[i] & 0x0f];
     }
@@ -98,14 +111,16 @@ const char *hexdump(const uint8_t *binbuf, size_t binbuflen) {
 //FIXME error: C does not support default arguments
 
 /// local helper
-static void _dump(u temp, int swap) {
+static void _dump(u temp, int swap)
+{
     char addrstr[INET_ADDRSTRLEN] = {0};
     uint32_t in_addr = 0;
 
     // =======================================
     // swap bytes to simulate other byte order
     // =======================================
-    if (swap) {
+    if (swap)
+    {
 #ifdef __cplusplus
         temp.i = swap_endian<uint32_t>(temp.i);
 #else
@@ -115,7 +130,8 @@ static void _dump(u temp, int swap) {
 
     in_addr = temp.i;  //XXX should be htonl(temp.i); but not used for demo! ck
     //TODO convert to network byte order on LittleEndian machine
-    if (!swap && isLittleEndian()) {
+    if (!swap && isLittleEndian())
+    {
 #ifdef __cplusplus
         in_addr = swap_endian<uint32_t>(in_addr);
 #else
@@ -132,13 +148,15 @@ static void _dump(u temp, int swap) {
     printf("bytes in memory: 0x%02x 0x%02x 0x%02x 0x%02x\t", temp.c[0], temp.c[1], temp.c[2], temp.c[3]);
     printf("'%c%c%c%c'\n", temp.c[0], temp.c[1], temp.c[2], temp.c[3]); // interpreted as ASCIi
 
-    if (inet_pton(AF_INET, addrstr, &in_addr) == 0) {
+    if (inet_pton(AF_INET, addrstr, &in_addr) == 0)
+    {
         assert(temp.i == in_addr);
     }
 }
 
 /// local wrapper to ntohl() to prevent casts
-static inline uint32_t _ntohl(uint8_t *p) {
+static inline uint32_t _ntohl(uint8_t *p)
+{
     u tmp;
 
     assert(p);
@@ -149,7 +167,8 @@ static inline uint32_t _ntohl(uint8_t *p) {
 
 
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     u temp;
 
     //XXX temp.i = 0x31323334;
@@ -164,7 +183,8 @@ int main(int argc, char **argv) {
     char * last, *addr;
 
     // determine if ipv6 addess used:
-    if (strchr(ptr, ':') != NULL) {
+    if (strchr(ptr, ':') != NULL)
+    {
         protocol = AF_INET6;
     }
 
@@ -175,7 +195,8 @@ int main(int argc, char **argv) {
     // is, printable form as held in a character string) to network format
     // (usually a struct in_addr or some other internal binary representation,
     // in network byte order).
-    if (!addr || inet_pton(protocol, addr, buf) != 1) {
+    if (!addr || inet_pton(protocol, addr, buf) != 1)
+    {
         perror("inet_pton()");
         exit(1);    //FIXME must be handeld right!
     }
@@ -205,24 +226,29 @@ int main(int argc, char **argv) {
 
     //NOTE: The first 4 bytes has to be used as 1. long paramater of an IPv6 addr!
     //  =>  The byte with the most significant bit at network byte order!
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < 4; i++)
+    {
 
         //NOTE: It is very important to convert it back to host byte order
         //      before print to preset or send via corba!
         temp.i =  _ntohl(&buf[4 * i]);
         printf("P%i: 0x%08x = %010u of (%s)\n", i + 1, temp.i, temp.i, addr);
 
-        if (argc == 1) {
+        if (argc == 1)
+        {
             temp.i =  0x31323334;   // use if only program name is given
         }
 
-        if (isLittleEndian()) {
+        if (isLittleEndian())
+        {
             puts("we are LittleEndian:");
             _dump(temp, 0);
 
             puts("       as BigEndian:");
             _dump(temp, 1);      //XXX swap to BigEndian
-        } else {
+        }
+        else
+        {
             puts("we are BigEndian:");
             _dump(temp, 0);
 
@@ -238,7 +264,8 @@ int main(int argc, char **argv) {
         assert(swapped1 == swapped2);
 #endif
 
-        if (argc == 1 || protocol == AF_INET) {
+        if (argc == 1 || protocol == AF_INET)
+        {
             break;  // done
         }
 

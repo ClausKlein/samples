@@ -8,19 +8,24 @@ std::ostream& operator<<(std::ostream& s, const std::vector<T>& v)
 #if 0
     s.put('{');
     char comma[3] = {'\0', ' ', '\0'};  // default separator (empty)
-    for (const auto& e : v) {
+    for (const auto& e : v)
+    {
         s << comma << e;    //NOTE: print separator before item
         comma[0] = ',';     // change separator
     }
     return s << '}';
 #else
-    if (!v.empty()) {
+    if (!v.empty())
+    {
         s << '{' << *v.begin();
-        for (auto it = ++(v.begin()); it != v.end(); ++it) {
+        for (auto it = ++(v.begin()); it != v.end(); ++it)
+        {
             s << ", " << *it;
         }
         s << '}' << std::endl;
-    } else {
+    }
+    else
+    {
         s << "{}" << std::endl;
     }
     return s;

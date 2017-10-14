@@ -10,18 +10,21 @@
 // value from the different members of a class. For full details see the hash
 // tutorial.
 
-class point {
+class point
+{
     int x;
     int y;
 public:
     point() : x(0), y(0) {}
     point(int x, int y) : x(x), y(y) {}
 
-    bool operator==(point const& other) const {
+    bool operator==(point const& other) const
+    {
         return x == other.x && y == other.y;
     }
 
-    friend std::size_t hash_value(point const& p) {
+    friend std::size_t hash_value(point const& p)
+    {
         std::size_t seed = 0;
         boost::hash_combine(seed, p.x);
         boost::hash_combine(seed, p.y);
@@ -30,7 +33,8 @@ public:
     }
 };
 
-int main() {
+int main()
+{
     boost::hash<point> point_hasher;
 
     point p0;

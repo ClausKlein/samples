@@ -23,12 +23,12 @@
 
 #define USE_SET
 #ifdef USE_SET
-#include <boost/container/set.hpp>
-using namespace boost::container;
+    #include <boost/container/set.hpp>
+    using namespace boost::container;
 #else
-// workarount to compile only
-#include <set>
-using namespace std;
+    // workarount to compile only
+    #include <set>
+    using namespace std;
 #endif
 
 #if 1
@@ -37,9 +37,11 @@ template<typename T>
 BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream&))
 operator<<(std::ostream& stream, set<T>& c)
 {
-    if (!c.empty()) {
+    if (!c.empty())
+    {
         stream << '{' << *c.begin();
-        for (typename set<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
+        for (typename set<T>::iterator it = ++(c.begin()); it != c.end(); ++it)
+        {
             stream << ", " << *it;
         }
         stream << '}' << std::endl;
@@ -51,9 +53,11 @@ template<typename T>
 BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream&))
 operator<<(std::ostream& stream, boost::unordered_set<T>& c)
 {
-    if (!c.empty()) {
+    if (!c.empty())
+    {
         stream << '{' << *c.begin();
-        for (typename boost::unordered_set<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
+        for (typename boost::unordered_set<T>::iterator it = ++(c.begin()); it != c.end(); ++it)
+        {
             stream << ", " << *it;
         }
         stream << '}' << std::endl;
@@ -65,9 +69,11 @@ operator<<(std::ostream& stream, boost::unordered_set<T>& c)
 template<typename T>
 std::ostream& operator<<(std::ostream& stream, Collection<T>& c)
 {
-    if (!c.empty()) {
+    if (!c.empty())
+    {
         stream << '{' << *c.begin();
-        for (typename Collection<T>::iterator it = ++(c.begin()); it != c.end(); ++it) {
+        for (typename Collection<T>::iterator it = ++(c.begin()); it != c.end(); ++it)
+        {
             stream << ", " << *it;
         }
         stream << '}' << std::endl;
@@ -189,7 +195,8 @@ int main()
     std::pair<SetType::iterator, bool> result = custset.insert(Customer("Nico", "Josuttis", 43));
     assert(result.first != custset.end() && result.second); // it's a valid iterator
 
-    for (long i = 0; i < 10; i++) {
+    for (long i = 0; i < 10; i++)
+    {
         Customer key("Petra", "Klein", i + 56);
         custset.insert(key);
     }
@@ -221,13 +228,17 @@ int main()
     assert(hash_value(key) == hash_value(key3));
 
     std::size_t count = custset.erase(key);
-    if (count) {
+    if (count)
+    {
         std::cout << count << " erased " << key << std::endl;
     }
     SetType::iterator it = custset.find(key2);
-    if (it == custset.end()) {
+    if (it == custset.end())
+    {
         std::cout << "not found: " << key2 << std::endl;
-    } else {
+    }
+    else
+    {
         assert(count == 1);
         std::cout << count << " erased " << key << std::endl;
     }

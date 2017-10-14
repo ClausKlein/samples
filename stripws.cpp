@@ -16,13 +16,17 @@ inline std::string trim(const std::string& s)
 // Entfernt fuehrende Leerzeichen von s.
 inline std::string ltrim(const std::string& s)
 {
-    if (s.empty()) {
+    if (s.empty())
+    {
         return s;
     }
     std::size_t pos = s.find_first_not_of(' ');
-    if (pos == std::string::npos) {
+    if (pos == std::string::npos)
+    {
         return "";
-    } else {
+    }
+    else
+    {
         //NOTE: substr(npos) throws a std::out_of_range exception!
         return s.substr(pos);
     }
@@ -43,7 +47,8 @@ int main()
     const char* ws = " \t";
 
     std::size_t pos = str.find_first_not_of(ws);
-    if (pos != std::string::npos) {
+    if (pos != std::string::npos)
+    {
         std::cout << str.substr(pos) << std::endl;
     }
 #endif

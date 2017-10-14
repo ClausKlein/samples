@@ -11,22 +11,26 @@
 
 using namespace std;
 
-union time_value {
+union time_value
+{
     int64_t sec;
 
 #if defined(__LITTLE_ENDIAN__) || defined(__i386) || defined(_WIN32)
 //XXX #warning LittleEndian
-    struct {
+    struct
+    {
         uint32_t low;
         uint32_t high;
     } ul;
-    struct {
+    struct
+    {
         uint16_t word1;
         uint16_t word2;
         uint16_t word3;
         uint16_t word4;
     } uw;
-    struct {
+    struct
+    {
         uint8_t byte1;
         uint8_t byte2;
         uint8_t byte3;
@@ -38,7 +42,8 @@ union time_value {
     } ub;
 #else
 #error BigEndian
-    struct {
+    struct
+    {
         uint32_t high;
         uint32_t low;
     } ul;
@@ -46,8 +51,10 @@ union time_value {
 
 } test;
 
-int main() {
-    const int64_t tests[16] = {
+int main()
+{
+    const int64_t tests[16] =
+    {
         INT64_MIN, -4294967296,
         INT32_MIN, INT16_MIN, -1LL, 0LL, 1LL,  INT16_MAX, 439041101LL, INT32_MAX,
         0x80000000, 0xffffffff, 0x100000000, 0x1ffffffff, 0x1a2b3c4d5e6f7788, INT64_MAX
@@ -57,7 +64,8 @@ int main() {
     uint32_t high = 0;
     uint32_t low = 0;
 
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < 16; i++)
+    {
         test.sec = tests[i];
         cout << hex << showbase << setw(20) << test.sec << dec
              << " high:" << setw(12) << test.ul.high
@@ -75,7 +83,8 @@ int main() {
             cout << hex << setw(20) << sec << ' ' << setw(17) << high << ' ' << setw(16) << low << endl;
         }
 
-        if (test.sec == 1LL) {
+        if (test.sec == 1LL)
+        {
             assert(test.ub.byte1 == 1);
             assert(test.uw.word1 == 1);
             assert(test.ul.low == 1L);

@@ -1,15 +1,15 @@
 #ifdef _WIN32
-#undef UNICODE
+    #undef UNICODE
 
-// link with Ws2_32.lib
-#pragma comment (lib, "Ws2_32.lib")
+    // link with Ws2_32.lib
+    #pragma comment (lib, "Ws2_32.lib")
 
-#include <winsock2.h>
-#include <ws2tcpip.h>
+    #include <winsock2.h>
+    #include <ws2tcpip.h>
 #else
-#include <arpa/inet.h>  // inet_ntop, inet_pton
-#include <netdb.h>  // getaddrinfo
-#include <err.h>    // errx
+    #include <arpa/inet.h>  // inet_ntop, inet_pton
+    #include <netdb.h>  // getaddrinfo
+    #include <err.h>    // errx
 #endif
 
 #include <stdlib.h>
@@ -26,7 +26,8 @@
 // #define _WIN32_WINNT 0x0600
 
 
-const char *hexdump(const uint8_t *binbuf, size_t binbuflen) {
+const char *hexdump(const uint8_t *binbuf, size_t binbuflen)
+{
     /* FIXME: this isn't thead-safe! */
     static char hexbuf[INET6_ADDRSTRLEN * 2 + 1];
     //XXX char *hexbuf = new char[INET6_ADDRSTRLEN * 2 + 1];
@@ -37,12 +38,14 @@ const char *hexdump(const uint8_t *binbuf, size_t binbuflen) {
     const uint8_t *ibuf = binbuf;
     const char *hexchar = "0123456789abcdef";
 
-    if (NULL == binbuf || 0 == binbuflen) {
+    if (NULL == binbuf || 0 == binbuflen)
+    {
         hexbuf[0] = '\0';
         return hexbuf;
     }
 
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < len; i++)
+    {
         hexbuf[j++] = hexchar[(ibuf[i] & 0xf0) >> 4];
         hexbuf[j++] = hexchar[ibuf[i] & 0x0f];
     }
@@ -51,7 +54,8 @@ const char *hexdump(const uint8_t *binbuf, size_t binbuflen) {
 }
 
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 
     struct addrinfo hints, *res, *p;
     int error;
@@ -59,7 +63,8 @@ int main(int argc, char *argv[]) {
     char ipstr[INET6_ADDRSTRLEN];
     uint8_t buf[sizeof(struct in6_addr)];
 
-    if (argc != 2) {
+    if (argc != 2)
+    {
         printf("Usage: %s <hostname>\n", argv[0]);
         printf("Example: %s www.yahoo.com\n", argv[0]);
         return 1;
@@ -68,10 +73,13 @@ int main(int argc, char *argv[]) {
 #ifdef _WIN32
     // Initialization
     WSADATA wsaData;
-    if (WSAStartup(MAKEWORD(1, 1), &wsaData) != 0) {
+    if (WSAStartup(MAKEWORD(1, 1), &wsaData) != 0)
+    {
         printf("WSAStartup() failed miserably! With error code %ld\n", WSAGetLastError());
         return 1;
-    } else {
+    }
+    else
+    {
         printf("WSAStartup() looks fine!\n");
     }
 
@@ -82,7 +90,8 @@ int main(int argc, char *argv[]) {
     hints.ai_socktype = SOCK_STREAM;
     //TODO: TBD hints.ai_flags = AI_NUMERICHOST;
 
-    if ((error = getaddrinfo(argv[1], NULL, &hints, &res)) != 0) {
+    if ((error = getaddrinfo(argv[1], NULL, &hints, &res)) != 0)
+    {
 #ifndef _WIN32
         errx(1, "%s", gai_strerror(error));
         /*NOTREACHED*/
@@ -95,20 +104,24 @@ int main(int argc, char *argv[]) {
 
     printf("The IP addresses for %s:\n", argv[1]);
 
-    for (p = res; p != NULL; p = p->ai_next) {
+    for (p = res; p != NULL; p = p->ai_next)
+    {
         void *addr;
         size_t ss_len;
         const char *ipver = "IPv6";
 
         // Get the pointer to the address itself, different fields in IPv4 and IPv6
-        if (p->ai_family == AF_INET) {
+        if (p->ai_family == AF_INET)
+        {
             // IPv4
             //TODO:  error: static_cast from 'struct sockaddr *' to 'struct sockaddr_in6 *' is not allowed
             struct sockaddr_in *ipv4 = static_cast<struct sockaddr_in *>(addr = p->ai_addr);
             addr = &(ipv4->sin_addr);
             ss_len = sizeof(ipv4->sin_addr);
             ipver = "IPv4";
-        } else {
+        }
+        else
+        {
             // IPv6
             //TODO:  error: static_cast from 'struct sockaddr *' to 'struct sockaddr_in6 *' is not allowed
             struct sockaddr_in6 *ipv6 = static_cast<struct sockaddr_in6 *>(addr = p->ai_addr);

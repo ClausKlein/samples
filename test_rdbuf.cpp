@@ -2,7 +2,8 @@
 #include <iostream>     // std::cout
 #include <fstream>      // std::filebuf, std::ifstream
 
-int main() {
+int main()
+{
     std::ifstream ifs("data.txt", std::ifstream::binary);
 
     // get pointer to associated buffer object
@@ -16,7 +17,8 @@ int main() {
     const size_t CHUNCK_SIZE = 23;
     char* buffer = new char[CHUNCK_SIZE];
 
-    while ((size > 0) && ifs) {
+    while ((size > 0) && ifs)
+    {
         // get file data
         // streamsize sgetn (char_type* s, streamsize n);
         // streamsize is a signed integral type.
@@ -26,7 +28,8 @@ int main() {
 
         // write content to stdout
         std::cout.write(buffer, len);
-        if (!std::cout) {
+        if (!std::cout)
+        {
             break;
         }
 

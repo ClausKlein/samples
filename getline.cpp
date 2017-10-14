@@ -3,17 +3,24 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     char buffer[23];
     int line = 0;
-    while (cin.getline(buffer, sizeof(buffer), '\n') || (cin.gcount() > 0)) {
+    while (cin.getline(buffer, sizeof(buffer), '\n') || (cin.gcount() > 0))
+    {
         streamsize count = cin.gcount();
-        if (cin.eof()) {
+        if (cin.eof())
+        {
             cout << "Last Line  ";    //NOTE: cin.fail() == false
-        } else if (cin.fail()) {
+        }
+        else if (cin.fail())
+        {
             cout << "Long Line  ";
             cin.clear(cin.rdstate() & ~ios::failbit);
-        } else {
+        }
+        else
+        {
             --count;                //XXX ignore endl
             cout << "Line " << setw(6) << ++line;
         }

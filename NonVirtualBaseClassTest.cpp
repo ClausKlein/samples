@@ -14,40 +14,49 @@ NonVirtualBaseClassTest.cpp:35:7: warning: 'class c_b' has virtual functions and
 
 using namespace std;
 
-class base {
+class base
+{
 public:
     virtual ~base() {};
     //FIXME virtual void print() const = 0;
 };
 
-class c_a: public base {
+class c_a: public base
+{
     int a;
 public:
     c_a(int _a): a(_a) {};
-    const int & getvalue() const {
+    const int & getvalue() const
+    {
         return a;
     };
-    virtual void print() const {
+    virtual void print() const
+    {
         cout << a << endl;
     };
 };
 
-class c_b: public base {
+class c_b: public base
+{
     double b;
 public:
     c_b(double _b): b(_b) {};
-    const double & getvalue() const {
+    const double & getvalue() const
+    {
         return b;
     };
-    virtual void print()const {
+    virtual void print()const
+    {
         cout << b << endl;
     };
 };
 
-class SUT {
+class SUT
+{
     int type;
     string id;
-    union {
+    union
+    {
         const c_b * m_b;
         const c_a * m_a;
         const base * m_base;
@@ -56,26 +65,31 @@ class SUT {
 public:
     enum e {t_a, t_b};
 
-    SUT(): type(0), id(""), m_base(0) {
+    SUT(): type(0), id(""), m_base(0)
+    {
         //XXX u.m_base = 0;
         cout << "SUT()" << endl;
     };
-    SUT(const base * _b, int t, const string _id = ""): type(t), id(_id), m_base(_b) {
+    SUT(const base * _b, int t, const string _id = ""): type(t), id(_id), m_base(_b)
+    {
         //XXX u.m_base = _b;
         cout << "SUT(base)" << endl;
     };
 
-    const c_a & get_a() const {
+    const c_a & get_a() const
+    {
         assert(type == t_a); // TODO assert
         return *m_a;
     }
 
-    const c_b & get_b() const {
+    const c_b & get_b() const
+    {
         assert(type == t_b); // TODO assert
         return *m_b;
     }
 
-    const void * getbaseptr(const base * b) {
+    const void * getbaseptr(const base * b)
+    {
         return b;
     };
 
@@ -83,7 +97,8 @@ public:
 
 typedef map<char, SUT*> sut_map_t;
 
-int main() {
+int main()
+{
     c_a a(0x0815);
     const base * pa = &a;
 
