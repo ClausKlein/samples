@@ -22,7 +22,7 @@ std::ostream& operator<<(std::ostream& stream, const Point& p)
 {
     stream << '{';
     stream << p.x << ',' << p.y;
-    stream << "}";
+    stream << '}';
     return stream;
 }
 

@@ -101,6 +101,7 @@ volatile: LDLIBS+= -L$(BOOST_ROOT)/lib -lboost_thread -lboost_system
 # volatile: volatile.o
 ## volatile.o: .FORCE
 
+point: CXXFLAGS:= -g -Wextra -std=c++14
 nested-classes: CXXFLAGS:= -g -Wextra -std=c++14
 sorted_map: CXXFLAGS:= -g -Wextra -std=c++14
 unordered_map: CXXFLAGS:= -g -Wextra -std=c++14

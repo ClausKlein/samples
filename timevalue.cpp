@@ -4,7 +4,8 @@
 #define __STDC_LIMIT_MACROS
 #include <stdint.h>
 #include <sys/types.h>  //BYTE_ORDER GHS PPC: #define __BIG_ENDIAN__
-#include <assert.h>
+
+#include <boost/test/minimal.hpp>
 
 #include <iostream>
 #include <iomanip>
@@ -51,7 +52,7 @@ union time_value
 
 } test;
 
-int main()
+int test_main(int /*argc*/, char* /*argv*/[])
 {
     const int64_t tests[16] =
     {
@@ -78,22 +79,22 @@ int main()
         sec = (static_cast<int64_t>(high) << 32) | low;
         //FIXME sec = (static_cast<int64_t>(high) << 32LL) | static_cast<uint32_t>(low);
 
-        //XXX if (sec != test.sec)
+        if (sec != test.sec)
         {
             cout << hex << setw(20) << sec << ' ' << setw(17) << high << ' ' << setw(16) << low << endl;
         }
 
         if (test.sec == 1LL)
         {
-            assert(test.ub.byte1 == 1);
-            assert(test.uw.word1 == 1);
-            assert(test.ul.low == 1L);
+            BOOST_CHECK(test.ub.byte1 == 1);
+            BOOST_CHECK(test.uw.word1 == 1);
+            BOOST_CHECK(test.ul.low == 1L);
         }
 
-        assert(sec == test.sec);
+        BOOST_CHECK(sec == test.sec);
 
-        assert(high == test.ul.high);
-        assert(low == test.ul.low);
+        BOOST_CHECK(high == test.ul.high);
+        BOOST_CHECK(low == test.ul.low);
     }
 
     return 0;

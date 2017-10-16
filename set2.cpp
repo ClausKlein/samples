@@ -15,7 +15,8 @@
  */
 #include <string>
 #include <iostream>
-#include <cassert>
+
+#include <boost/test/minimal.hpp>
 #include <boost/current_function.hpp>
 #include <boost/unordered_set.hpp>
 
@@ -148,7 +149,7 @@ public:
 };
 
 
-int main()
+int test_main(int /*argc*/, char* /*argv*/[])
 {
     using namespace boost;
 
@@ -166,7 +167,7 @@ int main()
     testOnly.insert(MyType(0, 1));
     MyType myKey(1, 2);
     testOnly.insert(myKey);
-    assert(testOnly.end() != testOnly.find(myKey));
+    BOOST_CHECK(testOnly.end() != testOnly.find(myKey));
     //TODO std::cout << testOnly << std::endl;
 
 #ifdef USE_SET
@@ -181,7 +182,7 @@ int main()
 
     BOOST_CONCEPT_ASSERT((Collection< SetType >));
 
-    assert(custset.empty());
+    BOOST_CHECK(custset.empty());
     std::cout << custset << std::endl;  //print empty container
 
     custset.insert(Customer("Nico", "Josuttis", 42));
@@ -193,7 +194,7 @@ int main()
     custset.insert(Customer("petra", "klein", 56));
 
     std::pair<SetType::iterator, bool> result = custset.insert(Customer("Nico", "Josuttis", 43));
-    assert(result.first != custset.end() && result.second); // it's a valid iterator
+    BOOST_CHECK(result.first != custset.end() && result.second); // it's a valid iterator
 
     for (long i = 0; i < 10; i++)
     {
@@ -214,18 +215,18 @@ int main()
 
     std::size_t len = std::distance(custset.begin(), custset.end());
     std::cout << len << " Customer inserted, sorted = " << sorted << std::endl;
-    assert(custset.size() == len);
+    BOOST_CHECK(custset.size() == len);
 
     std::cout << custset << std::endl;
 
     Customer key("Petra", "Klein", 56);
     Customer key2("Petra", "Klein", 67);
-    assert(key < key2);
+    BOOST_CHECK(key < key2);
 
     Customer key3(key);
-    assert(key == key3);
-    assert(!(key < key3) && !(key3 < key));
-    assert(hash_value(key) == hash_value(key3));
+    BOOST_CHECK(key == key3);
+    BOOST_CHECK(!(key < key3) && !(key3 < key));
+    BOOST_CHECK(hash_value(key) == hash_value(key3));
 
     std::size_t count = custset.erase(key);
     if (count)
@@ -239,13 +240,14 @@ int main()
     }
     else
     {
-        assert(count == 1);
+        BOOST_CHECK(count == 1);
         std::cout << count << " erased " << key << std::endl;
     }
 
     count = custset.erase(key2);
-    assert(count == 0);
+    BOOST_CHECK(count == 0);
     std::cout << "not found: " << key2 << std::endl;
 
     std::cout << custset << std::endl;
+    return 0;
 }
