@@ -1,6 +1,7 @@
 #ifndef BOOST_LIBS_CONCEPT_CHECK_EXTENSION_HPP
 #define BOOST_LIBS_CONCEPT_CHECK_EXTENSION_HPP
 
+#include <boost/functional/hash.hpp>
 #include <boost/detail/iterator.hpp>
 #include <boost/concept/requires.hpp>
 #include <boost/concept_check.hpp>

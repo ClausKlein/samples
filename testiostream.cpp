@@ -21,6 +21,7 @@ static long readConfigDataFromString(const char *str)
         string comment;
         istringstream iss(str); //NOTE: implicitly use of string tmp(str);
 
+#if 0
         //===========================================
         const string &tmp = iss.str();  // get a temporary of type 'basic_string<[...], char_traits<char>
         //XXX tmp[0] = tmp[0];  //NOTE: copy on write (if refcounting is used for this std::string)!
@@ -28,6 +29,7 @@ static long readConfigDataFromString(const char *str)
         assert(iss.str().length() == tmp.length()); // length
         assert(iss.str().c_str() == tmp.c_str());   // buffer addr
         //===========================================
+#endif
 
         // for each line
         while (iss.good())

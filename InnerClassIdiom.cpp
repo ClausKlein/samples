@@ -20,9 +20,7 @@
 
 using namespace std;
 
-
-class Poingable
-{
+class Poingable {
 public:
     virtual void poing() = 0;
 };
@@ -32,9 +30,7 @@ void callPoing(Poingable& p)
     p.poing();
 }
 
-
-class Bingable
-{
+class Bingable {
 public:
     virtual void bing() = 0;
 };
@@ -44,23 +40,23 @@ void callBing(Bingable& b)
     b.bing();
 }
 
-
-class Outer
-{
+class Outer {
     string name;
 
     // Define one inner class:
     class Inner1;
     friend class Outer::Inner1;
-    class Inner1 : public Poingable
-    {
+    class Inner1 : public Poingable {
         Outer* parent;
+
     public:
-        Inner1(Outer* p) : parent(p) {}
+        Inner1(Outer* p)
+            : parent(p)
+        {
+        }
         void poing()
         {
-            cout << "poing called for "
-                 << parent->name << endl;
+            cout << "poing called for " << parent->name << endl;
             // Accesses data in the outer class object
         }
     } inner1;
@@ -68,33 +64,38 @@ class Outer
     // Define a second inner class:
     class Inner2;
     friend class Outer::Inner2;
-    class Inner2 : public Bingable
-    {
+    class Inner2 : public Bingable {
         Outer* parent;
+
     public:
-        Inner2(Outer* p) : parent(p) {}
-        void bing()
+        Inner2(Outer* p)
+            : parent(p)
         {
-            cout << "bing called for "
-                 << parent->name << endl;
         }
+        void bing() { cout << "bing called for " << parent->name << endl; }
     } inner2;
 
 public:
     Outer(const string& nm)
-        : name(nm), inner1(this), inner2(this) {}
+        : name(nm)
+        , inner1(this)
+        , inner2(this)
+    {
+    }
 
     // Return reference to interfaces implemented by the inner classes:
     operator Poingable&() { return inner1; }
     operator Bingable&() { return inner2; }
 };
 
-
 int main()
 {
     Outer x("Ping Pong");
+
     // Like upcasting to multiple base types!:
     callPoing(x);
     callBing(x);
+
+    return (int)1.1;
 }
 

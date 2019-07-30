@@ -1,5 +1,5 @@
-CC:=clang
-CXX:=clang++
+CC:=/opt/local/bin/clang
+CXX:=/opt/local/bin/clang++
 # CXX:=g++-mp-5
 # CC:=gcc-mp-5
 
@@ -15,15 +15,14 @@ CPPFLAGS+= -MMD -MP
 CFLAGS:=-g -Wall -Wextra -std=c99
 CFLAGS+= -Wconversion
 CFLAGS+= -Wundef -Wno-unused-parameter
-##XXX CFLAGS+= -fsanitize=address
 
 
-CXXFLAGS:=-g -Wextra -stdlib=libc++
+CXXFLAGS:=-g -Wall -Wextra -std=c++17
+## -WCL4 -Wc++98-compat-pedantic -stdlib=libc++ -std=c++98
 #!BOOST# CXXFLAGS+= -Wconversion
 #!BOOST# CXXFLAGS+= -Wold-style-cast
 #!BOOST# CXXFLAGS+= -Wundef
 CXXFLAGS+= -Wno-unused-parameter -Wno-unused-local-typedef -Wno-unused-variable
-#TBD CXXFLAGS+= -Weffc++
 #
 # see http://clang.llvm.org/docs/index.html
 ##XXX CXXFLAGS+= -O1 -fsanitize=memory -fsanitize=address -fsanitize=thread -fno-omit-frame-pointer
@@ -87,32 +86,47 @@ DEPENDS:=$(PROGRAMS:=.d)
 MAKEFLAGS+=--no-builtin-rules
 
 
-.PHONY: all clean distclean
-all:	$(PROGRAMS)
+.PHONY: all check test clean distclean
+all: $(PROGRAMS) check
 
-filepath: CPPFLAGS+= -DBOOST_SYSTEM_DYN_LINK=1 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_ALL_NO_LIB=1 -DBOOST_ALL_NO_AUTO_LINK=1
+check: #TODO $(CXX_SOURCES)
+	clang-tidy ClonableBase.cpp
+
+test: all
+	./NonVirtualBaseClassTest
+	./testiostream
+	./byteorder
+	./timevalue
+	./teststdio
+	./volatile
+	./point
+	./set2
+	./copy-test
+
+filepath: CPPFLAGS+= -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_ALL_NO_LIB=1 # -DBOOST_SYSTEM_DYN_LINK=1 ## -DBOOST_ALL_NO_AUTO_LINK=1
 filepath: LDLIBS+= -L$(BOOST_ROOT)/lib -lboost_filesystem -lboost_system
 
-copy-test: CPPFLAGS+= -DBOOST_SYSTEM_DYN_LINK=1 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_ALL_NO_LIB=1 -DBOOST_ALL_NO_AUTO_LINK=1
+copy-test: CPPFLAGS+= -DBOOST_SYSTEM_NO_DEPRECATED
+copy-test: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
 copy-test: LDLIBS+= $(BOOST_ROOT)/lib/libboost_unit_test_framework.a
 
-volatile: CPPFLAGS+= -DBOOST_SYSTEM_DYN_LINK=1 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_ALL_NO_LIB=1 -DBOOST_ALL_NO_AUTO_LINK=1
+volatile: CPPFLAGS+= -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_ALL_NO_LIB=1 # -DBOOST_SYSTEM_DYN_LINK=1 ## -DBOOST_ALL_NO_AUTO_LINK=1
 volatile: LDLIBS+= -L$(BOOST_ROOT)/lib -lboost_thread -lboost_system
 # volatile: volatile.o
 ## volatile.o: .FORCE
 
-point: CXXFLAGS:= -g -Wextra -std=c++14
-nested-classes: CXXFLAGS:= -g -Wextra -std=c++14
-sorted_map: CXXFLAGS:= -g -Wextra -std=c++14
-unordered_map: CXXFLAGS:= -g -Wextra -std=c++14
-unordered_set: CXXFLAGS:= -g -Wextra -std=c++14
-testclock: CXXFLAGS:= -g -Wextra -std=c++14
-vector: CXXFLAGS:= -g -Wextra -std=c++14
-map: CXXFLAGS:= -g -Wextra -std=c++14
-l1083: CXXFLAGS:= -g -Wextra -std=c++14
-result_of: CXXFLAGS:= -g -Wall -std=c++14
-SFINAE-cxx11: CXXFLAGS:= -g -Wextra -std=c++11
-EreaseRemoveIdiom: CXXFLAGS:= -g -Wextra -std=c++11
+point: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+nested-classes: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+sorted_map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+unordered_map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++17 -stdlib=libc++
+unordered_set: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+testclock: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+vector: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+l1083: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+result_of: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+SFINAE-cxx11: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++11 -stdlib=libc++
+EreaseRemoveIdiom: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
 
 clean:
 	$(RM) $(PROGRAMS) *.exe *.o
@@ -129,7 +143,7 @@ distclean: clean
 # 	@$(CPP) $(CPPFLAGS) -M -MP $< -o $@
 
 %.o: %.cpp
-	$(COMPILE.cc) -c $^ -o $@
+	$(COMPILE.cc) $^ -o $@
 
 %: %.o
 	$(LINK.cc) $^ -o $@ $(LOADLIBES) $(LDLIBS)

@@ -2,16 +2,15 @@
 #include <numeric>      // iota
 #include <iostream>
 
-#if defined(USE_VECTOR)
+#if defined(__cplusplus) && __cplusplus == 201103L
 
 #include <vector>
+using namespace std;
+#warning "using std::vector"
+#define USE_VECTOR 1
 
-#elif __has_include(<experimental/unordered_set>) && __cplusplus >= 201402L
-
-#include <experimental/unordered_set>
-using namespace std::experimental;
-
-#else
+#elif __has_include(<unordered_set>) && __cplusplus == 201402L
+#warning "missing namespace std::erase_if"
 
 #include <unordered_set>
 
