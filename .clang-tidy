@@ -5,7 +5,7 @@ HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: false
 FormatStyle:     none
 User:            clausklein
-CheckOptions:    
+CheckOptions:
   - key:             abseil-string-find-startswith.AbseilStringsMatchHeader
     value:           absl/strings/match.h
   - key:             abseil-string-find-startswith.IncludeStyle

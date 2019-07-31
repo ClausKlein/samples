@@ -6,8 +6,8 @@
 
 using namespace std;
 
-void myfunction() throw(int, bad_exception);
-int foo(void *p) throw(invalid_argument);
+void myfunction(); //throw(int, bad_exception);
+int foo(void *p); //throw(invalid_argument);
 
 class illegal_division : public std::invalid_argument
 {
@@ -16,10 +16,10 @@ public:
     {
     }
 };
-int division(int a, int b) throw(illegal_division);
+int division(int a, int b); //throw(illegal_division);
 
 
-int division(int a, int b) throw(illegal_division)
+int division(int a, int b) //throw(illegal_division)
 {
     if (b == 0)
     {
@@ -29,14 +29,13 @@ int division(int a, int b) throw(illegal_division)
 }
 
 
-void myfunction() throw(int, bad_exception)
+void myfunction() //throw(int, bad_exception)
 {
-    //FIXME
-    throw 'x'; // throws char (not in exception-specification)
+    //FIXME throw 'x'; // throws char (not in exception-specification)
 }
 
 
-int foo(void *p) throw(invalid_argument)
+int foo(void *p) //throw(invalid_argument)
 {
     int a = 4;
     int b = a;

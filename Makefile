@@ -90,7 +90,7 @@ MAKEFLAGS+=--no-builtin-rules
 all: $(PROGRAMS) check
 
 check: #TODO $(CXX_SOURCES)
-	clang-tidy ClonableBase.cpp
+	clang-tidy -checks='-cppcoreguidelines-pro-bounds-array-to-pointer-decay' ClonableBase.cpp
 
 test: all
 	./NonVirtualBaseClassTest
@@ -104,29 +104,29 @@ test: all
 	./copy-test
 
 filepath: CPPFLAGS+= -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_ALL_NO_LIB=1 # -DBOOST_SYSTEM_DYN_LINK=1 ## -DBOOST_ALL_NO_AUTO_LINK=1
-filepath: LDLIBS+= -L$(BOOST_ROOT)/lib -lboost_filesystem -lboost_system
+filepath: LDLIBS+= -L$(BOOST_ROOT)/lib -lboost_filesystem-mt -lboost_system-mt
 
 copy-test: CPPFLAGS+= -DBOOST_SYSTEM_NO_DEPRECATED
-copy-test: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## copy-test: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
 copy-test: LDLIBS+= $(BOOST_ROOT)/lib/libboost_unit_test_framework.a
 
 volatile: CPPFLAGS+= -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_ALL_NO_LIB=1 # -DBOOST_SYSTEM_DYN_LINK=1 ## -DBOOST_ALL_NO_AUTO_LINK=1
-volatile: LDLIBS+= -L$(BOOST_ROOT)/lib -lboost_thread -lboost_system
+volatile: LDLIBS+= -L$(BOOST_ROOT)/lib -lboost_thread-mt -lboost_system-mt
 # volatile: volatile.o
 ## volatile.o: .FORCE
 
-point: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-nested-classes: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-sorted_map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-unordered_map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++17 -stdlib=libc++
-unordered_set: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-testclock: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-vector: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-l1083: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-result_of: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
-SFINAE-cxx11: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++11 -stdlib=libc++
-EreaseRemoveIdiom: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## point: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## nested-classes: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## sorted_map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## unordered_map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## unordered_set: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## testclock: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## vector: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## map: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## l1083: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## result_of: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
+## SFINAE-cxx11: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++11 -stdlib=libc++
+## EreaseRemoveIdiom: CXXFLAGS:= -g -Wextra -Wpedantic -std=c++14 -stdlib=libc++
 
 clean:
 	$(RM) $(PROGRAMS) *.exe *.o

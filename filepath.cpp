@@ -3,7 +3,7 @@
 //
 #include <iostream>
 
-#if __cplusplus < 201402L
+#ifndef _MSC_VER
     #define BOOST_FILESYSTEM_NO_DEPRECATED
     #define BOOST_FILESYSTEM_NO_LIB
     #include <boost/filesystem.hpp>

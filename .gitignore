@@ -5,13 +5,17 @@
 .*.swp
 .*~
 .DS_Store
+ClonableBase
 EreaseRemoveIdiom
 InnerClassIdiom
 NonVirtualBaseClassTest
+PostInitialize
+Pythagorean_triple
 SFINAE-cxx11
 bitset
 byteorder
 chainOfResponsibility
+clone
 collate
 command-pattern
 copy
@@ -19,6 +23,7 @@ copy-test
 copy_stdio
 delegate-pattern
 dependency-injection
+endlessloop
 exceptions
 filebuff
 filepath

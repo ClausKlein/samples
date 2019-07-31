@@ -51,8 +51,8 @@ public:
     // deleted [readability-deleted-default]
 
     // warning: pass by value and use std::move [modernize-pass-by-value]
-    explicit Derived(const std::string& v)
-        : value(v)
+    explicit Derived(std::string v)
+        : value(std::move(v))
     {}
 
 #ifdef SHOW_ERROR
@@ -97,4 +97,6 @@ int main()
 
     assert(copy->getValue() == origin.getValue());
     // XXX assert(copy == origin);
+
+    delete copy;
 }
