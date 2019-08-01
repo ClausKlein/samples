@@ -26,6 +26,8 @@ set(cxx_sources
     chainOfResponsibility.cpp
     ClonableBase.cpp
     clone.cpp
+    NonCopyable.cpp
+    DoNotSlice.cpp
     CloneShapes.cpp
     #!NO! collate.cpp
     command-pattern.cpp
