@@ -13,37 +13,34 @@ using namespace std;
 class Square;
 
 
-class Rectangle
-{
+class Rectangle {
     int width, height;
 
 public:
-    Rectangle(int w = 1, int h = 1): width(w), height(h) {}
-    void display()
-    {
-        cout << "Rectangle: " << width * height << endl;
-    };
-    void morph(Square &);
+    Rectangle(int w = 1, int h = 1)
+        : width(w)
+        , height(h)
+    {}
+    void display() { cout << "Rectangle: " << width * height << endl; };
+    void morph(Square&);
 };
 
 
-class Square
-{
+class Square {
     int side;
 
 public:
-    Square(int s = 1): side(s) {}
-    void display()
-    {
-        cout << "Square: " << side * side << endl;
-    };
+    Square(int s = 1)
+        : side(s)
+    {}
+    void display() { cout << "Square: " << side * side << endl; };
     friend class Rectangle;
 };
 
 
-void Rectangle::morph(Square &s)
+void Rectangle::morph(Square& s)
 {
-    width = s.side;
+    width  = s.side;
     height = s.side;
 }
 
@@ -71,5 +68,3 @@ int main()
 // In our example, Rectangle is considered as a friend class by Square but
 // Rectangle does not consider Square to be a friend, so Rectangle can access
 // the private members of Square but not the other way around.
-
-

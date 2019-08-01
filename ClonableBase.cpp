@@ -60,9 +60,9 @@ public:
     {
         return std::make_unique<Derived>();
     }
-        // error: virtual function 'clone' has a different return type
-        // ('unique_ptr<Derived>') than the function it overrides (which has
-        // return type 'unique_ptr<ClonableBase>')
+    // error: virtual function 'clone' has a different return type
+    // ('unique_ptr<Derived>') than the function it overrides (which has
+    // return type 'unique_ptr<ClonableBase>')
 #else
     gsl::owner<Derived*> clone() const override
     {

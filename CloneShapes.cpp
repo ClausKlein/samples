@@ -97,4 +97,3 @@ int main()
 
     // NO! Circle c = get_circle(); // compiler error -> no accidential slicing
 }
-

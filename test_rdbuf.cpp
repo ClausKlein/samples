@@ -1,6 +1,6 @@
 // read file data using associated buffer's members
-#include <iostream>     // std::cout
-#include <fstream>      // std::filebuf, std::ifstream
+#include <fstream>  // std::filebuf, std::ifstream
+#include <iostream> // std::cout
 
 int main()
 {
@@ -15,10 +15,9 @@ int main()
 
     // allocate memory to contain chunks of file data
     const size_t CHUNCK_SIZE = 23;
-    char* buffer = new char[CHUNCK_SIZE];
+    char* buffer             = new char[CHUNCK_SIZE];
 
-    while ((size > 0) && ifs)
-    {
+    while ((size > 0) && ifs) {
         // get file data
         // streamsize sgetn (char_type* s, streamsize n);
         // streamsize is a signed integral type.
@@ -28,8 +27,7 @@ int main()
 
         // write content to stdout
         std::cout.write(buffer, len);
-        if (!std::cout)
-        {
+        if (!std::cout) {
             break;
         }
 
@@ -42,4 +40,3 @@ int main()
 
     return 0;
 }
-

@@ -18,7 +18,8 @@
 // There are three ways a component (object or function) can get a hold of its
 // dependencies:
 // * The component can create the dependency, typically using the new operator.
-// * The component can look up the dependency, by referring to a global variable.
+// * The component can look up the dependency, by referring to a global
+// variable.
 // * The component can have the dependency passed to it where it is needed.
 //
 // The first two options of creating or looking up dependencies are not
@@ -37,23 +38,20 @@
 
 using namespace std;
 
-class Shape_IF
-{
+class Shape_IF {
 public:
     virtual ~Shape_IF() {};
     virtual void draw() = 0;
 };
 
 
-class Circle : public Shape_IF
-{
+class Circle : public Shape_IF {
 public:
     void draw() { cout << "circle\n"; }
 };
 
 
-class Triangle : public Shape_IF
-{
+class Triangle : public Shape_IF {
 public:
     void draw() { cout << "triangle\n"; }
 };
@@ -66,16 +64,12 @@ public:
    4. This code can be remained untouched
       when we switch the shape to draw
 */
-class Drawing
-{
+class Drawing {
 public:
-    void drawShape(Shape_IF *pShape)
-    {
-        pShape->draw();
-    }
+    void drawShape(Shape_IF* pShape) { pShape->draw(); }
 
 private:
-    //TODO: unused! Shape_IF *pShape;
+    // TODO: unused! Shape_IF *pShape;
 };
 
 
@@ -85,30 +79,24 @@ private:
       depending on what to draw
    3. This class is doing the dependency injection
 */
-class IDrawing
-{
+class IDrawing {
 public:
     IDrawing() { d = new Drawing; }
     ~IDrawing() { delete d; }
 
     void draw(string s)
     {
-        if (s == "triangle")
-        {
-            d->drawShape(new Triangle);    //TODO: memory leak! CK
-        }
-        else if (s == "circle")
-        {
-            d->drawShape(new Circle);    //TODO: memory leak! CK
-        }
-        else
-        {
+        if (s == "triangle") {
+            d->drawShape(new Triangle); // TODO: memory leak! CK
+        } else if (s == "circle") {
+            d->drawShape(new Circle); // TODO: memory leak! CK
+        } else {
             cerr << " Need shape" << endl;
         }
     }
 
 private:
-    Drawing *d;
+    Drawing* d;
 };
 
 
@@ -143,4 +131,3 @@ int main()
 
     return 0;
 }
-

@@ -1,7 +1,7 @@
+#include <boost/algorithm/string/case_conv.hpp>
+#include <boost/algorithm/string/trim.hpp>
 #include <iostream>
 #include <string>
-#include <boost/algorithm/string/trim.hpp>
-#include <boost/algorithm/string/case_conv.hpp>
 
 
 // Entfernt folgende Leerzeichen von s.
@@ -16,18 +16,14 @@ inline std::string trim(const std::string& s)
 // Entfernt fuehrende Leerzeichen von s.
 inline std::string ltrim(const std::string& s)
 {
-    if (s.empty())
-    {
+    if (s.empty()) {
         return s;
     }
     std::size_t pos = s.find_first_not_of(' ');
-    if (pos == std::string::npos)
-    {
+    if (pos == std::string::npos) {
         return "";
-    }
-    else
-    {
-        //NOTE: substr(npos) throws a std::out_of_range exception!
+    } else {
+        // NOTE: substr(npos) throws a std::out_of_range exception!
         return s.substr(pos);
     }
 }
@@ -60,24 +56,27 @@ int main()
 
     std::cout << "'" << ltrim(trim(str2)) << "'" << std::endl;
 
-    std::cout << "'" << ltrim(trim(empty)) << "'" << std::endl;  // OK
+    std::cout << "'" << ltrim(trim(empty)) << "'" << std::endl; // OK
 
-    std::cout << "'" << ltrim(trim(blanks)) << "'" << std::endl;  // save
+    std::cout << "'" << ltrim(trim(blanks)) << "'" << std::endl; // save
     std::cout << "'" << ltrim(blanks) << "'" << std::endl; // std::out_of_range
 
     std::string str1 = "     hello world!     ";
-    std::cout << "'" <<  boost::algorithm::trim_left_copy(str1) << "'" << std::endl;
-    std::cout << "'" <<  boost::algorithm::trim_right_copy(str1) << "'" << std::endl;
+    std::cout << "'" << boost::algorithm::trim_left_copy(str1) << "'"
+              << std::endl;
+    std::cout << "'" << boost::algorithm::trim_right_copy(str1) << "'"
+              << std::endl;
 
     //
-    // Remove all leading and trailing spaces from the input. The input sequence is modified in-place.
+    // Remove all leading and trailing spaces from the input. The input
+    // sequence is modified in-place.
     //
     boost::algorithm::trim(str1); // str1 == "hello world!"
     std::cout << "'" << str1 << "'" << std::endl;
-    std::cout << "'" <<  boost::algorithm::trim_copy(ws) << "'" << std::endl;
-    std::cout << "'" <<  boost::algorithm::trim_copy(empty) << "'" << std::endl;
-    std::cout << "'" <<  boost::algorithm::to_upper_copy(str) << "'" << std::endl;
-
+    std::cout << "'" << boost::algorithm::trim_copy(ws) << "'" << std::endl;
+    std::cout << "'" << boost::algorithm::trim_copy(empty) << "'" << std::endl;
+    std::cout << "'" << boost::algorithm::to_upper_copy(str) << "'"
+              << std::endl;
 }
 
 /***

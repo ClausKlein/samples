@@ -13,8 +13,8 @@ protected:
 
 public:
     explicit B(Token) {}
-    virtual ~B()      = default;
-    virtual void f()  = 0;
+    virtual ~B()     = default;
+    virtual void f() = 0;
 
     template <class T>
     static shared_ptr<T> create() // interface for creating objects
@@ -56,4 +56,3 @@ int main()
 {
     shared_ptr<D> p = D::create<D>(); // creating a D object
 }
-

@@ -1,8 +1,8 @@
-#include <vector>
-#include <string>
 #include <iostream>
+#include <string>
+#include <vector>
 
-template<typename T>
+template <typename T>
 std::ostream& operator<<(std::ostream& s, const std::vector<T>& v)
 {
 #if 0
@@ -15,17 +15,13 @@ std::ostream& operator<<(std::ostream& s, const std::vector<T>& v)
     }
     return s << '}';
 #else
-    if (!v.empty())
-    {
+    if (!v.empty()) {
         s << '{' << *v.begin();
-        for (auto it = ++(v.begin()); it != v.end(); ++it)
-        {
+        for (auto it = ++(v.begin()); it != v.end(); ++it) {
             s << ", " << *it;
         }
         s << '}' << std::endl;
-    }
-    else
-    {
+    } else {
         s << "{}" << std::endl;
     }
     return s;
@@ -35,7 +31,8 @@ std::ostream& operator<<(std::ostream& s, const std::vector<T>& v)
 int main()
 {
     // c++11 initializer list syntax:
-    std::vector<std::string> words1 {"the", "frogurt", "is", "also", "cursed"};
+    std::vector<std::string> words1 { "the", "frogurt", "is", "also",
+        "cursed" };
     std::cout << "words1: " << words1 << std::endl;
 
     // words2 == words1

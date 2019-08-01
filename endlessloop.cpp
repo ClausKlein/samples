@@ -14,7 +14,7 @@ bool fermat()
     //
     while (true) {
         if (((a * a * a) == ((b * b * b) + (c * c * c)))) {
-            //TODO std::cout << a << ',' << b << ',' << c << std::endl; //XXX
+            // TODO std::cout << a << ',' << b << ',' << c << std::endl; //XXX
             return true;
         }
         a++;
@@ -28,7 +28,7 @@ bool fermat()
         }
         if (c > MAX) {
             c = 1;
-            //TODO break; // XXX
+            // TODO break; // XXX
         }
     }
     return false;

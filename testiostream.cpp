@@ -1,25 +1,24 @@
 // read a file into memory
-#include <iostream>
-#include <fstream>
-#include <sstream>
 #include <cassert>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 
 using namespace std;
 
 
-static long readConfigDataFromString(const char *str)
+static long readConfigDataFromString(const char* str)
 {
     long sum = 0;
 
-    if (str)
-    {
-        int key = -1;
-        int value = -1;
+    if (str) {
+        int key     = -1;
+        int value   = -1;
         size_t line = 0;
         char col;
         char end;
         string comment;
-        istringstream iss(str); //NOTE: implicitly use of string tmp(str);
+        istringstream iss(str); // NOTE: implicitly use of string tmp(str);
 
 #if 0
         //===========================================
@@ -32,25 +31,22 @@ static long readConfigDataFromString(const char *str)
 #endif
 
         // for each line
-        while (iss.good())
-        {
+        while (iss.good()) {
             iss >> key >> col >> value >> end;
             // TODO read over non valid contents ...
-            getline(iss, comment);   // or: getline(iss, s, '\n');
+            getline(iss, comment); // or: getline(iss, s, '\n');
             line++;
-            if (iss.good() && col == ':' && end == ';')
-            {
+            if (iss.good() && col == ':' && end == ';') {
                 cout << key << ':' << value << ';' << endl;
                 sum += key;
                 sum += value;
-            }
-            else
-            {
-                //TODO format error ...
+            } else {
+                // TODO format error ...
                 const char old_fill = cerr.fill('0');
-                cerr << "ERROR line " << cerr.width(1) << line << " near : " << comment << endl;
+                cerr << "ERROR line " << cerr.width(1) << line
+                     << " near : " << comment << endl;
                 cerr.fill(old_fill);
-                //XXX break;
+                // XXX break;
             }
         }
     }
@@ -61,9 +57,9 @@ static long readConfigDataFromString(const char *str)
 
 int main()
 {
-    int key = -1;
-    int value = -1;
-    long sum = 0;
+    int key     = -1;
+    int value   = -1;
+    long sum    = 0;
     size_t line = 0;
     char col;
     char end;
@@ -73,23 +69,19 @@ int main()
     ifs.open("data.txt");
 
     // for each line
-    while (ifs.good())
-    {
+    while (ifs.good()) {
         ifs >> key >> col >> value >> end;
         // TODO read over non valid contents ...
-        getline(ifs, comment);   // or: getline(ifs, s, '\n');
+        getline(ifs, comment); // or: getline(ifs, s, '\n');
         line++;
-        if (ifs.good() && col == ':' && end == ';')
-        {
+        if (ifs.good() && col == ':' && end == ';') {
             cout << key << ':' << value << ';' << endl;
             sum += key;
             sum += value;
-        }
-        else
-        {
-            //TODO format error ...
+        } else {
+            // TODO format error ...
             cerr << "ERROR line " << line << " near : " << comment << endl;
-            //XXX break;
+            // XXX break;
         }
     }
 
@@ -103,31 +95,32 @@ int main()
     // ==================================================
     {
         streamsize length;
-        char * buffer;
+        char* buffer;
         ifs.open("data.txt", ios::binary);
 
         // get length of file:
         ifs.seekg(0, ios::end);
-        length = ifs.tellg();   // FIXME: implicit conversion loses integer precision (streamoff to streamsize)
+        length = ifs.tellg(); // FIXME: implicit conversion loses integer
+                              // precision (streamoff to streamsize)
         ifs.seekg(0, ios::beg);
 
         // allocate memory for the file contents:
         assert(length > 0);
-        buffer = new char [length + 1];
+        buffer = new char[length + 1];
 
         // read data to the allocated buffer:
         ifs.read(buffer, length);
 
         clock_t t = clock();
-        if (ifs.good())
-        {
+        if (ifs.good()) {
             cout.write(buffer, length);
             cout << "-----------------------------" << endl;
             t = clock() - t;
-            cerr << "Time used: " << static_cast<float>(t) / CLOCKS_PER_SEC << "seconds" << endl;
+            cerr << "Time used: " << static_cast<float>(t) / CLOCKS_PER_SEC
+                 << "seconds" << endl;
 
-            buffer[length ] = 0; // termiantes as string
-            long sum = readConfigDataFromString(buffer);
+            buffer[length] = 0; // termiantes as string
+            long sum       = readConfigDataFromString(buffer);
             assert(sum == 143);
             cerr << "sum=" << sum << endl;
         }
@@ -168,4 +161,3 @@ int main()
 // 13:21;
 // 34:55;
 // sum=143
-

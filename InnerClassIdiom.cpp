@@ -52,8 +52,7 @@ class Outer {
     public:
         Inner1(Outer* p)
             : parent(p)
-        {
-        }
+        {}
         void poing()
         {
             cout << "poing called for " << parent->name << endl;
@@ -70,8 +69,7 @@ class Outer {
     public:
         Inner2(Outer* p)
             : parent(p)
-        {
-        }
+        {}
         void bing() { cout << "bing called for " << parent->name << endl; }
     } inner2;
 
@@ -80,8 +78,7 @@ public:
         : name(nm)
         , inner1(this)
         , inner2(this)
-    {
-    }
+    {}
 
     // Return reference to interfaces implemented by the inner classes:
     operator Poingable&() { return inner1; }
@@ -96,4 +93,3 @@ int main()
     callPoing(x);
     callBing(x);
 }
-

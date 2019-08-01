@@ -7,14 +7,14 @@
 
 //  See http://www.boost.org for updates, documentation, and revision history.
 
-#include <string>
-#include <iostream>
+#include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/algorithm/string/trim_all.hpp>
-#include <boost/algorithm/string/classification.hpp>
+#include <iostream>
+#include <string>
 
 using namespace std;
-//XXX using namespace boost;
+// XXX using namespace boost;
 
 int main()
 {
@@ -25,13 +25,16 @@ int main()
     const string str3("123abs343");
 
     // Simple left trim
-    cout << "trim_left_copy of str1: " << "\"" << boost::trim_left_copy(str1) << "\"" << endl;
+    cout << "trim_left_copy of str1: "
+         << "\"" << boost::trim_left_copy(str1) << "\"" << endl;
 
     // Inplace right trim
     boost::trim_right(str1);
-    cout << "trim_right on str1: " << "\"" << str1 << "\"" << endl;
+    cout << "trim_right on str1: "
+         << "\"" << str1 << "\"" << endl;
 
-    cout << "trim_all_copy on str1: " << "\"" << boost::trim_all_copy(str1) << "\"" << endl;
+    cout << "trim_all_copy on str1: "
+         << "\"" << boost::trim_all_copy(str1) << "\"" << endl;
 
     // Parametric trim. 'Space' is defined using is_any_of predicate
     cout << "trimmed copy of str4 ( space='<>' ): "
@@ -40,7 +43,8 @@ int main()
 
     // Parametric trim. 'Space' is defined using is_digit predicate
     cout << "trimmed copy of str5 ( space=digit ): "
-         << "\"" << boost::trim_copy_if(str3, boost::is_digit()) << "\"" << endl;
+         << "\"" << boost::trim_copy_if(str3, boost::is_digit()) << "\""
+         << endl;
 
     cout << endl;
 
@@ -50,8 +54,10 @@ int main()
 
 #if 1
     str = boost::trim_all_copy(str4);
-    cout << "trimmed all copy of str4 ( with iterator ): " << "\"";
-    boost::trim_copy_if(ostream_iterator<char>(cout, ""), str4, boost::is_space());
+    cout << "trimmed all copy of str4 ( with iterator ): "
+         << "\"";
+    boost::trim_copy_if(
+        ostream_iterator<char>(cout, ""), str4, boost::is_space());
     cout << "\"" << endl;
 #else
     boost::trim_copy_if(std::back_inserter(str), str4, boost::is_space());

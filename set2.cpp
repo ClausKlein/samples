@@ -14,12 +14,12 @@
 
 
 #ifdef USE_BOOST_CONTAINER
-#include <boost/container/set.hpp>
-#include <boost/container/vector.hpp>
+#    include <boost/container/set.hpp>
+#    include <boost/container/vector.hpp>
 using namespace boost::container;
 #else
-#include <set>
-#include <vector>
+#    include <set>
+#    include <vector>
 using namespace std;
 #endif
 
@@ -114,7 +114,7 @@ public:
 };
 
 
-int test_main(int /*argc*/, char* /*argv*/ [])
+int test_main(int /*argc*/, char* /*argv*/[])
 {
     using namespace boost;
 

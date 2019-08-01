@@ -1,25 +1,24 @@
 // Use g++ -std=c++11 or clang++ -std=c++11 to compile.
 
-#include <vector> // the general-purpose vector container
-#include <iostream>
 #include <algorithm> // remove and remove_if
+#include <iostream>
+#include <vector> // the general-purpose vector container
 
 bool is_odd(int i)
 {
     return (i % 2) != 0;
 }
 
-void print(const std::vector<int> &vec)
+void print(const std::vector<int>& vec)
 {
 
 #if CPP_11_ENABLED
-    for (const auto& i : vec)
-    {
+    for (const auto& i : vec) {
         std::cout << i << ' ';
     }
 #else
-    std::copy(vec.begin(), vec.end(),
-              std::ostream_iterator<int>(std::cout, " "));
+    std::copy(
+        vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, " "));
 #endif
 
     std::cout << std::endl;

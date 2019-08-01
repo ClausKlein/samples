@@ -29,42 +29,33 @@
 using namespace std;
 
 // abstract interface
-class Host_IF
-{
+class Host_IF {
 public:
     virtual ~Host_IF() {};
     virtual void f() = 0;
 
 protected:
-    Host_IF *my_base;
+    Host_IF* my_base;
 };
 
 
-class RemoteHostA : public Host_IF
-{
+class RemoteHostA : public Host_IF {
 public:
-    void f()
-    {
-        cout << "A::f()" << endl;
-    }
+    void f() { cout << "A::f()" << endl; }
 };
 
 
-class RemoteHostB : public Host_IF
-{
+class RemoteHostB : public Host_IF {
 public:
-    void f()
-    {
-        cout << "B::f()" << endl;
-    }
+    void f() { cout << "B::f()" << endl; }
 };
 
 
 // This class has a delegate switch to either RemoteHostA or RemoteHostB
-class RemoteHost : public Host_IF
-{
+class RemoteHost : public Host_IF {
 public:
-    explicit RemoteHost() : Host_IF()
+    explicit RemoteHost()
+        : Host_IF()
     {
         m_host = make_shared<RemoteHostA>();
     }
@@ -81,17 +72,16 @@ private:
 
 int main()
 {
-    RemoteHost *remote = new RemoteHost();
+    RemoteHost* remote = new RemoteHost();
 
-    remote->f();         // A::f()
+    remote->f(); // A::f()
 
     remote->connectB();
-    remote->f();         // B::f()
+    remote->f(); // B::f()
 
     remote->connectA();
-    remote->f();         // A::f()
+    remote->f(); // A::f()
 
     delete remote;
     return 0;
 }
-

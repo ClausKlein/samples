@@ -7,10 +7,10 @@
 using namespace std;
 
 
-class Photo
-{
+class Photo {
 public:
-    Photo(string s) : mTitle(s)
+    Photo(string s)
+        : mTitle(s)
     {
         cout << "Processing " << mTitle << " ...\n";
     }
@@ -20,44 +20,42 @@ private:
 };
 
 
-class PhotoProcessor
-{
+class PhotoProcessor {
 public:
-    PhotoProcessor() : mNextProcessor(0) { }
+    PhotoProcessor()
+        : mNextProcessor(0)
+    {}
 
 public:
-    void process(Photo &p)
+    void process(Photo& p)
     {
         processImplementation(p);
-        if (mNextProcessor)
-        {
+        if (mNextProcessor) {
             mNextProcessor->process(p);
         }
     }
 
-    virtual ~PhotoProcessor() { }
+    virtual ~PhotoProcessor() {}
 
-    void setNextProcessor(PhotoProcessor *p)
-    {
-        mNextProcessor = p;
-    }
+    void setNextProcessor(PhotoProcessor* p) { mNextProcessor = p; }
 
 protected:
-    virtual void processImplementation(Photo &a) = 0;
+    virtual void processImplementation(Photo& a) = 0;
 
 private:
-    PhotoProcessor *mNextProcessor;
+    PhotoProcessor* mNextProcessor;
 };
 
 
-class Scale : public PhotoProcessor
-{
+class Scale : public PhotoProcessor {
 public:
     enum SCALE { S50, S100, S200, S300, S500 };
-    Scale(SCALE s) : mSCALE(s) { }
+    Scale(SCALE s)
+        : mSCALE(s)
+    {}
 
 private:
-    void processImplementation(Photo &a)
+    void processImplementation(Photo& a)
     {
         cout << "Scaling photo X " << mSCALE << endl;
     }
@@ -66,37 +64,25 @@ private:
 };
 
 
-class RedEye : public PhotoProcessor
-{
+class RedEye : public PhotoProcessor {
 private:
-    void processImplementation(Photo &a)
-    {
-        cout << "Removing red eye\n";
-    }
+    void processImplementation(Photo& a) { cout << "Removing red eye\n"; }
 };
 
 
-class Filter : public PhotoProcessor
-{
+class Filter : public PhotoProcessor {
 private:
-    void processImplementation(Photo &a)
-    {
-        cout << "Applying filters\n";
-    }
+    void processImplementation(Photo& a) { cout << "Applying filters\n"; }
 };
 
 
-class ColorMatch : public PhotoProcessor
-{
+class ColorMatch : public PhotoProcessor {
 private:
-    void processImplementation(Photo &a)
-    {
-        cout << "Matching colors\n";
-    }
+    void processImplementation(Photo& a) { cout << "Matching colors\n"; }
 };
 
 
-void processPhoto(Photo &photo)
+void processPhoto(Photo& photo)
 {
     ColorMatch match;
     RedEye eye;
@@ -117,4 +103,3 @@ int main()
 
     return 0;
 }
-

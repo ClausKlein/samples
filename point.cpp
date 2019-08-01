@@ -3,26 +3,24 @@
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 
-#include <iostream>
 #include <complex>
+#include <iostream>
 
-#include <utility>  // std::rel_ops;
+#include <utility> // std::rel_ops;
 
-#include <boost/unordered_map.hpp>
 #include <boost/functional/hash.hpp>
 #include <boost/test/minimal.hpp>
+#include <boost/unordered_map.hpp>
 
 // This example illustrates how to use boost::hash_combine to generate a hash
 // value from the different members of a class. For full details see the hash
 // tutorial.
 
-template<typename Map>
-void print_map(Map& m)
+template <typename Map> void print_map(Map& m)
 {
     std::cout << '{';
-    //FIXME: for (Map::iterator p = m.begin(); p != m.end(); ++p)
-    for (auto& p : m)
-    {
+    // FIXME: for (Map::iterator p = m.begin(); p != m.end(); ++p)
+    for (auto& p : m) {
         std::cout << p.first << ':' << p.second << ' ';
     }
     std::cout << "}\n";
@@ -31,9 +29,9 @@ void print_map(Map& m)
 #if 1
 typedef std::complex<int> Point;
 
-//NOTE: Because complex numbers are naturally thought of as existing on a
-//two-dimensional plane, there is no natural linear ordering on the set of
-//complex numbers.
+// NOTE: Because complex numbers are naturally thought of as existing on a
+// two-dimensional plane, there is no natural linear ordering on the set of
+// complex numbers.
 std::size_t hash(Point const& p)
 {
     std::size_t seed = 0;
@@ -49,26 +47,33 @@ bool operator<(const Point& lhs, const Point& rhs)
 
 #else
 
-class Point
-{
+class Point {
     int x;
     int y;
+
 public:
-    Point() : x(0), y(0) {}
-    Point(int x, int y) : x(x), y(y) {}
+    Point()
+        : x(0)
+        , y(0)
+    {}
+    Point(int x, int y)
+        : x(x)
+        , y(y)
+    {}
 
     bool operator==(Point const& other) const
     {
         return x == other.x && y == other.y;
     }
 
-    //NOTE: strict weak ordering reqired
+    // NOTE: strict weak ordering reqired
     // see http://en.cppreference.com/w/cpp/concept/LessThanComparable
     // and http://en.cppreference.com/w/cpp/utility/rel_ops/operator_cmp
     bool operator<(Point const& other) const
     {
-        //FIXME: compares the magnitude of the points:
-        //XXX return ((x * x + y * y) < (other.x * other.x + other.y * other.y));
+        // FIXME: compares the magnitude of the points:
+        // XXX return ((x * x + y * y) < (other.x * other.x + other.y *
+        // other.y));
         return (x < other.x) || ((x == other.x) && (y < other.y));
     }
 
@@ -110,7 +115,7 @@ int test_main(int /*argc*/, char* /*argv*/[])
 
     BOOST_CHECK(p0 == p1);
     BOOST_CHECK(!(p0 < p1));
-    //TODO: BOOST_CHECK(!(p0 > p1));
+    // TODO: BOOST_CHECK(!(p0 > p1));
     BOOST_CHECK(!(p1 < p0));
     BOOST_CHECK(point_hasher(p0) == point_hasher(p1));
 
@@ -133,14 +138,14 @@ int test_main(int /*argc*/, char* /*argv*/[])
     BOOST_CHECK(point_hasher(p1) != point_hasher(p3));
     BOOST_CHECK(p2 < p3);
 
-    //NOTE: if comp(a,b)==true and comp(b,c)==true then comp(a,c)==true
+    // NOTE: if comp(a,b)==true and comp(b,c)==true then comp(a,c)==true
     BOOST_CHECK(p1 < p3);
 
     std::cout << "p5: " << p5 << std::endl;
     container[p5] = std::abs(p5);
     BOOST_CHECK(!(p2 == p5));
     BOOST_CHECK(p2 < p5);
-    //TODO: BOOST_CHECK(!(p2 > p5));
+    // TODO: BOOST_CHECK(!(p2 > p5));
     BOOST_CHECK(!(p5 < p2));
     BOOST_CHECK(point_hasher(p2) != point_hasher(p5));
 
@@ -151,4 +156,3 @@ int test_main(int /*argc*/, char* /*argv*/[])
 
     return 0;
 }
-

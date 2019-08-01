@@ -22,10 +22,10 @@ public:
     // GOOD: polymorphic class suppresses copying
     B(const B&) = delete;
     B& operator=(const B&) = delete;
-    B(const B&&) = delete;
+    B(const B&&)           = delete;
     B& operator=(const B&&) = delete;
 
-    virtual ~B() = default;
+    virtual ~B()     = default;
     virtual void f() = 0;
 
     template <class T>
@@ -47,8 +47,7 @@ public:
 #ifdef USE_OVERLOADS
     explicit D(std::string v)
         : value(std::move(v))
-    {
-    }
+    {}
     void set_value(const std::string& v) { value = v; }
 
     // function templates can be specialized like all function templates.

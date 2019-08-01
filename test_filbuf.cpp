@@ -1,20 +1,18 @@
 // istream constructor
-#include <iostream>     // std::ios, std::istream, std::cout
-#include <fstream>      // std::filebuf
+#include <fstream>  // std::filebuf
+#include <iostream> // std::ios, std::istream, std::cout
 
-//FIXME this writes one byte more!
+// FIXME this writes one byte more!
 int main()
 {
     std::filebuf fb;
-    if (fb.open("data.txt", std::ios::in))      //XXX text mode!
+    if (fb.open("data.txt", std::ios::in)) // XXX text mode!
     {
         std::istream is(&fb);
-        while (is)
-        {
-            std::cout << char(is.get());    //FIXME why cast?
+        while (is) {
+            std::cout << char(is.get()); // FIXME why cast?
         }
         fb.close();
     }
     return 0;
 }
-

@@ -4,7 +4,8 @@
 volatile: The Multithreaded Programmer's Best Friend
 ====================================================
 
-from http://www.drdobbs.com/cpp/volatile-the-multithreaded-programmers-b/184403766
+from
+http://www.drdobbs.com/cpp/volatile-the-multithreaded-programmers-b/184403766
 
 Summary
 
@@ -13,41 +14,32 @@ You must stick to the following rules:
 
  * Define all shared objects as volatile.
  * Don't use volatile directly with primitive types.
- * When defining shared classes, use volatile member functions to express thread safety.
+ * When defining shared classes, use volatile member functions to express
+thread safety.
 
  ***/
 
-#include <iostream>
 #include <boost/thread.hpp>
+#include <iostream>
 
 using namespace boost;
 
 
-template <typename T>
-class LockingPtr
-{
+template <typename T> class LockingPtr {
 public:
     // Constructors/destructors
     LockingPtr(const volatile T& obj, const volatile mutex& mtx)
-        : pObj_(const_cast<T*>(&obj)),
-          pMtx_(const_cast<mutex*>(&mtx))
+        : pObj_(const_cast<T*>(&obj))
+        , pMtx_(const_cast<mutex*>(&mtx))
     {
-        std::cout << BOOST_CURRENT_FUNCTION  << " called" << std::endl;
+        std::cout << BOOST_CURRENT_FUNCTION << " called" << std::endl;
         pMtx_->lock();
     }
-    ~LockingPtr()
-    {
-        pMtx_->unlock();
-    }
+    ~LockingPtr() { pMtx_->unlock(); }
     // Pointer behavior
-    T& operator*()
-    {
-        return *pObj_;
-    }
-    T* operator->()
-    {
-        return pObj_;
-    }
+    T& operator*() { return *pObj_; }
+    T* operator->() { return pObj_; }
+
 private:
     T* pObj_;
     mutex* pMtx_;
@@ -66,8 +58,7 @@ volatile objects and get thread safety, or for regular objects and get speed.
 
 The user must be careful about defining the shared Widget objects as volatile.
  ***/
-class Widget
-{
+class Widget {
 public:
     Widget() {};
     void Operation() const volatile;
@@ -76,12 +67,12 @@ public:
 protected:
     void Operation()
     {
-        std::cout << BOOST_CURRENT_FUNCTION  << " called" << std::endl;
+        std::cout << BOOST_CURRENT_FUNCTION << " called" << std::endl;
         Helper();
     };
     void Helper()
     {
-        std::cout << BOOST_CURRENT_FUNCTION  << " called" << std::endl;
+        std::cout << BOOST_CURRENT_FUNCTION << " called" << std::endl;
     }
 
 private:
@@ -99,7 +90,7 @@ void Widget::Operation() const volatile
     LockingPtr<Widget> lpThis(*this, mtx_);
     assert(&(*lpThis) == const_cast<Widget*>(this));
 
-    lpThis->Operation();        // invokes the non-volatile function
+    lpThis->Operation(); // invokes the non-volatile function
 }
 
 
