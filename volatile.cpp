@@ -1,23 +1,5 @@
-/***
-
-====================================================
-volatile: The Multithreaded Programmer's Best Friend
-====================================================
-
-from
-http://www.drdobbs.com/cpp/volatile-the-multithreaded-programmers-b/184403766
-
-Summary
-
-When writing multithreaded programs, you can use volatile to your advantage.
-You must stick to the following rules:
-
- * Define all shared objects as volatile.
- * Don't use volatile directly with primitive types.
- * When defining shared classes, use volatile member functions to express
-thread safety.
-
- ***/
+// from
+// http://www.drdobbs.com/cpp/volatile-the-multithreaded-programmers-b/184403766
 
 #include <boost/thread.hpp>
 #include <iostream>
