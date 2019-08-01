@@ -24,7 +24,7 @@ public:
     B& operator=(const B&) = delete;
     B(const B&&) = delete;
     B& operator=(const B&&) = delete;
-    
+
     virtual ~B() = default;
     virtual void f() = 0;
 
@@ -40,9 +40,9 @@ public:
 
 class D : public B { // some derived class
 public:
-    ~D() override { std::cout << "~D::D() called" << std::endl; };
+    ~D() override { std::cout << "~D::D() called" << std::endl; }
 
-    void f() override { std::cout << value << std::endl; };
+    void f() override { std::cout << value << std::endl; }
 
 #ifdef USE_OVERLOADS
     explicit D(std::string v)

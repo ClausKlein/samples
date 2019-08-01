@@ -17,7 +17,7 @@ CFLAGS+= -Wconversion
 CFLAGS+= -Wundef -Wno-unused-parameter
 
 
-CXXFLAGS:=-g -Wall -Wextra -std=c++17
+CXXFLAGS:=-g -Wall -Wextra -Wpedantic -std=c++17
 ## -WCL4 -Wc++98-compat-pedantic -stdlib=libc++ -std=c++98
 #!BOOST# CXXFLAGS+= -Wconversion
 #!BOOST# CXXFLAGS+= -Wold-style-cast
@@ -90,7 +90,7 @@ MAKEFLAGS+=--no-builtin-rules
 all: $(PROGRAMS) check
 
 check: #TODO $(CXX_SOURCES)
-	clang-tidy -checks='-cppcoreguidelines-pro-bounds-array-to-pointer-decay' ClonableBase.cpp
+	clang-tidy -checks='-cppcoreguidelines-pro-bounds-array-to-pointer-decay' factory_function.cpp
 
 test: all
 	./NonVirtualBaseClassTest

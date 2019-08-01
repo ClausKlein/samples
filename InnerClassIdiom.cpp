@@ -95,7 +95,5 @@ int main()
     // Like upcasting to multiple base types!:
     callPoing(x);
     callBing(x);
-
-    return (int)1.1;
 }
 

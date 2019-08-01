@@ -59,7 +59,7 @@ public:
     std::unique_ptr<ClonableBase> clone() const override
     {
         return std::make_unique<Derived>();
-    };
+    }
         // error: virtual function 'clone' has a different return type
         // ('unique_ptr<Derived>') than the function it overrides (which has
         // return type 'unique_ptr<ClonableBase>')

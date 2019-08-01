@@ -1,8 +1,7 @@
 // Below is a program that compiles when the return type is declared using
 // decltype, but that fails to compile when using result_of.
 
-//XXX
-#define BUGBUG
+//XXX #define BUGBUG
 
 #include <type_traits>
 #include <utility>
@@ -48,7 +47,5 @@ int main()
 
     not_incrementable y = try_inc(std::string("foo")); // OK, not_incrementable
     (void) y;
-
-    return result;
 }
 
