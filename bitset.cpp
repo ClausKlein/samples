@@ -5,20 +5,20 @@ using namespace std;
 
 int main()
 {
-    bitset<5> a(6), b(string("10010")), x;
-    cout << "a = " << a << "\nb = " << b << "\nx = " << x << endl;
-    cout << "a & b = " << (a & b) << endl;
-    cout << "a | b = " << (a | b) << endl;
-    cout << "a ^ b = " << (a ^ b) << endl;
+  bitset<5> a(6), b(string("10010")), x;
+  cout << "a = " << a << "\nb = " << b << "\nx = " << x << endl;
+  cout << "a & b = " << (a & b) << endl;
+  cout << "a | b = " << (a | b) << endl;
+  cout << "a ^ b = " << (a ^ b) << endl;
 
-    cout << "working with x:" << endl;
-    x[3] = 1;
-    x.set(2);
-    cout << x << " = " << x.to_ulong() << endl;
-    cout << x.count() << " Bit(s) gesetzt\n";
-    x.flip();
-    cout << x << " = " << x.to_ulong() << endl;
-    cout << x.count() << " Bit(s) gesetzt\n";
+  cout << "working with x:" << endl;
+  x[3] = 1;
+  x.set(2);
+  cout << x << " = " << x.to_ulong() << endl;
+  cout << x.count() << " Bit(s) gesetzt\n";
+  x.flip();
+  cout << x << " = " << x.to_ulong() << endl;
+  cout << x.count() << " Bit(s) gesetzt\n";
 }
 
 /***

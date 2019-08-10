@@ -12,54 +12,54 @@ using namespace std;
 
 class Square;
 
-
-class Rectangle {
-    int width, height;
-
-public:
-    Rectangle(int w = 1, int h = 1)
-        : width(w)
-        , height(h)
-    {}
-    void display() { cout << "Rectangle: " << width * height << endl; };
-    void morph(Square&);
-};
-
-
-class Square {
-    int side;
+class Rectangle
+{
+  int width, height;
 
 public:
-    Square(int s = 1)
-        : side(s)
-    {}
-    void display() { cout << "Square: " << side * side << endl; };
-    friend class Rectangle;
+  Rectangle(int w = 1, int h = 1)
+    : width(w)
+    , height(h)
+  {
+  }
+  void display() { cout << "Rectangle: " << width * height << endl; };
+  void morph(Square&);
 };
 
+class Square
+{
+  int side;
+
+public:
+  Square(int s = 1)
+    : side(s)
+  {
+  }
+  void display() { cout << "Square: " << side * side << endl; };
+  friend class Rectangle;
+};
 
 void Rectangle::morph(Square& s)
 {
-    width  = s.side;
-    height = s.side;
+  width = s.side;
+  height = s.side;
 }
-
 
 int main()
 {
-    Rectangle rec(5, 10);
-    Square sq(5);
-    cout << "Before:" << endl;
-    rec.display();
-    sq.display();
+  Rectangle rec(5, 10);
+  Square sq(5);
+  cout << "Before:" << endl;
+  rec.display();
+  sq.display();
 
-    rec.morph(sq);
+  rec.morph(sq);
 
-    cout << "\nAfter:" << endl;
-    rec.display();
-    sq.display();
+  cout << "\nAfter:" << endl;
+  rec.display();
+  sq.display();
 
-    return 0;
+  return 0;
 }
 
 // We declared Rectangle as a friend of Square so that Rectangle member

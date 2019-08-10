@@ -14,86 +14,90 @@
 #include <iostream>
 #include <memory>
 
-
-struct IShape {
-    virtual void draw()                     = 0;
-    virtual std::unique_ptr<IShape> clone() = 0;
-    virtual ~IShape()                       = default;
-
-protected:
-    IShape()              = default;
-    IShape(const IShape&) = default;
-    IShape& operator=(const IShape&) = default;
-};
-
-
-struct CircleImpl : IShape {
-    void draw() override { std::cout << "Draw Circle\n"; };
+struct IShape
+{
+  virtual void draw() = 0;
+  virtual std::unique_ptr<IShape> clone() = 0;
+  virtual ~IShape() = default;
 
 protected:
-    CircleImpl()                  = default;
-    CircleImpl(const CircleImpl&) = default;
-    CircleImpl& operator=(const CircleImpl&) = default;
+  IShape() = default;
+  IShape(const IShape&) = default;
+  IShape& operator=(const IShape&) = default;
 };
 
-
-struct Circle final : CircleImpl {
-    Circle()              = default;
-    Circle(const Circle&) = default;
-    Circle& operator=(const Circle&) = default;
-
-    std::unique_ptr<IShape> clone() override
-    {
-        return std::make_unique<Circle>(*this);
-    }
-};
-
-
-struct BlueCircleImpl : CircleImpl {
-    void draw() override { std::cout << "Draw BlueCircle\n"; }
+struct CircleImpl : IShape
+{
+  void draw() override { std::cout << "Draw Circle\n"; };
 
 protected:
-    BlueCircleImpl()                      = default;
-    BlueCircleImpl(const BlueCircleImpl&) = default;
-    BlueCircleImpl& operator=(const BlueCircleImpl&) = default;
+  CircleImpl() = default;
+  CircleImpl(const CircleImpl&) = default;
+  CircleImpl& operator=(const CircleImpl&) = default;
 };
 
+struct Circle final : CircleImpl
+{
+  Circle() = default;
+  Circle(const Circle&) = default;
+  Circle& operator=(const Circle&) = default;
 
-struct BlueCircle final : BlueCircleImpl {
-    BlueCircle()                  = default;
-    BlueCircle(const BlueCircle&) = default;
-    BlueCircle& operator=(const BlueCircle&) = default;
+  std::unique_ptr<IShape> clone() override
+  {
+    return std::make_unique<Circle>(*this);
+  }
+};
 
-    std::unique_ptr<IShape> clone() override
-    {
-        return std::make_unique<BlueCircle>(*this);
-    }
+struct BlueCircleImpl : CircleImpl
+{
+  void draw() override { std::cout << "Draw BlueCircle\n"; }
+
+protected:
+  BlueCircleImpl() = default;
+  BlueCircleImpl(const BlueCircleImpl&) = default;
+  BlueCircleImpl& operator=(const BlueCircleImpl&) = default;
+};
+
+struct BlueCircle final : BlueCircleImpl
+{
+  BlueCircle() = default;
+  BlueCircle(const BlueCircle&) = default;
+  BlueCircle& operator=(const BlueCircle&) = default;
+
+  std::unique_ptr<IShape> clone() override
+  {
+    return std::make_unique<BlueCircle>(*this);
+  }
 };
 
 BlueCircle get_circle()
 {
-    return BlueCircle {};
+  return BlueCircle{};
 }
 
-typedef enum { normal, colored } style;
+typedef enum
+{
+  normal,
+  colored
+} style;
 std::unique_ptr<IShape> circle_factory(style colored)
 {
-    if (colored) {
-        return std::make_unique<BlueCircle>();
-    } else {
-        return std::make_unique<Circle>();
-    }
+  if (colored) {
+    return std::make_unique<BlueCircle>();
+  } else {
+    return std::make_unique<Circle>();
+  }
 }
 
 int main()
 {
-    std::unique_ptr<IShape> s = circle_factory(normal);
-    auto s2                   = s->clone();
-    s2->draw();
+  std::unique_ptr<IShape> s = circle_factory(normal);
+  auto s2 = s->clone();
+  s2->draw();
 
-    auto c  = get_circle();
-    auto c2 = c;
-    c2.draw();
+  auto c = get_circle();
+  auto c2 = c;
+  c2.draw();
 
-    // NO! Circle c = get_circle(); // compiler error -> no accidential slicing
+  // NO! Circle c = get_circle(); // compiler error -> no accidential slicing
 }

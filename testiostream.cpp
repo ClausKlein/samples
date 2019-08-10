@@ -6,19 +6,18 @@
 
 using namespace std;
 
-
 static long readConfigDataFromString(const char* str)
 {
-    long sum = 0;
+  long sum = 0;
 
-    if (str) {
-        int key     = -1;
-        int value   = -1;
-        size_t line = 0;
-        char col;
-        char end;
-        string comment;
-        istringstream iss(str); // NOTE: implicitly use of string tmp(str);
+  if (str) {
+    int key = -1;
+    int value = -1;
+    size_t line = 0;
+    char col;
+    char end;
+    string comment;
+    istringstream iss(str); // NOTE: implicitly use of string tmp(str);
 
 #if 0
         //===========================================
@@ -30,107 +29,106 @@ static long readConfigDataFromString(const char* str)
         //===========================================
 #endif
 
-        // for each line
-        while (iss.good()) {
-            iss >> key >> col >> value >> end;
-            // TODO read over non valid contents ...
-            getline(iss, comment); // or: getline(iss, s, '\n');
-            line++;
-            if (iss.good() && col == ':' && end == ';') {
-                cout << key << ':' << value << ';' << endl;
-                sum += key;
-                sum += value;
-            } else {
-                // TODO format error ...
-                const char old_fill = cerr.fill('0');
-                cerr << "ERROR line " << cerr.width(1) << line
-                     << " near : " << comment << endl;
-                cerr.fill(old_fill);
-                // XXX break;
-            }
-        }
+    // for each line
+    while (iss.good()) {
+      iss >> key >> col >> value >> end;
+      // TODO read over non valid contents ...
+      getline(iss, comment); // or: getline(iss, s, '\n');
+      line++;
+      if (iss.good() && col == ':' && end == ';') {
+        cout << key << ':' << value << ';' << endl;
+        sum += key;
+        sum += value;
+      } else {
+        // TODO format error ...
+        const char old_fill = cerr.fill('0');
+        cerr << "ERROR line " << cerr.width(1) << line << " near : " << comment
+             << endl;
+        cerr.fill(old_fill);
+        // XXX break;
+      }
     }
+  }
 
-    return sum;
+  return sum;
 }
-
 
 int main()
 {
-    int key     = -1;
-    int value   = -1;
-    long sum    = 0;
-    size_t line = 0;
-    char col;
-    char end;
-    string comment("\n");
-    ifstream ifs;
+  int key = -1;
+  int value = -1;
+  long sum = 0;
+  size_t line = 0;
+  char col;
+  char end;
+  string comment("\n");
+  ifstream ifs;
 
-    ifs.open("data.txt");
+  ifs.open("data.txt");
 
-    // for each line
-    while (ifs.good()) {
-        ifs >> key >> col >> value >> end;
-        // TODO read over non valid contents ...
-        getline(ifs, comment); // or: getline(ifs, s, '\n');
-        line++;
-        if (ifs.good() && col == ':' && end == ';') {
-            cout << key << ':' << value << ';' << endl;
-            sum += key;
-            sum += value;
-        } else {
-            // TODO format error ...
-            cerr << "ERROR line " << line << " near : " << comment << endl;
-            // XXX break;
-        }
+  // for each line
+  while (ifs.good()) {
+    ifs >> key >> col >> value >> end;
+    // TODO read over non valid contents ...
+    getline(ifs, comment); // or: getline(ifs, s, '\n');
+    line++;
+    if (ifs.good() && col == ':' && end == ';') {
+      cout << key << ':' << value << ';' << endl;
+      sum += key;
+      sum += value;
+    } else {
+      // TODO format error ...
+      cerr << "ERROR line " << line << " near : " << comment << endl;
+      // XXX break;
     }
+  }
+
+  ifs.close();
+  assert(sum == 143);
+  cerr << "sum=" << sum << endl;
+  cout << "-----------------------------" << endl;
+
+  // ==================================================
+  // and again read in as row binary at one step;
+  // ==================================================
+  {
+    streamsize length;
+    char* buffer;
+    ifs.open("data.txt", ios::binary);
+
+    // get length of file:
+    ifs.seekg(0, ios::end);
+    length = ifs.tellg(); // FIXME: implicit conversion loses integer
+                          // precision (streamoff to streamsize)
+    ifs.seekg(0, ios::beg);
+
+    // allocate memory for the file contents:
+    assert(length > 0);
+    buffer = new char[length + 1];
+
+    // read data to the allocated buffer:
+    ifs.read(buffer, length);
+
+    clock_t t = clock();
+    if (ifs.good()) {
+      cout.write(buffer, length);
+      cout << "-----------------------------" << endl;
+      t = clock() - t;
+      cerr << "Time used: " << static_cast<float>(t) / CLOCKS_PER_SEC
+           << "seconds" << endl;
+
+      buffer[length] = 0; // termiantes as string
+      long sum = readConfigDataFromString(buffer);
+      assert(sum == 143);
+      cerr << "sum=" << sum << endl;
+    }
+
+    delete[] buffer;
 
     ifs.close();
-    assert(sum == 143);
-    cerr << "sum=" << sum << endl;
-    cout << "-----------------------------" << endl;
+  }
 
-    // ==================================================
-    // and again read in as row binary at one step;
-    // ==================================================
-    {
-        streamsize length;
-        char* buffer;
-        ifs.open("data.txt", ios::binary);
-
-        // get length of file:
-        ifs.seekg(0, ios::end);
-        length = ifs.tellg(); // FIXME: implicit conversion loses integer
-                              // precision (streamoff to streamsize)
-        ifs.seekg(0, ios::beg);
-
-        // allocate memory for the file contents:
-        assert(length > 0);
-        buffer = new char[length + 1];
-
-        // read data to the allocated buffer:
-        ifs.read(buffer, length);
-
-        clock_t t = clock();
-        if (ifs.good()) {
-            cout.write(buffer, length);
-            cout << "-----------------------------" << endl;
-            t = clock() - t;
-            cerr << "Time used: " << static_cast<float>(t) / CLOCKS_PER_SEC
-                 << "seconds" << endl;
-
-            buffer[length] = 0; // termiantes as string
-            long sum       = readConfigDataFromString(buffer);
-            assert(sum == 143);
-            cerr << "sum=" << sum << endl;
-        }
-
-        delete[] buffer;
-
-        ifs.close();
-    }
-
-    return 0;
+  return 0;
 }
 
 // =======

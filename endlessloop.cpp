@@ -6,40 +6,40 @@
 
 bool fermat()
 {
-    const size_t MAX = 1531;
-    size_t a = 1, b = 1, c = 1;
+  const size_t MAX = 1531;
+  size_t a = 1, b = 1, c = 1;
 
-    //
-    // Endless loop with no side effects (XXX) is Undefined Behaviour (UB)
-    //
-    while (true) {
-        if (((a * a * a) == ((b * b * b) + (c * c * c)))) {
-            // TODO std::cout << a << ',' << b << ',' << c << std::endl; //XXX
-            return true;
-        }
-        a++;
-        if (a > MAX) {
-            a = 1;
-            b++;
-        }
-        if (b > MAX) {
-            b = 1;
-            c++;
-        }
-        if (c > MAX) {
-            c = 1;
-            // TODO break; // XXX
-        }
+  //
+  // Endless loop with no side effects (XXX) is Undefined Behaviour (UB)
+  //
+  while (true) {
+    if (((a * a * a) == ((b * b * b) + (c * c * c)))) {
+      // TODO std::cout << a << ',' << b << ',' << c << std::endl; //XXX
+      return true;
     }
-    return false;
+    a++;
+    if (a > MAX) {
+      a = 1;
+      b++;
+    }
+    if (b > MAX) {
+      b = 1;
+      c++;
+    }
+    if (c > MAX) {
+      c = 1;
+      // TODO break; // XXX
+    }
+  }
+  return false;
 }
 
 int main()
 {
-    if (fermat())
-        std::cout << "Fermat's Last Theorem has been disproved.\n";
-    else
-        std::cout << "Fermat's Last Theorem has not been disproved.\n";
+  if (fermat())
+    std::cout << "Fermat's Last Theorem has been disproved.\n";
+  else
+    std::cout << "Fermat's Last Theorem has not been disproved.\n";
 }
 // Claus-MBP:samples clausklein$
 // g++ -O2 endlessloop.cpp -o endlessloop

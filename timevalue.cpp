@@ -12,82 +12,90 @@
 
 using namespace std;
 
-union time_value {
-    int64_t sec;
+union time_value
+{
+  int64_t sec;
 
 #if defined(__LITTLE_ENDIAN__) || defined(__i386) || defined(_WIN32)
-    // XXX #warning LittleEndian
-    struct {
-        uint32_t low;
-        uint32_t high;
-    } ul;
-    struct {
-        uint16_t word1;
-        uint16_t word2;
-        uint16_t word3;
-        uint16_t word4;
-    } uw;
-    struct {
-        uint8_t byte1;
-        uint8_t byte2;
-        uint8_t byte3;
-        uint8_t byte4;
-        uint8_t byte5;
-        uint8_t byte6;
-        uint8_t byte7;
-        uint8_t byte8;
-    } ub;
+  // XXX #warning LittleEndian
+  struct
+  {
+    uint32_t low;
+    uint32_t high;
+  } ul;
+  struct
+  {
+    uint16_t word1;
+    uint16_t word2;
+    uint16_t word3;
+    uint16_t word4;
+  } uw;
+  struct
+  {
+    uint8_t byte1;
+    uint8_t byte2;
+    uint8_t byte3;
+    uint8_t byte4;
+    uint8_t byte5;
+    uint8_t byte6;
+    uint8_t byte7;
+    uint8_t byte8;
+  } ub;
 #else
-#    error BigEndian
-    struct {
-        uint32_t high;
-        uint32_t low;
-    } ul;
+#  error BigEndian
+  struct
+  {
+    uint32_t high;
+    uint32_t low;
+  } ul;
 #endif
 
 } test;
 
 int test_main(int /*argc*/, char* /*argv*/[])
 {
-    const int64_t tests[16] = { INT64_MIN, -4294967296, INT32_MIN, INT16_MIN,
-        -1LL, 0LL, 1LL, INT16_MAX, 439041101LL, INT32_MAX, 0x80000000,
-        0xffffffff, 0x100000000, 0x1ffffffff, 0x1a2b3c4d5e6f7788, INT64_MAX };
+  const int64_t tests[16] = { INT64_MIN,   -4294967296, INT32_MIN,
+                              INT16_MIN,   -1LL,        0LL,
+                              1LL,         INT16_MAX,   439041101LL,
+                              INT32_MAX,   0x80000000,  0xffffffff,
+                              0x100000000, 0x1ffffffff, 0x1a2b3c4d5e6f7788,
+                              INT64_MAX };
 
-    int64_t sec   = 0LL;
-    uint32_t high = 0;
-    uint32_t low  = 0;
+  int64_t sec = 0LL;
+  uint32_t high = 0;
+  uint32_t low = 0;
 
-    for (int i = 0; i < 16; i++) {
-        test.sec = tests[i];
-        cout << hex << showbase << setw(20) << test.sec << dec
-             << " high:" << setw(12) << test.ul.high << " low:" << setw(12)
-             << test.ul.low << " time_t:" << setw(20) << test.sec << endl;
+  for (int i = 0; i < 16; i++) {
+    test.sec = tests[i];
+    cout << hex << showbase << setw(20) << test.sec << dec
+         << " high:" << setw(12) << test.ul.high << " low:" << setw(12)
+         << test.ul.low << " time_t:" << setw(20) << test.sec << endl;
 
-        high = static_cast<uint32_t>(test.sec >> 32);
-        low  = static_cast<uint32_t>(test.sec);
+    high = static_cast<uint32_t>(test.sec >> 32);
+    low = static_cast<uint32_t>(test.sec);
 
-        sec = (static_cast<int64_t>(high) << 32) | low;
-        // FIXME sec = (static_cast<int64_t>(high) << 32LL) |
-        // static_cast<uint32_t>(low);
+    sec = (static_cast<int64_t>(high) << 32) | low;
+    // FIXME sec = (static_cast<int64_t>(high) << 32LL) |
+    // static_cast<uint32_t>(low);
 
-        if (sec != test.sec) {
-            cout << hex << setw(20) << sec << ' ' << setw(17) << high << ' '
-                 << setw(16) << low << endl;
-        }
-
-        if (test.sec == 1LL) {
-            BOOST_CHECK(test.ub.byte1 == 1);
-            BOOST_CHECK(test.uw.word1 == 1);
-            BOOST_CHECK(test.ul.low == 1L);
-        }
-
-        BOOST_CHECK(sec == test.sec);
-
-        BOOST_CHECK(high == test.ul.high);
-        BOOST_CHECK(low == test.ul.low);
+    if (sec != test.sec) {
+      cout << hex << setw(20) << sec << ' ' << setw(17) << high << ' '
+           << setw(16) << low << endl;
     }
 
-    return 0;
+    if (test.sec == 1LL) {
+      BOOST_CHECK(test.ub.byte1 == 1);
+      BOOST_CHECK(test.uw.word1 == 1);
+      BOOST_CHECK(test.ul.low == 1L);
+    }
+
+    BOOST_CHECK(sec == test.sec);
+
+    BOOST_CHECK(high == test.ul.high);
+    BOOST_CHECK(low == test.ul.low);
+  }
+
+  return 0;
 }
 
 /***

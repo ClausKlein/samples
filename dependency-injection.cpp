@@ -32,30 +32,29 @@
 // locating the dependency from the component. The dependency is simply handed
 // to the component.
 
-
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-class Shape_IF {
+class Shape_IF
+{
 public:
-    virtual ~Shape_IF() {};
-    virtual void draw() = 0;
+  virtual ~Shape_IF(){};
+  virtual void draw() = 0;
 };
 
-
-class Circle : public Shape_IF {
+class Circle : public Shape_IF
+{
 public:
-    void draw() { cout << "circle\n"; }
+  void draw() { cout << "circle\n"; }
 };
 
-
-class Triangle : public Shape_IF {
+class Triangle : public Shape_IF
+{
 public:
-    void draw() { cout << "triangle\n"; }
+  void draw() { cout << "triangle\n"; }
 };
-
 
 /* 1. This class does not have hard-coded shapes
    such as Triangle and Circle
@@ -64,14 +63,14 @@ public:
    4. This code can be remained untouched
       when we switch the shape to draw
 */
-class Drawing {
+class Drawing
+{
 public:
-    void drawShape(Shape_IF* pShape) { pShape->draw(); }
+  void drawShape(Shape_IF* pShape) { pShape->draw(); }
 
 private:
-    // TODO: unused! Shape_IF *pShape;
+  // TODO: unused! Shape_IF *pShape;
 };
-
 
 /* 1. This class pulled the hard-coded shape info out of
       the Drawing class (compare with the previous example)
@@ -79,26 +78,26 @@ private:
       depending on what to draw
    3. This class is doing the dependency injection
 */
-class IDrawing {
+class IDrawing
+{
 public:
-    IDrawing() { d = new Drawing; }
-    ~IDrawing() { delete d; }
+  IDrawing() { d = new Drawing; }
+  ~IDrawing() { delete d; }
 
-    void draw(string s)
-    {
-        if (s == "triangle") {
-            d->drawShape(new Triangle); // TODO: memory leak! CK
-        } else if (s == "circle") {
-            d->drawShape(new Circle); // TODO: memory leak! CK
-        } else {
-            cerr << " Need shape" << endl;
-        }
+  void draw(string s)
+  {
+    if (s == "triangle") {
+      d->drawShape(new Triangle); // TODO: memory leak! CK
+    } else if (s == "circle") {
+      d->drawShape(new Circle); // TODO: memory leak! CK
+    } else {
+      cerr << " Need shape" << endl;
     }
+  }
 
 private:
-    Drawing* d;
+  Drawing* d;
 };
-
 
 // As we can see from the code, the Drawing class does not have hard-coded
 // shapes anymore. Now, it's decoupled and has no dependency. The specific
@@ -109,7 +108,6 @@ private:
 // The interface class IDrawing pulled the hard-coded shape info out of the
 // Drawing class. This class as an interface can be modified depending on what
 // to draw, and it is doing the dependency injection.
-
 
 // Pros and Cons of Dependency Injection
 /***
@@ -122,12 +120,11 @@ private:
     Hard to understand code, at least initially
 ***/
 
-
 int main()
 {
-    IDrawing drawer;
-    drawer.draw("circle");
-    drawer.draw("triangle");
+  IDrawing drawer;
+  drawer.draw("circle");
+  drawer.draw("triangle");
 
-    return 0;
+  return 0;
 }

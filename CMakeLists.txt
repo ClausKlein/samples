@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.13)
 
 ## use ccache if found
 find_program(CCACHE_EXECUTABLE "ccache" HINTS /usr/local/bin /opt/local/bin)
@@ -8,7 +8,7 @@ if(CCACHE_EXECUTABLE AND NOT CMAKE_TOOLCHAIN_FILE)
 endif()
 
 
-project(samples LANGUAGES CXX)
+project(samples LANGUAGES C CXX)
 
 #---------------------------------------------------------------------------------------
 # Compiler config
@@ -20,11 +20,18 @@ set(CMAKE_CXX_FLAGS -Wpedantic)
 
 enable_testing()
 
+set(c_sources
+    #XXX copy_stdio.c
+    #TODO misra-test.c
+    teststdio.c
+)
+
 set(cxx_sources
     bitset.cpp
     byteorder.cpp
     chainOfResponsibility.cpp
     ClonableBase.cpp
+    classOutput.cpp
     clone.cpp
     NonCopyable.cpp
     DoNotSlice.cpp
@@ -43,6 +50,8 @@ set(cxx_sources
     #!NO! getaddrinfo.cpp
     #!NO! getline.cpp
     hash.cpp
+    ideone_nWFr9w.cpp
+    immutableString.cpp
     InnerClassIdiom.cpp
     konto.cpp
     l1083.cpp
@@ -71,6 +80,7 @@ set(cxx_sources
     trim_example.cpp
     unordered_map.cpp
     unordered_set.cpp
+    use_span.cpp
     vector.cpp
     vokable2.cpp
     volatile.cpp
@@ -81,7 +91,12 @@ foreach(source ${cxx_sources})
     add_executable(${program} ${program}.cpp)
     set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
     # target_link_libraries(${program} ${EXTRA_LIBS})
-    # target_include_directories(${program} PRIVATE .)
+    add_test(NAME ${program} COMMAND ${program})
+endforeach()
+
+foreach(source ${c_sources})
+    string(REGEX REPLACE "\.c$" "" program ${source})
+    add_executable(${program} ${program}.c)
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
 
