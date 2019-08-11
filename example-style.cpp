@@ -1,9 +1,11 @@
+#include <algorithm>
 #include <chrono>
 #include <iostream>
 #include <string>
+#include <vector>
 
 #ifdef DEBUG
-#  define TRACE
+#    define TRACE
 #endif
 
 namespace testing {
@@ -24,16 +26,20 @@ const double some_value(3.14);
 
 enum
 {
-  good,
-  better,
-  amazing
+    good,
+    better,
+    amazing
 };
 
-struct Cable
+struct Foo
 {
-  int& operator[](size_t); // OK
-  int x;
-  // ...
+    Foo() : bam(0), blah(0), baz(0) {}
+    Foo(int a, int b, int c) : bam(a), blah(b), baz(c) {}
+    int &operator[](size_t); // OK
+    // ...
+    int bam;
+    int blah;
+    int baz;
 };
 
 static void something(){};
@@ -41,37 +47,72 @@ static void something_else(){};
 
 double foo(int x)
 {
-  if (0 < x) {
-    // ...
-  }
+    if (0 < x) {
+        // ...
+    }
 
-  switch (x) {
+    switch (x) {
     case 0:
-      // ...
-      break;
+        // ...
+        break;
     case amazing:
-      // ...
-      break;
+        // ...
+        break;
     default:
-      // ...
-      break;
-  }
+        // ...
+        break;
+    }
 
-  if (0 < x)
-    ++x;
+    if (0 < x)
+        ++x;
 
-  if (x < 0)
-    something();
-  else
-    something_else();
+    if (x < 0)
+        something();
+    else
+        something_else();
 
-  return some_value;
+    return some_value;
 }
+
+} // namespace testing
+
+int doSomething(const std::string_view &sv)
+{
+    // Terminators never need 'something' done to them because ...
+    if (sv.empty())
+        return 0;
+
+    // We conservatively avoid transforming instructions with multiple uses
+    // because goats like cheese.
+    if (sv == "bad")
+        return 0;
+
+    // This is really just here for example.
+    if (!sv.find("abd"))
+        return 0;
+
+    // ... some long code ....
+    return 1;
 }
 
 int main()
 {
-  testing::foo(testing::amazing);
+    int data[] = {0, 1, 1, 2, 3, 5, 8, 13, 21};
 
-  std::cout << "This is code with .clang-format -style=Mozilla (from cmake project)!\n";
+    testing::Foo a{1, 2, 3};
+    std::vector<testing::Foo> foo{{1, 2, 0}, {2, 3, 0}};
+
+    std::sort(foo.begin(), foo.end(),
+              [&](testing::Foo a, testing::Foo b) -> bool {
+                  if (a.blah < b.blah)
+                      return true;
+                  if (a.baz < b.baz)
+                      return true;
+                  return a.bam < b.bam;
+              });
+
+    testing::foo(testing::amazing);
+
+    std::cout << "This is code with .clang-format -style=Mozilla (from cmake "
+                 "project)!\n";
 }

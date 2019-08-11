@@ -40,20 +40,20 @@ using namespace std;
 class Shape_IF
 {
 public:
-  virtual ~Shape_IF(){};
-  virtual void draw() = 0;
+    virtual ~Shape_IF(){};
+    virtual void draw() = 0;
 };
 
 class Circle : public Shape_IF
 {
 public:
-  void draw() { cout << "circle\n"; }
+    void draw() { cout << "circle\n"; }
 };
 
 class Triangle : public Shape_IF
 {
 public:
-  void draw() { cout << "triangle\n"; }
+    void draw() { cout << "triangle\n"; }
 };
 
 /* 1. This class does not have hard-coded shapes
@@ -66,10 +66,10 @@ public:
 class Drawing
 {
 public:
-  void drawShape(Shape_IF* pShape) { pShape->draw(); }
+    void drawShape(Shape_IF *pShape) { pShape->draw(); }
 
 private:
-  // TODO: unused! Shape_IF *pShape;
+    // TODO: unused! Shape_IF *pShape;
 };
 
 /* 1. This class pulled the hard-coded shape info out of
@@ -81,22 +81,22 @@ private:
 class IDrawing
 {
 public:
-  IDrawing() { d = new Drawing; }
-  ~IDrawing() { delete d; }
+    IDrawing() { d = new Drawing; }
+    ~IDrawing() { delete d; }
 
-  void draw(string s)
-  {
-    if (s == "triangle") {
-      d->drawShape(new Triangle); // TODO: memory leak! CK
-    } else if (s == "circle") {
-      d->drawShape(new Circle); // TODO: memory leak! CK
-    } else {
-      cerr << " Need shape" << endl;
+    void draw(string s)
+    {
+        if (s == "triangle") {
+            d->drawShape(new Triangle); // TODO: memory leak! CK
+        } else if (s == "circle") {
+            d->drawShape(new Circle); // TODO: memory leak! CK
+        } else {
+            cerr << " Need shape" << endl;
+        }
     }
-  }
 
 private:
-  Drawing* d;
+    Drawing *d;
 };
 
 // As we can see from the code, the Drawing class does not have hard-coded
@@ -122,9 +122,9 @@ private:
 
 int main()
 {
-  IDrawing drawer;
-  drawer.draw("circle");
-  drawer.draw("triangle");
+    IDrawing drawer;
+    drawer.draw("circle");
+    drawer.draw("triangle");
 
-  return 0;
+    return 0;
 }

@@ -17,25 +17,25 @@
 class B
 {
 public:
-  B() = default;
-  virtual ~B() = 0;
+    B() = default;
+    virtual ~B() = 0;
 
-  virtual gsl::owner<B*> clone() const = 0;
+    virtual gsl::owner<B *> clone() const = 0;
 
-  B(const B&) = delete;
-  B& operator=(const B&) = delete;
+    B(const B &) = delete;
+    B &operator=(const B &) = delete;
 };
 
 class D : public B
 {
 public:
-  D() = default;
-  virtual ~D() {}
+    D() = default;
+    virtual ~D() {}
 
-  gsl::owner<D*> clone() const override
-  {
-    return gsl::owner<D*>(new D()); // TODO this is not a clone! CK
-  }
+    gsl::owner<D *> clone() const override
+    {
+        return gsl::owner<D *>(new D()); // TODO this is not a clone! CK
+    }
 };
 
 // Generally, it is recommended to use smart pointers to represent

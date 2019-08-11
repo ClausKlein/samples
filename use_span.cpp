@@ -11,56 +11,53 @@ using gsl::span;
 const size_t COUNT(7);
 
 // Pointers should only refer to single objects!
-void use(int* ptr, int value)
-{
-  *ptr = value;
-}
+void use(int *ptr, int value) { *ptr = value; }
 
 // Use a gsl::span and range-for:
 void f1a()
 {
-  int arr[COUNT];
-  span<int, COUNT> av = arr;
-  int i = 0;
-  for (auto& e : av)
-    e = i++;
+    int arr[COUNT];
+    span<int, COUNT> av = arr;
+    int i = 0;
+    for (auto &e : av)
+        e = i++;
 }
 
 // Use gsl::at() for access:
 void f2()
 {
-  int arr[COUNT];
-  span<int, COUNT> av = arr;
-  for (int i = 0; i < COUNT; ++i) {
-    at(arr, i) = i;
-  }
+    int arr[COUNT];
+    span<int, COUNT> av = arr;
+    for (int i = 0; i < COUNT; ++i) {
+        at(arr, i) = i;
+    }
 }
 
 // BETTER: use span in the function declaration
 void f(span<int> a)
 {
-  if (a.size() < 2)
-    return;
+    if (a.size() < 2)
+        return;
 
-  int n = a[0]; // OK
-  if (!n)
-    return;
+    int n = a[0]; // OK
+    if (!n)
+        return;
 
-  span<int> q = a.subspan(1); // OK
-  f(q);
+    span<int> q = a.subspan(1); // OK
+    f(q);
 
-  if (a.size() < 6)
-    return;
+    if (a.size() < 6)
+        return;
 
-  a[4] = 1; // OK
+    a[4] = 1; // OK
 
-  a[a.size() - 1] = 2; // OK
+    a[a.size() - 1] = 2; // OK
 
-  use(a.data(), 3); // OK
+    use(a.data(), 3); // OK
 }
 
 int main()
 {
-  std::array<int, COUNT> a{ { 1, 2, 3, 4, 5, 6 } };
-  f(a);
+    std::array<int, COUNT> a{{1, 2, 3, 4, 5, 6}};
+    f(a);
 }
