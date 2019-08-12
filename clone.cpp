@@ -12,13 +12,13 @@
 // return type). Example
 
 #include <cassert>
-#include <gsl/pointers>
+#include <gsl/gsl>
 
 class B
 {
 public:
     B() = default;
-    virtual ~B() = 0;
+    virtual ~B() = default;
 
     virtual gsl::owner<B *> clone() const = 0;
 
@@ -30,7 +30,7 @@ class D : public B
 {
 public:
     D() = default;
-    virtual ~D() {}
+    ~D() override {}
 
     gsl::owner<D *> clone() const override
     {
@@ -51,9 +51,7 @@ public:
 
 int main()
 {
-#if 0
     D d1;
     auto d2 = d1.clone();
     // TODO assert (*d2 == d1);
-#endif
 }

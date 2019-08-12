@@ -1,10 +1,11 @@
 // A span is a non-owning view over a contiguous sequence of objects, the
 // storage of which is owned by some other object.
 
-#include <array> // C++11
 // TODO #include <span>  // C++20
 
+#include <array>   // C++11
 #include <gsl/gsl> // C++14
+#include <iostream>
 using gsl::at;
 using gsl::span;
 
@@ -17,7 +18,8 @@ void use(int *ptr, int value) { *ptr = value; }
 void f1a()
 {
     int arr[COUNT];
-    span<int, COUNT> av = arr;
+    span<int, COUNT> av = arr; // C++20
+    // FIXME span<int> av = arr;
     int i = 0;
     for (auto &e : av)
         e = i++;
@@ -27,9 +29,11 @@ void f1a()
 void f2()
 {
     int arr[COUNT];
-    span<int, COUNT> av = arr;
-    for (int i = 0; i < COUNT; ++i) {
-        at(arr, i) = i;
+    span<int, COUNT> av = arr; // C++20
+    // FIXME span<int> av = arr;
+    for (int i = 0; i <= av.size(); ++i) {
+        // FIXME at(arr, i) = i;
+        av[i] = i;
     }
 }
 
@@ -59,5 +63,11 @@ void f(span<int> a)
 int main()
 {
     std::array<int, COUNT> a{{1, 2, 3, 4, 5, 6}};
-    f(a);
+
+    try {
+        f(a);
+        f2();
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 }

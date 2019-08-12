@@ -1,5 +1,6 @@
 #include <algorithm> // copy_if and remove_if
 #include <iostream>
+#include <iterator>
 #include <numeric> // iota
 
 #if defined(__cplusplus) && __cplusplus == 201103L

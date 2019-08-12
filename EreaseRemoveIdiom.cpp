@@ -2,6 +2,7 @@
 
 #include <algorithm> // remove and remove_if
 #include <iostream>
+#include <iterator>
 #include <vector> // the general-purpose vector container
 
 bool is_odd(int i) { return (i % 2) != 0; }

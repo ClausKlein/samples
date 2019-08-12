@@ -5,7 +5,7 @@
 // =delete them all
 
 #include <cassert>
-#include <gsl/pointers>
+#include <gsl/gsl>
 #include <memory> // NOTE: make_unique<>! CK
 #include <string>
 

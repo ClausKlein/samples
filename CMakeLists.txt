@@ -18,6 +18,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_FLAGS -Wpedantic)
 
+if(UNIX)
+    set(CMAKE_CXX_FLAGS "-Wpedantic -Werrors")
+    find_library(PTHREAD_LIB pthread REQUIRED)
+endif()
+
+# see /usr/local/lib/cmake/gsl-lite/gsl-lite-targets.cmake
+find_package(gsl-lite REQUIRED)
+
 enable_testing()
 
 set(c_sources
@@ -33,7 +41,7 @@ set(cxx_sources
     ClonableBase.cpp
     classOutput.cpp
     clone.cpp
-    NonCopyable.cpp
+    #BOOST needed! NonCopyable.cpp
     DoNotSlice.cpp
     CloneShapes.cpp
     #!NO! collate.cpp
@@ -83,14 +91,14 @@ set(cxx_sources
     use_span.cpp
     vector.cpp
     vokable2.cpp
-    volatile.cpp
+    #FIXME volatile.cpp
 )
 
 foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
     set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
-    # target_link_libraries(${program} ${EXTRA_LIBS})
+    target_link_libraries(${program} PRIVATE gsl::gsl-lite ${PTHREAD_LIB})
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
 

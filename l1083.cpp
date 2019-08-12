@@ -29,9 +29,9 @@ int main(int argc, char **argv)
     std::cout << "length = " << help.length() << " size = " << help.size()
               << std::endl;
 
-    std::vector<uint8_t> v{'u', 'v', 0,    1,   2, 3,
-                           4,   5,   0xfe, 0xff}; // initializer-list ctor is
-                                                  // preferred to (int, char)
+    std::vector<uint8_t> v{'u', 'v', 0, 1,    2,
+                           3,   4,   5, 0xfe, 0xff}; // initializer-list ctor is
+                                                     // preferred to (int, char)
     std::string s3{0x61, 'a', 0, 1,   2,
                    3,    4,   5, 0x7f}; // initializer-list ctor is preferred to
                                         // (int, char)
