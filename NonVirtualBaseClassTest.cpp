@@ -22,7 +22,7 @@ using namespace std;
 class base
 {
 public:
-    virtual ~base(){};
+    virtual ~base()= default;;
     // FIXME virtual void print() const = 0;
 };
 
