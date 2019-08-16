@@ -4,8 +4,9 @@
 // C.21: If you define or =delete any default operation, define or
 // =delete them all
 
-#include <cassert>
 #include <gsl/gsl>
+
+#include <cassert>
 #include <memory> // NOTE: make_unique<>! CK
 #include <string>
 

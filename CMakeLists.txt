@@ -16,15 +16,16 @@ project(samples LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_FLAGS -Wpedantic)
 
 if(UNIX)
-    set(CMAKE_CXX_FLAGS "-Wpedantic -Werrors")
+    set(CMAKE_CXX_FLAGS "-std=c++17 -Wpedantic -Werrors -Wno-unknown-warning-option"
+        CACHE STRING "warings are errors!" FORCE)
     find_library(PTHREAD_LIB pthread REQUIRED)
 endif()
 
 # see /usr/local/lib/cmake/gsl-lite/gsl-lite-targets.cmake
 find_package(gsl-lite REQUIRED)
+find_package(doctest 2.3.4 REQUIRED)
 
 enable_testing()
 
@@ -35,8 +36,10 @@ set(c_sources
 )
 
 set(cxx_sources
+    at_test.cpp
     bitset.cpp
     byteorder.cpp
+    bounds_test.cpp
     chainOfResponsibility.cpp
     ClonableBase.cpp
     classOutput.cpp
@@ -97,8 +100,9 @@ set(cxx_sources
 foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
+    target_link_libraries(${program}
+        PRIVATE doctest::doctest gsl::gsl-lite ${PTHREAD_LIB})
     set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
-    target_link_libraries(${program} PRIVATE gsl::gsl-lite ${PTHREAD_LIB})
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
 

@@ -3,8 +3,9 @@
 
 // TODO #include <span>  // C++20
 
-#include <array>   // C++11
 #include <gsl/gsl> // C++14
+
+#include <array> // C++11
 #include <iostream>
 using gsl::at;
 using gsl::span;
@@ -66,6 +67,7 @@ int main()
 
     try {
         f(a);
+        f1a();
         f2();
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;

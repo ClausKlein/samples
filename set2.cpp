@@ -4,9 +4,10 @@
  */
 #include "concept_check_extension.hpp"
 
-#include <algorithm>
 #include <boost/current_function.hpp>
 #include <boost/test/minimal.hpp>
+
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <string>

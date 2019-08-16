@@ -26,7 +26,6 @@ DerivePointerAlignment: false
 PointerAlignment: Right
 #NO! SpaceBeforeCpp11BracedList: true
 Cpp11BracedListStyle: true
-IncludeBlocks: Regroup
 FixNamespaceComments: true
 #
 ### BinPack... args will all be on the same line
@@ -43,4 +42,18 @@ BreakConstructorInitializers: BeforeColon
 BreakInheritanceList: BeforeColon
 PenaltyReturnTypeOnItsOwnLine: 60
 SpaceAfterTemplateKeyword: true
+#
+IncludeBlocks:   Regroup
+IncludeCategories: 
+  - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
+    Priority:        2
+  - Regex: '^<(Poco|gsl|asio|doctest|zmqpp|boost|gtest|gmock|fmt|json|openssl)/'
+    Priority:        3
+  - Regex:           '<[[:alnum:].]+>'
+    Priority:        4
+# all other headers first!
+  - Regex:           '.*'
+    Priority:        1
+IncludeIsMainRegex: '(_test)?$'
+#
 ---

@@ -1,6 +1,7 @@
-#include <algorithm>
 #include <boost/functional/hash.hpp>
 #include <boost/unordered_map.hpp>
+
+#include <algorithm>
 #include <cassert>
 #include <complex>
 #include <iomanip>
