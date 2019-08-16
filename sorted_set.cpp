@@ -1,7 +1,7 @@
+#include <cstdint>
 #include <functional>
 #include <iostream>
 #include <set>
-#include <stdint.h>
 
 namespace MySpace {
 struct MyStruct
@@ -60,18 +60,17 @@ int main()
               << std::endl;
 
 #ifdef USE_MYCOMP
-    for (std::set<MySpace::MyStruct, MyComp>::iterator it = s.begin();
-         it != s.end(); it++)
+    for (auto it : s)
 #else
     for (std::set<MySpace::MyStruct>::iterator it = s.begin(); it != s.end();
          it++)
 #endif
     {
-        std::cout << "it->x: " << it->x << "it->y: " << it->y << std::endl;
+        std::cout << "it->x: " << it.x << "it->y: " << it.y << std::endl;
     }
 
 #ifdef USE_MYCOMP
-    std::set<MySpace::MyStruct, MyComp>::iterator loc = s.find(ms2);
+    auto loc = s.find(ms2);
 #else
     std::set<MySpace::MyStruct>::iterator loc = s.find(ms2);
 #endif

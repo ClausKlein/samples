@@ -18,6 +18,7 @@
 using namespace boost::container;
 #else
 #    include <set>
+#include <utility>
 #    include <vector>
 using namespace std;
 #endif
@@ -29,7 +30,7 @@ operator<<(std::ostream &stream, set<T> &c)
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
-        for (typename set<T>::iterator it = ++(c.begin()); it != c.end();
+        for (auto it = ++(c.begin()); it != c.end();
              ++it) {
             stream << ", " << *it;
         }
@@ -44,7 +45,7 @@ operator<<(std::ostream &stream, vector<T> &c)
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
-        for (typename vector<T>::iterator it = ++(c.begin()); it != c.end();
+        for (auto it = ++(c.begin()); it != c.end();
              ++it) {
             stream << ", " << *it;
         }
@@ -61,8 +62,8 @@ private:
     size_t no;
 
 public:
-    Customer(const std::string &fn, const std::string &ln, size_t n)
-        : firstName(fn), lastName(ln), no(n)
+    Customer(std::string fn, std::string ln, size_t n)
+        : firstName(std::move(fn)), lastName(std::move(ln)), no(n)
     {
         // XXX std::cout << BOOST_CURRENT_FUNCTION << *this << std::endl;
     }
@@ -169,7 +170,7 @@ int test_main(int /*argc*/, char * /*argv*/[])
         BOOST_CHECK(count == 1);
     }
 
-    SetType::iterator it = custset.find(key2);
+    auto it = custset.find(key2);
     if (it == custset.end()) {
         std::cout << "not found: " << key2 << std::endl;
         count = custset.erase(key2);

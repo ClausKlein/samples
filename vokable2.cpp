@@ -11,17 +11,17 @@ int main()
                    V("two", "Paar")};
 
     VokMulMap vokabeln(f, f + 4);
-    const VokMulMap::iterator ins = vokabeln.insert(V("one", "Eins"));
+    const auto ins = vokabeln.insert(V("one", "Eins"));
     vokabeln.insert(ins, V("one", "man"));
 
     cout << "Folgende Vokabeln sind enthalten:\n";
-    VokMulMap::const_iterator iter = vokabeln.begin();
+    auto iter = vokabeln.begin();
     for (; iter != vokabeln.end(); ++iter) {
         cout << "  (" << iter->first << ", " << iter->second << ")\n";
     }
 
     cout << "Bedeutungen für one: ";
-    const VokMulMap::const_iterator von = vokabeln.lower_bound("one"),
+    const auto von = vokabeln.lower_bound("one"),
                                     bis = vokabeln.upper_bound("one");
     for (iter = von; iter != bis; ++iter) {
         cout << iter->second << ' ';

@@ -4,12 +4,13 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
 using namespace std;
 
 class Photo
 {
 public:
-    Photo(string s) : mTitle(s) { cout << "Processing " << mTitle << " ...\n"; }
+    Photo(string s) : mTitle(std::move(s)) { cout << "Processing " << mTitle << " ...\n"; }
 
 private:
     string mTitle;

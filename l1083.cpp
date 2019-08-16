@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace Test {
@@ -15,7 +16,7 @@ struct Integer
 struct String // TODO : public std::string
 {
     std::string value;
-    String(std::string _value) : value(_value) {}
+    String(std::string _value) : value(std::move(_value)) {}
     operator const char *() const { return value.c_str(); }
 };
 } // namespace Test

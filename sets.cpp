@@ -61,9 +61,8 @@ int main()
     std::set<MyType, bool (*)(MyType, MyType)> sixth(
         fncomp); // function pointer as Compare
 
-    for (std::set<MyType>::iterator it = second.begin(); it != second.end();
-         it++) {
-        std::cout << *it << std::endl;
+    for (auto it : second) {
+        std::cout << it << std::endl;
     }
 
     std::complex<double> A(2.0, 1.0);

@@ -1,10 +1,10 @@
 #include <arpa/inet.h> // htonl, ntohl, inet_ntop, inet_pton
 
-#include <assert.h>
-#include <stdint.h> // uint32_t, uint8_t
-#include <stdio.h>  // printf, puts
-#include <stdlib.h> // exit
-#include <string.h> // memcpy
+#include <cassert>
+#include <cstdint> // uint32_t, uint8_t
+#include <cstdio>  // printf, puts
+#include <cstdlib> // exit
+#include <cstring> // memcpy
 // XXX #include <algorithm>    // std::swap
 
 //

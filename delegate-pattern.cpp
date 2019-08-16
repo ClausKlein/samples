@@ -68,7 +68,7 @@ private:
 
 int main()
 {
-    RemoteHost *remote = new RemoteHost();
+    auto *remote = new RemoteHost();
 
     remote->f(); // A::f()
 

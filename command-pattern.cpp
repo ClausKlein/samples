@@ -142,19 +142,19 @@ private:
 int main()
 {
     // Receiver
-    Light *light = new Light;
+    auto *light = new Light;
     Fan *fan = new Fan;
 
     // concrete Command objects
-    LightOnCommand *lightOn = new LightOnCommand(light);
-    LightOffCommand *lightOff = new LightOffCommand(light);
-    FanOnCommand *fanOn = new FanOnCommand(fan);
-    FanOffCommand *fanOff = new FanOffCommand(fan);
-    NullCommand *nullOn = new NullCommand();
-    NullCommand *nullOff = new NullCommand();
+    auto *lightOn = new LightOnCommand(light);
+    auto *lightOff = new LightOffCommand(light);
+    auto *fanOn = new FanOnCommand(fan);
+    auto *fanOff = new FanOffCommand(fan);
+    auto *nullOn = new NullCommand();
+    auto *nullOff = new NullCommand();
 
     // invoker objects
-    RemoteControl *control = new RemoteControl;
+    auto *control = new RemoteControl;
 
     // execute
     control->setCommand(LIGHT, lightOn, lightOff);

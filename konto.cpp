@@ -35,7 +35,7 @@ int main()
     Konto k[3] = {Konto(10, 1.99), Konto(20, 2.98), Konto(30, 3.97)};
     typedef set<Konto, VglKNr> KontoSet;
     KontoSet s(k, k + 3);
-    KontoSet::iterator i = s.find(Konto(20));
+    auto i = s.find(Konto(20));
     if (i != s.end()) {
         Konto tmp(*i);
         tmp.einzahlen(100.0);

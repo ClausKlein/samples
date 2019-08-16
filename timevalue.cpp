@@ -6,9 +6,9 @@
 
 #include <boost/test/minimal.hpp>
 
+#include <cstdint>
 #include <iomanip>
 #include <iostream>
-#include <stdint.h>
 
 using namespace std;
 
@@ -64,8 +64,8 @@ int test_main(int /*argc*/, char * /*argv*/[])
     uint32_t high = 0;
     uint32_t low = 0;
 
-    for (int i = 0; i < 16; i++) {
-        test.sec = tests[i];
+    for (long long i : tests) {
+        test.sec = i;
         cout << hex << showbase << setw(20) << test.sec << dec
              << " high:" << setw(12) << test.ul.high << " low:" << setw(12)
              << test.ul.low << " time_t:" << setw(20) << test.sec << endl;
