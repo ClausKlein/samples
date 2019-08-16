@@ -48,7 +48,7 @@ public:
 
 class SUT
 {
-    int type;
+    int type{0};
     string id;
     union
     {
@@ -64,7 +64,7 @@ public:
         t_b
     };
 
-    SUT() : type(0), id(""), m_base(0)
+    SUT() :  id(""), m_base(0)
     {
         // XXX u.m_base = 0;
         cout << "SUT()" << endl;
