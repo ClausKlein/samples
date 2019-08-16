@@ -50,7 +50,7 @@ class Outer
 
     public:
         Inner1(Outer *p) : parent(p) {}
-        void poing()
+        void poing() override
         {
             cout << "poing called for " << parent->name << endl;
             // Accesses data in the outer class object
@@ -66,7 +66,7 @@ class Outer
 
     public:
         Inner2(Outer *p) : parent(p) {}
-        void bing() { cout << "bing called for " << parent->name << endl; }
+        void bing() override { cout << "bing called for " << parent->name << endl; }
     } inner2;
 
 public:
