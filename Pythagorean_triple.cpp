@@ -9,7 +9,7 @@ bool Pythagorean_triple()
     const size_t MAX = 1000;
     size_t a = 1, b = 1, c = 1;
     // Endless loop with no side effects is UB
-    while (1) {
+    while (true) {
         if (((a * a) == ((b * b) + (c * c)))) {
             std::cout << a << ',' << b << ',' << c << std::endl;
             // FIXME if (c >= 975) return true;
