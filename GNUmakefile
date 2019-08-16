@@ -35,6 +35,7 @@ all: setup .configure
 
 test: all
 	cd $(BUILD_DIR) && ctest -C $(BUILD_TYPE) --rerun-failed --output-on-failure .
+	cd $(BUILD_DIR) && ctest -C $(BUILD_TYPE) .
 	# $(MAKE) -C $(BUILD_DIR) $@ --no-print-directory
 	## ninja -C $(BUILD_DIR) $@ -v
 

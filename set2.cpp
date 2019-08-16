@@ -18,7 +18,7 @@
 using namespace boost::container;
 #else
 #    include <set>
-#include <utility>
+#    include <utility>
 #    include <vector>
 using namespace std;
 #endif
@@ -30,8 +30,7 @@ operator<<(std::ostream &stream, set<T> &c)
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
-        for (auto it = ++(c.begin()); it != c.end();
-             ++it) {
+        for (auto it = ++(c.begin()); it != c.end(); ++it) {
             stream << ", " << *it;
         }
         stream << '}' << std::endl;
@@ -45,8 +44,7 @@ operator<<(std::ostream &stream, vector<T> &c)
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
-        for (auto it = ++(c.begin()); it != c.end();
-             ++it) {
+        for (auto it = ++(c.begin()); it != c.end(); ++it) {
             stream << ", " << *it;
         }
         stream << '}' << std::endl;

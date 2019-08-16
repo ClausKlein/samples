@@ -33,7 +33,7 @@ enum
 
 struct Foo
 {
-    Foo()  = default;
+    Foo() = default;
     Foo(int a, int b, int c) : bam(a), blah(b), baz(c) {}
     int &operator[](size_t); // OK
     // ...

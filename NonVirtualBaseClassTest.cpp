@@ -22,7 +22,8 @@ using namespace std;
 class base
 {
 public:
-    virtual ~base()= default;;
+    virtual ~base() = default;
+    ;
     // FIXME virtual void print() const = 0;
 };
 
@@ -64,7 +65,7 @@ public:
         t_b
     };
 
-    SUT() :  id(""), m_base(nullptr)
+    SUT() : id(""), m_base(nullptr)
     {
         // XXX u.m_base = 0;
         cout << "SUT()" << endl;

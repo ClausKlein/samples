@@ -18,7 +18,8 @@
 
 template <class T> struct remove_cv
 {
-    using type = typename std::remove_volatile<typename std::remove_const<T>::type>::type;
+    using type = typename std::remove_volatile<
+        typename std::remove_const<T>::type>::type;
     // FIXME typedef std::remove_volatile<std::remove_const<T>::type>::type
     // type;
 };

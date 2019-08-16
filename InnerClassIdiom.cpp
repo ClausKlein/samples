@@ -66,7 +66,10 @@ class Outer
 
     public:
         Inner2(Outer *p) : parent(p) {}
-        void bing() override { cout << "bing called for " << parent->name << endl; }
+        void bing() override
+        {
+            cout << "bing called for " << parent->name << endl;
+        }
     } inner2;
 
 public:

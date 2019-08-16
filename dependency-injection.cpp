@@ -40,7 +40,8 @@ using namespace std;
 class Shape_IF
 {
 public:
-    virtual ~Shape_IF()= default;;
+    virtual ~Shape_IF() = default;
+    ;
     virtual void draw() = 0;
 };
 

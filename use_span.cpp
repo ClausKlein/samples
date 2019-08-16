@@ -32,7 +32,7 @@ void f2()
     int arr[COUNT];
     // TODO span<int, COUNT> av = arr; // C++20
     span<int> av = arr;
-    for (int i = 0; i <= av.size(); ++i) {
+    for (int i = 0; i < av.size(); ++i) {
         // FIXME at(arr, i) = i;
         av[i] = i;
     }
@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
         // XXX asio::io_context io_context;
 
         gsl::span<char *> args = {argv, 1};
-        auto port = gsl::at(args, 1);   // BUG! <<<<<<<<<<<<<<<
+        // FIXME auto port = gsl::at(args, 1); // BUG! <<<<<<<<<<<<<<<
 
         // XXX server s(io_context, std::strtol(port, NULL, 10));
         // XXX io_context.run();

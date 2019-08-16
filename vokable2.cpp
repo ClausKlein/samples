@@ -22,7 +22,7 @@ int main()
 
     cout << "Bedeutungen für one: ";
     const auto von = vokabeln.lower_bound("one"),
-                                    bis = vokabeln.upper_bound("one");
+               bis = vokabeln.upper_bound("one");
     for (iter = von; iter != bis; ++iter) {
         cout << iter->second << ' ';
     }

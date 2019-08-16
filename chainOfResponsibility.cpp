@@ -10,7 +10,10 @@ using namespace std;
 class Photo
 {
 public:
-    Photo(string s) : mTitle(std::move(s)) { cout << "Processing " << mTitle << " ...\n"; }
+    Photo(string s) : mTitle(std::move(s))
+    {
+        cout << "Processing " << mTitle << " ...\n";
+    }
 
 private:
     string mTitle;
@@ -19,7 +22,7 @@ private:
 class PhotoProcessor
 {
 public:
-    PhotoProcessor()  = default;
+    PhotoProcessor() = default;
 
 public:
     void process(Photo &p)
@@ -66,19 +69,28 @@ private:
 class RedEye : public PhotoProcessor
 {
 private:
-    void processImplementation(Photo &a) override { cout << "Removing red eye\n"; }
+    void processImplementation(Photo &a) override
+    {
+        cout << "Removing red eye\n";
+    }
 };
 
 class Filter : public PhotoProcessor
 {
 private:
-    void processImplementation(Photo &a) override { cout << "Applying filters\n"; }
+    void processImplementation(Photo &a) override
+    {
+        cout << "Applying filters\n";
+    }
 };
 
 class ColorMatch : public PhotoProcessor
 {
 private:
-    void processImplementation(Photo &a) override { cout << "Matching colors\n"; }
+    void processImplementation(Photo &a) override
+    {
+        cout << "Matching colors\n";
+    }
 };
 
 void processPhoto(Photo &photo)
