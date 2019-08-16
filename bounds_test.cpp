@@ -8,7 +8,7 @@
 
 #include <algorithm>
 #include <array>
-#include <iterator> //use std::size() //c++17 only
+#include <iterator> //use std::size(); NOTE: c++17 only
 #include <string>
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
@@ -19,15 +19,15 @@ TEST_CASE("bad example: using memset() to fill data")
     std::array<int, 10> a, b;
     memset(a.data(), 0xff,
            10); // BAD, and contains a length error (length = 10 * sizeof(int))
-    bool res = memcmp(
+    auto res = memcmp(
         a.data(), b.data(),
         10); // BAD, and contains a length error (length = 10 * sizeof(int))
 
-    if (res) {
-        ; /* ... */
+    if (res == 0) {
+        CHECK(a == b);
+        /* ... */
     }
 
-    CHECK(a == b);
 }
 
 TEST_CASE("good example: use std::fill to fill data")

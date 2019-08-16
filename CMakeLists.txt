@@ -27,6 +27,7 @@ endif()
 find_package(gsl-lite REQUIRED)
 find_package(doctest 2.3.4 REQUIRED)
 
+add_definitions(-DGSL_THROW_ON_CONTRACT_VIOLATION)
 enable_testing()
 
 set(c_sources

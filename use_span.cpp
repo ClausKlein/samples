@@ -19,8 +19,8 @@ void use(int *ptr, int value) { *ptr = value; }
 void f1a()
 {
     int arr[COUNT];
-    span<int, COUNT> av = arr; // C++20
-    // FIXME span<int> av = arr;
+    // TODO span<int, COUNT> av = arr; // C++20
+    span<int> av = arr;
     int i = 0;
     for (auto &e : av)
         e = i++;
@@ -30,8 +30,8 @@ void f1a()
 void f2()
 {
     int arr[COUNT];
-    span<int, COUNT> av = arr; // C++20
-    // FIXME span<int> av = arr;
+    // TODO span<int, COUNT> av = arr; // C++20
+    span<int> av = arr;
     for (int i = 0; i <= av.size(); ++i) {
         // FIXME at(arr, i) = i;
         av[i] = i;
@@ -61,15 +61,30 @@ void f(span<int> a)
     use(a.data(), 3); // OK
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-    std::array<int, COUNT> a{{1, 2, 3, 4, 5, 6}};
+    if (argc != 1) {
+        std::cerr << "Usage: " << *argv << " <port>\n";
+        return EXIT_FAILURE;
+    }
 
     try {
+        // XXX asio::io_context io_context;
+
+        gsl::span<char *> args = {argv, 1};
+        auto port = gsl::at(args, 1);   // BUG! <<<<<<<<<<<<<<<
+
+        // XXX server s(io_context, std::strtol(port, NULL, 10));
+        // XXX io_context.run();
+
+        std::array<int, COUNT> a{{1, 2, 3, 4, 5, 6}};
         f(a);
         f1a();
         f2();
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
+        return EXIT_FAILURE;
     }
+
+    return EXIT_SUCCESS;
 }
