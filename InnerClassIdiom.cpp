@@ -17,6 +17,7 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
 
 using namespace std;
 
@@ -69,7 +70,7 @@ class Outer
     } inner2;
 
 public:
-    Outer(const string &nm) : name(nm), inner1(this), inner2(this) {}
+    Outer(string nm) : name(std::move(nm)), inner1(this), inner2(this) {}
 
     // Return reference to interfaces implemented by the inner classes:
     operator Poingable &() { return inner1; }
