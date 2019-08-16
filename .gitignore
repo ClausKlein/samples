@@ -1,5 +1,7 @@
 *.d
+*.diff
 *.dSym
+*.html
 *.orig
 *~
 .*.swp
