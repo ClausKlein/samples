@@ -64,7 +64,7 @@ public:
         t_b
     };
 
-    SUT() :  id(""), m_base(0)
+    SUT() :  id(""), m_base(nullptr)
     {
         // XXX u.m_base = 0;
         cout << "SUT()" << endl;
