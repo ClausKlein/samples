@@ -18,29 +18,27 @@
 
 template <class T> struct remove_cv
 {
-    typedef
-        typename std::remove_volatile<typename std::remove_const<T>::type>::type
-            type;
+    using type = typename std::remove_volatile<typename std::remove_const<T>::type>::type;
     // FIXME typedef std::remove_volatile<std::remove_const<T>::type>::type
     // type;
 };
 
 template <class T> struct remove_const
 {
-    typedef T type;
+    using type = T;
 };
 template <class T> struct remove_const<const T>
 {
-    typedef T type;
+    using type = T;
 };
 
 template <class T> struct remove_volatile
 {
-    typedef T type;
+    using type = T;
 };
 template <class T> struct remove_volatile<volatile T>
 {
-    typedef T type;
+    using type = T;
 };
 
 template <typename KEY, typename VALUE>
@@ -56,7 +54,7 @@ class X
 
 template <typename T> struct Test
 {
-    typedef T value;
+    using value = T;
 };
 
 template <> struct Test<X>
@@ -73,8 +71,8 @@ template <typename T> int f(T const &)
 
 int main()
 {
-    typedef std::remove_cv<const int>::type type1;
-    typedef std::remove_cv<volatile int>::type type2;
+    using type1 = std::remove_cv<const int>::type;
+    using type2 = std::remove_cv<volatile int>::type;
     std::cout << "test1 "
               << (std::is_same<int, type1>::value ? "passed" : "failed")
               << '\n';

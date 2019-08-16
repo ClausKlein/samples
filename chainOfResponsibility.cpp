@@ -19,7 +19,7 @@ private:
 class PhotoProcessor
 {
 public:
-    PhotoProcessor() : mNextProcessor(0) {}
+    PhotoProcessor()  = default;
 
 public:
     void process(Photo &p)
@@ -30,7 +30,7 @@ public:
         }
     }
 
-    virtual ~PhotoProcessor() {}
+    virtual ~PhotoProcessor() = default;
 
     void setNextProcessor(PhotoProcessor *p) { mNextProcessor = p; }
 
@@ -38,7 +38,7 @@ protected:
     virtual void processImplementation(Photo &a) = 0;
 
 private:
-    PhotoProcessor *mNextProcessor;
+    PhotoProcessor *mNextProcessor{nullptr};
 };
 
 class Scale : public PhotoProcessor
@@ -55,7 +55,7 @@ public:
     Scale(SCALE s) : mSCALE(s) {}
 
 private:
-    void processImplementation(Photo &a)
+    void processImplementation(Photo &a) override
     {
         cout << "Scaling photo X " << mSCALE << endl;
     }
@@ -66,19 +66,19 @@ private:
 class RedEye : public PhotoProcessor
 {
 private:
-    void processImplementation(Photo &a) { cout << "Removing red eye\n"; }
+    void processImplementation(Photo &a) override { cout << "Removing red eye\n"; }
 };
 
 class Filter : public PhotoProcessor
 {
 private:
-    void processImplementation(Photo &a) { cout << "Applying filters\n"; }
+    void processImplementation(Photo &a) override { cout << "Applying filters\n"; }
 };
 
 class ColorMatch : public PhotoProcessor
 {
 private:
-    void processImplementation(Photo &a) { cout << "Matching colors\n"; }
+    void processImplementation(Photo &a) override { cout << "Matching colors\n"; }
 };
 
 void processPhoto(Photo &photo)

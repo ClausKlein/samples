@@ -39,7 +39,7 @@ enum Receiver
 class Command
 {
 public:
-    virtual ~Command(){};
+    virtual ~Command()= default;;
     virtual void execute() = 0;
 };
 
@@ -63,7 +63,7 @@ public:
 class NullCommand : public Command
 {
 public:
-    void execute() { cout << "Null command: does nothing\n"; }
+    void execute() override { cout << "Null command: does nothing\n"; }
 };
 
 // Command for turning on the light
@@ -71,7 +71,7 @@ class LightOnCommand : public Command
 {
 public:
     LightOnCommand(Light *light) : mLight(light) {}
-    void execute() { mLight->on(); }
+    void execute() override { mLight->on(); }
 
 private:
     Light *mLight;
@@ -82,7 +82,7 @@ class LightOffCommand : public Command
 {
 public:
     LightOffCommand(Light *light) : mLight(light) {}
-    void execute() { mLight->off(); }
+    void execute() override { mLight->off(); }
 
 private:
     Light *mLight;
@@ -93,7 +93,7 @@ class FanOnCommand : public Command
 {
 public:
     FanOnCommand(Fan *fan) : mFan(fan) {}
-    void execute() { mFan->on(); }
+    void execute() override { mFan->on(); }
 
 private:
     Fan *mFan;
@@ -104,7 +104,7 @@ class FanOffCommand : public Command
 {
 public:
     FanOffCommand(Fan *fan) : mFan(fan) {}
-    void execute() { mFan->off(); }
+    void execute() override { mFan->off(); }
 
 private:
     Fan *mFan;

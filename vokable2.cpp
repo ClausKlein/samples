@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     typedef multimap<string, string> VokMulMap;
-    typedef VokMulMap::value_type V;
+    using V = VokMulMap::value_type;
     const V f[] = {V("two", "Zwei"), V("three", "Drei"), V("four", "Vier"),
                    V("two", "Paar")};
 

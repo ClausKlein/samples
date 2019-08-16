@@ -12,7 +12,7 @@ int main()
     cout << "a ^ b = " << (a ^ b) << endl;
 
     cout << "working with x:" << endl;
-    x[3] = 1;
+    x[3] = true;
     x.set(2);
     cout << x << " = " << x.to_ulong() << endl;
     cout << x.count() << " Bit(s) gesetzt\n";

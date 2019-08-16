@@ -18,7 +18,7 @@ bool operator<(const std::complex<T> &lhs, const std::complex<T> &rhs)
 #ifndef USE_COMPLEX
 typedef int MyType; // ORIG
 #else
-typedef std::complex<double> MyType;
+using MyType = std::complex<double>;
 #endif // USE_COMPLEX
 
 bool fncomp(const MyType lhs, const MyType rhs) { return lhs < rhs; }

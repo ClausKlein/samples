@@ -43,7 +43,7 @@ int main()
                            "(0, 0)\n"
                            "(1, 0)\n"
                            "(0, -2)\n");
-    typedef std::complex<double> Complex;
+    using Complex = std::complex<double>;
     std::vector<Complex> nums;
     boost::unordered_map<Complex, double> container;
 

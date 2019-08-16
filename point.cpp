@@ -26,7 +26,7 @@ template <typename Map> void print_map(Map &m)
 }
 
 #if 1
-typedef std::complex<int> Point;
+using Point = std::complex<int>;
 
 // NOTE: Because complex numbers are naturally thought of as existing on a
 // two-dimensional plane, there is no natural linear ordering on the set of

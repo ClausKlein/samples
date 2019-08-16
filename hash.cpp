@@ -38,8 +38,8 @@ struct S
 namespace std {
 template <> struct hash<S>
 {
-    typedef S argument_type;
-    typedef std::size_t value_type;
+    using argument_type = S;
+    using value_type = std::size_t;
 
     value_type operator()(argument_type const &s) const
     {

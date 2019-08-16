@@ -124,8 +124,8 @@ int test_main(int /*argc*/, char * /*argv*/[])
     // TODO: BOOST_CONCEPT_ASSERT((Ostreamable< MyType >));
 
     // sorted set of unique objects of type Customer.
-    typedef set<Customer> SetType;
-    typedef vector<Customer> ResultType;
+    using SetType = set<Customer>;
+    using ResultType = vector<Customer>;
     SetType custset;
 
     BOOST_CONCEPT_ASSERT((Collection<SetType>));

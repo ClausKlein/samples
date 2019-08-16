@@ -32,7 +32,7 @@ using namespace std;
 class Host_IF
 {
 public:
-    virtual ~Host_IF(){};
+    virtual ~Host_IF()= default;;
     virtual void f() = 0;
 
 protected:
@@ -42,13 +42,13 @@ protected:
 class RemoteHostA : public Host_IF
 {
 public:
-    void f() { cout << "A::f()" << endl; }
+    void f() override { cout << "A::f()" << endl; }
 };
 
 class RemoteHostB : public Host_IF
 {
 public:
-    void f() { cout << "B::f()" << endl; }
+    void f() override { cout << "B::f()" << endl; }
 };
 
 // This class has a delegate switch to either RemoteHostA or RemoteHostB
@@ -57,7 +57,7 @@ class RemoteHost : public Host_IF
 public:
     explicit RemoteHost() : Host_IF() { m_host = make_shared<RemoteHostA>(); }
 
-    void f() { m_host->f(); }
+    void f() override { m_host->f(); }
 
     void connectA() { m_host = make_shared<RemoteHostA>(); }
     void connectB() { m_host = make_shared<RemoteHostB>(); }

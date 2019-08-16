@@ -31,7 +31,7 @@ class D : public B
 {
 public:
     D() = default;
-    ~D() override {}
+    ~D() override = default;
 
     gsl::owner<D *> clone() const override
     {

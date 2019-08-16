@@ -40,20 +40,20 @@ using namespace std;
 class Shape_IF
 {
 public:
-    virtual ~Shape_IF(){};
+    virtual ~Shape_IF()= default;;
     virtual void draw() = 0;
 };
 
 class Circle : public Shape_IF
 {
 public:
-    void draw() { cout << "circle\n"; }
+    void draw() override { cout << "circle\n"; }
 };
 
 class Triangle : public Shape_IF
 {
 public:
-    void draw() { cout << "triangle\n"; }
+    void draw() override { cout << "triangle\n"; }
 };
 
 /* 1. This class does not have hard-coded shapes

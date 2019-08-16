@@ -84,7 +84,7 @@ const char *hexdump(const uint8_t *binbuf, size_t binbuflen)
     const uint8_t *ibuf = binbuf;
     const char *hexchar = "0123456789abcdef";
 
-    if (NULL == binbuf || 0 == binbuflen) {
+    if (nullptr == binbuf || 0 == binbuflen) {
         return "";
     }
 
@@ -170,7 +170,7 @@ int main(int argc, char **argv)
     char *last, *addr;
 
     // determine if ipv6 addess used:
-    if (strchr(ptr, ':') != NULL) {
+    if (strchr(ptr, ':') != nullptr) {
         protocol = AF_INET6;
     }
 

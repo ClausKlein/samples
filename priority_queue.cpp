@@ -48,7 +48,7 @@ int main()
     // A user-provided Compare can be supplied to change the ordering, e.g.
     // using std::greater<T> would cause the smallest element to appear as the
     // top().
-    std::priority_queue<int, std::vector<int>, std::greater<int>> q2;
+    std::priority_queue<int, std::vector<int>, std::greater<>> q2;
     // TODO: c++11 for (int n : {1, 8, 5, 6, 3, 4, 0, 9, 7, 2}) { q2.push(n); }
     fill_queue(q2);
     print_queue(q2);
