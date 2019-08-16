@@ -8,8 +8,9 @@
 #    include <ws2tcpip.h>
 #else
 #    include <arpa/inet.h> // inet_ntop, inet_pton
-#    include <err.h>       // errx
-#    include <netdb.h>     // getaddrinfo
+
+#    include <err.h>   // errx
+#    include <netdb.h> // getaddrinfo
 #endif
 
 #include <stdint.h> // uint8_t

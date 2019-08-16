@@ -6,6 +6,7 @@
 #include <boost/functional/hash.hpp>
 #include <boost/test/minimal.hpp>
 #include <boost/unordered_map.hpp>
+
 #include <complex>
 #include <iostream>
 #include <utility> // std::rel_ops;

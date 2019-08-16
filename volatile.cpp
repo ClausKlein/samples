@@ -2,6 +2,7 @@
 // http://www.drdobbs.com/cpp/volatile-the-multithreaded-programmers-b/184403766
 
 #include <boost/thread.hpp>
+
 #include <iostream>
 
 using namespace boost;

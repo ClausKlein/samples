@@ -1,7 +1,8 @@
+#include <unordered_map>
+
 #include <bitset>
 #include <functional> // hash()
 #include <string>
-#include <unordered_map>
 #include <vector>
 // FIXME #include <iomanipulator>    //hex
 #include <iostream>

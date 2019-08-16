@@ -11,8 +11,9 @@
 // then in derived classes return the derived type (use a covariant
 // return type). Example
 
+#include <gsl/gsl-lite.hpp>
+
 #include <cassert>
-#include <gsl/pointers>
 
 class B
 {

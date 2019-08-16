@@ -13,10 +13,16 @@ project(samples LANGUAGES C CXX)
 #---------------------------------------------------------------------------------------
 # Compiler config
 #---------------------------------------------------------------------------------------
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_CXX_FLAGS -Wpedantic)
+if(NOT UNIX)
+    set(CMAKE_CXX_STANDARD 17)
+    set(CMAKE_CXX_STANDARD_REQUIRED ON)
+    set(CMAKE_CXX_EXTENSIONS OFF)
+else()
+    set(CMAKE_CXX_FLAGS "-std=c++2a -Wpedantic")
+endif()
+
+find_package(gsl-lite REQUIRED)
+find_package(doctest REQUIRED)
 
 enable_testing()
 
@@ -27,8 +33,10 @@ set(c_sources
 )
 
 set(cxx_sources
+    at_test.cpp
     bitset.cpp
     byteorder.cpp
+    bounds_test.cpp
     chainOfResponsibility.cpp
     ClonableBase.cpp
     classOutput.cpp
@@ -89,8 +97,8 @@ set(cxx_sources
 foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
-    set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
-    # target_link_libraries(${program} ${EXTRA_LIBS})
+    target_link_libraries(${program} PRIVATE doctest::doctest gsl::gsl-lite)
+    ### set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
 

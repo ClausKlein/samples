@@ -369,7 +369,7 @@ void misra_14_2()
     for (dostuff(); a < 10; a++) {} // 14.2
     for (; i++ < 10;) {}            // 14.2
     for (; i < 10; dostuff()) {}    // TODO
-                                 // TODO check more variants
+                                    // TODO check more variants
 }
 
 struct
