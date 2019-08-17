@@ -1,14 +1,18 @@
 cmake_minimum_required(VERSION 3.13)
 
 ## use ccache if found
-find_program(CCACHE_EXECUTABLE "ccache" HINTS /usr/local/bin /opt/local/bin)
+find_program(CCACHE_EXECUTABLE ccache HINTS /usr/local/bin /opt/local/bin)
 if(CCACHE_EXECUTABLE AND NOT CMAKE_TOOLCHAIN_FILE)
     message(STATUS "use ccache")
     set(CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE_EXECUTABLE}" CACHE PATH "ccache" FORCE)
 endif()
 
 
-project(samples LANGUAGES C CXX)
+#============================
+project(samples LANGUAGES CXX)
+#============================
+
+set(CMAKE_MODULE_PATH $ENV{HOME}/cmake)
 
 #---------------------------------------------------------------------------------------
 # Compiler config
@@ -17,9 +21,26 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+option(USE_CPPCHECK "run cppcheck along with the compiler and report any problems" OFF)
+option(USE_CLANG_TIDY "run clang-tidy along with the compiler and report any problems" OFF)
+
+set(CMAKE_DEPFILE_FLAGS_CXX "-MMD" CACHE STRING "dependency flag" FORCE)
+#TODO set(CMAKE_DEPFILE_FLAGS_CXX "-MMD -MT <OBJECT> -MF <DEPFILE>" CACHE STRING "dependency flag" FORCE)
+option(CMAKE_CXX_DEPFILE_EXTENSION_REPLACE "name depend files as main.d instead of main.cpp.d" ON)
+option(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE "name object files as main.o instead of main.cpp.o" ON)
+option(CMAKE_DEPENDS_IN_PROJECT_ONLY "do not use system header files" ON)
+
+if(USE_CLANG_TIDY)
+    find_program(CMAKE_CXX_CLANG_TIDY clang-tidy HINTS $ENV{HOME}/bin /usr/local/bin /opt/local/bin)
+elseif(USE_CPPCHECK)
+    find_program(CMAKE_CXX_CPPCHECK cppcheck HINTS /usr/local/bin /opt/local/bin)
+endif()
+
+
 if(UNIX)
+    option(USE_LCOV "Use GNU Test Coverage framework" OFF)
     set(CMAKE_CXX_FLAGS "-std=c++17 -Wpedantic -Werrors -Wno-unknown-warning-option"
-        CACHE STRING "warings are errors!" FORCE)
+        CACHE STRING "We are pedantic: warnings are errors!" FORCE)
     find_library(PTHREAD_LIB pthread REQUIRED)
 endif()
 
@@ -27,14 +48,12 @@ endif()
 find_package(gsl-lite REQUIRED)
 find_package(doctest 2.3.4 REQUIRED)
 
+# Where to put all the RUNTIME targets when built.  This variable is used to
+# initialize the RUNTIME_OUTPUT_DIRECTORY property on all the targets.
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
+
 add_definitions(-DGSL_THROW_ON_CONTRACT_VIOLATION)
 enable_testing()
-
-set(c_sources
-    #XXX copy_stdio.c
-    #TODO misra-test.c
-    teststdio.c
-)
 
 set(cxx_sources
     at_test.cpp
@@ -107,9 +126,23 @@ foreach(source ${cxx_sources})
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
 
-foreach(source ${c_sources})
-    string(REGEX REPLACE "\.c$" "" program ${source})
-    add_executable(${program} ${program}.c)
-    add_test(NAME ${program} COMMAND ${program})
-endforeach()
+if(USE_LCOV)
+    set(CMAKE_BUILD_TYPE Coverage)
+endif()
+
+if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
+    include(CodeCoverage)
+    setup_target_for_coverage(${PROJECT_NAME}_coverage ${CMAKE_DEFAULT_STARTUP_PROJECT} coverage)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
+
+    setup_target_for_coverage(
+        lcov            # Name for custom target.
+        testFileAppend  # Name of the test driver executable that runs the tests.
+                        # NOTE! This should always have a ZERO as exit code
+                        # otherwise the coverage generation will not complete.
+        coverage        # Name of output directory.
+    )
+endif() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
+
+include(CMakePrintSystemInformation)
 
