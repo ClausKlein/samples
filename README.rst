@@ -117,8 +117,12 @@ References
  * https://github.com/martinmoene/gsl-lite
  * http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
  * https://www.kdab.com/clang-tidy-part-1-modernize-source-code-using-c11c14/
+ * https://clang.llvm.org/extra/clang-tidy/index.html
  * https://clang.llvm.org/docs/HowToSetupToolingForLLVM.html
  * https://clang.llvm.org/docs/SourceBasedCodeCoverage.html
+ * https://clang.llvm.org/docs/DiagnosticsReference.html
+ * https://clang.llvm.org/docs/MemorySanitizer.html
+ * https://clang-analyzer.llvm.org
  * http://ltp.sourceforge.net/coverage/lcov.php
 
 ___________________________________________________________

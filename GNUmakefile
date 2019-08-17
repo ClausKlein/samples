@@ -17,9 +17,9 @@ MAKEFLAGS+= --no-builtin-rules
 checkAllHeader?='$(CURDIR)/.*'
 
 # NOTE: to many errors with boost::test
-CHECKS:='-*,cppcoreguidelines-*'
+# CHECKS:='-*,cppcoreguidelines-*'
 ## CHECKS?='-*,portability-*,readability-*,-readability-braces-around-statements,-readability-implicit-bool-conversion,-readability-named-parameter'
-CHECKS?='-*,misc-*,boost-*,cert-*,misc-definitions-in-headers'
+CHECKS?='-*,misc-*,boost-*,cert-*,-misc-unused-parameters'
 
 PROJECT:=$(shell basename $$PWD)
 CXX:=$(shell which clang++)
@@ -41,6 +41,7 @@ test: all
 
 check: setup .configure compile_commands.json
 	run-clang-tidy.py -header-filter=$(checkAllHeader) -checks=$(CHECKS) | tee run-clang-tidy.log 2>&1
+	egrep '\b(warning|error):' run-clang-tidy.log | perl -pe 's/(^.*) (warning|error):/\2/' | sort -u
 
 
 .configure: CMakeLists.txt
