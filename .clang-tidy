@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,*,-hicpp-*,'
+Checks:          'clang-diagnostic-*,clang-analyzer-*,*,-abseil-*,-llvm-*,-hicpp-*,-google-*,-zircon-*'
 WarningsAsErrors: ''
 HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: false

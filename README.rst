@@ -123,6 +123,8 @@ References
  * https://clang.llvm.org/docs/DiagnosticsReference.html
  * https://clang.llvm.org/docs/MemorySanitizer.html
  * https://clang-analyzer.llvm.org
+ * http://llvm.org/docs/CodingStandards.html#do-not-use-static-constructors
+ * http://llvm.org/docs/HowToSetUpLLVMStyleRTTI.html
  * http://ltp.sourceforge.net/coverage/lcov.php
 
 ___________________________________________________________
