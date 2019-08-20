@@ -8,9 +8,9 @@ if(CCACHE_EXECUTABLE AND NOT CMAKE_TOOLCHAIN_FILE)
 endif()
 
 
-#============================
+#=============================
 project(samples LANGUAGES CXX)
-#============================
+#=============================
 
 set(CMAKE_MODULE_PATH $ENV{HOME}/cmake)
 
@@ -21,6 +21,21 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+option(COMPILER_WARNINGS_ARE_ERRORS "To be pedantic! ;-)" ON)
+if(COMPILER_WARNINGS_ARE_ERRORS)
+  if(MSVC)
+    # warning level 4 and all warnings as errors
+    add_compile_options(/W4 /WX)
+  else()
+    # lots of warnings and all warnings as errors
+    add_compile_options(-Wall -Wextra -Wpedantic -Werror
+      -Wno-unused-parameter
+      -Wno-unused-variable
+      -Wno-unknown-warning-option
+    )
+  endif()
+endif()
+
 option(USE_CPPCHECK "run cppcheck along with the compiler and report any problems" OFF)
 option(USE_CLANG_TIDY "run clang-tidy along with the compiler and report any problems" OFF)
 
@@ -29,6 +44,7 @@ set(CMAKE_DEPFILE_FLAGS_CXX "-MMD" CACHE STRING "dependency flag" FORCE)
 option(CMAKE_CXX_DEPFILE_EXTENSION_REPLACE "name depend files as main.d instead of main.cpp.d" ON)
 option(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE "name object files as main.o instead of main.cpp.o" ON)
 option(CMAKE_DEPENDS_IN_PROJECT_ONLY "do not use system header files" ON)
+
 
 if(USE_CLANG_TIDY)
     find_program(CMAKE_CXX_CLANG_TIDY clang-tidy HINTS $ENV{HOME}/bin /usr/local/bin /opt/local/bin)
@@ -39,8 +55,6 @@ endif()
 
 if(UNIX)
     option(USE_LCOV "Use GNU Test Coverage framework" OFF)
-    set(CMAKE_CXX_FLAGS "-std=c++17 -Wpedantic -Werrors -Wno-unknown-warning-option"
-        CACHE STRING "We are pedantic: warnings are errors!" FORCE)
     find_library(PTHREAD_LIB pthread REQUIRED)
 endif()
 
@@ -126,18 +140,17 @@ foreach(source ${cxx_sources})
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
 
+
+list(APPEND CMAKE_MODULE_PATH $ENV{HOME}/Workspace/cmake)
 if(USE_LCOV)
-    set(CMAKE_BUILD_TYPE Coverage)
+    set(CMAKE_BUILD_TYPE "Coverage" CACHE STRING "build for lcov" FORCE)
 endif()
 
 if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
     include(CodeCoverage)
-    setup_target_for_coverage(${PROJECT_NAME}_coverage ${CMAKE_DEFAULT_STARTUP_PROJECT} coverage)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
-
     setup_target_for_coverage(
         lcov            # Name for custom target.
-        testFileAppend  # Name of the test driver executable that runs the tests.
+        ctest           # Name of the test driver executable that runs the tests.
                         # NOTE! This should always have a ZERO as exit code
                         # otherwise the coverage generation will not complete.
         coverage        # Name of output directory.
@@ -145,4 +158,5 @@ if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 endif() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
 
 include(CMakePrintSystemInformation)
+message("CMAKE_CXX_LIBRARY_ARCHITECTURE ${CMAKE_CXX_LIBRARY_ARCHITECTURE}")
 

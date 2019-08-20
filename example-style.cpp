@@ -42,8 +42,8 @@ struct Foo
     int baz{0};
 };
 
-static void something(){};
-static void something_else(){};
+static void something() {}
+static void something_else() {}
 
 double foo(int x)
 {

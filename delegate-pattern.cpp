@@ -33,7 +33,6 @@ class Host_IF
 {
 public:
     virtual ~Host_IF() = default;
-    ;
     virtual void f() = 0;
 
 protected:

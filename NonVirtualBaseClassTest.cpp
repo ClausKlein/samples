@@ -23,7 +23,6 @@ class base
 {
 public:
     virtual ~base() = default;
-    ;
     // FIXME virtual void print() const = 0;
 };
 

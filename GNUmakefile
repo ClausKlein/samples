@@ -6,7 +6,7 @@
 # Disable the built-in implicit rules.
 MAKEFLAGS+= --no-builtin-rules
 
-.PHONY: setup all test install check format clean distclean
+.PHONY: setup all test lcov install check format clean distclean
 
 
 # see https://www.kdab.com/clang-tidy-part-1-modernize-source-code-using-c11c14/
@@ -17,16 +17,18 @@ MAKEFLAGS+= --no-builtin-rules
 checkAllHeader?='$(CURDIR)/.*'
 
 # NOTE: to many errors with boost::test
-# CHECKS:='-*,cppcoreguidelines-*'
+CHECKS:='-*,cppcoreguidelines-*'
 ## CHECKS?='-*,portability-*,readability-*,-readability-braces-around-statements,-readability-implicit-bool-conversion,-readability-named-parameter'
 CHECKS?='-*,misc-*,boost-*,cert-*,-misc-unused-parameters'
 
-PROJECT:=$(shell basename $$PWD)
+
+PROJECT_NAME:=$(shell basename $${PWD})
 CXX:=$(shell which clang++)
+#XXX BUILD_TYPE:=Coverage
 BUILD_TYPE?=Debug
 # GENERATOR:=Xcode
 GENERATOR?=Ninja
-BUILD_DIR:=../.build-$(PROJECT)-Debug
+BUILD_DIR:=../.build-$(PROJECT_NAME)-$(BUILD_TYPE)
 
 
 all: setup .configure
@@ -44,7 +46,9 @@ check: setup .configure compile_commands.json
 setup: $(BUILD_DIR) .clang-tidy compile_commands.json
 
 .configure: CMakeLists.txt
-	cd $(BUILD_DIR) && cmake -G $(GENERATOR) -Wdeprecated -Wdev -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_COMPILER=${CXX} $(CURDIR)
+	cd $(BUILD_DIR) && cmake -G $(GENERATOR) -Wdeprecated -Wdev \
+      -DUSE_LCOV=off -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) \
+      -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_COMPILER=${CXX} $(CURDIR)
 	touch $@
 
 compile_commands.json: .configure
@@ -57,6 +61,9 @@ $(BUILD_DIR): GNUmakefile
 format: .clang-format
 	find . -type f -name '*.h' -o -name '*.cpp' | xargs clang-format -style=file -i
 
+
+lcov: $(BUILD_DIR)
+	cmake --build $(BUILD_DIR) --target $@
 
 install: $(BUILD_DIR)
 	cmake --build $(BUILD_DIR) --target $@

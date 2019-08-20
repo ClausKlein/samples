@@ -16,7 +16,9 @@ union time_value
 {
     int64_t sec;
 
-#if defined(__LITTLE_ENDIAN__) || defined(__i386) || defined(_WIN32)
+#if (defined(__BYTE_ORDER__) &&                                                \
+     (__BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__)) ||                           \
+    defined(__LITTLE_ENDIAN__) || defined(__i386) || defined(_WIN32)
     // XXX #warning LittleEndian
     struct
     {
