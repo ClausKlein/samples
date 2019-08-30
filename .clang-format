@@ -44,12 +44,12 @@ PenaltyReturnTypeOnItsOwnLine: 60
 SpaceAfterTemplateKeyword: true
 #
 IncludeBlocks:   Regroup
-IncludeCategories: 
+IncludeCategories:
   - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
     Priority:        2
   - Regex: '^<(Poco|gsl|asio|doctest|zmqpp|boost|gtest|gmock|fmt|json|openssl)/'
     Priority:        3
-  - Regex:           '<[[:alnum:].]+>'
+  - Regex:           '<[[:alnum:]._]+>'
     Priority:        4
 # all other headers first!
   - Regex:           '.*'

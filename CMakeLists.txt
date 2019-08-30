@@ -105,10 +105,12 @@ set(cxx_sources
     NonVirtualBaseClassTest.cpp
     permissive.cpp
     point.cpp
+    Pimple.cpp
     PostInitialize.cpp
     priority_queue.cpp
     Pythagorean_triple.cpp
     result_of.cpp
+    Round.cpp
     set2.cpp
     sets.cpp
     SFINAE-cxx11.cpp

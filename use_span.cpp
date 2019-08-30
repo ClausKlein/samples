@@ -29,10 +29,10 @@ void f1a()
 // Use gsl::at() for access:
 void f2()
 {
-    int arr[COUNT];
+    size_t arr[COUNT];
     // TODO span<int, COUNT> av = arr; // C++20
-    span<int> av = arr;
-    for (int i = 0; i < av.size(); ++i) {
+    span<size_t> av = arr;
+    for (size_t i = 0; i < av.size(); ++i) {
         // FIXME at(arr, i) = i;
         av[i] = i;
     }
