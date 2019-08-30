@@ -32,7 +32,7 @@ void f2()
     size_t arr[COUNT];
     // TODO span<int, COUNT> av = arr; // C++20
     span<size_t> av = arr;
-    for (size_t i = 0; i < av.size(); ++i) {
+    for (size_t i = 0, len = av.size(); i < len; ++i) {
         // FIXME at(arr, i) = i;
         av[i] = i;
     }

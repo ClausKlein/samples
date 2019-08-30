@@ -3,9 +3,8 @@
 // and http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3462.html
 //
 
-#include <type_traits>
-
 #include <iostream>
+#include <type_traits>
 
 // warning: default template arguments for a function template are a C++11
 // extension

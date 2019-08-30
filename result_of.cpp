@@ -3,10 +3,9 @@
 
 // XXX #define BUGBUG
 
-#include <type_traits>
-
 #include <iostream>
 #include <string>
+#include <type_traits>
 #include <utility>
 
 struct eat
