@@ -3,32 +3,43 @@
 #include <array>
 #include <climits>
 #include <cmath>
-#include <iostream>
 #include <string>
-
-// NOTE: this require more than C++17!
-#if (__cplusplus > 201603L) && __cpp_lib_to_chars
-#    include <charconv>
-#    include <string_view>
-#    include <system_error>
-
-void test_to_chars()
-{
-    std::array<char, 10> str;
-    auto [p, ec] = std::to_chars(str.data(), str.data() + str.size(), 3.14,
-                                 std::chars_format::fixed);
-    if (ec == std::errc()) {
-        std::cout << std::string_view(str.data(), p - str.data());
-    }
-}
-#else
-void test_to_chars() {}
-#endif
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest/doctest.h>
 
-std::string csa_cast(const double &input)
+// NOTE: this require more than C++17!
+#if (__cplusplus >= 201703L) && __cpp_lib_to_chars
+#    include <charconv>
+#    include <iostream>
+#    include <string_view>
+#    include <system_error>
+
+// to_chars_result to_chars(char* first, char* last, double value, chars_format
+// fmt, int precision = 6);
+TEST_CASE("test_to_chars")
+{
+    std::array<char, 23> buff{{0}};
+    auto [p, ec] = std::to_chars(buff.data(), buff.data() + buff.size(), 3.14,
+                                 std::chars_format::fixed, 9);
+    if (ec == std::errc()) {
+        std::cout << std::string_view(buff.data(), p - buff.data());
+    }
+    CHECK_EQ("3.140000000", std::string_view(buff.data(), buff.size()));
+}
+#endif
+
+template <class T> std::string lexical_cast(T input)
+{
+    return boost::lexical_cast<std::string>(input);
+}
+
+template <> std::string lexical_cast(const double input)
+{
+    return boost::lexical_cast<std::string>(input);
+}
+
+std::string csa_cast(const double input)
 {
     if (std::abs(input) == 0.0) {
         return std::string("0.0"); // NOTE: no sign!
@@ -47,13 +58,10 @@ std::string csa_cast(const double &input)
 
 TEST_CASE("conversion to string")
 {
-#define lexical_cast boost::lexical_cast<std::string>
 
     std::array<char, 6> buf{{"hello"}};
     char *str = buf.data();
     const double eps = std::numeric_limits<double>::epsilon();
-
-    test_to_chars();
 
     // chars
     CHECK_EQ(buf.data(), lexical_cast(str));
