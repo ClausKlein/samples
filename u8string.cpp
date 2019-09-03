@@ -67,7 +67,8 @@ TEST_CASE("testUstring")
     // Initialization
     {
         // XXX char ca[] = u8"text";   // C++17: Ok. BUT not with c++10
-        // see http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0482r6.html
+        // see
+        // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0482r6.html
 
         int8_t c = u8'c'; // C++17: Ok.
 
@@ -118,23 +119,27 @@ TEST_CASE("testUstring")
 #endif
 }
 
-template<size_t Size_>
-class tustring : public static_string<Size_, char>
+template <size_t Size_> class tustring : public static_string<Size_, char>
 {
 public:
     tustring() = default;
 
-    tustring(const std::string &Tdata_) { std::copy(Tdata_.begin(), Tdata_.end(), std::back_inserter(*this)); }
+    tustring(const std::string &other)
+    {
+        // XXX std::copy(other.begin(), other.end(), std::back_inserter(*this));
+        this->assign(other.begin(), other.end());
+    }
 
     tustring &operator=(const std::string &other)
     {
-        std::copy(other.begin(), other.end(), std::back_inserter(*this));
+        this->assign(other.begin(), other.end());
         return (*this);
     }
 
     tustring &operator+=(const std::string &other)
     {
-        std::copy(other.begin(), other.end(), std::back_inserter(*this));
+        // XXX std::copy(other.begin(), other.end(), std::back_inserter(*this));
+        this->append(other.begin(), other.end());
         return (*this);
     }
 
@@ -182,6 +187,11 @@ TEST_CASE("static_string")
 
     CHECK_THROWS(test3.swap(test12));
     CHECK(test3 == "__");
+
+    CHECK_NOTHROW(test3 = "--");
+    CHECK_NOTHROW(test3 += '+');
+    CHECK(test3 != "__");
+    CHECK(test3 == "--+");
 
     CHECK_EQ(str12, boost::lexical_cast<std::string>(test12));
 }

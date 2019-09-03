@@ -40,7 +40,12 @@
 // passed as a parameter, without allocator awareness, and move-enabled
 // without runtime checks
 
-#include <experimental/propagate_const>
+#ifdef __has_include // Check if __has_include is present
+#    if __has_include(<experimental/propagate_const>)
+#        include <experimental/propagate_const>
+#        define HAS_PROPAGAGE_CONST
+#    endif
+#endif
 
 #include <iostream>
 #include <memory>
@@ -49,7 +54,12 @@
 class widget
 {
     class impl;
+
+#ifdef HAS_PROPAGAGE_CONST
     std::experimental::propagate_const<std::unique_ptr<impl>> pImpl;
+#else
+    std::unique_ptr<impl> pImpl;
+#endif
 
 public:
     /// public API that will be forwarded to the implementation

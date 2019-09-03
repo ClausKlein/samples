@@ -76,6 +76,7 @@ double foo(int x)
 
 } // namespace testing
 
+#if __cpp_lib_string_view
 int doSomething(const std::string_view &sv)
 {
     // Terminators never need 'something' done to them because ...
@@ -94,6 +95,7 @@ int doSomething(const std::string_view &sv)
     // ... some long code ....
     return 1;
 }
+#endif
 
 int main()
 {
