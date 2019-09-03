@@ -25,7 +25,8 @@ CHECKS?='-*,misc-*,boost-*,cert-*,-misc-unused-parameters'
 PROJECT_NAME:=$(shell basename $${PWD})
 CXX:=$(shell which clang++)
 #XXX BUILD_TYPE:=Coverage
-BUILD_TYPE?=Debug
+### BUILD_TYPE?=Debug
+BUILD_TYPE?=Release
 # GENERATOR:=Xcode
 GENERATOR?=Ninja
 BUILD_DIR:=../.build-$(PROJECT_NAME)-$(BUILD_TYPE)
@@ -59,7 +60,7 @@ $(BUILD_DIR): GNUmakefile
 
 
 format: .clang-format
-	find . -type f -name '*.h' -o -name '*.cpp' | xargs clang-format -style=file -i
+	find . -type f -name '*.h' -o -name '*.hpp' -o -name '*.cpp' | xargs clang-format -style=file -i
 
 
 lcov: $(BUILD_DIR)

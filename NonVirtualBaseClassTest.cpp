@@ -1,19 +1,7 @@
 // test.cpp : Defines the entry point for the console application.
-//
-/***
-g++-mp-4.6 -std=c++0x -Wall -Wextra -Wsign-compare -Wconversion -Wpointer-arith
--Wcomment -Wundef -Wold-style-cast -Weffc++     NonVirtualBaseClassTest.cpp -o
-NonVirtualBaseClassTest NonVirtualBaseClassTest.cpp:23:7: warning: base class
-'class base' has a non-virtual destructor [-Weffc++]
-NonVirtualBaseClassTest.cpp:23:7: warning: 'class c_a' has virtual functions
-and accessible non-virtual destructor [-Wnon-virtual-dtor]
-NonVirtualBaseClassTest.cpp:35:7: warning: base class 'class base' has a
-non-virtual destructor [-Weffc++] NonVirtualBaseClassTest.cpp:35:7: warning:
-'class c_b' has virtual functions and accessible non-virtual destructor
-[-Wnon-virtual-dtor]
-***/
 
 #include <cassert>
+#include <exception>
 #include <iostream>
 #include <map>
 
@@ -66,26 +54,28 @@ public:
 
     SUT() : id(""), m_base(nullptr)
     {
-        // XXX u.m_base = 0;
         cout << "SUT()" << endl;
     };
     SUT(const base *_b, int t, const string _id = "")
         : type(t), id(_id), m_base(_b)
     {
-        // XXX u.m_base = _b;
         cout << "SUT(base)" << endl;
     };
 
     const c_a &get_a() const
     {
         assert(type == t_a); // TODO assert
-        return *m_a;
+        if(type == t_a)
+            return *m_a;
+        throw(std::runtime_error("invallid type a"));
     }
 
     const c_b &get_b() const
     {
         assert(type == t_b); // TODO assert
-        return *m_b;
+        if(type == t_b)
+            return *m_b;
+        throw(std::runtime_error("invallid type b"));
     }
 
     const void *getbaseptr(const base *b) { return b; };

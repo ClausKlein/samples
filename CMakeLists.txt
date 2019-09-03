@@ -127,6 +127,7 @@ set(cxx_sources
     trim_example.cpp
     unordered_map.cpp
     unordered_set.cpp
+    u8string.cpp
     use_span.cpp
     vector.cpp
     vokable2.cpp
