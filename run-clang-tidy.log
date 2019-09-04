@@ -280,75 +280,21 @@ class Derived : public Base
 /home/klein_cl/Workspace/cpp/samples/timevalue.cpp:87:18: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
         if (test.sec == 1LL) {
                  ^
-/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:88:13: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-            BOOST_CHECK(test.ub.byte1 == 1);
-            ^
-/usr/include/boost/test/minimal.hpp:37:67: note: expanded from macro 'BOOST_CHECK'
-      : boost::minimal_test::report_error(#exp,__FILE__,__LINE__, BOOST_CURRENT_FUNCTION) )
-                                                                  ^
-/usr/include/boost/current_function.hpp:37:33: note: expanded from macro 'BOOST_CURRENT_FUNCTION'
-# define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
-                                ^
 /home/klein_cl/Workspace/cpp/samples/timevalue.cpp:88:30: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
             BOOST_CHECK(test.ub.byte1 == 1);
                              ^
-/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:89:13: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-            BOOST_CHECK(test.uw.word1 == 1);
-            ^
-/usr/include/boost/test/minimal.hpp:37:67: note: expanded from macro 'BOOST_CHECK'
-      : boost::minimal_test::report_error(#exp,__FILE__,__LINE__, BOOST_CURRENT_FUNCTION) )
-                                                                  ^
-/usr/include/boost/current_function.hpp:37:33: note: expanded from macro 'BOOST_CURRENT_FUNCTION'
-# define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
-                                ^
 /home/klein_cl/Workspace/cpp/samples/timevalue.cpp:89:30: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
             BOOST_CHECK(test.uw.word1 == 1);
                              ^
-/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:90:13: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-            BOOST_CHECK(test.ul.low == 1L);
-            ^
-/usr/include/boost/test/minimal.hpp:37:67: note: expanded from macro 'BOOST_CHECK'
-      : boost::minimal_test::report_error(#exp,__FILE__,__LINE__, BOOST_CURRENT_FUNCTION) )
-                                                                  ^
-/usr/include/boost/current_function.hpp:37:33: note: expanded from macro 'BOOST_CURRENT_FUNCTION'
-# define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
-                                ^
 /home/klein_cl/Workspace/cpp/samples/timevalue.cpp:90:30: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
             BOOST_CHECK(test.ul.low == 1L);
                              ^
-/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:93:9: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-        BOOST_CHECK(sec == test.sec);
-        ^
-/usr/include/boost/test/minimal.hpp:37:67: note: expanded from macro 'BOOST_CHECK'
-      : boost::minimal_test::report_error(#exp,__FILE__,__LINE__, BOOST_CURRENT_FUNCTION) )
-                                                                  ^
-/usr/include/boost/current_function.hpp:37:33: note: expanded from macro 'BOOST_CURRENT_FUNCTION'
-# define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
-                                ^
 /home/klein_cl/Workspace/cpp/samples/timevalue.cpp:93:33: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
         BOOST_CHECK(sec == test.sec);
-                                ^
-/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:95:9: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-        BOOST_CHECK(high == test.ul.high);
-        ^
-/usr/include/boost/test/minimal.hpp:37:67: note: expanded from macro 'BOOST_CHECK'
-      : boost::minimal_test::report_error(#exp,__FILE__,__LINE__, BOOST_CURRENT_FUNCTION) )
-                                                                  ^
-/usr/include/boost/current_function.hpp:37:33: note: expanded from macro 'BOOST_CURRENT_FUNCTION'
-# define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
                                 ^
 /home/klein_cl/Workspace/cpp/samples/timevalue.cpp:95:34: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
         BOOST_CHECK(high == test.ul.high);
                                  ^
-/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:96:9: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-        BOOST_CHECK(low == test.ul.low);
-        ^
-/usr/include/boost/test/minimal.hpp:37:67: note: expanded from macro 'BOOST_CHECK'
-      : boost::minimal_test::report_error(#exp,__FILE__,__LINE__, BOOST_CURRENT_FUNCTION) )
-                                                                  ^
-/usr/include/boost/current_function.hpp:37:33: note: expanded from macro 'BOOST_CURRENT_FUNCTION'
-# define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
-                                ^
 /home/klein_cl/Workspace/cpp/samples/timevalue.cpp:96:33: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
         BOOST_CHECK(low == test.ul.low);
                                 ^
@@ -416,6 +362,27 @@ class PhotoProcessor
 /home/klein_cl/Workspace/cpp/samples/immutableString.cpp:24:25: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
         return os.write(s.c_str(), s.size());
                         ^
+/home/klein_cl/Workspace/cpp/samples/sets.cpp:50:23: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
+    for (MyType *it = s; it < s + 5; it++) {
+                      ^
+/home/klein_cl/Workspace/cpp/samples/sets.cpp:50:31: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
+    for (MyType *it = s; it < s + 5; it++) {
+                              ^
+/home/klein_cl/Workspace/cpp/samples/sets.cpp:50:33: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
+    for (MyType *it = s; it < s + 5; it++) {
+                                ^
+/home/klein_cl/Workspace/cpp/samples/sets.cpp:50:40: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
+    for (MyType *it = s; it < s + 5; it++) {
+                                       ^
+/home/klein_cl/Workspace/cpp/samples/sets.cpp:53:29: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
+    std::set<MyType> second(s, s + 5); // pointers used as iterators
+                            ^
+/home/klein_cl/Workspace/cpp/samples/sets.cpp:53:32: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
+    std::set<MyType> second(s, s + 5); // pointers used as iterators
+                               ^
+/home/klein_cl/Workspace/cpp/samples/sets.cpp:53:34: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
+    std::set<MyType> second(s, s + 5); // pointers used as iterators
+                                 ^
 clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.* -checks=-*,cppcoreguidelines-* -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/vokable2.cpp
 clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.* -checks=-*,cppcoreguidelines-* -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/timevalue.cpp
 clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.* -checks=-*,cppcoreguidelines-* -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/test_iomanip.cpp
@@ -459,27 +426,6 @@ clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.* -checks=-*,c
 clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.* -checks=-*,cppcoreguidelines-* -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/nested-classes.cpp
 clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.* -checks=-*,cppcoreguidelines-* -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/unordered_map.cpp
 clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.* -checks=-*,cppcoreguidelines-* -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp
-/home/klein_cl/Workspace/cpp/samples/sets.cpp:50:23: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-    for (MyType *it = s; it < s + 5; it++) {
-                      ^
-/home/klein_cl/Workspace/cpp/samples/sets.cpp:50:31: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-    for (MyType *it = s; it < s + 5; it++) {
-                              ^
-/home/klein_cl/Workspace/cpp/samples/sets.cpp:50:33: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
-    for (MyType *it = s; it < s + 5; it++) {
-                                ^
-/home/klein_cl/Workspace/cpp/samples/sets.cpp:50:40: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
-    for (MyType *it = s; it < s + 5; it++) {
-                                       ^
-/home/klein_cl/Workspace/cpp/samples/sets.cpp:53:29: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-    std::set<MyType> second(s, s + 5); // pointers used as iterators
-                            ^
-/home/klein_cl/Workspace/cpp/samples/sets.cpp:53:32: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-    std::set<MyType> second(s, s + 5); // pointers used as iterators
-                               ^
-/home/klein_cl/Workspace/cpp/samples/sets.cpp:53:34: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
-    std::set<MyType> second(s, s + 5); // pointers used as iterators
-                                 ^
 /home/klein_cl/Workspace/cpp/samples/l1083.cpp:54:33: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
     Test::String S = argc > 1 ? argv[1] : help;
                                 ^
@@ -514,15 +460,15 @@ class D : public B
 class base
       ^
 /home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:55:5: warning: constructor does not initialize these fields: m_b, m_a [cppcoreguidelines-pro-type-member-init]
-    SUT() : id(""), m_base(nullptr)
+    SUT() : id(""), m_base(nullptr) { cout << "SUT()" << endl; };
     ^
-/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:59:5: warning: constructor does not initialize these fields: m_b, m_a [cppcoreguidelines-pro-type-member-init]
+/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:56:5: warning: constructor does not initialize these fields: m_b, m_a [cppcoreguidelines-pro-type-member-init]
     SUT(const base *_b, int t, const string _id = "")
     ^
-/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:69:21: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:66:21: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
             return *m_a;
                     ^
-/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:77:21: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:74:21: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
             return *m_b;
                     ^
 /home/klein_cl/Workspace/cpp/samples/clone.cpp:18:7: warning: class 'B' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
@@ -697,12 +643,12 @@ class D : public B
 /usr/include/boost/current_function.hpp:37:33: note: expanded from macro 'BOOST_CURRENT_FUNCTION'
 # define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
                                 ^
-/home/klein_cl/Workspace/cpp/samples/concept_check_extension.hpp:15:8: warning: class 'Hashable' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct Hashable
-       ^
-/home/klein_cl/Workspace/cpp/samples/concept_check_extension.hpp:28:8: warning: class 'Ostreamable' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct Ostreamable
-       ^
+/home/klein_cl/Workspace/cpp/samples/concept_check_extension.hpp:13:28: warning: class 'Hashable' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+template <class TT> struct Hashable
+                           ^
+/home/klein_cl/Workspace/cpp/samples/concept_check_extension.hpp:26:28: warning: class 'Ostreamable' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+template <class TT> struct Ostreamable
+                           ^
 /home/klein_cl/Workspace/cpp/samples/set2.cpp:131:5: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
     BOOST_CHECK(custset.empty());
     ^
@@ -793,15 +739,9 @@ struct Ostreamable
 /usr/include/boost/current_function.hpp:37:33: note: expanded from macro 'BOOST_CURRENT_FUNCTION'
 # define BOOST_CURRENT_FUNCTION __PRETTY_FUNCTION__
                                 ^
-/home/klein_cl/Workspace/cpp/samples/u8string.cpp:166:36: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-    CHECK_NOTHROW(test12.insert(0, str12, strlen(str12)));
-                                   ^
-/usr/local/include/doctest/doctest.h:2503:23: note: expanded from macro 'CHECK_NOTHROW'
-#define CHECK_NOTHROW DOCTEST_CHECK_NOTHROW
-                      ^
-/home/klein_cl/Workspace/cpp/samples/u8string.cpp:166:50: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
-    CHECK_NOTHROW(test12.insert(0, str12, strlen(str12)));
-                                                 ^
+/home/klein_cl/Workspace/cpp/samples/u8string.cpp:173:48: warning: do not implicitly decay an array into a pointer; consider using gsl::array_view or an explicit cast instead [cppcoreguidelines-pro-bounds-array-to-pointer-decay]
+    CHECK_NOTHROW(test12.insert(0, string_view(str12, 12)));
+                                               ^
 /usr/local/include/doctest/doctest.h:2503:23: note: expanded from macro 'CHECK_NOTHROW'
 #define CHECK_NOTHROW DOCTEST_CHECK_NOTHROW
                       ^

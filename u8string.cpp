@@ -1,4 +1,3 @@
-// Test that header file is self-contained.
 #include "boost/lexical_cast.hpp"
 
 #include <boost/beast/core/static_string.hpp>
@@ -126,7 +125,6 @@ public:
 
     tustring(const std::string &other)
     {
-        // XXX std::copy(other.begin(), other.end(), std::back_inserter(*this));
         this->assign(other.begin(), other.end());
     }
 
@@ -136,9 +134,9 @@ public:
         return (*this);
     }
 
+#if 0 // not needed! CK
     tustring &operator+=(const std::string &other)
     {
-        // XXX std::copy(other.begin(), other.end(), std::back_inserter(*this));
         this->append(other.begin(), other.end());
         return (*this);
     }
@@ -150,8 +148,9 @@ public:
     }
 
     bool operator==(const std::string &other) { return this->compare(other); }
+#endif
 
-    std::string to_string() { return this->substr(); }
+    std::string to_string() { return std::string(this->substr()); }
 };
 
 TEST_CASE("static_string")
@@ -165,15 +164,21 @@ TEST_CASE("static_string")
 
     std::string toLong{"Hallo du alter Trottel!"};
     CHECK_THROWS(ustring5 = toLong);
+    CHECK_NOTHROW(ustring5.assign(toLong.substr(9, 5)));
+    CHECK("alter" == ustring5);
 
     const char str12[] = {"Only 12 char"};
     tustring<12> test12;
-    CHECK_NOTHROW(test12.insert(0, str12, strlen(str12)));
+    CHECK(test12.empty());
+    CHECK_NOTHROW(test12.insert(0, string_view(str12, 12)));
     CHECK(test12 == str12);
+    CHECK(test12.capacity() == 12);
 
-    tustring<3> test3;
+    tustring<3> test3("123");
     CHECK_THROWS(test3.reserve(20));
-    CHECK(0 == test3.size());
+    CHECK(test3.capacity() == 3);
+    CHECK(3 == test3.size());
+    CHECK("123" == test3);
 
     CHECK_NOTHROW(test3.assign(3, ' '));
     CHECK(3 == test3.size());
@@ -182,16 +187,36 @@ TEST_CASE("static_string")
     CHECK_THROWS(test3.append(3, '-'));
 
     test3.clear();
+    CHECK(test3.empty());
     CHECK_NOTHROW(test3.append(2, '_'));
     CHECK(test3 == "__");
+    CHECK(test3.size() == 2);
 
     CHECK_THROWS(test3.swap(test12));
     CHECK(test3 == "__");
+    CHECK(test3.length() == 2);
 
     CHECK_NOTHROW(test3 = "--");
     CHECK_NOTHROW(test3 += '+');
+    CHECK(test3.length() == 3);
     CHECK(test3 != "__");
     CHECK(test3 == "--+");
 
     CHECK_EQ(str12, boost::lexical_cast<std::string>(test12));
+    CHECK_EQ(str12, test12.to_string());
+
+    // use std::literals::string_literals::operator""s
+    {
+#if __cplusplus > 201411L
+        using namespace std::string_literals; // C++14
+        std::string sl = "ab\0\0cd\xfe\xff"s; // sl contains "ab\0\0cd.."
+        CHECK(sl.size() == 8);
+
+        tustring<12> ss(sl);
+        CHECK(ss.size() == 8);
+        CHECK(ss.substr() == sl);
+        CHECK(ss.substr(0, 2) == "ab");
+        CHECK(ss.at(7) == '\xff');
+#endif
+    }
 }
