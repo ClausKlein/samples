@@ -216,7 +216,9 @@ TEST_CASE("static_string")
         CHECK(ss.size() == 8);
         CHECK(ss.substr() == sl);
         CHECK(ss.substr(0, 2) == "ab");
+        CHECK(ss.substr(2, 2) == "\0\0"s);
         CHECK(ss.at(7) == '\xff');
+        CHECK_EQ(sl, boost::lexical_cast<std::string>(sl));
 #endif
     }
 }
