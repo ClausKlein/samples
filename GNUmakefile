@@ -32,12 +32,6 @@ ifeq (NO${CROSS_COMPILE},NO)
     CC:=/opt/local/bin/clang
     CXX:=/opt/local/bin/clang++
 
-    # NOTE: Do not uses with DESTDIR! CMAKE_INSTALL_PREFIX?=/
-    # DESTDIR?=/tmp/staging/$(PROJECT_NAME)
-    # export DESTDIR
-    # CMAKE_STAGING_PREFIX?=/usr/local
-    # CMAKE_PREFIX_PATH?="${DESTDIR}${CMAKE_STAGING_PREFIX};/usr/local;/opt/local;/usr"
-
     CMAKE_INSTALL_PREFIX?=/usr/local
     export CMAKE_INSTALL_PREFIX
     CMAKE_STAGING_PREFIX?=/tmp/staging/$(PROJECT_NAME)$(CMAKE_INSTALL_PREFIX)
