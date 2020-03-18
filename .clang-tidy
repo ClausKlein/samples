@@ -1,17 +1,11 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,*,-abseil-*,-llvm-*,-hicpp-*,-google-*,-zircon-*'
+Checks:          '*,clang-diagnostic-*,clang-analyzer-*,-modernize-*,-abseil-*,+hicpp-*,-google-*,-zircon-*,-fuchsia-*'
 WarningsAsErrors: ''
 HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: false
-FormatStyle:     none
+FormatStyle:     file
 User:            clausklein
 CheckOptions:
-  - key:             abseil-string-find-startswith.AbseilStringsMatchHeader
-    value:           absl/strings/match.h
-  - key:             abseil-string-find-startswith.IncludeStyle
-    value:           llvm
-  - key:             abseil-string-find-startswith.StringLikeClasses
-    value:           '::std::basic_string'
   - key:             bugprone-argument-comment.StrictMode
     value:           '0'
   - key:             bugprone-assert-side-effect.AssertMacros
@@ -86,10 +80,6 @@ CheckOptions:
     value:           '0'
   - key:             cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor
     value:           '0'
-  - key:             fuchsia-header-anon-namespaces.HeaderFileExtensions
-    value:           ',h,hh,hpp,hxx'
-  - key:             fuchsia-restrict-system-includes.Includes
-    value:           '*'
   - key:             google-build-namespaces.HeaderFileExtensions
     value:           ',h,hh,hpp,hxx'
   - key:             google-global-names-in-headers.HeaderFileExtensions

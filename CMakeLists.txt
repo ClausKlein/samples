@@ -59,6 +59,7 @@ if(UNIX)
 endif()
 
 # see /usr/local/lib/cmake/gsl-lite/gsl-lite-targets.cmake
+find_package(boost_headers REQUIRED)
 find_package(gsl-lite REQUIRED)
 find_package(doctest 2.3.4 REQUIRED)
 
@@ -70,6 +71,7 @@ add_definitions(-DGSL_THROW_ON_CONTRACT_VIOLATION)
 enable_testing()
 
 set(cxx_sources
+    access_privates.cpp
     at_test.cpp
     bitset.cpp
     byteorder.cpp
@@ -77,8 +79,9 @@ set(cxx_sources
     chainOfResponsibility.cpp
     ClonableBase.cpp
     classOutput.cpp
+    callback.cpp
     clone.cpp
-    #BOOST needed! NonCopyable.cpp
+    NonCopyable.cpp
     DoNotSlice.cpp
     CloneShapes.cpp
     #!NO! collate.cpp
@@ -106,6 +109,8 @@ set(cxx_sources
     permissive.cpp
     point.cpp
     Pimple.cpp
+    #XXX no main() User.cpp
+    #XXX no main() PimplePattern.cpp
     PostInitialize.cpp
     priority_queue.cpp
     Pythagorean_triple.cpp
@@ -117,6 +122,7 @@ set(cxx_sources
     sorted_map.cpp
     sorted_set.cpp
     stripws.cpp
+    stream_operators.cpp
     test_filbuf.cpp
     #TODO needs data.txt test_gcount.cpp
     test_iomanip.cpp
@@ -138,7 +144,7 @@ foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
     target_link_libraries(${program}
-        PRIVATE doctest::doctest gsl::gsl-lite ${PTHREAD_LIB})
+        PRIVATE doctest::doctest gsl::gsl-lite Boost::headers ${PTHREAD_LIB})
     set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
     add_test(NAME ${program} COMMAND ${program})
 endforeach()

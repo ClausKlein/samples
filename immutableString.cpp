@@ -17,6 +17,8 @@ template <std::size_t N> struct immutable_string
     constexpr auto end() const { return begin() + size(); }
     constexpr std::size_t size() const { return N; }
     constexpr ref c_str() const { return s; }
+
+private:
     ref s;
 
     friend std::ostream &operator<<(std::ostream &os, immutable_string s)

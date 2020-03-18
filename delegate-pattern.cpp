@@ -35,8 +35,7 @@ public:
     virtual ~Host_IF() = default;
     virtual void f() = 0;
 
-protected:
-    Host_IF *my_base;
+    // XXX protected: Host_IF *my_base;
 };
 
 class RemoteHostA : public Host_IF

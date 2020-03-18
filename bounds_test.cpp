@@ -51,9 +51,9 @@ TEST_CASE("bad example: using memcpy() or memcmp()")
     // it would benefit the developer to avoid using these functions altogether.
     // TODO: memset(i, 1, sizeof(i)); // XXX
 
-    memset(i, 1, std::size(i)); // BAD, note: min c++17 needed!
-    memcpy(j, i, 3);            // BAD
-    if (memcmp(i, j, 3)) {}     // BAD seems equal ...
+    // BAD memset(i, 1, std::size(i)); // BAD, note: min c++17 needed!
+    memcpy(j, i, 3);        // BAD
+    if (memcmp(i, j, 3)) {} // BAD seems equal ...
 
     // XXX NOTE: this would fail! CK
     // XXX CHECK(std::equal(std::begin(i), std::end(i), std::begin(j)));
