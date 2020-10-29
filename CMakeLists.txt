@@ -17,7 +17,7 @@ set(CMAKE_MODULE_PATH $ENV{HOME}/cmake)
 #---------------------------------------------------------------------------------------
 # Compiler config
 #---------------------------------------------------------------------------------------
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -118,6 +118,7 @@ set(cxx_sources
     Round.cpp
     set2.cpp
     sets.cpp
+    slide.cpp
     SFINAE-cxx11.cpp
     sorted_map.cpp
     sorted_set.cpp
@@ -145,7 +146,7 @@ foreach(source ${cxx_sources})
     add_executable(${program} ${program}.cpp)
     target_link_libraries(${program}
         PRIVATE doctest::doctest gsl::gsl-lite Boost::headers ${PTHREAD_LIB})
-    set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
+    set_target_properties(${program} PROPERTIES CXX_STANDARD 20)
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
 

@@ -29,8 +29,8 @@ CHECKS?='-*,misc-*,boost-*,cert-*,-misc-unused-*,-cert-err58-cpp'
 
 # prevent hard config of find_package(asio 1.14.1 CONFIG CMAKE_FIND_ROOT_PATH_BOTH)
 ifeq (NO${CROSS_COMPILE},NO)
-    CC:=/opt/local/bin/clang
-    CXX:=/opt/local/bin/clang++
+    # CC:=/usr/local/bin/clang
+    # CXX:=/usr/local/bin/clang++
 
     CMAKE_INSTALL_PREFIX?=/usr/local
     export CMAKE_INSTALL_PREFIX
