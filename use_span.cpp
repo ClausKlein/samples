@@ -5,10 +5,12 @@
 
 #include <array> // C++11
 #include <iostream>
-#include <span> // C++20
+
+//XXX #include <span> // C++20
+#include <tcb/span.hpp>
 
 using gsl::at;
-using std::span;
+using tcb::span;
 
 constexpr size_t COUNT(7);
 
@@ -59,7 +61,7 @@ void usage(span<int> a)
 
     print(a);
     int n = a[0]; // OK
-    if (!n) {
+    if (n == 0) {
         return;
     }
 

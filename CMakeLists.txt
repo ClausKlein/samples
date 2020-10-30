@@ -120,7 +120,7 @@ set(cxx_sources
     Round.cpp
     set2.cpp
     sets.cpp
-    #c++20 slide.cpp
+    slide.cpp
     SFINAE-cxx11.cpp
     sorted_map.cpp
     sorted_set.cpp
@@ -137,7 +137,7 @@ set(cxx_sources
     unordered_map.cpp
     unordered_set.cpp
     u8string.cpp
-    #c++20 use_span.cpp
+    use_span.cpp
     vector.cpp
     vokable2.cpp
     #FIXME volatile.cpp

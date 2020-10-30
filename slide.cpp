@@ -2,11 +2,13 @@
 #include <array>
 #include <iostream>
 #include <iterator>
-#include <span>
 #include <string>
 
+//XXX #include <span>
+#include <tcb/span.hpp>
+
 // The example uses std::span to implement some algorithms on contiguous ranges.
-using std::span;
+using tcb::span;
 
 template <class T, std::size_t N>
 [[nodiscard]] constexpr auto slide(span<T, N> s, std::size_t offset,
