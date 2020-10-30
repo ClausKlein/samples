@@ -5,10 +5,12 @@
 
 #include <array> // C++11
 #include <iostream>
-#include <span> // C++20
+
+//XXX #include <span> // C++20
+#include <tcb/span.hpp>
 
 using gsl::at;
-using std::span;
+using tcb::span;
 
 constexpr size_t COUNT(7);
 
@@ -59,7 +61,7 @@ void usage(span<int> a)
 
     print(a);
     int n = a[0]; // OK
-    if (!n) {
+    if (n == 0) {
         return;
     }
 
@@ -86,9 +88,9 @@ int main(int argc, char *argv[])
 
     try {
         gsl::span<char *> args = {argv, ARGC};
-        auto portstr = gsl::at(args, 1);
-        char *endptr;
-        int port = std::strtol(portstr, &endptr, 10);
+        char *portstr = gsl::at(args, 1);
+        char *endptr = nullptr;
+        int port = static_cast<int>(std::strtol(portstr, &endptr, 10));
         if (*endptr != '\0') {
             std::cerr << "invalid argument: " << endptr
                       << " int value expected!" << std::endl;
@@ -98,7 +100,6 @@ int main(int argc, char *argv[])
         // XXX asio::io_context io_context;
         // XXX server s(io_context, port);
         // XXX io_context.run();
-
         std::array<int, COUNT> a{{1, 2, 3, 4, 5, port}};
         usage(a);
         print(span(a));

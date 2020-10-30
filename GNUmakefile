@@ -17,12 +17,12 @@ PROJECT_NAME:=$(shell basename $${PWD})
 # and https://github.com/llvm-mirror/clang-tools-extra/blob/master/clang-tidy/tool/run-clang-tidy.py
 #
 ### checkAllHeader:='include/spdlog/[acdlstv].*'
-checkAllHeader?='include/spdlog/[^f].*'
-checkAllHeader?='$(CURDIR)/.*'
+## checkAllHeader?='include/spdlog/[^f].*'
+checkAllHeader?='$(CURDIR)/.*\.h$$'
 
 # NOTE: there are many errors with boost::test, doctest, catch test framework! CK
 # CHECKS?='-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers'
-CHECKS?='-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
+CHECKS?='-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
 CHECKS?='-*,portability-*,readability-*,misc-*,-readability-magic-numbers'
 CHECKS?='-*,misc-*,boost-*,cert-*,-misc-unused-*,-cert-err58-cpp'
 
@@ -34,6 +34,7 @@ ifeq (NO${CROSS_COMPILE},NO)
 
     CMAKE_INSTALL_PREFIX?=/usr/local
     export CMAKE_INSTALL_PREFIX
+    CMAKE_STAGING_PREFIX:=$(CMAKE_INSTALL_PREFIX)
     CMAKE_STAGING_PREFIX?=/tmp/staging/$(PROJECT_NAME)$(CMAKE_INSTALL_PREFIX)
     CMAKE_PREFIX_PATH?="$(CMAKE_STAGING_PREFIX);$(CMAKE_INSTALL_PREFIX);/usr/local/opt/boost;/opt/local;/usr"
 else
@@ -86,8 +87,8 @@ setup: $(BUILD_DIR) .clang-tidy compile_commands.json
       -DUSE_LCOV=$(USE_LOCV) -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) \
       -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
       -DCMAKE_STAGING_PREFIX=$(CMAKE_STAGING_PREFIX) \
-      -DCMAKE_PROJECT_INCLUDE_BEFORE=${HOME}/cmake/before_project_setup.cmake \
-      -DCMAKE_PROJECT_INCLUDE=${HOME}/cmake/build_options.cmake \
+      -DCMAKE_PROJECT_INCLUDE_BEFORE=${HOME}/workspace/cmake/before_project_setup.cmake \
+      -DCMAKE_PROJECT_INCLUDE=${HOME}/workspace/cmake/build_options.cmake \
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_C_COMPILER=${CC} -DCMAKE_CXX_COMPILER=${CXX} $(CURDIR)
 	touch $@
 
