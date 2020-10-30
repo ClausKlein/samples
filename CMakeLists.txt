@@ -145,8 +145,10 @@ set(cxx_sources
 foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
-    #FIXME: only supported from gsl-lite! GSL_TERMINATE_ON_CONTRACT_VIOLATION
-    target_compile_definitions(${program} PRIVATE GSL_TERMINATE_ON_CONTRACT_VIOLATION)
+    #FIXME: only supported from gsl-lite! gsl_CONFIG_CONTRACT_VIOLATION_THROWS
+    target_compile_definitions(${program} PRIVATE
+        -Dgsl_CONFIG_CONTRACT_VIOLATION_THROWS
+    )
     target_link_libraries(${program}
         PRIVATE doctest::doctest gsl::gsl-lite-v1 Boost::headers ${PTHREAD_LIB})
     set_target_properties(${program} PROPERTIES CXX_STANDARD 20)

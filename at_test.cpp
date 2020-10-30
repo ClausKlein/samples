@@ -30,8 +30,6 @@ Install the project...
 -- Installing: /usr/local/lib/cmake/doctest/doctestTargets.cmake
 ***/
 
-//XXX namespace gsl = ::gsl_lite; // convenience alias
-
 using gsl::at;
 using gsl::span;
 
@@ -41,6 +39,8 @@ TEST_CASE("at(): Terminates access to non-existing gsl::span elements")
     span<int> a(arr);
 
     CHECK(a.size() == 4);
+    //NOTE: NO with gsl-lite! CK CHECK_THROWS_AS(a.at(4), const std::exception &);
+
     CHECK_THROWS_AS(at(a, 4), const std::exception &);
 }
 // FATAL ERROR: test case CRASHED: SIGABRT - Abort (abnormal termination) signal
