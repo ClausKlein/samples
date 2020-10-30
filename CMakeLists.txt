@@ -17,7 +17,7 @@ set(CMAKE_MODULE_PATH $ENV{HOME}/cmake)
 #---------------------------------------------------------------------------------------
 # Compiler config
 #---------------------------------------------------------------------------------------
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -61,7 +61,8 @@ endif()
 
 # see /usr/local/lib/cmake/gsl-lite/gsl-lite-targets.cmake
 find_package(gsl-lite 0.3.7 REQUIRED)
-find_package(boost_headers REQUIRED)
+#XXX find_package(boost_headers REQUIRED)
+find_package(Boost 1.67 REQUIRED COMPONENTS system)
 find_package(doctest 2.3.4 REQUIRED)
 #XXX find_package(Microsoft.GSL REQUIRED)
 
@@ -82,7 +83,7 @@ set(cxx_sources
     classOutput.cpp
     callback.cpp
     clone.cpp
-    NonCopyable.cpp
+    Noncopyable.cpp
     DoNotSlice.cpp
     CloneShapes.cpp
     #!NO! collate.cpp
@@ -119,7 +120,7 @@ set(cxx_sources
     Round.cpp
     set2.cpp
     sets.cpp
-    slide.cpp
+    #c++20 slide.cpp
     SFINAE-cxx11.cpp
     sorted_map.cpp
     sorted_set.cpp
@@ -136,7 +137,7 @@ set(cxx_sources
     unordered_map.cpp
     unordered_set.cpp
     u8string.cpp
-    use_span.cpp
+    #c++20 use_span.cpp
     vector.cpp
     vokable2.cpp
     #FIXME volatile.cpp
@@ -145,13 +146,14 @@ set(cxx_sources
 foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
+    target_include_directories(${program} PRIVATE SYSTEM ${Boost_INCLUDE_DIRS})
     #FIXME: only supported from gsl-lite! gsl_CONFIG_CONTRACT_VIOLATION_THROWS
     target_compile_definitions(${program} PRIVATE
         -Dgsl_CONFIG_CONTRACT_VIOLATION_THROWS
     )
     target_link_libraries(${program}
-        PRIVATE doctest::doctest gsl::gsl-lite-v1 Boost::headers ${PTHREAD_LIB})
-    set_target_properties(${program} PROPERTIES CXX_STANDARD 20)
+        PRIVATE doctest::doctest gsl::gsl-lite-v1 ${Boost_LIBRARIES} ${PTHREAD_LIB})
+    set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
 

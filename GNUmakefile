@@ -34,6 +34,7 @@ ifeq (NO${CROSS_COMPILE},NO)
 
     CMAKE_INSTALL_PREFIX?=/usr/local
     export CMAKE_INSTALL_PREFIX
+    CMAKE_STAGING_PREFIX:=$(CMAKE_INSTALL_PREFIX)
     CMAKE_STAGING_PREFIX?=/tmp/staging/$(PROJECT_NAME)$(CMAKE_INSTALL_PREFIX)
     CMAKE_PREFIX_PATH?="$(CMAKE_STAGING_PREFIX);$(CMAKE_INSTALL_PREFIX);/usr/local/opt/boost;/opt/local;/usr"
 else
@@ -86,8 +87,8 @@ setup: $(BUILD_DIR) .clang-tidy compile_commands.json
       -DUSE_LCOV=$(USE_LOCV) -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) \
       -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
       -DCMAKE_STAGING_PREFIX=$(CMAKE_STAGING_PREFIX) \
-      -DCMAKE_PROJECT_INCLUDE_BEFORE=${HOME}/cmake/before_project_setup.cmake \
-      -DCMAKE_PROJECT_INCLUDE=${HOME}/cmake/build_options.cmake \
+      -DCMAKE_PROJECT_INCLUDE_BEFORE=${HOME}/workspace/cmake/before_project_setup.cmake \
+      -DCMAKE_PROJECT_INCLUDE=${HOME}/workspace/cmake/build_options.cmake \
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_C_COMPILER=${CC} -DCMAKE_CXX_COMPILER=${CXX} $(CURDIR)
 	touch $@
 
