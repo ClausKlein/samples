@@ -31,6 +31,7 @@ if(COMPILER_WARNINGS_ARE_ERRORS)
     add_compile_options(-Wall -Wextra -Wpedantic -Werror
       -Wno-unused-parameter
       -Wno-unused-variable
+      -Wno-unused-result
       -Wno-unknown-warning-option
     )
   endif()
@@ -59,15 +60,15 @@ if(UNIX)
 endif()
 
 # see /usr/local/lib/cmake/gsl-lite/gsl-lite-targets.cmake
+find_package(gsl-lite 0.3.7 REQUIRED)
 find_package(boost_headers REQUIRED)
-find_package(gsl-lite REQUIRED)
 find_package(doctest 2.3.4 REQUIRED)
+#XXX find_package(Microsoft.GSL REQUIRED)
 
 # Where to put all the RUNTIME targets when built.  This variable is used to
 # initialize the RUNTIME_OUTPUT_DIRECTORY property on all the targets.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
-add_definitions(-DGSL_THROW_ON_CONTRACT_VIOLATION)
 enable_testing()
 
 set(cxx_sources
@@ -144,8 +145,10 @@ set(cxx_sources
 foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
+    #FIXME: only supported from gsl-lite! GSL_TERMINATE_ON_CONTRACT_VIOLATION
+    target_compile_definitions(${program} PRIVATE GSL_TERMINATE_ON_CONTRACT_VIOLATION)
     target_link_libraries(${program}
-        PRIVATE doctest::doctest gsl::gsl-lite Boost::headers ${PTHREAD_LIB})
+        PRIVATE doctest::doctest gsl::gsl-lite-v1 Boost::headers ${PTHREAD_LIB})
     set_target_properties(${program} PROPERTIES CXX_STANDARD 20)
     add_test(NAME ${program} COMMAND ${program})
 endforeach()

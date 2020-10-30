@@ -1,85 +1,109 @@
 // A span is a non-owning view over a contiguous sequence of objects, the
 // storage of which is owned by some other object.
 
-// TODO #include <span>  // C++20
-
 #include <gsl/gsl> // C++14
 
 #include <array> // C++11
 #include <iostream>
-using gsl::at;
-using gsl::span;
+#include <span> // C++20
 
-const size_t COUNT(7);
+using gsl::at;
+using std::span;
+
+constexpr size_t COUNT(7);
+
+template <class T, std::size_t N> void print(const span<T, N> &seq)
+{
+    for (const auto &elem : seq) {
+        std::cout << elem << ' ';
+    }
+    std::cout << '\n';
+}
 
 // Pointers should only refer to single objects!
 void use(int *ptr, int value) { *ptr = value; }
 
 // Use a gsl::span and range-for:
-void f1a()
+void f1()
 {
     int arr[COUNT];
-    // TODO span<int, COUNT> av = arr; // C++20
-    span<int> av = arr;
+    // TODO: span<int, COUNT> av = arr; // C++20 only
+    // FIXME gsl::span<int> av = arr;
+    span av{arr};
     int i = 0;
-    for (auto &e : av)
+    for (auto &e : av) {
         e = i++;
+    }
+    print(av);
 }
 
 // Use gsl::at() for access:
 void f2()
 {
     size_t arr[COUNT];
-    // TODO span<int, COUNT> av = arr; // C++20
-    span<size_t> av = arr;
-    for (size_t i = 0, len = av.size(); i < len; ++i) {
-        // FIXME at(arr, i) = i;
-        av[i] = i;
+    // XXX span<size_t, COUNT> av = arr; // C++20 only
+    gsl::span<size_t, COUNT> av = arr;
+    for (size_t i = av.size(); i > 0; --i) {
+        // FIXME: gsl::at(arr, i) = i;  // NOTE: terminates! CK
+        av[av.size() - i] = i;
     }
+    // XXX print(av);
 }
 
 // BETTER: use span in the function declaration
-void f(span<int> a)
+void usage(span<int> a)
 {
-    if (a.size() < 2)
+    if (a.size() < 2) {
         return;
+    }
 
+    print(a);
     int n = a[0]; // OK
-    if (!n)
+    if (!n) {
         return;
+    }
 
     span<int> q = a.subspan(1); // OK
-    f(q);
+    usage(q);
 
-    if (a.size() < 6)
+    if (a.size() < 6) {
         return;
+    }
 
-    a[4] = 1; // OK
-
+    a[4] = 1;            // OK
     a[a.size() - 1] = 2; // OK
-
-    use(a.data(), 3); // OK
+    use(a.data(), 3);    // OK
+    print(a);
 }
 
 int main(int argc, char *argv[])
 {
-    if (argc != 1) {
+    constexpr size_t ARGC(2);
+    if (argc != ARGC) {
         std::cerr << "Usage: " << *argv << " <port>\n";
-        return EXIT_FAILURE;
+        return 0;
     }
 
     try {
+        gsl::span<char *> args = {argv, ARGC};
+        auto portstr = gsl::at(args, 1);
+        char *endptr;
+        int port = std::strtol(portstr, &endptr, 10);
+        if (*endptr != '\0') {
+            std::cerr << "invalid argument: " << endptr
+                      << " int value expected!" << std::endl;
+            return EXIT_FAILURE;
+        }
+
         // XXX asio::io_context io_context;
-
-        gsl::span<char *> args = {argv, 1};
-        // FIXME auto port = gsl::at(args, 1); // BUG! <<<<<<<<<<<<<<<
-
-        // XXX server s(io_context, std::strtol(port, NULL, 10));
+        // XXX server s(io_context, port);
         // XXX io_context.run();
 
-        std::array<int, COUNT> a{{1, 2, 3, 4, 5, 6}};
-        f(a);
-        f1a();
+        std::array<int, COUNT> a{{1, 2, 3, 4, 5, port}};
+        usage(a);
+        print(span(a));
+
+        f1();
         f2();
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;

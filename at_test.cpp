@@ -1,23 +1,16 @@
 // A span is a non-owning view over a contiguous sequence of objects, the
 // storage of which is owned by some other object.
 
-#define GSL_THROW_ON_CONTRACT_VIOLATION 1
-#include <gsl/gsl-lite.hpp>
+#include <gsl-lite/gsl-lite.hpp>
 
 /***
 Install the project...
 -- Install configuration: "Debug"
--- Installing: /usr/local/lib/cmake/gsl-lite/gsl-lite-targets.cmake
--- Installing: /usr/local/lib/cmake/gsl-lite/gsl-lite-config.cmake
--- Installing: /usr/local/lib/cmake/gsl-lite/gsl-lite-config-version.cmake
--- Up-to-date: /usr/local/include
--- Installing: /usr/local/include/gsl
--- Installing: /usr/local/include/gsl/gsl
--- Installing: /usr/local/include/gsl/gsl-lite-vc6.hpp
--- Installing: /usr/local/include/gsl/gsl-lite.h
--- Installing: /usr/local/include/gsl/gsl-lite.hpp
--- Installing: /usr/local/include/gsl.h
--- Installing: /usr/local/include/gsl.hpp
+-- Up-to-date: /usr/local/lib/cmake/gsl-lite/gsl-lite-targets.cmake
+-- Up-to-date: /usr/local/lib/cmake/gsl-lite/gsl-lite-config.cmake
+-- Up-to-date: /usr/local/lib/cmake/gsl-lite/gsl-lite-config-version.cmake
+-- Up-to-date: /usr/local/include/gsl/gsl-lite.hpp
+-- Up-to-date: /usr/local/include/gsl-lite/gsl-lite.hpp
 ***/
 
 #include <array>
@@ -37,13 +30,10 @@ Install the project...
 -- Installing: /usr/local/lib/cmake/doctest/doctestTargets.cmake
 ***/
 
+//XXX namespace gsl = ::gsl_lite; // convenience alias
+
 using gsl::at;
 using gsl::span;
-
-#ifndef GSL_THROW_ON_CONTRACT_VIOLATION
-#    define GSL_THROW_ON_CONTRACT_VIOLATION 1
-#    warning missing GSL_THROW_ON_CONTRACT_VIOLATION defined!
-#endif
 
 TEST_CASE("at(): Terminates access to non-existing gsl::span elements")
 {

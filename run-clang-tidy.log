@@ -21,10 +21,18 @@ Enabled checks:
     cppcoreguidelines-special-member-functions
 
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/SFINAE-cxx11.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2916 warnings generated.
+Suppressed 2916 warnings (2912 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/immutableString.cpp
 /Users/clausklein/Workspace/cpp/samples/immutableString.cpp:17:49: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
     constexpr auto end() const { return begin() + size(); }
                                                 ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2931 warnings generated.
+Suppressed 2930 warnings (2926 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/l1083.cpp
 /Users/clausklein/Workspace/cpp/samples/l1083.cpp:54:33: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
     Test::String S = argc > 1 ? argv[1] : help;
@@ -35,30 +43,67 @@ clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,c
 /Users/clausklein/Workspace/cpp/samples/l1083.cpp:59:26: warning: narrowing conversion from 'double' to 'int' [cppcoreguidelines-narrowing-conversions]
     int err = argc > 1 ? argc : 0.0;
                          ^
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/use_span.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2947 warnings generated.
+Suppressed 2944 warnings (2940 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sorted_set.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2938 warnings generated.
+Suppressed 2938 warnings (2934 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/use_span.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+3049 warnings generated.
+Suppressed 3058 warnings (3045 in non-user code, 9 NOLINT, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/unordered_set.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2936 warnings generated.
+Suppressed 2936 warnings (2932 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/vokable2.cpp
 /Users/clausklein/Workspace/cpp/samples/vokable2.cpp:13:29: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
     VokMulMap vokabeln(f, f + 4);
                             ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2954 warnings generated.
+Suppressed 2953 warnings (2949 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sorted_map.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2948 warnings generated.
+Suppressed 2948 warnings (2944 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp
 /Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp:18:5: warning: initializing non-owner 'char *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
     char *buffer = new char[CHUNCK_SIZE];
     ^
+/Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp:18:5: warning: do not declare variables of type va_list; use variadic templates instead [cppcoreguidelines-pro-type-vararg]
 /Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp:39:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
     delete[] buffer;
     ^
 /Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp:18:5: note: variable declared here
     char *buffer = new char[CHUNCK_SIZE];
     ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+3089 warnings generated.
+Suppressed 3086 warnings (3082 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_iomanip.cpp
 /Users/clausklein/Workspace/cpp/samples/test_iomanip.cpp:18:12: warning: variable 'betrag' is not initialized [cppcoreguidelines-init-variables]
     double betrag;
            ^
                   = NAN
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+3091 warnings generated.
+Suppressed 3090 warnings (3086 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/unordered_map.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2975 warnings generated.
+Suppressed 2975 warnings (2971 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/timevalue.cpp
 /Users/clausklein/Workspace/cpp/samples/timevalue.cpp:70:14: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
         test.sec = i;
@@ -105,19 +150,62 @@ clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,c
 /Users/clausklein/Workspace/cpp/samples/timevalue.cpp:96:33: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
         BOOST_CHECK(low == test.ul.low);
                                 ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+8729 warnings generated.
+Suppressed 8714 warnings (8709 in non-user code, 5 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/chainOfResponsibility.cpp
 /Users/clausklein/Workspace/cpp/samples/chainOfResponsibility.cpp:22:7: warning: class 'PhotoProcessor' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class PhotoProcessor
       ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2923 warnings generated.
+Suppressed 2922 warnings (2918 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Pimple.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2942 warnings generated.
+Suppressed 2942 warnings (2938 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/slide.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2930 warnings generated.
+Suppressed 2930 warnings (2926 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sets.cpp
+/Users/clausklein/Workspace/cpp/samples/sets.cpp:50:33: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
+    for (MyType *it = s; it < s + 5; it++) {
+                                ^
+/Users/clausklein/Workspace/cpp/samples/sets.cpp:50:40: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
+    for (MyType *it = s; it < s + 5; it++) {
+                                       ^
+/Users/clausklein/Workspace/cpp/samples/sets.cpp:53:34: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
+    std::set<MyType> second(s, s + 5); // pointers used as iterators
+                                 ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2998 warnings generated.
+Suppressed 2995 warnings (2991 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/priority_queue.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2956 warnings generated.
+Suppressed 2956 warnings (2952 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/NonCopyable.cpp
 /Users/clausklein/Workspace/cpp/samples/NonCopyable.cpp:19:7: warning: class 'Noncopyable' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class Noncopyable
       ^
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/permissive.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Pimple.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/priority_queue.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2922 warnings generated.
+Suppressed 2921 warnings (2917 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/nested-classes.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/permissive.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2944 warnings generated.
+Suppressed 2944 warnings (2940 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp
 /Users/clausklein/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:10:7: warning: class 'base' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class base
@@ -134,63 +222,101 @@ class base
 /Users/clausklein/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:74:21: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
             return *m_b;
                     ^
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sets.cpp
-/Users/clausklein/Workspace/cpp/samples/sets.cpp:50:33: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
-    for (MyType *it = s; it < s + 5; it++) {
-                                ^
-/Users/clausklein/Workspace/cpp/samples/sets.cpp:50:40: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
-    for (MyType *it = s; it < s + 5; it++) {
-                                       ^
-/Users/clausklein/Workspace/cpp/samples/sets.cpp:53:34: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
-    std::set<MyType> second(s, s + 5); // pointers used as iterators
-                                 ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2954 warnings generated.
+Suppressed 2949 warnings (2945 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/testclock.cpp
 /Users/clausklein/Workspace/cpp/samples/testclock.cpp:36:27: warning: narrowing conversion from 'unsigned long' to 'double' [cppcoreguidelines-narrowing-conversions]
               << 1000.0 * (c_end - c_start) / CLOCKS_PER_SEC << " ms\n";
                           ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2929 warnings generated.
+Suppressed 2928 warnings (2924 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/InnerClassIdiom.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/bitset.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/hash.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2922 warnings generated.
+Suppressed 2922 warnings (2918 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/konto.cpp
 /Users/clausklein/Workspace/cpp/samples/konto.cpp:37:21: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
     KontoSet s(k, k + 3);
                     ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2940 warnings generated.
+Suppressed 2939 warnings (2935 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/bitset.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2925 warnings generated.
+Suppressed 2925 warnings (2921 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/hash.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2924 warnings generated.
+Suppressed 2924 warnings (2920 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/PostInitialize.cpp
 /Users/clausklein/Workspace/cpp/samples/PostInitialize.cpp:41:7: warning: class 'D' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class D : public B
       ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2931 warnings generated.
+Suppressed 2930 warnings (2926 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/point.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+11041 warnings generated.
+Suppressed 11041 warnings (11036 in non-user code, 5 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/example-style.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2941 warnings generated.
+Suppressed 2941 warnings (2937 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/map.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2953 warnings generated.
+Suppressed 2953 warnings (2949 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/factory_function.cpp
+/Users/clausklein/Workspace/cpp/samples/factory_function.cpp:8:7: warning: class 'B' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class B
+      ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+1912 warnings generated.
+Suppressed 1911 warnings (1911 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/DoNotSlice.cpp
 /Users/clausklein/Workspace/cpp/samples/DoNotSlice.cpp:67:7: warning: slicing object from type 'Manager' to 'Employee' discards 32 bytes of state [cppcoreguidelines-slicing]
     f(designer);
       ^
 /Users/clausklein/Workspace/cpp/samples/DoNotSlice.cpp:67:7: warning: slicing object from type 'Manager' to 'Employee' discards override 'print' [cppcoreguidelines-slicing]
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/example-style.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/map.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2924 warnings generated.
+Suppressed 2922 warnings (2918 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/set2.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/factory_function.cpp
-/Users/clausklein/Workspace/cpp/samples/factory_function.cpp:8:7: warning: class 'B' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class B
-      ^
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/result_of.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Pythagorean_triple.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:17:8: warning: class 'IShape' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct IShape
-       ^
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:29:8: warning: class 'CircleImpl' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct CircleImpl : IShape
-       ^
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:39:8: warning: class 'Circle' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct Circle final : CircleImpl
-       ^
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:51:8: warning: class 'BlueCircleImpl' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct BlueCircleImpl : CircleImpl
-       ^
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:61:8: warning: class 'BlueCircle' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct BlueCircle final : BlueCircleImpl
-       ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+9096 warnings generated.
+Suppressed 9096 warnings (9090 in non-user code, 6 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/EreaseRemoveIdiom.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2940 warnings generated.
+Suppressed 2940 warnings (2936 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/result_of.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2916 warnings generated.
+Suppressed 2916 warnings (2912 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/vector.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2950 warnings generated.
+Suppressed 2950 warnings (2946 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/command-pattern.cpp
 /Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:39:7: warning: class 'Command' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class Command
@@ -276,11 +402,55 @@ class Command
 /Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:157:5: note: variable declared here
     auto *control = new RemoteControl;
     ^
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/vector.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2953 warnings generated.
+Suppressed 2934 warnings (2930 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/callback.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/stream_operators.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2971 warnings generated.
+Suppressed 2971 warnings (2967 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Pythagorean_triple.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2916 warnings generated.
+Suppressed 2916 warnings (2912 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp
+/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:17:8: warning: class 'IShape' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct IShape
+       ^
+/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:29:8: warning: class 'CircleImpl' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct CircleImpl : IShape
+       ^
+/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:39:8: warning: class 'Circle' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct Circle final : CircleImpl
+       ^
+/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:51:8: warning: class 'BlueCircleImpl' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct BlueCircleImpl : CircleImpl
+       ^
+/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:61:8: warning: class 'BlueCircle' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct BlueCircle final : BlueCircleImpl
+       ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2924 warnings generated.
+Suppressed 2919 warnings (2915 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/ideone_nWFr9w.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+8447 warnings generated.
+Suppressed 8447 warnings (8443 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/stream_operators.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2984 warnings generated.
+Suppressed 2984 warnings (2980 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/classOutput.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2916 warnings generated.
+Suppressed 2916 warnings (2912 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp
 /Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp:40:7: warning: class 'Shape_IF' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class Shape_IF
@@ -297,33 +467,20 @@ class IDrawing
 /Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp:92:26: warning: initializing non-owner argument of type 'Shape_IF *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
             d->drawShape(new Circle); // TODO: memory leak! CK
                          ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2924 warnings generated.
+Suppressed 2919 warnings (2915 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/access_privates.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp
-/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:32:7: warning: class 'Host_IF' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class Host_IF
-      ^
-/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:70:5: warning: initializing non-owner 'RemoteHost *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *remote = new RemoteHost();
-    ^
-/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:80:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete remote;
-    ^
-/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:70:5: note: variable declared here
-    auto *remote = new RemoteHost();
-    ^
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp
-/Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp:33:7: warning: class 'Base' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class Base : public ClonableBase
-      ^
-/Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp:42:7: warning: class 'Derived' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class Derived : public Base
-      ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2916 warnings generated.
+Suppressed 2916 warnings (2912 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_filbuf.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/at_test.cpp
-/Users/clausklein/Workspace/cpp/samples/at_test.cpp:4:9: warning: macro 'GSL_THROW_ON_CONTRACT_VIOLATION' used to declare a constant; consider using a 'constexpr' constant [cppcoreguidelines-macro-usage]
-#define GSL_THROW_ON_CONTRACT_VIOLATION 1
-        ^
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Round.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+3085 warnings generated.
+Suppressed 3085 warnings (3081 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/byteorder.cpp
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:24:17: warning: variable 'v' is not initialized [cppcoreguidelines-init-variables]
     const void *v;
@@ -384,30 +541,15 @@ clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,c
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:134:5: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
     printf("   as ipv4 addr: inet_ntop(%010u): '%s'\n", ntohl(in_addr),
     ^
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:134:57: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
-    printf("   as ipv4 addr: inet_ntop(%010u): '%s'\n", ntohl(in_addr),
-                                                        ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/_endian.h:135:25: note: expanded from macro 'ntohl'
-#define ntohl(x)        __DARWIN_OSSwapInt32(x)
-                        ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libkern/_OSByteOrder.h:75:6: note: expanded from macro '__DARWIN_OSSwapInt32'
-    (__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt32(x) : _OSSwapInt32(x))
-     ^
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:136:5: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
     printf("bytes in memory: 0x%02x 0x%02x 0x%02x 0x%02x\t", temp.c[0],
     ^
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:138:5: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
     printf("'%c%c%c%c'\n", temp.c[0], temp.c[1], temp.c[2],
     ^
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:154:12: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
-    return ntohl(tmp.i);
-           ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/_endian.h:135:25: note: expanded from macro 'ntohl'
-#define ntohl(x)        __DARWIN_OSSwapInt32(x)
-                        ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libkern/_OSByteOrder.h:75:6: note: expanded from macro '__DARWIN_OSSwapInt32'
-    (__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt32(x) : _OSSwapInt32(x))
-     ^
+/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:167:5: warning: do not declare variables of type va_list; use variadic templates instead [cppcoreguidelines-pro-type-vararg]
+    char *ptr = argc > 1 ? argv[1] : str; // use 1. arg if given
+    ^
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:167:28: warning: do not use pointer arithmetic [cppcoreguidelines-pro-bounds-pointer-arithmetic]
     char *ptr = argc > 1 ? argv[1] : str; // use 1. arg if given
                            ^
@@ -415,6 +557,9 @@ clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,c
     int i;
         ^
           = 0
+/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:170:5: warning: do not declare variables of type va_list; use variadic templates instead [cppcoreguidelines-pro-type-vararg]
+    char *last, *addr;
+    ^
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:170:11: warning: variable 'last' is not initialized [cppcoreguidelines-init-variables]
     char *last, *addr;
           ^
@@ -423,15 +568,6 @@ clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,c
     char *last, *addr;
                  ^
                       = nullptr
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:192:35: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
-        const uint16_t sin_port = htons(port);
-                                  ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/_endian.h:133:25: note: expanded from macro 'htons'
-#define htons(x)        __DARWIN_OSSwapInt16(x)
-                        ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libkern/_OSByteOrder.h:72:19: note: expanded from macro '__DARWIN_OSSwapInt16'
-    ((__uint16_t)(__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt16(x) : _OSSwapInt16(x)))
-                  ^
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:193:21: warning: variable 'v' is not initialized [cppcoreguidelines-init-variables]
         const void *v;
                     ^
@@ -439,33 +575,6 @@ clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,c
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:196:9: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
         printf("sin_port(162)=0x%s\n",
         ^
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:199:24: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
-        assert(port == ntohs(sin_port));
-                       ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/_endian.h:132:25: note: expanded from macro 'ntohs'
-#define ntohs(x)        __DARWIN_OSSwapInt16(x)
-                        ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libkern/_OSByteOrder.h:72:19: note: expanded from macro '__DARWIN_OSSwapInt16'
-    ((__uint16_t)(__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt16(x) : _OSSwapInt16(x)))
-                  ^
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:201:19: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
-        buf[0] = (ntohs(sin_port) & 0xff00) >> 8; // high byte
-                  ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/_endian.h:132:25: note: expanded from macro 'ntohs'
-#define ntohs(x)        __DARWIN_OSSwapInt16(x)
-                        ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libkern/_OSByteOrder.h:72:19: note: expanded from macro '__DARWIN_OSSwapInt16'
-    ((__uint16_t)(__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt16(x) : _OSSwapInt16(x)))
-                  ^
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:202:19: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
-        buf[1] = (ntohs(sin_port) & 0x00ff) >> 0; //  low byte
-                  ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/sys/_endian.h:132:25: note: expanded from macro 'ntohs'
-#define ntohs(x)        __DARWIN_OSSwapInt16(x)
-                        ^
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include/libkern/_OSByteOrder.h:72:19: note: expanded from macro '__DARWIN_OSSwapInt16'
-    ((__uint16_t)(__builtin_constant_p(x) ? __DARWIN_OSSwapConstInt16(x) : _OSSwapInt16(x)))
-                  ^
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:207:9: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
         printf("sin_port(162)=0x%s\n", hexdump(buf, 2));
         ^
@@ -478,6 +587,74 @@ clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,c
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:225:9: warning: do not call c-style vararg functions [cppcoreguidelines-pro-type-vararg]
         printf("P%i: 0x%08x = %010u of (%s)\n", i + 1, temp.i, temp.i, addr);
         ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2278 warnings generated.
+Suppressed 2244 warnings (2244 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp
+/Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp:33:7: warning: class 'Base' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class Base : public ClonableBase
+      ^
+/Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp:42:7: warning: class 'Derived' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class Derived : public Base
+      ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+3046 warnings generated.
+Suppressed 3053 warnings (3040 in non-user code, 9 NOLINT, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Round.cpp
+/Users/clausklein/Workspace/cpp/samples/Round.cpp:63:5: warning: do not declare variables of type va_list; use variadic templates instead [cppcoreguidelines-pro-type-vararg]
+    char *str = buf.data();
+    ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+12556 warnings generated.
+Suppressed 12559 warnings (12551 in non-user code, 4 NOLINT, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp
+/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:32:7: warning: class 'Host_IF' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class Host_IF
+      ^
+/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:70:5: warning: initializing non-owner 'RemoteHost *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *remote = new RemoteHost();
+    ^
+/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:80:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete remote;
+    ^
+/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:70:5: note: variable declared here
+    auto *remote = new RemoteHost();
+    ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2940 warnings generated.
+Suppressed 2937 warnings (2933 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/at_test.cpp
+/Users/clausklein/Workspace/cpp/samples/at_test.cpp:4:9: warning: macro 'GSL_THROW_ON_CONTRACT_VIOLATION' used to declare a constant; consider using a 'constexpr' constant [cppcoreguidelines-macro-usage]
+#define GSL_THROW_ON_CONTRACT_VIOLATION 1
+        ^
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+5118 warnings generated.
+Suppressed 5130 warnings (5113 in non-user code, 13 NOLINT, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/friend-class.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+2916 warnings generated.
+Suppressed 2916 warnings (2912 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/clone.cpp
+/Users/clausklein/Workspace/cpp/samples/clone.cpp:18:7: warning: class 'B' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class B
+      ^
+/Users/clausklein/Workspace/cpp/samples/clone.cpp:30:7: warning: class 'D' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class D : public B
+      ^
+/Users/clausklein/Workspace/cpp/samples/clone.cpp:56:5: warning: initializing non-owner 'D *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto d2 = d1.clone();
+    ^
+/Users/clausklein/Workspace/cpp/samples/clone.cpp:56:5: note: type deduction did not result in an owner
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+3039 warnings generated.
+Suppressed 3045 warnings (3032 in non-user code, 9 NOLINT, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/bounds_test.cpp
 /Users/clausklein/Workspace/cpp/samples/bounds_test.cpp:19:5: warning: uninitialized record type: 'a' [cppcoreguidelines-pro-type-member-init]
     std::array<int, 10> a, b;
@@ -495,186 +672,22 @@ clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,c
     std::array<int, 10> a, b, c{}; // c is initialized to zero
     ^
                             {}
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/friend-class.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/clone.cpp
-/Users/clausklein/Workspace/cpp/samples/clone.cpp:18:7: warning: class 'B' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class B
-      ^
-/Users/clausklein/Workspace/cpp/samples/clone.cpp:30:7: warning: class 'D' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class D : public B
-      ^
-/Users/clausklein/Workspace/cpp/samples/clone.cpp:56:5: warning: initializing non-owner 'D *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto d2 = d1.clone();
-    ^
-/Users/clausklein/Workspace/cpp/samples/clone.cpp:56:5: note: type deduction did not result in an owner
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+4989 warnings generated.
+Suppressed 4989 warnings (4981 in non-user code, 4 NOLINT, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/trim_example.cpp
-clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/u8string.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+10522 warnings generated.
+Suppressed 10522 warnings (10518 in non-user code, 4 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/stripws.cpp
-2856 warnings generated.
-Suppressed 2856 warnings (2852 in non-user code, 4 with check filters).
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+10614 warnings generated.
+Suppressed 10614 warnings (10610 in non-user code, 4 with check filters).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2871 warnings generated.
-Suppressed 2870 warnings (2866 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2887 warnings generated.
-Suppressed 2884 warnings (2880 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2990 warnings generated.
-Suppressed 2999 warnings (2986 in non-user code, 9 NOLINT, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2879 warnings generated.
-Suppressed 2879 warnings (2875 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2880 warnings generated.
-Suppressed 2880 warnings (2876 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2894 warnings generated.
-Suppressed 2893 warnings (2889 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2889 warnings generated.
-Suppressed 2889 warnings (2885 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-3024 warnings generated.
-Suppressed 3022 warnings (3018 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-3029 warnings generated.
-Suppressed 3028 warnings (3024 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2919 warnings generated.
-Suppressed 2919 warnings (2915 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-7895 warnings generated.
-Suppressed 7880 warnings (7875 in non-user code, 5 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2863 warnings generated.
-Suppressed 2862 warnings (2858 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2871 warnings generated.
-Suppressed 2871 warnings (2867 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2862 warnings generated.
-Suppressed 2861 warnings (2857 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2884 warnings generated.
-Suppressed 2884 warnings (2880 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2883 warnings generated.
-Suppressed 2883 warnings (2879 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2897 warnings generated.
-Suppressed 2897 warnings (2893 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2894 warnings generated.
-Suppressed 2889 warnings (2885 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2942 warnings generated.
-Suppressed 2939 warnings (2935 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2870 warnings generated.
-Suppressed 2869 warnings (2865 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2862 warnings generated.
-Suppressed 2862 warnings (2858 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2866 warnings generated.
-Suppressed 2866 warnings (2862 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2865 warnings generated.
-Suppressed 2865 warnings (2861 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2881 warnings generated.
-Suppressed 2880 warnings (2876 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2871 warnings generated.
-Suppressed 2870 warnings (2866 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-10206 warnings generated.
-Suppressed 10206 warnings (10201 in non-user code, 5 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2864 warnings generated.
-Suppressed 2862 warnings (2858 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2882 warnings generated.
-Suppressed 2882 warnings (2878 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2894 warnings generated.
-Suppressed 2894 warnings (2890 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-8261 warnings generated.
-Suppressed 8261 warnings (8256 in non-user code, 5 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-1917 warnings generated.
-Suppressed 1916 warnings (1916 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2856 warnings generated.
-Suppressed 2856 warnings (2852 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2856 warnings generated.
-Suppressed 2856 warnings (2852 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2864 warnings generated.
-Suppressed 2859 warnings (2855 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2881 warnings generated.
-Suppressed 2881 warnings (2877 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2893 warnings generated.
-Suppressed 2874 warnings (2870 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2890 warnings generated.
-Suppressed 2890 warnings (2886 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2912 warnings generated.
-Suppressed 2912 warnings (2908 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2924 warnings generated.
-Suppressed 2924 warnings (2920 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-8379 warnings generated.
-Suppressed 8379 warnings (8375 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2856 warnings generated.
-Suppressed 2856 warnings (2852 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2864 warnings generated.
-Suppressed 2859 warnings (2855 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2856 warnings generated.
-Suppressed 2856 warnings (2852 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2880 warnings generated.
-Suppressed 2877 warnings (2873 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2987 warnings generated.
-Suppressed 2994 warnings (2981 in non-user code, 9 NOLINT, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-3021 warnings generated.
-Suppressed 3021 warnings (3017 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-5013 warnings generated.
-Suppressed 5025 warnings (5008 in non-user code, 13 NOLINT, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-12445 warnings generated.
-Suppressed 12449 warnings (12441 in non-user code, 4 NOLINT, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2285 warnings generated.
-Suppressed 2248 warnings (2248 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-4884 warnings generated.
-Suppressed 4884 warnings (4876 in non-user code, 4 NOLINT, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2856 warnings generated.
-Suppressed 2856 warnings (2852 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-2980 warnings generated.
-Suppressed 2986 warnings (2973 in non-user code, 9 NOLINT, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-10457 warnings generated.
-Suppressed 10457 warnings (10453 in non-user code, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-12511 warnings generated.
-Suppressed 12515 warnings (12507 in non-user code, 4 NOLINT, 4 with check filters).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-10548 warnings generated.
-Suppressed 10548 warnings (10544 in non-user code, 4 with check filters).
+clang-tidy -header-filter=include/spdlog/[^f].* -checks=-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/u8string.cpp
+warning: invalid configuration value '0' for option 'cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle'
+12624 warnings generated.
+Suppressed 12628 warnings (12620 in non-user code, 4 NOLINT, 4 with check filters).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
