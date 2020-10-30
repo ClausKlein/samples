@@ -17,12 +17,12 @@ PROJECT_NAME:=$(shell basename $${PWD})
 # and https://github.com/llvm-mirror/clang-tools-extra/blob/master/clang-tidy/tool/run-clang-tidy.py
 #
 ### checkAllHeader:='include/spdlog/[acdlstv].*'
-checkAllHeader?='include/spdlog/[^f].*'
-checkAllHeader?='$(CURDIR)/.*'
+## checkAllHeader?='include/spdlog/[^f].*'
+checkAllHeader?='$(CURDIR)/.*\.h$$'
 
 # NOTE: there are many errors with boost::test, doctest, catch test framework! CK
 # CHECKS?='-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers'
-CHECKS?='-*,cppcoreguidelines-*,cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
+CHECKS?='-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
 CHECKS?='-*,portability-*,readability-*,misc-*,-readability-magic-numbers'
 CHECKS?='-*,misc-*,boost-*,cert-*,-misc-unused-*,-cert-err58-cpp'
 

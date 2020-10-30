@@ -83,7 +83,7 @@ set(cxx_sources
     classOutput.cpp
     callback.cpp
     clone.cpp
-    Noncopyable.cpp
+    NonCopyable.cpp
     DoNotSlice.cpp
     CloneShapes.cpp
     #!NO! collate.cpp
@@ -146,7 +146,7 @@ set(cxx_sources
 foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
-    target_include_directories(${program} PRIVATE SYSTEM ${Boost_INCLUDE_DIRS})
+    target_include_directories(${program} PRIVATE SYSTEM ${Boost_INCLUDE_DIRS} .)
     #FIXME: only supported from gsl-lite! gsl_CONFIG_CONTRACT_VIOLATION_THROWS
     target_compile_definitions(${program} PRIVATE
         -Dgsl_CONFIG_CONTRACT_VIOLATION_THROWS
