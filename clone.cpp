@@ -21,7 +21,7 @@ public:
     B() = default;
     virtual ~B() = default;
 
-    virtual gsl::owner<B *> clone() const = 0;
+    [[nodiscard]] virtual gsl::owner<B *> clone() const = 0;
 
     B(const B &) = delete;
     B &operator=(const B &) = delete;
@@ -33,7 +33,7 @@ public:
     D() = default;
     ~D() override = default;
 
-    gsl::owner<D *> clone() const override
+    [[nodiscard]] gsl::owner<D *> clone() const override
     {
         return gsl::owner<D *>(new D()); // TODO this is not a clone! CK
     }

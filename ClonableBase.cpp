@@ -20,7 +20,7 @@ public:
 #ifdef SHOW_ERROR
     virtual std::unique_ptr<ClonableBase> clone() const = 0;
 #else
-    virtual gsl::owner<ClonableBase *> clone() const = 0;
+    [[nodiscard]] virtual gsl::owner<ClonableBase *> clone() const = 0;
 #endif
 
     ClonableBase(const ClonableBase &) = delete;
@@ -36,7 +36,7 @@ public:
     Base() = default;
     ~Base() override = default;
 
-    virtual int number() const { return 0; }
+    [[nodiscard]] virtual int number() const { return 0; }
 };
 
 class Derived : public Base
@@ -63,13 +63,13 @@ public:
     // ('unique_ptr<Derived>') than the function it overrides (which has
     // return type 'unique_ptr<ClonableBase>')
 #else
-    gsl::owner<Derived *> clone() const override
+    [[nodiscard]] gsl::owner<Derived *> clone() const override
     {
         return gsl::owner<Derived *>(new Derived(value));
     }
 #endif
 
-    int number() const override { return 1; }
+    [[nodiscard]] int number() const override { return 1; }
     std::string getValue() { return value; }
     void setValue(const std::string &v) { value = v; }
 

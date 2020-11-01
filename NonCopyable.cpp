@@ -38,7 +38,7 @@ protected:
 
 public:
     Employee(const std::string &name) : name(name) {}
-    const std::string &get_name() const { return name; }
+    [[nodiscard]] const std::string &get_name() const { return name; }
     friend std::ostream &operator<<(std::ostream &os, const Employee &e)
     {
         e.print(os);
@@ -64,7 +64,7 @@ public:
     Manager(const std::string &name, const Employee &assistant)
         : Employee(name), assistant(assistant)
     {}
-    const Employee &get_assistant() const { return assistant; }
+    [[nodiscard]] const Employee &get_assistant() const { return assistant; }
 };
 
 // If f() were declared as accepting an Employee, the program would be

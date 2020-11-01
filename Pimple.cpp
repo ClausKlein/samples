@@ -67,7 +67,7 @@ public:
     void draw();
 
     /// public API that implementation has to call
-    bool shown() const { return true; }
+    [[nodiscard]] bool shown() const { return true; }
 
     explicit widget(int);
     ~widget(); // defined in the implementation file, where impl is a complete

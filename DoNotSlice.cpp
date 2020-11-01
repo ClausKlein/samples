@@ -23,7 +23,7 @@ protected:
 
 public:
     Employee(std::string name) : name(std::move(name)) {}
-    const std::string &get_name() const { return name; }
+    [[nodiscard]] const std::string &get_name() const { return name; }
     friend std::ostream &operator<<(std::ostream &os, const Employee &e)
     {
         e.print(os);
@@ -47,7 +47,7 @@ public:
     Manager(const std::string &name, Employee assistant)
         : Employee(name), assistant(std::move(assistant))
     {}
-    const Employee &get_assistant() const { return assistant; }
+    [[nodiscard]] const Employee &get_assistant() const { return assistant; }
 };
 
 #ifndef FIXIT

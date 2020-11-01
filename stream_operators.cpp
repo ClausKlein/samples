@@ -13,7 +13,7 @@ public:
     // NOTE: not needed! CK void operator=(Paragraph const &rhs) { m_para =
     // rhs.m_para; }
 
-    std::string const &to_string() const { return m_para; }
+    [[nodiscard]] std::string const &to_string() const { return m_para; }
 
     bool operator==(Paragraph const &rhs) const { return m_para == rhs.m_para; }
     bool operator<(Paragraph const &rhs) const { return m_para < rhs.m_para; }

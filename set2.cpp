@@ -66,9 +66,9 @@ public:
         // XXX std::cout << BOOST_CURRENT_FUNCTION << *this << std::endl;
     }
 
-    inline std::string firstname() const { return firstName; }
-    inline std::string lastname() const { return lastName; }
-    inline size_t number() const { return no; }
+    [[nodiscard]] inline std::string firstname() const { return firstName; }
+    [[nodiscard]] inline std::string lastname() const { return lastName; }
+    [[nodiscard]] inline size_t number() const { return no; }
 
     friend std::ostream &operator<<(std::ostream &strm, const Customer &c)
     {

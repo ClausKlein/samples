@@ -20,7 +20,7 @@ class c_a : public base
 
 public:
     c_a(int _a) : a(_a){};
-    const int &getvalue() const { return a; };
+    [[nodiscard]] const int &getvalue() const { return a; };
     virtual void print() const { cout << a << endl; };
 };
 
@@ -30,7 +30,7 @@ class c_b : public base
 
 public:
     c_b(double _b) : b(_b){};
-    const double &getvalue() const { return b; };
+    [[nodiscard]] const double &getvalue() const { return b; };
     virtual void print() const { cout << b << endl; };
 };
 
@@ -59,7 +59,7 @@ public:
         cout << "SUT(base)" << endl;
     };
 
-    const c_a &get_a() const
+    [[nodiscard]] const c_a &get_a() const
     {
         assert(type == t_a); // TODO assert
         if (type == t_a)
@@ -67,7 +67,7 @@ public:
         throw(std::runtime_error("invallid type a"));
     }
 
-    const c_b &get_b() const
+    [[nodiscard]] const c_b &get_b() const
     {
         assert(type == t_b); // TODO assert
         if (type == t_b)

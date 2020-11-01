@@ -13,10 +13,10 @@ template <std::size_t N> struct immutable_string
     using ref = const char (&)[N + 1];
     constexpr immutable_string(ref s) : s(s) {}
 
-    constexpr auto begin() const { return (const char *)s; }
-    constexpr auto end() const { return begin() + size(); }
-    constexpr std::size_t size() const { return N; }
-    constexpr ref c_str() const { return s; }
+    [[nodiscard]] constexpr auto begin() const { return (const char *)s; }
+    [[nodiscard]] constexpr auto end() const { return begin() + size(); }
+    [[nodiscard]] constexpr std::size_t size() const { return N; }
+    [[nodiscard]] constexpr ref c_str() const { return s; }
 
 private:
     ref s;

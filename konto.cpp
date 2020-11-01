@@ -9,8 +9,8 @@ class Konto
 {
 public:
     Konto(int n, double s = 0.0) : nummer(n), stand(s) {}
-    int gibNummer() const { return nummer; }
-    double gibStand() const { return stand; }
+    [[nodiscard]] int gibNummer() const { return nummer; }
+    [[nodiscard]] double gibStand() const { return stand; }
     void einzahlen(double betrag) { stand += betrag; }
     friend ostream &operator<<(ostream &os, const Konto &k)
     {
