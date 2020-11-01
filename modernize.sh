@@ -34,7 +34,6 @@ RULES=`clang-tidy --list-checks -checks='-*,modernize-use-*' | grep -vw Enabled`
 #   modernize-use-using
 
 : ${RULES:="
-modernize-deprecated-headers
 modernize-loop-convert
 modernize-make-shared
 modernize-make-unique
@@ -56,5 +55,5 @@ for rule in ${RULES}; do
     run-clang-tidy.py -header-filter='.*' -checks='-*,'${rule} -j 1 ${FIX}
     make
     make test
-    git commit -a -C ${rule}
+    git commit -a -m ${rule} --allow-empty
 done
