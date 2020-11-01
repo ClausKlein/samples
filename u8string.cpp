@@ -42,8 +42,8 @@ TEST_CASE("testUstring")
 
     // std::u8string        std::basic_string<char8_t>      (C++20)
     // std::u8string_view	std::basic_string_view<char8_t> (C++20)
-    typedef std::basic_string<uint8_t> u8string;
-    typedef std::basic_string_view<uint8_t> u8string_view;
+    using u8string = std::basic_string<uint8_t>;
+    using u8string_view = std::basic_string_view<uint8_t>;
 
     {
 #    if 0

@@ -117,7 +117,7 @@ auto test_main(int /*argc*/, char * /*argv*/[]) -> int
     // NO! BOOST_CONCEPT_ASSERT((DefaultConstructible<Customer>));
     BOOST_CONCEPT_ASSERT((Hashable<Customer>));
 
-    typedef std::pair<int, int> MyType;
+    using MyType = std::pair<int, int>;
     BOOST_CONCEPT_ASSERT((Hashable<MyType>));
     // TODO: BOOST_CONCEPT_ASSERT((Ostreamable< MyType >));
 

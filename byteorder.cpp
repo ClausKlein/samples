@@ -31,11 +31,11 @@ inline auto isLittleEndian() -> int
     }
 }
 
-typedef union
+using u = union
 {
     uint32_t i;
     uint8_t c[4];
-} u;
+};
 
 #ifndef __cplusplus
 /**

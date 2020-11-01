@@ -33,7 +33,7 @@ struct VglKNr : binary_function<Konto, Konto, bool>
 auto main() -> int
 {
     Konto k[3] = {Konto(10, 1.99), Konto(20, 2.98), Konto(30, 3.97)};
-    typedef set<Konto, VglKNr> KontoSet;
+    using KontoSet = set<Konto, VglKNr>;
     KontoSet s(k, k + 3);
     auto i = s.find(Konto(20));
     if (i != s.end()) {

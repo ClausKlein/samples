@@ -9,7 +9,7 @@
 template <typename Tag> struct result
 {
     /* export it ... */
-    typedef typename Tag::type type;
+    using type = typename Tag::type;
     static type ptr;
 };
 
@@ -40,7 +40,7 @@ private:
 
 struct Af
 {
-    typedef void (A::*type)();
+    using type = void (A::*)();
 };
 template struct rob<Af, &A::f>;
 

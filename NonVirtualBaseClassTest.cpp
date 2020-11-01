@@ -78,7 +78,7 @@ public:
     auto getbaseptr(const base *b) -> const void * { return b; };
 };
 
-typedef map<char, SUT *> sut_map_t;
+using sut_map_t = map<char, SUT *>;
 
 auto main() -> int
 {
