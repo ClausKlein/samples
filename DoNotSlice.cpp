@@ -24,7 +24,8 @@ protected:
 public:
     Employee(std::string name) : name(std::move(name)) {}
     [[nodiscard]] auto get_name() const -> const std::string & { return name; }
-    friend auto operator<<(std::ostream &os, const Employee &e) -> std::ostream &
+    friend auto operator<<(std::ostream &os, const Employee &e)
+        -> std::ostream &
     {
         e.print(os);
         return os;
@@ -47,7 +48,10 @@ public:
     Manager(const std::string &name, Employee assistant)
         : Employee(name), assistant(std::move(assistant))
     {}
-    [[nodiscard]] auto get_assistant() const -> const Employee & { return assistant; }
+    [[nodiscard]] auto get_assistant() const -> const Employee &
+    {
+        return assistant;
+    }
 };
 
 #ifndef FIXIT

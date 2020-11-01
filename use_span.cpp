@@ -40,7 +40,7 @@ void f1()
 {
     int arr[COUNT];
     // FIXME gsl::span<int> av = arr;
-    span av{arr};   // NOTE: static extent
+    span av{arr}; // NOTE: static extent
     int i = 0;
     for (auto &e : av) {
         e = i++;
@@ -53,7 +53,7 @@ void f2()
 {
     size_t arr[COUNT];
     // XXX gsl::span<size_t, COUNT> av = arr;
-    span av{arr};   // NOTE: static extent
+    span av{arr}; // NOTE: static extent
     for (size_t i = av.size(); i > 0; --i) {
         // XXX gsl::at(arr, i) = i;  // NOTE: this throws! CK
         // XXX av[av.size()] = i;  // NOTE: this throws! CK

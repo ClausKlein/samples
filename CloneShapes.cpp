@@ -72,11 +72,7 @@ struct BlueCircle final : BlueCircleImpl
 
 auto get_circle() -> BlueCircle { return BlueCircle{}; }
 
-using style = enum
-{
-    normal,
-    colored
-};
+using style = enum { normal, colored };
 auto circle_factory(style colored) -> std::unique_ptr<IShape>
 {
     if (colored) {

@@ -4,7 +4,7 @@
 #include <iterator>
 #include <string>
 
-//XXX #include <span>
+// XXX #include <span>
 #include <tcb/span.hpp>
 
 // The example uses std::span to implement some algorithms on contiguous ranges.

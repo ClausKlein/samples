@@ -25,8 +25,8 @@ using namespace std;
 
 // Helper function for printing containers.
 template <typename T>
-auto
-operator<<(std::ostream &stream, set<T> &c) -> BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream &))
+auto operator<<(std::ostream &stream, set<T> &c)
+    -> BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream &))
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
@@ -39,8 +39,8 @@ operator<<(std::ostream &stream, set<T> &c) -> BOOST_CONCEPT_REQUIRES(((boost::O
 }
 
 template <typename T>
-auto
-operator<<(std::ostream &stream, vector<T> &c) -> BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream &))
+auto operator<<(std::ostream &stream, vector<T> &c)
+    -> BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream &))
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
@@ -66,11 +66,18 @@ public:
         // XXX std::cout << BOOST_CURRENT_FUNCTION << *this << std::endl;
     }
 
-    [[nodiscard]] inline auto firstname() const -> std::string { return firstName; }
-    [[nodiscard]] inline auto lastname() const -> std::string { return lastName; }
+    [[nodiscard]] inline auto firstname() const -> std::string
+    {
+        return firstName;
+    }
+    [[nodiscard]] inline auto lastname() const -> std::string
+    {
+        return lastName;
+    }
     [[nodiscard]] inline auto number() const -> size_t { return no; }
 
-    friend auto operator<<(std::ostream &strm, const Customer &c) -> std::ostream &
+    friend auto operator<<(std::ostream &strm, const Customer &c)
+        -> std::ostream &
     {
         return strm << "[" << c.firstName << "," << c.lastName << "," << c.no
                     << "]";

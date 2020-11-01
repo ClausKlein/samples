@@ -21,7 +21,8 @@ template <std::size_t N> struct immutable_string
 private:
     ref s;
 
-    friend auto operator<<(std::ostream &os, immutable_string s) -> std::ostream &
+    friend auto operator<<(std::ostream &os, immutable_string s)
+        -> std::ostream &
     {
         return os.write(s.c_str(), s.size());
     }

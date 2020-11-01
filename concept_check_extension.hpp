@@ -45,13 +45,13 @@ using namespace boost;
 
 template <typename RanIter>
 auto // return value
-sort(RanIter, RanIter) -> BOOST_CONCEPT_REQUIRES(
-    ((Mutable_RandomAccessIterator<RanIter>))(
-        (LessThanComparable<
-            typename Mutable_RandomAccessIterator<RanIter>::value_type>))
+    sort(RanIter, RanIter) -> BOOST_CONCEPT_REQUIRES(
+        ((Mutable_RandomAccessIterator<RanIter>))(
+            (LessThanComparable<
+                typename Mutable_RandomAccessIterator<RanIter>::value_type>))
 
-        ,
-    (void))
+            ,
+        (void))
 {}
 } // namespace fake
 

@@ -39,7 +39,8 @@ protected:
 public:
     Employee(const std::string &name) : name(name) {}
     [[nodiscard]] auto get_name() const -> const std::string & { return name; }
-    friend auto operator<<(std::ostream &os, const Employee &e) -> std::ostream &
+    friend auto operator<<(std::ostream &os, const Employee &e)
+        -> std::ostream &
     {
         e.print(os);
         return os;
@@ -64,7 +65,10 @@ public:
     Manager(const std::string &name, const Employee &assistant)
         : Employee(name), assistant(assistant)
     {}
-    [[nodiscard]] auto get_assistant() const -> const Employee & { return assistant; }
+    [[nodiscard]] auto get_assistant() const -> const Employee &
+    {
+        return assistant;
+    }
 };
 
 // If f() were declared as accepting an Employee, the program would be
