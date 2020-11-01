@@ -34,11 +34,17 @@ RULES=`clang-tidy --list-checks -checks='-*,modernize-use-*' | grep -vw Enabled`
 #   modernize-use-using
 
 : ${RULES:="
-modernize-use-auto
+modernize-deprecated-headers
 modernize-loop-convert
+modernize-make-shared
+modernize-make-unique
 modernize-pass-by-value
 modernize-redundant-void-arg
-modernize-deprecated-headers
+modernize-use-auto
+modernize-use-bool-literals
+modernize-use-equals-default
+modernize-use-nullptr
+modernize-use-using
 "}
 
 : ${FIX:="-fix"}
@@ -47,8 +53,8 @@ set -u
 set -x
 
 for rule in ${RULES}; do
-    run-clang-tidy.py -header-filter='.*' -checks='-*,'${rule} -j 2 ${FIX}
+    run-clang-tidy.py -header-filter='.*' -checks='-*,'${rule} -j 1 ${FIX}
     make
-    #XXX make test
-    ## git commit -a
+    make test
+    git commit -a -C ${rule}
 done

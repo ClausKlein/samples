@@ -22,7 +22,7 @@ constexpr size_t COUNT(7);
 
 template <class T, std::size_t N> void print(const span<T, N> &seq)
 {
-    if (seq.extent != writable_bytes) {
+    if (seq.extent != dynamic_extent) {
         std::cout << "static extent!\n";
     }
 

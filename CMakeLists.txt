@@ -64,6 +64,8 @@ find_package(gsl-lite 0.3.7 REQUIRED)
 #XXX find_package(boost_headers REQUIRED)
 find_package(Boost 1.67 REQUIRED COMPONENTS system)
 find_package(doctest 2.3.4 REQUIRED)
+# /usr/local/lib/cmake/span/spanTargets.cmake
+find_package(span CONFIG REQUIRED)
 #XXX find_package(Microsoft.GSL REQUIRED)
 
 # Where to put all the RUNTIME targets when built.  This variable is used to
@@ -121,6 +123,7 @@ set(cxx_sources
     set2.cpp
     sets.cpp
     slide.cpp
+    substr.cpp
     SFINAE-cxx11.cpp
     sorted_map.cpp
     sorted_set.cpp
@@ -146,13 +149,13 @@ set(cxx_sources
 foreach(source ${cxx_sources})
     string(REGEX REPLACE "\.cpp$" "" program ${source})
     add_executable(${program} ${program}.cpp)
-    target_include_directories(${program} PRIVATE SYSTEM ${Boost_INCLUDE_DIRS} .)
+    target_include_directories(${program} PRIVATE SYSTEM ${Boost_INCLUDE_DIRS})
     #FIXME: only supported from gsl-lite! gsl_CONFIG_CONTRACT_VIOLATION_THROWS
     target_compile_definitions(${program} PRIVATE
         -Dgsl_CONFIG_CONTRACT_VIOLATION_THROWS
     )
     target_link_libraries(${program}
-        PRIVATE doctest::doctest gsl::gsl-lite-v1 ${Boost_LIBRARIES} ${PTHREAD_LIB})
+        PRIVATE doctest::doctest gsl::gsl-lite-v1 tcb::span ${Boost_LIBRARIES} ${PTHREAD_LIB})
     set_target_properties(${program} PROPERTIES CXX_STANDARD 17)
     add_test(NAME ${program} COMMAND ${program})
 endforeach()
