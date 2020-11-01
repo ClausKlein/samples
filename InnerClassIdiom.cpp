@@ -80,7 +80,7 @@ public:
     operator Bingable &() { return inner2; }
 };
 
-int main()
+auto main() -> int
 {
     Outer x("Ping Pong");
 

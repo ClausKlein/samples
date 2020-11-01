@@ -34,10 +34,10 @@ private:
     };
 
 public:
-    static nested f() { return nested{}; }
+    static auto f() -> nested { return nested{}; }
 };
 
-int main()
+auto main() -> int
 {
     // enclose::nested n1 = e.f(); // Error: 'nested' is private
 

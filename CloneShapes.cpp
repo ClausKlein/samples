@@ -17,13 +17,13 @@
 struct IShape
 {
     virtual void draw() = 0;
-    virtual std::unique_ptr<IShape> clone() = 0;
+    virtual auto clone() -> std::unique_ptr<IShape> = 0;
     virtual ~IShape() = default;
 
 protected:
     IShape() = default;
     IShape(const IShape &) = default;
-    IShape &operator=(const IShape &) = default;
+    auto operator=(const IShape &) -> IShape & = default;
 };
 
 struct CircleImpl : IShape
@@ -33,16 +33,16 @@ struct CircleImpl : IShape
 protected:
     CircleImpl() = default;
     CircleImpl(const CircleImpl &) = default;
-    CircleImpl &operator=(const CircleImpl &) = default;
+    auto operator=(const CircleImpl &) -> CircleImpl & = default;
 };
 
 struct Circle final : CircleImpl
 {
     Circle() = default;
     Circle(const Circle &) = default;
-    Circle &operator=(const Circle &) = default;
+    auto operator=(const Circle &) -> Circle & = default;
 
-    std::unique_ptr<IShape> clone() override
+    auto clone() -> std::unique_ptr<IShape> override
     {
         return std::make_unique<Circle>(*this);
     }
@@ -55,29 +55,29 @@ struct BlueCircleImpl : CircleImpl
 protected:
     BlueCircleImpl() = default;
     BlueCircleImpl(const BlueCircleImpl &) = default;
-    BlueCircleImpl &operator=(const BlueCircleImpl &) = default;
+    auto operator=(const BlueCircleImpl &) -> BlueCircleImpl & = default;
 };
 
 struct BlueCircle final : BlueCircleImpl
 {
     BlueCircle() = default;
     BlueCircle(const BlueCircle &) = default;
-    BlueCircle &operator=(const BlueCircle &) = default;
+    auto operator=(const BlueCircle &) -> BlueCircle & = default;
 
-    std::unique_ptr<IShape> clone() override
+    auto clone() -> std::unique_ptr<IShape> override
     {
         return std::make_unique<BlueCircle>(*this);
     }
 };
 
-BlueCircle get_circle() { return BlueCircle{}; }
+auto get_circle() -> BlueCircle { return BlueCircle{}; }
 
 typedef enum
 {
     normal,
     colored
 } style;
-std::unique_ptr<IShape> circle_factory(style colored)
+auto circle_factory(style colored) -> std::unique_ptr<IShape>
 {
     if (colored) {
         return std::make_unique<BlueCircle>();
@@ -86,7 +86,7 @@ std::unique_ptr<IShape> circle_factory(style colored)
     }
 }
 
-int main()
+auto main() -> int
 {
     std::unique_ptr<IShape> s = circle_factory(normal);
     auto s2 = s->clone();

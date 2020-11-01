@@ -18,7 +18,7 @@
 // most of this demo program is ansi c;
 // only one template is used for test
 
-inline int isLittleEndian()
+inline auto isLittleEndian() -> int
 {
     const int i = 1;
     const void *v;
@@ -56,7 +56,7 @@ uint32_t bswap32(uint32_t i)
  * usage: swap_endian<uint32_t>(42).
  * generic version of gcc __builtin_bswap32()
  **/
-template <typename T> T swap_endian(T u)
+template <typename T> auto swap_endian(T u) -> T
 {
     union
     {
@@ -74,7 +74,7 @@ template <typename T> T swap_endian(T u)
 }
 #endif
 
-const char *hexdump(const uint8_t *binbuf, size_t binbuflen)
+auto hexdump(const uint8_t *binbuf, size_t binbuflen) -> const char *
 {
     /* FIXME: this isn't thead-safe! */
     static char hexbuf[INET6_ADDRSTRLEN * 2 + 1];
@@ -144,7 +144,7 @@ static void _dump(u temp, int swap)
 }
 
 /// local wrapper to ntohl() to prevent casts
-static inline uint32_t _ntohl(uint8_t *p)
+static inline auto _ntohl(uint8_t *p) -> uint32_t
 {
     u tmp;
 
@@ -154,7 +154,7 @@ static inline uint32_t _ntohl(uint8_t *p)
     return ntohl(tmp.i);
 }
 
-int main(int argc, char **argv)
+auto main(int argc, char **argv) -> int
 {
     u temp;
 

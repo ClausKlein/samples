@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-int main()
+auto main() -> int
 {
     typedef multimap<string, string> VokMulMap;
     using V = VokMulMap::value_type;

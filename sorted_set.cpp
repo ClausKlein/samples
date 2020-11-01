@@ -10,7 +10,7 @@ struct MyStruct
     int32_t y;
 };
 
-bool operator<(const MyStruct &lhs, const MyStruct &rhs)
+auto operator<(const MyStruct &lhs, const MyStruct &rhs) -> bool
 {
     return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y < rhs.y));
 }
@@ -20,8 +20,8 @@ bool operator<(const MyStruct &lhs, const MyStruct &rhs)
 #ifdef USE_MYCOMP
 struct MyComp
 {
-    bool operator()(const MySpace::MyStruct &lhs,
-                    const MySpace::MyStruct &rhs) const
+    auto operator()(const MySpace::MyStruct &lhs,
+                    const MySpace::MyStruct &rhs) const -> bool
     {
         // XXX return (lhs.x < rhs.x) || ((lhs.x == rhs.x) && (lhs.y < rhs.y));
         return (lhs < rhs);
@@ -29,7 +29,7 @@ struct MyComp
 };
 #endif
 
-int main()
+auto main() -> int
 {
 
 #ifdef USE_MYCOMP

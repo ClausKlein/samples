@@ -35,9 +35,9 @@ try_inc(A a)
     return inc()(a);
 }
 
-not_incrementable try_inc(eat) { return not_incrementable(); }
+auto try_inc(eat) -> not_incrementable { return not_incrementable(); }
 
-int main()
+auto main() -> int
 {
     int result = try_inc(-1); // OK
 

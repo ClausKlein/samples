@@ -120,7 +120,7 @@ private:
     Hard to understand code, at least initially
 ***/
 
-int main()
+auto main() -> int
 {
     IDrawing drawer;
     drawer.draw("circle");

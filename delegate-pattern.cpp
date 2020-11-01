@@ -65,7 +65,7 @@ private:
     shared_ptr<Host_IF> m_host;
 };
 
-int main()
+auto main() -> int
 {
     auto *remote = new RemoteHost();
 

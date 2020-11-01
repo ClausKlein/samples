@@ -5,7 +5,7 @@
 #include <iterator>
 #include <vector> // the general-purpose vector container
 
-bool is_odd(int i) { return (i % 2) != 0; }
+auto is_odd(int i) -> bool { return (i % 2) != 0; }
 
 void print(const std::vector<int> &vec)
 {
@@ -22,7 +22,7 @@ void print(const std::vector<int> &vec)
     std::cout << std::endl;
 }
 
-int main()
+auto main() -> int
 {
     // initialises a vector that holds the numbers from 0-9.
     std::vector<int> v = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};

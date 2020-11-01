@@ -17,7 +17,7 @@
 using namespace std;
 // XXX using namespace boost;
 
-int main()
+auto main() -> int
 {
     cout << "* Trim Example *" << endl << endl;
 

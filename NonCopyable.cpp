@@ -38,8 +38,8 @@ protected:
 
 public:
     Employee(const std::string &name) : name(name) {}
-    [[nodiscard]] const std::string &get_name() const { return name; }
-    friend std::ostream &operator<<(std::ostream &os, const Employee &e)
+    [[nodiscard]] auto get_name() const -> const std::string & { return name; }
+    friend auto operator<<(std::ostream &os, const Employee &e) -> std::ostream &
     {
         e.print(os);
         return os;
@@ -64,14 +64,14 @@ public:
     Manager(const std::string &name, const Employee &assistant)
         : Employee(name), assistant(assistant)
     {}
-    [[nodiscard]] const Employee &get_assistant() const { return assistant; }
+    [[nodiscard]] auto get_assistant() const -> const Employee & { return assistant; }
 };
 
 // If f() were declared as accepting an Employee, the program would be
 // ill-formed because Employee cannot be copy-initialized.
 void f(const Employee &e) { std::cout << e; }
 
-int main()
+auto main() -> int
 {
     Employee coder("Joe Smith");
     Employee typist("Bill Jones");

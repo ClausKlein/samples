@@ -21,10 +21,10 @@ public:
     B() = default;
     virtual ~B() = default;
 
-    [[nodiscard]] virtual gsl::owner<B *> clone() const = 0;
+    [[nodiscard]] virtual auto clone() const -> gsl::owner<B *> = 0;
 
     B(const B &) = delete;
-    B &operator=(const B &) = delete;
+    auto operator=(const B &) -> B & = delete;
 };
 
 class D : public B
@@ -33,7 +33,7 @@ public:
     D() = default;
     ~D() override = default;
 
-    [[nodiscard]] gsl::owner<D *> clone() const override
+    [[nodiscard]] auto clone() const -> gsl::owner<D *> override
     {
         return gsl::owner<D *>(new D()); // TODO this is not a clone! CK
     }
@@ -50,7 +50,7 @@ public:
 // http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#SS-views
 // and https://github.com/Microsoft/GSL
 
-int main()
+auto main() -> int
 {
     D d1;
     auto d2 = d1.clone();

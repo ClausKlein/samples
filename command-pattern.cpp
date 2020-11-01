@@ -139,7 +139,7 @@ private:
 };
 
 // The client
-int main()
+auto main() -> int
 {
     // Receiver
     auto *light = new Light;

@@ -38,7 +38,7 @@ void Rectangle::morph(Square &s)
     height = s.side;
 }
 
-int main()
+auto main() -> int
 {
     Rectangle rec(5, 10);
     Square sq(5);

@@ -12,7 +12,7 @@
 static const int count = 30;
 static const int access = 10000000;
 
-int main()
+auto main() -> int
 {
 
 #ifdef READ_FROM_FILE

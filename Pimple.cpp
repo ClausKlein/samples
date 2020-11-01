@@ -67,7 +67,7 @@ public:
     void draw();
 
     /// public API that implementation has to call
-    [[nodiscard]] bool shown() const { return true; }
+    [[nodiscard]] auto shown() const -> bool { return true; }
 
     explicit widget(int);
     ~widget(); // defined in the implementation file, where impl is a complete
@@ -77,8 +77,8 @@ public:
                        // Undefined Behaviour (UB)!
 
     widget(const widget &) = delete;
-    widget &operator=(widget &&); // defined in the implementation file
-    widget &operator=(const widget &) = delete;
+    auto operator=(widget &&) -> widget &; // defined in the implementation file
+    auto operator=(const widget &) -> widget & = delete;
 };
 
 // implementation (widget.cpp)
@@ -108,10 +108,10 @@ void widget::draw() { pImpl->draw(*this); }
 widget::widget(int n) : pImpl{std::make_unique<impl>(n)} {}
 widget::widget(widget &&) = default;
 widget::~widget() = default;
-widget &widget::operator=(widget &&) = default;
+auto widget::operator=(widget &&) -> widget & = default;
 
 // user (main.cpp)
-int main()
+auto main() -> int
 {
     widget w(7);
     const widget w2(8);

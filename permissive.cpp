@@ -43,7 +43,7 @@ template <class T> struct remove_volatile<volatile T>
 };
 
 template <typename KEY, typename VALUE>
-bool isInMap(const std::map<KEY, VALUE> &container, const KEY &key)
+auto isInMap(const std::map<KEY, VALUE> &container, const KEY &key) -> bool
 {
     typename std::map<KEY, VALUE>::const_iterator iter = container.find(
         key); // error: missing 'typename' prior to dependent type name
@@ -64,13 +64,13 @@ template <> struct Test<X>
 };
 int Test<X>::value = 0;
 
-template <typename T> int f(T const &)
+template <typename T> auto f(T const &) -> int
 {
     return Test<T>::value; // during first pass, Test<T>::value is interpreted
                            // as a value
 }
 
-int main()
+auto main() -> int
 {
     using type1 = std::remove_cv<const int>::type;
     using type2 = std::remove_cv<volatile int>::type;

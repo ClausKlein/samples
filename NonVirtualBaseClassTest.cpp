@@ -20,7 +20,7 @@ class c_a : public base
 
 public:
     c_a(int _a) : a(_a){};
-    [[nodiscard]] const int &getvalue() const { return a; };
+    [[nodiscard]] auto getvalue() const -> const int & { return a; };
     virtual void print() const { cout << a << endl; };
 };
 
@@ -30,7 +30,7 @@ class c_b : public base
 
 public:
     c_b(double _b) : b(_b){};
-    [[nodiscard]] const double &getvalue() const { return b; };
+    [[nodiscard]] auto getvalue() const -> const double & { return b; };
     virtual void print() const { cout << b << endl; };
 };
 
@@ -59,7 +59,7 @@ public:
         cout << "SUT(base)" << endl;
     };
 
-    [[nodiscard]] const c_a &get_a() const
+    [[nodiscard]] auto get_a() const -> const c_a &
     {
         assert(type == t_a); // TODO assert
         if (type == t_a)
@@ -67,7 +67,7 @@ public:
         throw(std::runtime_error("invallid type a"));
     }
 
-    [[nodiscard]] const c_b &get_b() const
+    [[nodiscard]] auto get_b() const -> const c_b &
     {
         assert(type == t_b); // TODO assert
         if (type == t_b)
@@ -75,12 +75,12 @@ public:
         throw(std::runtime_error("invallid type b"));
     }
 
-    const void *getbaseptr(const base *b) { return b; };
+    auto getbaseptr(const base *b) -> const void * { return b; };
 };
 
 typedef map<char, SUT *> sut_map_t;
 
-int main()
+auto main() -> int
 {
     c_a a(0x0815);
     const base *pa = &a;

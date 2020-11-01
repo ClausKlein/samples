@@ -14,7 +14,7 @@ struct S
 
     S() : first_name(""), last_name("") {}
 
-    bool operator==(S const &other) const
+    auto operator==(S const &other) const -> bool
     {
         return first_name == other.first_name && last_name == other.last_name;
     }
@@ -41,7 +41,7 @@ template <> struct hash<S>
     using argument_type = S;
     using value_type = std::size_t;
 
-    value_type operator()(argument_type const &s) const
+    auto operator()(argument_type const &s) const -> value_type
     {
         value_type const h1(std::hash<std::string>()(s.first_name));
         value_type const h2(std::hash<std::string>()(s.last_name));
@@ -51,7 +51,7 @@ template <> struct hash<S>
 } // namespace std
 #endif
 
-int main()
+auto main() -> int
 {
     S d;
     S s;

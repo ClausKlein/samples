@@ -31,9 +31,9 @@ void erase_if(std::unordered_set<Key> &c, Predicate pred)
 
 #endif
 
-inline bool is_odd(int i) { return (i % 2) == 1; }
+inline auto is_odd(int i) -> bool { return (i % 2) == 1; }
 
-int main()
+auto main() -> int
 {
     std::unordered_set<int> c = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 

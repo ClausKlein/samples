@@ -29,7 +29,7 @@ void f(T Value)
     std::cout << "Pointer: " << Value << '\n';
 }
 
-int main()
+auto main() -> int
 {
     int n = 42;
 

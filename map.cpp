@@ -19,8 +19,8 @@ void print_item(std::basic_ostream<CharT, Traits> &stream,
 
 // A printer for unordered maps
 template <typename Key, typename T, typename Compare, typename Allocator>
-std::ostream &operator<<(std::ostream &stream,
-                         const std::map<Key, T, Compare, Allocator> &map)
+auto operator<<(std::ostream &stream,
+                         const std::map<Key, T, Compare, Allocator> &map) -> std::ostream &
 {
     stream << '{';
     char comma[3] = {'\0', ' ', '\0'};
@@ -35,7 +35,7 @@ std::ostream &operator<<(std::ostream &stream,
     return stream;
 }
 
-int main()
+auto main() -> int
 {
     // (1) Default constructor
     std::map<std::string, int> map1;

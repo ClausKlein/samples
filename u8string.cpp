@@ -128,7 +128,7 @@ public:
         this->assign(other.begin(), other.end());
     }
 
-    tustring &operator=(const std::string &other)
+    auto operator=(const std::string &other) -> tustring &
     {
         this->assign(other.begin(), other.end());
         return (*this);
@@ -150,7 +150,7 @@ public:
     bool operator==(const std::string &other) { return this->compare(other); }
 #endif
 
-    std::string to_string() { return std::string(this->substr()); }
+    auto to_string() -> std::string { return std::string(this->substr()); }
 };
 
 TEST_CASE("static_string")

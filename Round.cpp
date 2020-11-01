@@ -29,17 +29,17 @@ TEST_CASE("test_to_chars")
 }
 #endif
 
-template <class T> std::string lexical_cast(T input)
+template <class T> auto lexical_cast(T input) -> std::string
 {
     return boost::lexical_cast<std::string>(input);
 }
 
-template <> std::string lexical_cast(const double input)
+template <> auto lexical_cast(const double input) -> std::string
 {
     return boost::lexical_cast<std::string>(input);
 }
 
-std::string csa_cast(const double input)
+auto csa_cast(const double input) -> std::string
 {
     if (std::abs(input) == 0.0) {
         return std::string("0.0"); // NOTE: no sign!

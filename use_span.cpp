@@ -171,7 +171,7 @@ void as_byte_demo()
     print(data[0], writable_bytes);
 }
 
-int main(int argc, char *argv[])
+auto main(int argc, char *argv[]) -> int
 {
 #ifdef USE_ARGV
     constexpr size_t ARGC(1);

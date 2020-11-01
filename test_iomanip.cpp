@@ -6,21 +6,21 @@
 
 using namespace std;
 
-string EUR(double betrag)
+auto EUR(double betrag) -> string
 {
     ostringstream os;
     os << setprecision(2) << fixed << showpoint << betrag << " EUR";
     return os.str();
 }
 
-double EUR2Double(const string &euro)
+auto EUR2Double(const string &euro) -> double
 {
     double betrag;
     istringstream(euro) >> betrag;
     return betrag;
 }
 
-int main()
+auto main() -> int
 {
     const string euro = EUR(48.5);
     cout << euro << endl;

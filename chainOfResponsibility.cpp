@@ -105,7 +105,7 @@ void processPhoto(Photo &photo)
     scale.process(photo);
 }
 
-int main()
+auto main() -> int
 {
     Photo p("Y2013 Photo");
 

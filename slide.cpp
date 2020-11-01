@@ -43,7 +43,7 @@ void test_slide()
     std::cout << '\n';
 }
 
-int main()
+auto main() -> int
 {
     test_slide();
 

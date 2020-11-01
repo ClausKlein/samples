@@ -15,20 +15,20 @@ template <std::size_t N> struct immutable_string
 
     [[nodiscard]] constexpr auto begin() const { return (const char *)s; }
     [[nodiscard]] constexpr auto end() const { return begin() + size(); }
-    [[nodiscard]] constexpr std::size_t size() const { return N; }
-    [[nodiscard]] constexpr ref c_str() const { return s; }
+    [[nodiscard]] constexpr auto size() const -> std::size_t { return N; }
+    [[nodiscard]] constexpr auto c_str() const -> ref { return s; }
 
 private:
     ref s;
 
-    friend std::ostream &operator<<(std::ostream &os, immutable_string s)
+    friend auto operator<<(std::ostream &os, immutable_string s) -> std::ostream &
     {
         return os.write(s.c_str(), s.size());
     }
 };
 
 template <std::size_t NL, std::size_t NR>
-std::string operator+(immutable_string<NL> l, immutable_string<NR> r)
+auto operator+(immutable_string<NL> l, immutable_string<NR> r) -> std::string
 {
     std::string result;
     result.reserve(l.size() + r.size());
@@ -42,7 +42,7 @@ template <std::size_t N> auto make_immutable_string(const char (&s)[N])
     return immutable_string<N - 1>(s);
 }
 
-int main()
+auto main() -> int
 {
     auto x = make_immutable_string<13>("hello, world");
     std::cout << x << std::endl;

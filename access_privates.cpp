@@ -46,7 +46,7 @@ template struct rob<Af, &A::f>;
 
 // Ah, that's all to expose poor A's "f" member. Now anyone can use them
 // using the member pointer snytax, as does the main function below
-int main()
+auto main() -> int
 {
     A a;
     (a.*result<Af>::ptr)();

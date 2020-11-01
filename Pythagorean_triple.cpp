@@ -4,7 +4,7 @@
 //
 #include <iostream>
 
-bool Pythagorean_triple()
+auto Pythagorean_triple() -> bool
 {
     const size_t MAX = 1000;
     size_t a = 1, b = 1, c = 1;
@@ -31,7 +31,7 @@ bool Pythagorean_triple()
     return false;
 }
 
-int main()
+auto main() -> int
 {
     if (Pythagorean_triple())
         std::cout << "done.\n";

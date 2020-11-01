@@ -20,14 +20,14 @@ public:
 #ifdef SHOW_ERROR
     virtual std::unique_ptr<ClonableBase> clone() const = 0;
 #else
-    [[nodiscard]] virtual gsl::owner<ClonableBase *> clone() const = 0;
+    [[nodiscard]] virtual auto clone() const -> gsl::owner<ClonableBase *> = 0;
 #endif
 
     ClonableBase(const ClonableBase &) = delete;
-    ClonableBase &operator=(const ClonableBase &) = delete;
+    auto operator=(const ClonableBase &) -> ClonableBase & = delete;
 
     ClonableBase(ClonableBase &&) = delete;
-    ClonableBase &operator=(ClonableBase &&) = delete;
+    auto operator=(ClonableBase &&) -> ClonableBase & = delete;
 };
 
 class Base : public ClonableBase
@@ -36,7 +36,7 @@ public:
     Base() = default;
     ~Base() override = default;
 
-    [[nodiscard]] virtual int number() const { return 0; }
+    [[nodiscard]] virtual auto number() const -> int { return 0; }
 };
 
 class Derived : public Base
@@ -63,21 +63,21 @@ public:
     // ('unique_ptr<Derived>') than the function it overrides (which has
     // return type 'unique_ptr<ClonableBase>')
 #else
-    [[nodiscard]] gsl::owner<Derived *> clone() const override
+    [[nodiscard]] auto clone() const -> gsl::owner<Derived *> override
     {
         return gsl::owner<Derived *>(new Derived(value));
     }
 #endif
 
-    [[nodiscard]] int number() const override { return 1; }
-    std::string getValue() { return value; }
+    [[nodiscard]] auto number() const -> int override { return 1; }
+    auto getValue() -> std::string { return value; }
     void setValue(const std::string &v) { value = v; }
 
 private:
     std::string value;
 };
 
-int main()
+auto main() -> int
 {
     Derived origin("test");
 

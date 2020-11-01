@@ -35,7 +35,7 @@ struct Foo
 {
     Foo() = default;
     Foo(int a, int b, int c) : bam(a), blah(b), baz(c) {}
-    int &operator[](size_t); // OK
+    auto operator[](size_t) -> int &; // OK
     // ...
     int bam{0};
     int blah{0};
@@ -45,7 +45,7 @@ struct Foo
 static void something() {}
 static void something_else() {}
 
-double foo(int x)
+auto foo(int x) -> double
 {
     if (0 < x) {
         // ...
@@ -77,7 +77,7 @@ double foo(int x)
 } // namespace testing
 
 #if __cpp_lib_string_view
-int doSomething(const std::string_view &sv)
+auto doSomething(const std::string_view &sv) -> int
 {
     // Terminators never need 'something' done to them because ...
     if (sv.empty())
@@ -97,7 +97,7 @@ int doSomething(const std::string_view &sv)
 }
 #endif
 
-int main()
+auto main() -> int
 {
     int data[] = {0, 1, 1, 2, 3, 5, 8, 13, 21};
 
