@@ -66,7 +66,7 @@ public:
 class Drawing
 {
 public:
-    void drawShape(Shape_IF *pShape) { pShape->draw(); }
+    static void drawShape(Shape_IF *pShape) { pShape->draw(); }
 
 private:
     // TODO: unused! Shape_IF *pShape;

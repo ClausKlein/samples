@@ -35,7 +35,8 @@ public:
     A() = default;
 
 private:
-    void f() { std::cout << "proof!" << std::endl; }
+    std::string msg{"proof!"};
+    void f() { std::cout << msg << std::endl; }
 };
 
 struct Af

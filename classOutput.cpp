@@ -28,7 +28,7 @@ class Matrix
 public:
     Matrix() = default;
     // [...]
-    void print(std::ostream &stream) const { stream << "class Matrix {...} "; }
+    static void print(std::ostream &stream) { stream << "class Matrix {...} "; }
 };
 
 // XXX std::ostream& operator<<(std::ostream& stream, const Math::Matrix&

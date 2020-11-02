@@ -77,7 +77,7 @@ public:
         throw(std::runtime_error("invallid type b"));
     }
 
-    auto getbaseptr(const base *b) -> const void * { return b; };
+    static auto getbaseptr(const base *b) -> const void * { return b; };
 };
 
 using sut_map_t = map<char, SUT *>;

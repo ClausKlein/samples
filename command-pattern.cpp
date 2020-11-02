@@ -47,16 +47,16 @@ public:
 class Light
 {
 public:
-    void on() { cout << "The light is on\n"; }
-    void off() { cout << "The light is off\n"; }
+    static void on() { cout << "The light is on\n"; }
+    static void off() { cout << "The light is off\n"; }
 };
 
 // Receiver Class
 class Fan
 {
 public:
-    void on() { cout << "The fan is on\n"; }
-    void off() { cout << "The fan is off\n"; }
+    static void on() { cout << "The fan is on\n"; }
+    static void off() { cout << "The fan is off\n"; }
 };
 
 // Command for turning on the light
