@@ -34,7 +34,7 @@ auto main() -> int
     std::string str(" Hello World! ");
     std::string str2("other");
     std::string blanks("     ");
-    std::string empty("");
+    std::string empty;
     std::string ws("\t \r\n");
 
 #if 0

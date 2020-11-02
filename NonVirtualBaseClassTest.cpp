@@ -52,7 +52,7 @@ public:
         t_b
     };
 
-    SUT() : id(""), m_base(nullptr) { cout << "SUT()" << endl; };
+    SUT() :  m_base(nullptr) { cout << "SUT()" << endl; };
     SUT(const base *_b, int t, const string _id = "")
         : type(t), id(_id), m_base(_b)
     {

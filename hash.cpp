@@ -12,7 +12,7 @@ struct S
     S(const std::string &first, const std::string &last)
         : first_name(first), last_name(last)
     {}
-    S() : first_name(""), last_name("") {}
+    S()  {}
 
     auto operator==(S const &other) const -> bool
     {
