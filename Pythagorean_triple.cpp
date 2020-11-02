@@ -33,8 +33,9 @@ auto Pythagorean_triple() -> bool
 
 auto main() -> int
 {
-    if (Pythagorean_triple())
+    if (Pythagorean_triple()) {
         std::cout << "done.\n";
-    else
+    } else {
         std::cout << "break.\n";
+}
 }

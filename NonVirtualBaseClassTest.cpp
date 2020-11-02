@@ -62,16 +62,18 @@ public:
     [[nodiscard]] auto get_a() const -> const c_a &
     {
         assert(type == t_a); // TODO assert
-        if (type == t_a)
+        if (type == t_a) {
             return *m_a;
+}
         throw(std::runtime_error("invallid type a"));
     }
 
     [[nodiscard]] auto get_b() const -> const c_b &
     {
         assert(type == t_b); // TODO assert
-        if (type == t_b)
+        if (type == t_b) {
             return *m_b;
+}
         throw(std::runtime_error("invallid type b"));
     }
 

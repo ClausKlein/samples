@@ -63,13 +63,15 @@ auto foo(int x) -> double
         break;
     }
 
-    if (0 < x)
+    if (0 < x) {
         ++x;
+}
 
-    if (x < 0)
+    if (x < 0) {
         something();
-    else
+    } else {
         something_else();
+}
 
     return some_value;
 }
@@ -80,17 +82,20 @@ auto foo(int x) -> double
 auto doSomething(const std::string_view &sv) -> int
 {
     // Terminators never need 'something' done to them because ...
-    if (sv.empty())
+    if (sv.empty()) {
         return 0;
+}
 
     // We conservatively avoid transforming instructions with multiple uses
     // because goats like cheese.
-    if (sv == "bad")
+    if (sv == "bad") {
         return 0;
+}
 
     // This is really just here for example.
-    if (!sv.find("abd"))
+    if (!sv.find("abd")) {
         return 0;
+}
 
     // ... some long code ....
     return 1;
@@ -106,10 +111,12 @@ auto main() -> int
 
     std::sort(foo.begin(), foo.end(),
               [&](testing::Foo a, testing::Foo b) -> bool {
-                  if (a.blah < b.blah)
+                  if (a.blah < b.blah) {
                       return true;
-                  if (a.baz < b.baz)
+}
+                  if (a.baz < b.baz) {
                       return true;
+}
                   return a.bam < b.bam;
               });
 

@@ -63,9 +63,10 @@ auto main() -> int
     magy.insert({Point{-0.8, -15.0}, 0});
 
     std::cout << "Sorted with lockup from mag table:\n";
-    for (auto p : magy)
+    for (auto p : magy) {
         std::cout << "The magnitude of key " << p.first << " is " << p.second
                   << '\n';
+}
 
     return 0;
 }

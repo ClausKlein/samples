@@ -173,7 +173,6 @@ void as_byte_demo()
 
 auto main(int argc, char *argv[]) -> int
 {
-#define USE_ARGV
 #ifdef USE_ARGV
     constexpr size_t ARGC(1);
     if (argc != ARGC) {

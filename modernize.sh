@@ -3,7 +3,7 @@ set -e
 
 #XXX FIX= # uncoment to check only!
 
-RULES=`clang-tidy --list-checks -checks='-*,modernize-use-*' | grep -vw Enabled`
+# RULES=`clang-tidy --list-checks -checks='-*,modernize-use-*' | grep -vw Enabled`
 
 # $ clang-tidy --list-checks -checks='-*,modernize-*'
 # Enabled checks:
@@ -45,14 +45,15 @@ modernize-use-equals-default
 modernize-use-nullptr
 modernize-use-using
 "}
+
 : ${RULES:="
+readability-braces-around-statements
+readability-convert-member-functions-to-static
+readability-implicit-bool-conversion
 readability-named-parameter
 readability-redundant-member-init
 readability-redundant-string-init
-readability-braces-around-statements
 readability-static-accessed-through-instance
-readability-convert-member-functions-to-static
-readability-implicit-bool-conversion
 readability-uppercase-literal-suffix
 "}
 
