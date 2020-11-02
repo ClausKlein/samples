@@ -157,7 +157,7 @@ void as_byte_demo()
 {
     using namespace tcb;
 
-    /* mutable */ float data[1]{3.141592f};
+    /* mutable */ float data[1]{3.141592F};
 
     auto const const_bytes = as_bytes(span{data});
 
