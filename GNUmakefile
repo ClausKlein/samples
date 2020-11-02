@@ -21,7 +21,7 @@ PROJECT_NAME:=$(shell basename $${PWD})
 checkAllHeader?='$(CURDIR)/.*\.h$$'
 
 # NOTE: there are many errors with boost::test, doctest, catch test framework! CK
-# CHECKS?='-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers'
+### CHECKS?='-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers'
 CHECKS?='-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
 CHECKS?='-*,portability-*,readability-*,misc-*,-readability-magic-numbers'
 CHECKS?='-*,misc-*,boost-*,cert-*,-misc-unused-*,-cert-err58-cpp'

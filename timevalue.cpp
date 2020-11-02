@@ -1,7 +1,7 @@
 // build:
 // g++ -std=c++11 -Wall -Wextra -o timevalue timevalue.cpp
 //
-#define __STDC_LIMIT_MACROS
+// XXX #define __STDC_LIMIT_MACROS
 #include <sys/types.h> //BYTE_ORDER GHS PPC: #define __BIG_ENDIAN__
 
 #include <boost/test/minimal.hpp>

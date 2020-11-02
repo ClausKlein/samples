@@ -24,7 +24,7 @@ class PhotoProcessor
 public:
     PhotoProcessor() = default;
 
-public:
+    // NOLINTNEXTLINE(misc-no-recursion)
     void process(Photo &p)
     {
         processImplementation(p);

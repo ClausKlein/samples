@@ -37,9 +37,9 @@ struct Foo
     Foo(int a, int b, int c) : bam(a), blah(b), baz(c) {}
     auto operator[](size_t) -> int &; // OK
     // ...
-    int bam{0};
-    int blah{0};
-    int baz{0};
+    int bam{0};  // NOLINT
+    int blah{0}; // NOLINT
+    int baz{0};  // NOLINT
 };
 
 static void something() {}

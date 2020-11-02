@@ -144,7 +144,7 @@ static void _dump(u temp, int swap)
 }
 
 /// local wrapper to ntohl() to prevent casts
-static inline auto _ntohl(uint8_t *p) -> uint32_t
+static inline auto my_ntohl(uint8_t *p) -> uint32_t
 {
     u tmp;
 
@@ -221,7 +221,7 @@ auto main(int argc, char **argv) -> int
 
         // NOTE: It is very important to convert it back to host byte order
         //      before print to preset or send via corba!
-        temp.i = _ntohl(&buf[4 * i]);
+        temp.i = my_ntohl(&buf[4 * i]);
         printf("P%i: 0x%08x = %010u of (%s)\n", i + 1, temp.i, temp.i, addr);
 
         if (argc == 1) {

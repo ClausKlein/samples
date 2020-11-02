@@ -5,7 +5,7 @@
 #include <set>
 
 // warning: modification of 'std' namespace can result in undefined behavior
-// [cert-dcl58-cpp]
+// NOLINTNEXTLINE(cert-dcl58-cpp)
 namespace std {
 template <class T>
 auto operator<(const std::complex<T> &lhs, const std::complex<T> &rhs) -> bool

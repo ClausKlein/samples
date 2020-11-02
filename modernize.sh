@@ -33,7 +33,7 @@ RULES=`clang-tidy --list-checks -checks='-*,modernize-use-*' | grep -vw Enabled`
 #   modernize-use-uncaught-exceptions
 #   modernize-use-using
 
-: ${RULES:="
+: ${RULES_done:="
 modernize-loop-convert
 modernize-make-shared
 modernize-make-unique
@@ -44,6 +44,16 @@ modernize-use-bool-literals
 modernize-use-equals-default
 modernize-use-nullptr
 modernize-use-using
+"}
+: ${RULES:="
+readability-named-parameter
+readability-redundant-member-init
+readability-redundant-string-init
+readability-braces-around-statements
+readability-static-accessed-through-instance
+readability-convert-member-functions-to-static
+readability-implicit-bool-conversion
+readability-uppercase-literal-suffix
 "}
 
 : ${FIX:="-fix"}

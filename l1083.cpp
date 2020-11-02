@@ -8,16 +8,20 @@
 namespace Test {
 struct Integer
 {
-    int value;
     Integer(int _value) : value(_value) {}
     operator int() const { return value; }
+
+private:
+    int value{};
 };
 
 struct String // TODO : public std::string
 {
-    std::string value;
     String(std::string _value) : value(std::move(_value)) {}
     operator const char *() const { return value.c_str(); }
+
+private:
+    std::string value;
 };
 } // namespace Test
 

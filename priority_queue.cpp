@@ -28,11 +28,13 @@ template <typename T> void print_queue(T &q)
 struct xor_cmp
 {
     xor_cmp(int _value = 1) : value(_value){};
-    int value;
     auto operator()(int left, int right) -> bool
     {
         return (left ^ value) < (right ^ value);
     };
+
+private:
+    int value;
 };
 
 auto main() -> int
