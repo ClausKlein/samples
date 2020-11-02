@@ -1,3 +1,5 @@
+#include "math.h"
+
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -15,7 +17,7 @@ auto EUR(double betrag) -> string
 
 auto EUR2Double(const string &euro) -> double
 {
-    double betrag;
+    double betrag = NAN;
     istringstream(euro) >> betrag;
     return betrag;
 }

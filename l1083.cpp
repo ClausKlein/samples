@@ -60,7 +60,7 @@ auto main(int argc, char **argv) -> int
     std::string s = argc > 1 ? argv[1] : help;
     std::cout << s << std::endl;
 
-    int err = argc > 1 ? argc : 0.0;
+    int err = argc > 1 ? argc : 0;
 
     cout << typeid(uint8_t).name() << endl;
     cout << typeid(uint16_t).name() << endl;

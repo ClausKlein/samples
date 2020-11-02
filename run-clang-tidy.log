@@ -11,11 +11,11 @@ Enabled checks:
     cppcoreguidelines-slicing
     cppcoreguidelines-special-member-functions
 
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/SFINAE-cxx11.cpp
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/immutableString.cpp
 2404 warnings generated.
 Suppressed 2404 warnings (2404 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/immutableString.cpp
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/SFINAE-cxx11.cpp
 2404 warnings generated.
 Suppressed 2404 warnings (2404 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
@@ -46,6 +46,14 @@ clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks
 2424 warnings generated.
 Suppressed 2424 warnings (2424 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_iomanip.cpp
+/Users/clausklein/Workspace/cpp/samples/test_iomanip.cpp:18:12: warning: variable 'betrag' is not initialized [cppcoreguidelines-init-variables]
+    double betrag;
+           ^
+                  = NAN
+2473 warnings generated.
+Suppressed 2472 warnings (2472 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp
 /Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp:18:5: warning: initializing non-owner 'char *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
     char *buffer = new char[CHUNCK_SIZE];
@@ -58,14 +66,6 @@ clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks
     ^
 2479 warnings generated.
 Suppressed 2477 warnings (2477 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_iomanip.cpp
-/Users/clausklein/Workspace/cpp/samples/test_iomanip.cpp:18:12: warning: variable 'betrag' is not initialized [cppcoreguidelines-init-variables]
-    double betrag;
-           ^
-                  = NAN
-2473 warnings generated.
-Suppressed 2472 warnings (2472 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/unordered_map.cpp
 2434 warnings generated.
@@ -90,13 +90,13 @@ clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks
 2433 warnings generated.
 Suppressed 2433 warnings (2433 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sets.cpp
-2433 warnings generated.
-Suppressed 2433 warnings (2433 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/slide.cpp
 2413 warnings generated.
 Suppressed 2413 warnings (2413 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sets.cpp
+2433 warnings generated.
+Suppressed 2433 warnings (2433 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/permissive.cpp
 2423 warnings generated.
@@ -132,10 +132,6 @@ clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks
 7988 warnings generated.
 Suppressed 7988 warnings (7988 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/point.cpp
-9944 warnings generated.
-Suppressed 9944 warnings (9944 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/InnerClassIdiom.cpp
 2404 warnings generated.
 Suppressed 2404 warnings (2404 in non-user code).
@@ -143,6 +139,10 @@ Use -header-filter=.* to display errors from all non-system headers. Use -system
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/bitset.cpp
 2404 warnings generated.
 Suppressed 2404 warnings (2404 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/point.cpp
+9944 warnings generated.
+Suppressed 9944 warnings (9944 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/konto.cpp
 2418 warnings generated.
@@ -155,10 +155,6 @@ class D : public B
 2412 warnings generated.
 Suppressed 2411 warnings (2411 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/example-style.cpp
-2414 warnings generated.
-Suppressed 2414 warnings (2414 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/factory_function.cpp
 /Users/clausklein/Workspace/cpp/samples/factory_function.cpp:8:7: warning: class 'B' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class B
@@ -169,6 +165,10 @@ Use -header-filter=.* to display errors from all non-system headers. Use -system
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/hash.cpp
 2923 warnings generated.
 Suppressed 2923 warnings (2923 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/example-style.cpp
+2414 warnings generated.
+Suppressed 2414 warnings (2414 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/map.cpp
 2424 warnings generated.
@@ -186,15 +186,23 @@ clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks
 2414 warnings generated.
 Suppressed 2414 warnings (2414 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/vector.cpp
-2418 warnings generated.
-Suppressed 2418 warnings (2418 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Round.cpp
 11567 warnings generated.
 Suppressed 11568 warnings (11567 in non-user code, 1 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/vector.cpp
+2418 warnings generated.
+Suppressed 2418 warnings (2418 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/result_of.cpp
+2404 warnings generated.
+Suppressed 2404 warnings (2404 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/callback.cpp
+2459 warnings generated.
+Suppressed 2459 warnings (2459 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Pythagorean_triple.cpp
 2404 warnings generated.
 Suppressed 2404 warnings (2404 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
@@ -286,10 +294,6 @@ class Command
 2434 warnings generated.
 Suppressed 2415 warnings (2415 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Pythagorean_triple.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp
 /Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:17:8: warning: class 'IShape' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 struct IShape
@@ -308,10 +312,6 @@ struct BlueCircle final : BlueCircleImpl
        ^
 2412 warnings generated.
 Suppressed 2407 warnings (2407 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/callback.cpp
-2459 warnings generated.
-Suppressed 2459 warnings (2459 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/ideone_nWFr9w.cpp
 7814 warnings generated.
@@ -348,6 +348,10 @@ clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks
 2404 warnings generated.
 Suppressed 2404 warnings (2404 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_filbuf.cpp
+2477 warnings generated.
+Suppressed 2477 warnings (2477 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp
 /Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp:33:7: warning: class 'Base' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class Base : public ClonableBase
@@ -357,10 +361,6 @@ class Derived : public Base
       ^
 1902 warnings generated.
 Suppressed 1900 warnings (1900 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_filbuf.cpp
-2477 warnings generated.
-Suppressed 2477 warnings (2477 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
 clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/byteorder.cpp
 /Users/clausklein/Workspace/cpp/samples/byteorder.cpp:24:17: warning: variable 'v' is not initialized [cppcoreguidelines-init-variables]

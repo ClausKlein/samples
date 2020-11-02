@@ -21,7 +21,7 @@
 inline auto isLittleEndian() -> int
 {
     const int i = 1;
-    const void *v;
+    const void *v = nullptr;
     const char *p = static_cast<const char *>(v = &i);
     if (p[0] == 1) // Lowest address contains the least significant byte
     {
@@ -78,7 +78,7 @@ auto hexdump(const uint8_t *binbuf, size_t binbuflen) -> const char *
 {
     /* FIXME: this isn't thead-safe! */
     static char hexbuf[INET6_ADDRSTRLEN * 2 + 1];
-    size_t i, j = 0;
+    size_t i = 0, j = 0;
     size_t len =
         ((binbuflen > INET6_ADDRSTRLEN) ? INET6_ADDRSTRLEN : binbuflen);
     const uint8_t *ibuf = binbuf;
@@ -166,8 +166,8 @@ auto main(int argc, char **argv) -> int
     char str[INET6_ADDRSTRLEN] = "fe80::1";
     char *ptr = argc > 1 ? argv[1] : str; // use 1. arg if given
     int protocol = AF_INET;
-    int i;
-    char *last, *addr;
+    int i = 0;
+    char *last = nullptr, *addr = nullptr;
 
     // determine if ipv6 addess used:
     if (strchr(ptr, ':') != nullptr) {
@@ -190,7 +190,7 @@ auto main(int argc, char **argv) -> int
         // show byteorder for port
         const uint16_t port = 162;
         const uint16_t sin_port = htons(port);
-        const void *v;
+        const void *v = nullptr;
         // TODO  error: cannot cast from type 'uint16_t' (aka 'unsigned short')
         // to pointer type 'const uint8_t *' (aka 'const unsigned char *')
         printf("sin_port(162)=0x%s\n",

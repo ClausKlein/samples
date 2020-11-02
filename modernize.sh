@@ -50,12 +50,13 @@ readability-implicit-bool-conversion
 readability-named-parameter
 readability-redundant-member-init
 readability-redundant-string-init
-#NO! readability-static-accessed-through-instance
+readability-uppercase-literal-suffix
 "}
 
 : ${RULES:="
-readability-uppercase-literal-suffix
+cppcoreguidelines-init-variables
 "}
+#NO! readability-static-accessed-through-instance
 
 : ${FIX:="-fix"}
 
