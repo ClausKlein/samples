@@ -45,7 +45,7 @@ using namespace boost;
 
 template <typename RanIter>
 auto // return value
-    sort(RanIter, RanIter) -> BOOST_CONCEPT_REQUIRES(
+    sort(RanIter /*unused*/, RanIter /*unused*/) -> BOOST_CONCEPT_REQUIRES(
         ((Mutable_RandomAccessIterator<RanIter>))(
             (LessThanComparable<
                 typename Mutable_RandomAccessIterator<RanIter>::value_type>))

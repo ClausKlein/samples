@@ -12,7 +12,7 @@ protected:
     {};
 
 public:
-    explicit B(Token) {}
+    explicit B(Token /*unused*/) {}
     virtual ~B() = default;
     virtual void f() = 0;
 
@@ -40,7 +40,7 @@ protected:
     {};
 
 public:
-    explicit D(Token) : B{typename B::Token{}} {}
+    explicit D(Token /*unused*/) : B{typename B::Token{}} {}
     void f() override{/* ...  */};
 
 protected:

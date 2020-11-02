@@ -69,15 +69,15 @@ public:
     /// public API that implementation has to call
     [[nodiscard]] static auto shown() -> bool { return true; }
 
-    explicit widget(int);
+    explicit widget(int /*n*/);
     ~widget(); // defined in the implementation file, where impl is a complete
                // type
-    widget(widget &&); // defined in the implementation file
+    widget(widget && /*unused*/); // defined in the implementation file
                        // Note: calling draw() on moved-from object is
                        // Undefined Behaviour (UB)!
 
     widget(const widget &) = delete;
-    auto operator=(widget &&) -> widget &; // defined in the implementation file
+    auto operator=(widget && /*unused*/) -> widget &; // defined in the implementation file
     auto operator=(const widget &) -> widget & = delete;
 };
 

@@ -64,7 +64,7 @@ template <> struct Test<X>
 };
 int Test<X>::value = 0;
 
-template <typename T> auto f(T const &) -> int
+template <typename T> auto f(T const & /*unused*/) -> int
 {
     return Test<T>::value; // during first pass, Test<T>::value is interpreted
                            // as a value

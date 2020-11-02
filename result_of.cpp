@@ -10,7 +10,7 @@
 
 struct eat
 {
-    template <typename T> eat(T const &) {}
+    template <typename T> eat(T const & /*unused*/) {}
 };
 struct not_incrementable
 {};
@@ -35,7 +35,7 @@ try_inc(A a)
     return inc()(a);
 }
 
-auto try_inc(eat) -> not_incrementable { return not_incrementable(); }
+auto try_inc(eat /*unused*/) -> not_incrementable { return not_incrementable(); }
 
 auto main() -> int
 {

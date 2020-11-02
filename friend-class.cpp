@@ -19,7 +19,7 @@ class Rectangle
 public:
     Rectangle(int w = 1, int h = 1) : width(w), height(h) {}
     void display() { cout << "Rectangle: " << width * height << endl; };
-    void morph(Square &);
+    void morph(Square & /*s*/);
 };
 
 class Square
