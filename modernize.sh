@@ -44,11 +44,11 @@ modernize-use-bool-literals
 modernize-use-equals-default
 modernize-use-nullptr
 modernize-use-using
+readability-braces-around-statements
+readability-convert-member-functions-to-static
 "}
 
 : ${RULES:="
-readability-braces-around-statements
-readability-convert-member-functions-to-static
 readability-implicit-bool-conversion
 readability-named-parameter
 readability-redundant-member-init
