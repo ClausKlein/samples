@@ -27,7 +27,7 @@ struct Key
  ***/
 struct KeyHash
 {
-    std::size_t operator()(const Key &k) const
+    auto operator()(const Key &k) const -> std::size_t
     {
 #if 1
         return std::hash<std::string>()(k.title) ^
@@ -41,14 +41,14 @@ struct KeyHash
 
 struct KeyEqual
 {
-    bool operator()(const Key &lhs, const Key &rhs) const
+    auto operator()(const Key &lhs, const Key &rhs) const -> bool
     {
         return lhs.title == rhs.title && lhs.first == rhs.first &&
                lhs.second == rhs.second;
     }
 };
 
-std::ostream &operator<<(std::ostream &stream, const Key &k)
+auto operator<<(std::ostream &stream, const Key &k) -> std::ostream &
 {
     stream << k.title;
     stream << ' ';
@@ -58,7 +58,7 @@ std::ostream &operator<<(std::ostream &stream, const Key &k)
     return stream;
 }
 
-int main()
+auto main() -> int
 {
     // default constructor: empty map
     std::unordered_map<std::string, std::string> m1;

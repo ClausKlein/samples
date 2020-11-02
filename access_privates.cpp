@@ -9,7 +9,7 @@
 template <typename Tag> struct result
 {
     /* export it ... */
-    typedef typename Tag::type type;
+    using type = typename Tag::type;
     static type ptr;
 };
 
@@ -35,18 +35,19 @@ public:
     A() = default;
 
 private:
-    void f() { std::cout << "proof!" << std::endl; }
+    std::string msg{"proof!"};
+    void f() { std::cout << msg << std::endl; }
 };
 
 struct Af
 {
-    typedef void (A::*type)();
+    using type = void (A::*)();
 };
 template struct rob<Af, &A::f>;
 
 // Ah, that's all to expose poor A's "f" member. Now anyone can use them
 // using the member pointer snytax, as does the main function below
-int main()
+auto main() -> int
 {
     A a;
     (a.*result<Af>::ptr)();

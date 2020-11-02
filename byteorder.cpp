@@ -18,10 +18,10 @@
 // most of this demo program is ansi c;
 // only one template is used for test
 
-inline int isLittleEndian()
+inline auto isLittleEndian() -> int
 {
     const int i = 1;
-    const void *v;
+    const void *v = nullptr;
     const char *p = static_cast<const char *>(v = &i);
     if (p[0] == 1) // Lowest address contains the least significant byte
     {
@@ -31,11 +31,11 @@ inline int isLittleEndian()
     }
 }
 
-typedef union
+using u = union
 {
     uint32_t i;
     uint8_t c[4];
-} u;
+};
 
 #ifndef __cplusplus
 /**
@@ -56,7 +56,7 @@ uint32_t bswap32(uint32_t i)
  * usage: swap_endian<uint32_t>(42).
  * generic version of gcc __builtin_bswap32()
  **/
-template <typename T> T swap_endian(T u)
+template <typename T> auto swap_endian(T u) -> T
 {
     union
     {
@@ -74,11 +74,11 @@ template <typename T> T swap_endian(T u)
 }
 #endif
 
-const char *hexdump(const uint8_t *binbuf, size_t binbuflen)
+auto hexdump(const uint8_t *binbuf, size_t binbuflen) -> const char *
 {
     /* FIXME: this isn't thead-safe! */
     static char hexbuf[INET6_ADDRSTRLEN * 2 + 1];
-    size_t i, j = 0;
+    size_t i = 0, j = 0;
     size_t len =
         ((binbuflen > INET6_ADDRSTRLEN) ? INET6_ADDRSTRLEN : binbuflen);
     const uint8_t *ibuf = binbuf;
@@ -144,7 +144,7 @@ static void _dump(u temp, int swap)
 }
 
 /// local wrapper to ntohl() to prevent casts
-static inline uint32_t _ntohl(uint8_t *p)
+static inline auto my_ntohl(uint8_t *p) -> uint32_t
 {
     u tmp;
 
@@ -154,7 +154,7 @@ static inline uint32_t _ntohl(uint8_t *p)
     return ntohl(tmp.i);
 }
 
-int main(int argc, char **argv)
+auto main(int argc, char **argv) -> int
 {
     u temp;
 
@@ -166,8 +166,8 @@ int main(int argc, char **argv)
     char str[INET6_ADDRSTRLEN] = "fe80::1";
     char *ptr = argc > 1 ? argv[1] : str; // use 1. arg if given
     int protocol = AF_INET;
-    int i;
-    char *last, *addr;
+    int i = 0;
+    char *last = nullptr, *addr = nullptr;
 
     // determine if ipv6 addess used:
     if (strchr(ptr, ':') != nullptr) {
@@ -190,7 +190,7 @@ int main(int argc, char **argv)
         // show byteorder for port
         const uint16_t port = 162;
         const uint16_t sin_port = htons(port);
-        const void *v;
+        const void *v = nullptr;
         // TODO  error: cannot cast from type 'uint16_t' (aka 'unsigned short')
         // to pointer type 'const uint8_t *' (aka 'const unsigned char *')
         printf("sin_port(162)=0x%s\n",
@@ -221,7 +221,7 @@ int main(int argc, char **argv)
 
         // NOTE: It is very important to convert it back to host byte order
         //      before print to preset or send via corba!
-        temp.i = _ntohl(&buf[4 * i]);
+        temp.i = my_ntohl(&buf[4 * i]);
         printf("P%i: 0x%08x = %010u of (%s)\n", i + 1, temp.i, temp.i, addr);
 
         if (argc == 1) {

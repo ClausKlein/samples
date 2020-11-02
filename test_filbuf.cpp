@@ -3,7 +3,7 @@
 #include <iostream> // std::ios, std::istream, std::cout
 
 // FIXME this writes one byte more!
-int main()
+auto main() -> int
 {
     std::filebuf fb;
     if (fb.open("data.txt", std::ios::in)) // XXX text mode!

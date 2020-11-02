@@ -3,7 +3,7 @@ set -e
 
 #XXX FIX= # uncoment to check only!
 
-RULES=`clang-tidy --list-checks -checks='-*,modernize-use-*' | grep -vw Enabled`
+# RULES=`clang-tidy --list-checks -checks='-*,modernize-use-*' | grep -vw Enabled`
 
 # $ clang-tidy --list-checks -checks='-*,modernize-*'
 # Enabled checks:
@@ -33,8 +33,7 @@ RULES=`clang-tidy --list-checks -checks='-*,modernize-use-*' | grep -vw Enabled`
 #   modernize-use-uncaught-exceptions
 #   modernize-use-using
 
-: ${RULES:="
-modernize-deprecated-headers
+: ${RULES_done:="
 modernize-loop-convert
 modernize-make-shared
 modernize-make-unique
@@ -45,7 +44,19 @@ modernize-use-bool-literals
 modernize-use-equals-default
 modernize-use-nullptr
 modernize-use-using
+readability-braces-around-statements
+readability-convert-member-functions-to-static
+readability-implicit-bool-conversion
+readability-named-parameter
+readability-redundant-member-init
+readability-redundant-string-init
+readability-uppercase-literal-suffix
 "}
+
+: ${RULES:="
+cppcoreguidelines-init-variables
+"}
+#NO! readability-static-accessed-through-instance
 
 : ${FIX:="-fix"}
 
@@ -53,8 +64,8 @@ set -u
 set -x
 
 for rule in ${RULES}; do
-    run-clang-tidy.py -header-filter='.*' -checks='-*,'${rule} -j 1 ${FIX}
+    run-clang-tidy.py -header-filter='.*' -checks='-*,'${rule} -format -j 1 ${FIX}
     make
     make test
-    git commit -a -C ${rule}
+    git commit -a -m ${rule} --allow-empty
 done

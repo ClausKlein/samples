@@ -13,10 +13,19 @@ public:
     // NOTE: not needed! CK void operator=(Paragraph const &rhs) { m_para =
     // rhs.m_para; }
 
-    std::string const &to_string() const { return m_para; }
+    [[nodiscard]] auto to_string() const -> std::string const &
+    {
+        return m_para;
+    }
 
-    bool operator==(Paragraph const &rhs) const { return m_para == rhs.m_para; }
-    bool operator<(Paragraph const &rhs) const { return m_para < rhs.m_para; }
+    auto operator==(Paragraph const &rhs) const -> bool
+    {
+        return m_para == rhs.m_para;
+    }
+    auto operator<(Paragraph const &rhs) const -> bool
+    {
+        return m_para < rhs.m_para;
+    }
 
 private:
     std::string m_para;
@@ -25,8 +34,8 @@ private:
 // For generic basic_istream and basic_ostream T << Paragraph
 // OUTPUT << Paragraph
 template <typename charT, typename traits>
-std::basic_ostream<charT, traits> &
-operator<<(std::basic_ostream<charT, traits> &outputStream, const Paragraph &p)
+auto operator<<(std::basic_ostream<charT, traits> &outputStream,
+                const Paragraph &p) -> std::basic_ostream<charT, traits> &
 {
     // do the insertion of p
     return outputStream << p.to_string();
@@ -34,8 +43,8 @@ operator<<(std::basic_ostream<charT, traits> &outputStream, const Paragraph &p)
 
 // INPUT >> Paragraph
 template <typename charT, typename traits>
-std::basic_istream<charT, traits> &
-operator>>(std::basic_istream<charT, traits> &inputStream, Paragraph &p)
+auto operator>>(std::basic_istream<charT, traits> &inputStream, Paragraph &p)
+    -> std::basic_istream<charT, traits> &
 {
     // do the extract of p
     std::string s;
@@ -65,7 +74,7 @@ std::istream &operator>>(std::istream &inputStream, Paragraph &p)
 // Windows).
 #endif
 
-int main()
+auto main() -> int
 {
     using namespace std::rel_ops;
 

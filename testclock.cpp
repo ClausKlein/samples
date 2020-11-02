@@ -19,7 +19,7 @@ void f()
     }
 }
 
-int main()
+auto main() -> int
 {
     using namespace std::chrono;
 

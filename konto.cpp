@@ -9,10 +9,10 @@ class Konto
 {
 public:
     Konto(int n, double s = 0.0) : nummer(n), stand(s) {}
-    int gibNummer() const { return nummer; }
-    double gibStand() const { return stand; }
+    [[nodiscard]] auto gibNummer() const -> int { return nummer; }
+    [[nodiscard]] auto gibStand() const -> double { return stand; }
     void einzahlen(double betrag) { stand += betrag; }
-    friend ostream &operator<<(ostream &os, const Konto &k)
+    friend auto operator<<(ostream &os, const Konto &k) -> ostream &
     {
         return os << k.nummer << ": " << k.stand;
     }
@@ -24,16 +24,16 @@ private:
 
 struct VglKNr : binary_function<Konto, Konto, bool>
 {
-    bool operator()(const Konto &x, const Konto &y) const
+    auto operator()(const Konto &x, const Konto &y) const -> bool
     {
         return x.gibNummer() < y.gibNummer();
     }
 };
 
-int main()
+auto main() -> int
 {
     Konto k[3] = {Konto(10, 1.99), Konto(20, 2.98), Konto(30, 3.97)};
-    typedef set<Konto, VglKNr> KontoSet;
+    using KontoSet = set<Konto, VglKNr>;
     KontoSet s(k, k + 3);
     auto i = s.find(Konto(20));
     if (i != s.end()) {

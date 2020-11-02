@@ -14,12 +14,12 @@
 // inventing your own ordering function (such as ordering them
 // lexicographically) but that requires writing your own comparator function:
 template <class T>
-bool operator<(const std::complex<T> &l, const std::complex<T> &r)
+auto operator<(const std::complex<T> &l, const std::complex<T> &r) -> bool
 {
     return (l.real() == r.real() ? l.imag() < r.imag() : l.real() < r.real());
 }
 
-template <class T> std::size_t hash(const std::complex<T> &p)
+template <class T> auto hash(const std::complex<T> &p) -> std::size_t
 {
     std::size_t seed = 0;
     boost::hash_combine(seed, p.real());
@@ -29,7 +29,7 @@ template <class T> std::size_t hash(const std::complex<T> &p)
 
 // However, I'm not quite sure what you're trying to achieve because there is
 // no sense in saying that one complex number is "bigger" than another.
-int main()
+auto main() -> int
 {
     std::istringstream iss("(1,-2)\n"
                            "(+1, +1)\n"

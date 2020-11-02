@@ -5,10 +5,10 @@
 #include <set>
 
 // warning: modification of 'std' namespace can result in undefined behavior
-// [cert-dcl58-cpp]
+// NOLINTNEXTLINE(cert-dcl58-cpp)
 namespace std {
 template <class T>
-bool operator<(const std::complex<T> &lhs, const std::complex<T> &rhs)
+auto operator<(const std::complex<T> &lhs, const std::complex<T> &rhs) -> bool
 {
     return lhs.imag() < rhs.imag() && lhs.real() < rhs.real();
 }
@@ -21,17 +21,17 @@ typedef int MyType; // ORIG
 using MyType = std::complex<double>;
 #endif // USE_COMPLEX
 
-bool fncomp(const MyType lhs, const MyType rhs) { return lhs < rhs; }
+auto fncomp(const MyType lhs, const MyType rhs) -> bool { return lhs < rhs; }
 
 struct classcomp
 {
-    bool operator()(const MyType &lhs, const MyType &rhs) const
+    auto operator()(const MyType &lhs, const MyType &rhs) const -> bool
     {
         return lhs < rhs;
     }
 };
 
-int main()
+auto main() -> int
 {
     std::set<MyType> first; // empty set of MyType
 

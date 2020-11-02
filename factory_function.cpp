@@ -12,12 +12,12 @@ protected:
     {};
 
 public:
-    explicit B(Token) {}
+    explicit B(Token /*unused*/) {}
     virtual ~B() = default;
     virtual void f() = 0;
 
     template <class T>
-    static shared_ptr<T> create() // interface for creating objects
+    static auto create() -> shared_ptr<T> // interface for creating objects
     {
         auto p = make_shared<T>(typename T::Token{});
         p->post_initialize();
@@ -40,16 +40,16 @@ protected:
     {};
 
 public:
-    explicit D(Token) : B{typename B::Token{}} {}
+    explicit D(Token /*unused*/) : B{typename B::Token{}} {}
     void f() override{/* ...  */};
 
 protected:
     // NOTE: only friend class member 'create' can have a qualified
     // name B:: and access to protected D::Token
-    template <class T> friend shared_ptr<T> B::create();
+    template <class T> friend auto B::create() -> shared_ptr<T>;
 };
 
-int main()
+auto main() -> int
 {
     shared_ptr<D> p = D::create<D>(); // creating a D object
 }

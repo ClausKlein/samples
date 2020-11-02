@@ -1,7 +1,7 @@
 // build:
 // g++ -std=c++11 -Wall -Wextra -o timevalue timevalue.cpp
 //
-#define __STDC_LIMIT_MACROS
+// XXX #define __STDC_LIMIT_MACROS
 #include <sys/types.h> //BYTE_ORDER GHS PPC: #define __BIG_ENDIAN__
 
 #include <boost/test/minimal.hpp>
@@ -54,7 +54,7 @@ union time_value
 
 } test;
 
-int test_main(int /*argc*/, char * /*argv*/[])
+auto test_main(int /*argc*/, char * /*argv*/[]) -> int
 {
     const int64_t tests[16] = {
         INT64_MIN,  -4294967296, INT32_MIN,   INT16_MIN,   -1LL,

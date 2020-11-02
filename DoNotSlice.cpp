@@ -23,8 +23,9 @@ protected:
 
 public:
     Employee(std::string name) : name(std::move(name)) {}
-    const std::string &get_name() const { return name; }
-    friend std::ostream &operator<<(std::ostream &os, const Employee &e)
+    [[nodiscard]] auto get_name() const -> const std::string & { return name; }
+    friend auto operator<<(std::ostream &os, const Employee &e)
+        -> std::ostream &
     {
         e.print(os);
         return os;
@@ -47,7 +48,10 @@ public:
     Manager(const std::string &name, Employee assistant)
         : Employee(name), assistant(std::move(assistant))
     {}
-    const Employee &get_assistant() const { return assistant; }
+    [[nodiscard]] auto get_assistant() const -> const Employee &
+    {
+        return assistant;
+    }
 };
 
 #ifndef FIXIT
@@ -56,7 +60,7 @@ void f(Employee e) { std::cout << e; }
 void f(const Employee &e) { std::cout << e; }
 #endif
 
-int main()
+auto main() -> int
 {
     Employee coder("Joe Smith");
     Employee typist("Bill Jones");

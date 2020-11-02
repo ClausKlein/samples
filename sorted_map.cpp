@@ -19,7 +19,7 @@ struct Point
 {
     double x, y;
 };
-std::ostream &operator<<(std::ostream &stream, const Point &p)
+auto operator<<(std::ostream &stream, const Point &p) -> std::ostream &
 {
     stream << '{';
     stream << p.x << ',' << p.y;
@@ -29,13 +29,13 @@ std::ostream &operator<<(std::ostream &stream, const Point &p)
 
 struct PointCmp
 {
-    bool operator()(const Point &lhs, const Point &rhs) const
+    auto operator()(const Point &lhs, const Point &rhs) const -> bool
     {
         return lhs.x < rhs.x; // NB. intentionally ignores y
     }
 };
 
-int main()
+auto main() -> int
 {
     // Custom key class option 1:
     // Use a comparison struct
@@ -63,9 +63,10 @@ int main()
     magy.insert({Point{-0.8, -15.0}, 0});
 
     std::cout << "Sorted with lockup from mag table:\n";
-    for (auto p : magy)
+    for (auto p : magy) {
         std::cout << "The magnitude of key " << p.first << " is " << p.second
                   << '\n';
+    }
 
     return 0;
 }

@@ -3,9 +3,9 @@
 #include <string>
 using namespace std;
 
-int main()
+auto main() -> int
 {
-    typedef multimap<string, string> VokMulMap;
+    using VokMulMap = multimap<string, string>;
     using V = VokMulMap::value_type;
     const V f[] = {V("two", "Zwei"), V("three", "Drei"), V("four", "Vier"),
                    V("two", "Paar")};

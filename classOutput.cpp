@@ -8,10 +8,10 @@ class Date
 
 public:
     Date(int m, int d, int y) : mo(m), da(d), yr(y) {}
-    friend std::ostream &operator<<(std::ostream &os, const Date &dt);
+    friend auto operator<<(std::ostream &os, const Date &dt) -> std::ostream &;
 };
 
-std::ostream &operator<<(std::ostream &os, const Date &dt)
+auto operator<<(std::ostream &os, const Date &dt) -> std::ostream &
 {
     os << dt.mo << '/' << dt.da << '/' << dt.yr;
     return os;
@@ -28,7 +28,7 @@ class Matrix
 public:
     Matrix() = default;
     // [...]
-    void print(std::ostream &stream) const { stream << "class Matrix {...} "; }
+    static void print(std::ostream &stream) { stream << "class Matrix {...} "; }
 };
 
 // XXX std::ostream& operator<<(std::ostream& stream, const Math::Matrix&
@@ -52,7 +52,7 @@ auto operator<<(std::ostream &os, const T &t) -> decltype(t.print(os), os)
 //     return stream;
 // }
 
-int main()
+auto main() -> int
 {
     Math::Matrix matrix;
     std::cout << matrix << std::endl;

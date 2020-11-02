@@ -25,8 +25,8 @@ using namespace std;
 
 // Helper function for printing containers.
 template <typename T>
-BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream &))
-operator<<(std::ostream &stream, set<T> &c)
+auto operator<<(std::ostream &stream, set<T> &c)
+    -> BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream &))
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
@@ -39,8 +39,8 @@ operator<<(std::ostream &stream, set<T> &c)
 }
 
 template <typename T>
-BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream &))
-operator<<(std::ostream &stream, vector<T> &c)
+auto operator<<(std::ostream &stream, vector<T> &c)
+    -> BOOST_CONCEPT_REQUIRES(((boost::Ostreamable<T>)), (std::ostream &))
 {
     if (!c.empty()) {
         stream << '{' << *c.begin();
@@ -66,27 +66,34 @@ public:
         // XXX std::cout << BOOST_CURRENT_FUNCTION << *this << std::endl;
     }
 
-    inline std::string firstname() const { return firstName; }
-    inline std::string lastname() const { return lastName; }
-    inline size_t number() const { return no; }
+    [[nodiscard]] inline auto firstname() const -> std::string
+    {
+        return firstName;
+    }
+    [[nodiscard]] inline auto lastname() const -> std::string
+    {
+        return lastName;
+    }
+    [[nodiscard]] inline auto number() const -> size_t { return no; }
 
-    friend std::ostream &operator<<(std::ostream &strm, const Customer &c)
+    friend auto operator<<(std::ostream &strm, const Customer &c)
+        -> std::ostream &
     {
         return strm << "[" << c.firstName << "," << c.lastName << "," << c.no
                     << "]";
     }
-    friend bool operator!=(const Customer &c1, const Customer &c2)
+    friend auto operator!=(const Customer &c1, const Customer &c2) -> bool
     {
         // XXX std::cout << BOOST_CURRENT_FUNCTION << std::endl;
         return !(c1 == c2);
     }
-    friend bool operator==(const Customer &c1, const Customer &c2)
+    friend auto operator==(const Customer &c1, const Customer &c2) -> bool
     {
         // XXX std::cout << BOOST_CURRENT_FUNCTION << std::endl;
         return (c1.firstname() == c2.firstname()) &&
                (c1.lastname() == c2.lastname()) && (c1.number() == c2.number());
     }
-    friend std::size_t hash_value(const Customer &c)
+    friend auto hash_value(const Customer &c) -> std::size_t
     {
         // XXX std::cout << BOOST_CURRENT_FUNCTION << std::endl;
         std::size_t seed = 0;
@@ -95,7 +102,7 @@ public:
         boost::hash_combine(seed, c.number());
         return seed;
     }
-    friend bool operator<(const Customer &c1, const Customer &c2)
+    friend auto operator<(const Customer &c1, const Customer &c2) -> bool
     {
         // XXX std::cout << BOOST_CURRENT_FUNCTION << std::endl;
         return (c1.firstname() < c2.firstname()) ||
@@ -107,7 +114,7 @@ public:
     }
 };
 
-int test_main(int /*argc*/, char * /*argv*/[])
+auto test_main(int /*argc*/, char * /*argv*/[]) -> int
 {
     using namespace boost;
 
@@ -117,7 +124,7 @@ int test_main(int /*argc*/, char * /*argv*/[])
     // NO! BOOST_CONCEPT_ASSERT((DefaultConstructible<Customer>));
     BOOST_CONCEPT_ASSERT((Hashable<Customer>));
 
-    typedef std::pair<int, int> MyType;
+    using MyType = std::pair<int, int>;
     BOOST_CONCEPT_ASSERT((Hashable<MyType>));
     // TODO: BOOST_CONCEPT_ASSERT((Ostreamable< MyType >));
 

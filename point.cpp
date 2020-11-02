@@ -31,7 +31,7 @@ using Point = std::complex<int>;
 // NOTE: Because complex numbers are naturally thought of as existing on a
 // two-dimensional plane, there is no natural linear ordering on the set of
 // complex numbers.
-std::size_t hash(Point const &p)
+auto hash(Point const &p) -> std::size_t
 {
     std::size_t seed = 0;
     boost::hash_combine(seed, p.real());
@@ -39,7 +39,7 @@ std::size_t hash(Point const &p)
     return seed;
 }
 
-bool operator<(const Point &lhs, const Point &rhs)
+auto operator<(const Point &lhs, const Point &rhs) -> bool
 {
     return lhs.real() < rhs.real(); // NB. intentionally ignores imag()
 }
@@ -90,7 +90,7 @@ public:
 
 #endif
 
-int test_main(int /*argc*/, char * /*argv*/[])
+auto test_main(int /*argc*/, char * /*argv*/[]) -> int
 {
     using namespace std::rel_ops;
 

@@ -40,7 +40,7 @@ void f1()
 {
     int arr[COUNT];
     // FIXME gsl::span<int> av = arr;
-    span av{arr};   // NOTE: static extent
+    span av{arr}; // NOTE: static extent
     int i = 0;
     for (auto &e : av) {
         e = i++;
@@ -53,7 +53,7 @@ void f2()
 {
     size_t arr[COUNT];
     // XXX gsl::span<size_t, COUNT> av = arr;
-    span av{arr};   // NOTE: static extent
+    span av{arr}; // NOTE: static extent
     for (size_t i = av.size(); i > 0; --i) {
         // XXX gsl::at(arr, i) = i;  // NOTE: this throws! CK
         // XXX av[av.size()] = i;  // NOTE: this throws! CK
@@ -157,7 +157,7 @@ void as_byte_demo()
 {
     using namespace tcb;
 
-    /* mutable */ float data[1]{3.141592f};
+    /* mutable */ float data[1]{3.141592F};
 
     auto const const_bytes = as_bytes(span{data});
 
@@ -171,7 +171,7 @@ void as_byte_demo()
     print(data[0], writable_bytes);
 }
 
-int main(int argc, char *argv[])
+auto main(int argc, char *argv[]) -> int
 {
 #ifdef USE_ARGV
     constexpr size_t ARGC(1);

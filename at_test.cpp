@@ -39,7 +39,8 @@ TEST_CASE("at(): Terminates access to non-existing gsl::span elements")
     span<int> a(arr);
 
     CHECK(a.size() == 4);
-    //NOTE: NO with gsl-lite! CK CHECK_THROWS_AS(a.at(4), const std::exception &);
+    // NOTE: NO with gsl-lite! CK CHECK_THROWS_AS(a.at(4), const std::exception
+    // &);
 
     CHECK_THROWS_AS(at(a, 4), const std::exception &);
 }

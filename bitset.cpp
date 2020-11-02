@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int main()
+auto main() -> int
 {
     bitset<5> a(6), b(string("10010")), x;
     cout << "a = " << a << "\nb = " << b << "\nx = " << x << endl;

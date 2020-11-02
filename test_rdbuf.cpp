@@ -2,7 +2,7 @@
 #include <fstream>  // std::filebuf, std::ifstream
 #include <iostream> // std::cout
 
-int main()
+auto main() -> int
 {
     std::ifstream ifs("data.txt", std::ifstream::binary);
 

@@ -28,14 +28,16 @@ template <typename T> void print_queue(T &q)
 struct xor_cmp
 {
     xor_cmp(int _value = 1) : value(_value){};
-    int value;
-    bool operator()(int left, int right)
+    auto operator()(int left, int right) -> bool
     {
         return (left ^ value) < (right ^ value);
     };
+
+private:
+    int value;
 };
 
-int main()
+auto main() -> int
 {
     // A priority queue is a container adaptor that provides constant time
     // lookup of the largest (by default) element, at the expense of

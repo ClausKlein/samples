@@ -3,7 +3,7 @@
 #include <vector>
 
 template <typename T>
-std::ostream &operator<<(std::ostream &s, const std::vector<T> &v)
+auto operator<<(std::ostream &s, const std::vector<T> &v) -> std::ostream &
 {
 #if 0
     s.put('{');
@@ -28,7 +28,7 @@ std::ostream &operator<<(std::ostream &s, const std::vector<T> &v)
 #endif
 }
 
-int main()
+auto main() -> int
 {
     // c++11 initializer list syntax:
     std::vector<std::string> words1{"the", "frogurt", "is", "also", "cursed"};

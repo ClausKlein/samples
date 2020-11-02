@@ -1,4 +1,4 @@
-#undef USE_BOOST
+#define USE_BOOST
 #ifndef USE_BOOST
 #    include <functional>
 #else
@@ -9,12 +9,12 @@
 
 struct S
 {
-    std::string first_name;
-    std::string last_name;
+    S(const std::string &first, const std::string &last)
+        : first_name(first), last_name(last)
+    {}
+    S() {}
 
-    S() : first_name(""), last_name("") {}
-
-    bool operator==(S const &other) const
+    auto operator==(S const &other) const -> bool
     {
         return first_name == other.first_name && last_name == other.last_name;
     }
@@ -32,6 +32,10 @@ struct S
 #    endif
     }
 #endif
+
+private:
+    std::string first_name;
+    std::string last_name;
 };
 
 #ifndef USE_BOOST
@@ -41,7 +45,7 @@ template <> struct hash<S>
     using argument_type = S;
     using value_type = std::size_t;
 
-    value_type operator()(argument_type const &s) const
+    auto operator()(argument_type const &s) const -> value_type
     {
         value_type const h1(std::hash<std::string>()(s.first_name));
         value_type const h2(std::hash<std::string>()(s.last_name));
@@ -51,12 +55,10 @@ template <> struct hash<S>
 } // namespace std
 #endif
 
-int main()
+auto main() -> int
 {
     S d;
-    S s;
-    s.first_name = "Bender";
-    s.last_name = "Rodriguez";
+    S s("Bender", "Rodriguez");
 
 #ifndef USE_BOOST
     std::hash<S> hash_fn;

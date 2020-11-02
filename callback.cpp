@@ -33,7 +33,7 @@ struct PrintNum
     void operator()(int i) const { std::cout << i << '\n'; }
 };
 
-int main()
+auto main() -> int
 {
     // store a free function
     std::function<void(int)> f_display = print_num;

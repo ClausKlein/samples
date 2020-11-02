@@ -22,15 +22,15 @@ protected:
 public:
     // GOOD: polymorphic class suppresses copying
     B(const B &) = delete;
-    B &operator=(const B &) = delete;
+    auto operator=(const B &) -> B & = delete;
     B(const B &&) = delete;
-    B &operator=(const B &&) = delete;
+    auto operator=(const B &&) -> B & = delete;
 
     virtual ~B() = default;
     virtual void f() = 0;
 
     template <class T>
-    static std::shared_ptr<T> create() // interface for creating objects
+    static auto create() -> std::shared_ptr<T> // interface for creating objects
     {
         auto p = std::make_shared<T>();
         p->post_initialize();
@@ -50,7 +50,7 @@ public:
     void set_value(const std::string &v) { value = v; }
 
     // function templates can be specialized like all function templates.
-    static std::shared_ptr<D> create(std::string v)
+    static auto create(std::string v) -> std::shared_ptr<D>
     {
         auto p = std::make_shared<D>(v);
         p->post_initialize();
@@ -67,7 +67,7 @@ private:
     std::string value;
 };
 
-int main()
+auto main() -> int
 {
 #ifdef USE_OVERLOADS
     {

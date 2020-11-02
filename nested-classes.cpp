@@ -8,7 +8,7 @@ class enclose // enclosing class
 public:
     struct inner // nested class
     {
-        void f(int i)
+        static void f(int i)
         {
             // x = i; // Error: can't write to non-static enclose::x without
             // instance
@@ -21,7 +21,7 @@ public:
             y = i;   // OK: can assign to global y
         }
 
-        void g(enclose *p, int i)
+        static void g(enclose *p, int i)
         {
             p->x = i; // OK: assign to enclose::x
         }
@@ -34,10 +34,10 @@ private:
     };
 
 public:
-    static nested f() { return nested{}; }
+    static auto f() -> nested { return nested{}; }
 };
 
-int main()
+auto main() -> int
 {
     // enclose::nested n1 = e.f(); // Error: 'nested' is private
 

@@ -24,7 +24,7 @@ class PhotoProcessor
 public:
     PhotoProcessor() = default;
 
-public:
+    // NOLINTNEXTLINE(misc-no-recursion)
     void process(Photo &p)
     {
         processImplementation(p);
@@ -105,7 +105,7 @@ void processPhoto(Photo &photo)
     scale.process(photo);
 }
 
-int main()
+auto main() -> int
 {
     Photo p("Y2013 Photo");
 

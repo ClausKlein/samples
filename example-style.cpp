@@ -35,17 +35,17 @@ struct Foo
 {
     Foo() = default;
     Foo(int a, int b, int c) : bam(a), blah(b), baz(c) {}
-    int &operator[](size_t); // OK
+    auto operator[](size_t) -> int &; // OK
     // ...
-    int bam{0};
-    int blah{0};
-    int baz{0};
+    int bam{0};  // NOLINT
+    int blah{0}; // NOLINT
+    int baz{0};  // NOLINT
 };
 
 static void something() {}
 static void something_else() {}
 
-double foo(int x)
+auto foo(int x) -> double
 {
     if (0 < x) {
         // ...
@@ -63,13 +63,15 @@ double foo(int x)
         break;
     }
 
-    if (0 < x)
+    if (0 < x) {
         ++x;
+    }
 
-    if (x < 0)
+    if (x < 0) {
         something();
-    else
+    } else {
         something_else();
+    }
 
     return some_value;
 }
@@ -77,27 +79,30 @@ double foo(int x)
 } // namespace testing
 
 #if __cpp_lib_string_view
-int doSomething(const std::string_view &sv)
+auto doSomething(const std::string_view &sv) -> int
 {
     // Terminators never need 'something' done to them because ...
-    if (sv.empty())
+    if (sv.empty()) {
         return 0;
+    }
 
     // We conservatively avoid transforming instructions with multiple uses
     // because goats like cheese.
-    if (sv == "bad")
+    if (sv == "bad") {
         return 0;
+    }
 
     // This is really just here for example.
-    if (!sv.find("abd"))
+    if (!sv.find("abd")) {
         return 0;
+    }
 
     // ... some long code ....
     return 1;
 }
 #endif
 
-int main()
+auto main() -> int
 {
     int data[] = {0, 1, 1, 2, 3, 5, 8, 13, 21};
 
@@ -106,10 +111,12 @@ int main()
 
     std::sort(foo.begin(), foo.end(),
               [&](testing::Foo a, testing::Foo b) -> bool {
-                  if (a.blah < b.blah)
+                  if (a.blah < b.blah) {
                       return true;
-                  if (a.baz < b.baz)
+                  }
+                  if (a.baz < b.baz) {
                       return true;
+                  }
                   return a.bam < b.bam;
               });
 

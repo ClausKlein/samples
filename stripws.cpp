@@ -5,7 +5,7 @@
 #include <string>
 
 // Entfernt folgende Leerzeichen von s.
-inline std::string trim(const std::string &s)
+inline auto trim(const std::string &s) -> std::string
 {
     // NOTE: substr() returns a substring [pos, pos+count). If the requested
     // substring extends past the end of the string, or if count == npos, the
@@ -14,7 +14,7 @@ inline std::string trim(const std::string &s)
 }
 
 // Entfernt fuehrende Leerzeichen von s.
-inline std::string ltrim(const std::string &s)
+inline auto ltrim(const std::string &s) -> std::string
 {
     if (s.empty()) {
         return s;
@@ -28,13 +28,13 @@ inline std::string ltrim(const std::string &s)
     }
 }
 
-int main()
+auto main() -> int
 {
     // the test string
     std::string str(" Hello World! ");
     std::string str2("other");
     std::string blanks("     ");
-    std::string empty("");
+    std::string empty;
     std::string ws("\t \r\n");
 
 #if 0

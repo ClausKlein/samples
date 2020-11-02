@@ -44,14 +44,14 @@ namespace fake {
 using namespace boost;
 
 template <typename RanIter>
-BOOST_CONCEPT_REQUIRES(
-    ((Mutable_RandomAccessIterator<RanIter>))(
-        (LessThanComparable<
-            typename Mutable_RandomAccessIterator<RanIter>::value_type>))
+auto // return value
+    sort(RanIter /*unused*/, RanIter /*unused*/) -> BOOST_CONCEPT_REQUIRES(
+        ((Mutable_RandomAccessIterator<RanIter>))(
+            (LessThanComparable<
+                typename Mutable_RandomAccessIterator<RanIter>::value_type>))
 
-        ,
-    (void)) // return value
-sort(RanIter, RanIter)
+            ,
+        (void))
 {}
 } // namespace fake
 
