@@ -54,7 +54,7 @@ public:
 class RemoteHost : public Host_IF
 {
 public:
-    explicit RemoteHost() : Host_IF() { m_host = make_shared<RemoteHostA>(); }
+    explicit RemoteHost()  { m_host = make_shared<RemoteHostA>(); }
 
     void f() override { m_host->f(); }
 
