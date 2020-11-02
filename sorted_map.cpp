@@ -66,7 +66,7 @@ auto main() -> int
     for (auto p : magy) {
         std::cout << "The magnitude of key " << p.first << " is " << p.second
                   << '\n';
-}
+    }
 
     return 0;
 }

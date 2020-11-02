@@ -35,7 +35,10 @@ try_inc(A a)
     return inc()(a);
 }
 
-auto try_inc(eat /*unused*/) -> not_incrementable { return not_incrementable(); }
+auto try_inc(eat /*unused*/) -> not_incrementable
+{
+    return not_incrementable();
+}
 
 auto main() -> int
 {

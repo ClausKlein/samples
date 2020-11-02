@@ -46,14 +46,14 @@ modernize-use-nullptr
 modernize-use-using
 readability-braces-around-statements
 readability-convert-member-functions-to-static
-"}
-
-: ${RULES:="
 readability-implicit-bool-conversion
 readability-named-parameter
 readability-redundant-member-init
 readability-redundant-string-init
-readability-static-accessed-through-instance
+#NO! readability-static-accessed-through-instance
+"}
+
+: ${RULES:="
 readability-uppercase-literal-suffix
 "}
 
@@ -63,7 +63,7 @@ set -u
 set -x
 
 for rule in ${RULES}; do
-    run-clang-tidy.py -header-filter='.*' -checks='-*,'${rule} -j 1 ${FIX}
+    run-clang-tidy.py -header-filter='.*' -checks='-*,'${rule} -format -j 1 ${FIX}
     make
     make test
     git commit -a -m ${rule} --allow-empty

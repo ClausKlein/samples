@@ -73,11 +73,12 @@ public:
     ~widget(); // defined in the implementation file, where impl is a complete
                // type
     widget(widget && /*unused*/); // defined in the implementation file
-                       // Note: calling draw() on moved-from object is
-                       // Undefined Behaviour (UB)!
+                                  // Note: calling draw() on moved-from object
+                                  // is Undefined Behaviour (UB)!
 
     widget(const widget &) = delete;
-    auto operator=(widget && /*unused*/) -> widget &; // defined in the implementation file
+    auto operator=(widget && /*unused*/)
+        -> widget &; // defined in the implementation file
     auto operator=(const widget &) -> widget & = delete;
 };
 

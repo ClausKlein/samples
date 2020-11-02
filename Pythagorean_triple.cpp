@@ -37,5 +37,5 @@ auto main() -> int
         std::cout << "done.\n";
     } else {
         std::cout << "break.\n";
-}
+    }
 }

@@ -52,7 +52,7 @@ public:
         t_b
     };
 
-    SUT() :  m_base(nullptr) { cout << "SUT()" << endl; };
+    SUT() : m_base(nullptr) { cout << "SUT()" << endl; };
     SUT(const base *_b, int t, const string _id = "")
         : type(t), id(_id), m_base(_b)
     {
@@ -64,7 +64,7 @@ public:
         assert(type == t_a); // TODO assert
         if (type == t_a) {
             return *m_a;
-}
+        }
         throw(std::runtime_error("invallid type a"));
     }
 
@@ -73,7 +73,7 @@ public:
         assert(type == t_b); // TODO assert
         if (type == t_b) {
             return *m_b;
-}
+        }
         throw(std::runtime_error("invallid type b"));
     }
 
