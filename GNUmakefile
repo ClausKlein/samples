@@ -6,10 +6,9 @@
 # Disable the built-in implicit rules.
 MAKEFLAGS+= --no-builtin-rules
 
-.PHONY: setup show all test lcov install check format clean distclean
+.PHONY: setup show all test lcov install check cmakelint format clean distclean
 
 PROJECT_NAME:=$(shell basename $${PWD})
-#XXX PROJECT_NAME:=cookbook
 
 ##################################################
 # begin of config part
@@ -21,11 +20,10 @@ PROJECT_NAME:=$(shell basename $${PWD})
 checkAllHeader?='$(CURDIR)/.*\.h$$'
 
 # NOTE: there are many errors with boost::test, doctest, catch test framework! CK
-### CHECKS?='-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers'
-CHECKS?='-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
-CHECKS?='-*,portability-*,readability-*,misc-*,-readability-magic-numbers'
-CHECKS?='-*,misc-*,boost-*,cert-*,-misc-unused-*,-cert-err58-cpp'
-
+CHECKS?='-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers'
+## CHECKS?='-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay'
+# CHECKS?='-*,portability-*,readability-*,misc-*,-readability-magic-numbers'
+CHECKS?='-*,boost-*,cert-*,-cert-err58-cpp,misc-*,-misc-static-assert,-misc-unused-*,-misc-unconventional-*'
 
 # prevent hard config of find_package(asio 1.14.1 CONFIG CMAKE_FIND_ROOT_PATH_BOTH)
 ifeq (NO${CROSS_COMPILE},NO)
@@ -35,7 +33,7 @@ ifeq (NO${CROSS_COMPILE},NO)
     CMAKE_INSTALL_PREFIX?=/usr/local
     export CMAKE_INSTALL_PREFIX
     CMAKE_STAGING_PREFIX:=$(CMAKE_INSTALL_PREFIX)
-    CMAKE_STAGING_PREFIX?=/tmp/staging/$(PROJECT_NAME)$(CMAKE_INSTALL_PREFIX)
+    # CMAKE_STAGING_PREFIX?=/tmp/staging/$(PROJECT_NAME)$(CMAKE_INSTALL_PREFIX)
     CMAKE_PREFIX_PATH?="$(CMAKE_STAGING_PREFIX);$(CMAKE_INSTALL_PREFIX);/usr/local/opt/boost;/opt/local;/usr"
 else
     CMAKE_STAGING_PREFIX?=/tmp/staging/$(CROSS_COMPILE})$(PROJECT_NAME)
@@ -46,9 +44,13 @@ endif
 #NO! BUILD_TYPE?=Coverage
 # NOTE: use on shell$> BUILD_TYPE=Coverage make lcov
 BUILD_TYPE?=Debug
-BUILD_TYPE?=Release
-# GENERATOR:=Xcode
+# BUILD_TYPE?=Release
 GENERATOR?=Ninja
+#options GENERATOR:=Xcode
+# maybe: GENERATOR:='Eclipse CDT4 - Ninja'
+# NO! GENERATOR?='Unix Makefiles'
+
+# maybe: VERBOSE?=-v
 
 # end of config part
 ##################################################
@@ -56,17 +58,19 @@ GENERATOR?=Ninja
 
 BUILD_DIR:=../.build-$(PROJECT_NAME)-${CROSS_COMPILE}$(BUILD_TYPE)
 ifeq ($(BUILD_TYPE),Coverage)
-    USE_LOCV=ON
+    USE_LCOV=ON
     ifeq (NO${CROSS_COMPILE},NO)
         CC:=/usr/bin/gcc
         CXX:=/usr/bin/g++
     endif
 else
-    USE_LOCV=OFF
+    USE_LCOV=OFF
 endif
 
+
 all: setup .configure-$(BUILD_TYPE)
-	cmake --build $(BUILD_DIR)
+	cmake --build $(BUILD_DIR) -- $(VERBOSE)
+
 
 test: all
 	cd $(BUILD_DIR) && ctest -C $(BUILD_TYPE) --rerun-failed --output-on-failure .
@@ -79,21 +83,22 @@ run-clang-tidy: setup .configure-$(BUILD_TYPE) compile_commands.json
 	egrep '\b(warning|error):' run-clang-tidy.log | perl -pe 's/(^.*) (warning|error):/\2/' | sort -u
 
 setup: $(BUILD_DIR) .clang-tidy compile_commands.json
-	find . -name CMakeLists.txt -o -name '*.cmake' -o -name '*.cmake.in' -o -name '*meson*' > .buildfiles.lst
+	find . -name CMakeLists.txt -o -name '*.cmake' -o -name '*.cmake.in' -o -name '*meson*' > .buildfiles.log
 
-#
+# cmake setup
 .configure-$(BUILD_TYPE): CMakeLists.txt
 	cd $(BUILD_DIR) && cmake -G $(GENERATOR) -Wdeprecated -Wdev \
-      -DUSE_LCOV=$(USE_LOCV) -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) \
+      -DUSE_LCOV=$(USE_LCOV) -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) \
+      -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=BOTH \
       -DCMAKE_PREFIX_PATH=$(CMAKE_PREFIX_PATH) \
       -DCMAKE_STAGING_PREFIX=$(CMAKE_STAGING_PREFIX) \
-      -DCMAKE_PROJECT_INCLUDE_BEFORE=${HOME}/workspace/cmake/before_project_setup.cmake \
-      -DCMAKE_PROJECT_INCLUDE=${HOME}/workspace/cmake/build_options.cmake \
+      -DCMAKE_PROJECT_INCLUDE_BEFORE=${HOME}/Workspace/cmake/before_project_setup.cmake \
+      -DCMAKE_PROJECT_INCLUDE=${HOME}/Workspace/cmake/build_options.cmake \
       -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_C_COMPILER=${CC} -DCMAKE_CXX_COMPILER=${CXX} $(CURDIR)
 	touch $@
 
 compile_commands.json: .configure-$(BUILD_TYPE)
-	ln -sf $(CURDIR)/$(BUILD_DIR)/compile_commands.json .
+	ln -sf $(BUILD_DIR)/compile_commands.json .
 
 $(BUILD_DIR): GNUmakefile
 	mkdir -p $@
@@ -102,24 +107,34 @@ $(BUILD_DIR): GNUmakefile
 format: .clang-format
 	find . -type f \( -name '*.hxx' -o -name '*.hpp' -o -name '*.cxx' -o -name '*.cpp' \) -print0 | xargs -0 clang-format -style=file -i
 
-show: setup
-	cmake -S $(CURDIR) -B $(BUILD_DIR) -L
 
-check: $(BUILD_DIR)
+cmakelint:
+	find $(PACKAGE) -type f \( -name '*.cmake' -o -name 'CMakeLists.txt' \) -print0 | xargs -0 cmakelint --linelength=120 2>&1 | tee cmakelint.log
+
+
+show: setup
+	cmake -S $(CURDIR) -B $(BUILD_DIR) -L --trace
+
+
+check: setup .configure-$(BUILD_TYPE)
 	cmake --build $(BUILD_DIR) --target $@ 2>&1 | tee run-clang-tidy.log
 	egrep '\b(warning|error):' run-clang-tidy.log | perl -pe 's/(^.*) (warning|error):/\2/' | sort -u
+
 
 lcov: all .configure-Coverage
 	cmake --build $(BUILD_DIR) --target $@
 
+
 install: $(BUILD_DIR)
 	cmake --build $(BUILD_DIR) --target $@
+
 
 clean: $(BUILD_DIR)
 	cmake --build $(BUILD_DIR) --target $@
 
+
 distclean:
-	rm -rf $(BUILD_DIR) .configure-$(BUILD_TYPE) .buildfiles.lst compile_commands.json *~ .*~ tags
+	rm -rf $(BUILD_DIR) .configure-* .buildfiles.log compile_commands.json *~ .*~ tags
 	find . -name '*~' -delete
 
 

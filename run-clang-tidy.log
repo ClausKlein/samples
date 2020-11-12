@@ -1,446 +1,550 @@
 Enabled checks:
+    cert-dcl03-c
+    cert-dcl21-cpp
+    cert-dcl50-cpp
+    cert-dcl54-cpp
+    cert-dcl58-cpp
+    cert-dcl59-cpp
+    cert-env33-c
+    cert-err09-cpp
+    cert-err34-c
+    cert-err52-cpp
+    cert-err58-cpp
+    cert-err60-cpp
+    cert-err61-cpp
+    cert-fio38-c
+    cert-flp30-c
+    cert-msc30-c
+    cert-msc32-c
+    cert-msc50-cpp
+    cert-msc51-cpp
+    cert-oop11-cpp
     cppcoreguidelines-c-copy-assignment-signature
-    cppcoreguidelines-explicit-virtual-functions
-    cppcoreguidelines-init-variables
     cppcoreguidelines-interfaces-global-init
-    cppcoreguidelines-macro-usage
     cppcoreguidelines-narrowing-conversions
     cppcoreguidelines-no-malloc
-    cppcoreguidelines-non-private-member-variables-in-classes
     cppcoreguidelines-owning-memory
+    cppcoreguidelines-pro-type-const-cast
+    cppcoreguidelines-pro-type-cstyle-cast
+    cppcoreguidelines-pro-type-member-init
+    cppcoreguidelines-pro-type-reinterpret-cast
+    cppcoreguidelines-pro-type-static-cast-downcast
+    cppcoreguidelines-pro-type-union-access
     cppcoreguidelines-slicing
     cppcoreguidelines-special-member-functions
 
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/immutableString.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
+226 warnings generated.
+Suppressed 226 warnings (226 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/SFINAE-cxx11.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
+226 warnings generated.
+Suppressed 226 warnings (226 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/l1083.cpp
-/Users/clausklein/Workspace/cpp/samples/l1083.cpp:63:26: warning: narrowing conversion from 'double' to 'int' [cppcoreguidelines-narrowing-conversions]
-    int err = argc > 1 ? argc : 0.0;
-                         ^
-2416 warnings generated.
-Suppressed 2415 warnings (2415 in non-user code).
+283 warnings generated.
+Suppressed 283 warnings (283 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/unordered_set.cpp
-2417 warnings generated.
-Suppressed 2417 warnings (2417 in non-user code).
+387 warnings generated.
+Suppressed 387 warnings (387 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sorted_set.cpp
-2418 warnings generated.
-Suppressed 2418 warnings (2418 in non-user code).
+337 warnings generated.
+Suppressed 337 warnings (337 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/vokable2.cpp
-2424 warnings generated.
-Suppressed 2424 warnings (2424 in non-user code).
+347 warnings generated.
+Suppressed 347 warnings (347 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/use_span.cpp
-2659 warnings generated.
-Suppressed 2659 warnings (2659 in non-user code).
+204 warnings generated.
+Suppressed 204 warnings (204 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sorted_map.cpp
-2424 warnings generated.
-Suppressed 2424 warnings (2424 in non-user code).
+221 warnings generated.
+Suppressed 221 warnings (221 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_iomanip.cpp
-/Users/clausklein/Workspace/cpp/samples/test_iomanip.cpp:18:12: warning: variable 'betrag' is not initialized [cppcoreguidelines-init-variables]
-    double betrag;
-           ^
-                  = NAN
-2473 warnings generated.
-Suppressed 2472 warnings (2472 in non-user code).
+314 warnings generated.
+Suppressed 314 warnings (314 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp
-/Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp:18:5: warning: initializing non-owner 'char *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    char *buffer = new char[CHUNCK_SIZE];
-    ^
-/Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp:39:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete[] buffer;
-    ^
-/Users/clausklein/Workspace/cpp/samples/test_rdbuf.cpp:18:5: note: variable declared here
-    char *buffer = new char[CHUNCK_SIZE];
-    ^
-2479 warnings generated.
-Suppressed 2477 warnings (2477 in non-user code).
+288 warnings generated.
+Suppressed 288 warnings (288 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/unordered_map.cpp
-2434 warnings generated.
-Suppressed 2434 warnings (2434 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/timevalue.cpp
-7638 warnings generated.
-Suppressed 7638 warnings (7638 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/chainOfResponsibility.cpp
-/Users/clausklein/Workspace/cpp/samples/chainOfResponsibility.cpp:22:7: warning: class 'PhotoProcessor' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class PhotoProcessor
-      ^
-2405 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Pimple.cpp
-2430 warnings generated.
-Suppressed 2430 warnings (2430 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/priority_queue.cpp
-2433 warnings generated.
-Suppressed 2433 warnings (2433 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/slide.cpp
-2413 warnings generated.
-Suppressed 2413 warnings (2413 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/sets.cpp
-2433 warnings generated.
-Suppressed 2433 warnings (2433 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/permissive.cpp
-2423 warnings generated.
-Suppressed 2423 warnings (2423 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/substr.cpp
-2503 warnings generated.
-Suppressed 2503 warnings (2503 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/nested-classes.cpp
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/NonCopyable.cpp
-/Users/clausklein/Workspace/cpp/samples/NonCopyable.cpp:19:7: warning: class 'Noncopyable' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class Noncopyable
-      ^
-2405 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp
-/Users/clausklein/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:10:7: warning: class 'base' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class base
-      ^
-2428 warnings generated.
-Suppressed 2427 warnings (2427 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/testclock.cpp
-/Users/clausklein/Workspace/cpp/samples/testclock.cpp:36:27: warning: narrowing conversion from 'unsigned long' to 'double' [cppcoreguidelines-narrowing-conversions]
-              << 1000.0 * (c_end - c_start) / CLOCKS_PER_SEC << " ms\n";
-                          ^
-2412 warnings generated.
-Suppressed 2411 warnings (2411 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/set2.cpp
-7988 warnings generated.
-Suppressed 7988 warnings (7988 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/InnerClassIdiom.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/bitset.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/point.cpp
-9944 warnings generated.
-Suppressed 9944 warnings (9944 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/konto.cpp
-2418 warnings generated.
-Suppressed 2418 warnings (2418 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/PostInitialize.cpp
-/Users/clausklein/Workspace/cpp/samples/PostInitialize.cpp:41:7: warning: class 'D' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class D : public B
-      ^
-2412 warnings generated.
-Suppressed 2411 warnings (2411 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/factory_function.cpp
-/Users/clausklein/Workspace/cpp/samples/factory_function.cpp:8:7: warning: class 'B' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class B
-      ^
-1753 warnings generated.
-Suppressed 1752 warnings (1752 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/hash.cpp
-2923 warnings generated.
-Suppressed 2923 warnings (2923 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/example-style.cpp
-2414 warnings generated.
-Suppressed 2414 warnings (2414 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/map.cpp
-2424 warnings generated.
-Suppressed 2424 warnings (2424 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/DoNotSlice.cpp
-/Users/clausklein/Workspace/cpp/samples/DoNotSlice.cpp:71:7: warning: slicing object from type 'Manager' to 'Employee' discards 32 bytes of state [cppcoreguidelines-slicing]
-    f(designer);
-      ^
-/Users/clausklein/Workspace/cpp/samples/DoNotSlice.cpp:71:7: warning: slicing object from type 'Manager' to 'Employee' discards override 'print' [cppcoreguidelines-slicing]
-2406 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/EreaseRemoveIdiom.cpp
-2414 warnings generated.
-Suppressed 2414 warnings (2414 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Round.cpp
-11567 warnings generated.
-Suppressed 11568 warnings (11567 in non-user code, 1 NOLINT).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/vector.cpp
-2418 warnings generated.
-Suppressed 2418 warnings (2418 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/result_of.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/callback.cpp
-2459 warnings generated.
-Suppressed 2459 warnings (2459 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/Pythagorean_triple.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/command-pattern.cpp
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:39:7: warning: class 'Command' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-class Command
-      ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:145:5: warning: initializing non-owner 'Light *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *light = new Light;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:146:5: warning: initializing non-owner 'Fan *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    Fan *fan = new Fan;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:149:5: warning: initializing non-owner 'LightOnCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *lightOn = new LightOnCommand(light);
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:150:5: warning: initializing non-owner 'LightOffCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *lightOff = new LightOffCommand(light);
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:151:5: warning: initializing non-owner 'FanOnCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *fanOn = new FanOnCommand(fan);
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:152:5: warning: initializing non-owner 'FanOffCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *fanOff = new FanOffCommand(fan);
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:153:5: warning: initializing non-owner 'NullCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *nullOn = new NullCommand();
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:154:5: warning: initializing non-owner 'NullCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *nullOff = new NullCommand();
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:157:5: warning: initializing non-owner 'RemoteControl *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
-    auto *control = new RemoteControl;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:174:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete light;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:145:5: note: variable declared here
-    auto *light = new Light;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:175:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete lightOn;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:149:5: note: variable declared here
-    auto *lightOn = new LightOnCommand(light);
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:176:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete lightOff;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:150:5: note: variable declared here
-    auto *lightOff = new LightOffCommand(light);
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:178:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete fan;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:146:5: note: variable declared here
-    Fan *fan = new Fan;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:179:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete fanOn;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:151:5: note: variable declared here
-    auto *fanOn = new FanOnCommand(fan);
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:180:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete fanOff;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:152:5: note: variable declared here
-    auto *fanOff = new FanOffCommand(fan);
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:182:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete nullOn;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:153:5: note: variable declared here
-    auto *nullOn = new NullCommand();
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:183:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete nullOff;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:154:5: note: variable declared here
-    auto *nullOff = new NullCommand();
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:185:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
-    delete control;
-    ^
-/Users/clausklein/Workspace/cpp/samples/command-pattern.cpp:157:5: note: variable declared here
-    auto *control = new RemoteControl;
-    ^
-2434 warnings generated.
-Suppressed 2415 warnings (2415 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:17:8: warning: class 'IShape' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct IShape
-       ^
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:29:8: warning: class 'CircleImpl' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct CircleImpl : IShape
-       ^
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:39:8: warning: class 'Circle' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct Circle final : CircleImpl
-       ^
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:51:8: warning: class 'BlueCircleImpl' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct BlueCircleImpl : CircleImpl
-       ^
-/Users/clausklein/Workspace/cpp/samples/CloneShapes.cpp:61:8: warning: class 'BlueCircle' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
-struct BlueCircle final : BlueCircleImpl
-       ^
-2412 warnings generated.
-Suppressed 2407 warnings (2407 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/ideone_nWFr9w.cpp
-7814 warnings generated.
-Suppressed 7814 warnings (7814 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/stream_operators.cpp
-2419 warnings generated.
-Suppressed 2419 warnings (2419 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/classOutput.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp
-/Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp:40:7: warning: class 'Shape_IF' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+209 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/dependency-injection.cpp:40:7: warning: class 'Shape_IF' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class Shape_IF
       ^
-/Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp:81:7: warning: class 'IDrawing' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+/home/klein_cl/Workspace/cpp/samples/dependency-injection.cpp:81:7: warning: class 'IDrawing' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class IDrawing
       ^
-/Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp:84:18: warning: assigning newly created 'gsl::owner<>' to non-owner 'Drawing *' [cppcoreguidelines-owning-memory]
+/home/klein_cl/Workspace/cpp/samples/dependency-injection.cpp:84:18: warning: assigning newly created 'gsl::owner<>' to non-owner 'Drawing *' [cppcoreguidelines-owning-memory]
     IDrawing() { d = new Drawing; }
                  ^
-/Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp:90:26: warning: initializing non-owner argument of type 'Shape_IF *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+/home/klein_cl/Workspace/cpp/samples/dependency-injection.cpp:90:26: warning: initializing non-owner argument of type 'Shape_IF *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
             d->drawShape(new Triangle); // TODO: memory leak! CK
                          ^
-/Users/clausklein/Workspace/cpp/samples/dependency-injection.cpp:92:26: warning: initializing non-owner argument of type 'Shape_IF *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+/home/klein_cl/Workspace/cpp/samples/dependency-injection.cpp:92:26: warning: initializing non-owner argument of type 'Shape_IF *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
             d->drawShape(new Circle); // TODO: memory leak! CK
                          ^
-2409 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
+Suppressed 204 warnings (204 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/access_privates.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
+296 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/CloneShapes.cpp:17:8: warning: class 'IShape' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct IShape
+       ^
+/home/klein_cl/Workspace/cpp/samples/CloneShapes.cpp:29:8: warning: class 'CircleImpl' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct CircleImpl : IShape
+       ^
+/home/klein_cl/Workspace/cpp/samples/CloneShapes.cpp:39:8: warning: class 'Circle' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct Circle final : CircleImpl
+       ^
+/home/klein_cl/Workspace/cpp/samples/CloneShapes.cpp:51:8: warning: class 'BlueCircleImpl' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct BlueCircleImpl : CircleImpl
+       ^
+/home/klein_cl/Workspace/cpp/samples/CloneShapes.cpp:61:8: warning: class 'BlueCircle' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+struct BlueCircle final : BlueCircleImpl
+       ^
+Suppressed 291 warnings (291 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/test_filbuf.cpp
-2477 warnings generated.
-Suppressed 2477 warnings (2477 in non-user code).
+1196 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:70:14: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        test.sec = i;
+             ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:71:53: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        cout << hex << showbase << setw(20) << test.sec << dec
+                                                    ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:72:46: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+             << " high:" << setw(12) << test.ul.high << " low:" << setw(12)
+                                             ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:73:22: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+             << test.ul.low << " time_t:" << setw(20) << test.sec << endl;
+                     ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:73:63: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+             << test.ul.low << " time_t:" << setw(20) << test.sec << endl;
+                                                              ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:75:43: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        high = static_cast<uint32_t>(test.sec >> 32);
+                                          ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:76:42: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        low = static_cast<uint32_t>(test.sec);
+                                         ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:82:25: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        if (sec != test.sec) {
+                        ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:87:18: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        if (test.sec == 1LL) {
+                 ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:88:30: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+            BOOST_CHECK(test.ub.byte1 == 1);
+                             ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:89:30: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+            BOOST_CHECK(test.uw.word1 == 1);
+                             ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:90:30: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+            BOOST_CHECK(test.ul.low == 1L);
+                             ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:93:33: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        BOOST_CHECK(sec == test.sec);
+                                ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:95:34: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        BOOST_CHECK(high == test.ul.high);
+                                 ^
+/home/klein_cl/Workspace/cpp/samples/timevalue.cpp:96:33: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        BOOST_CHECK(low == test.ul.low);
+                                ^
+Suppressed 1181 warnings (1181 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp
-/Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp:33:7: warning: class 'Base' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+431 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/ClonableBase.cpp:33:7: warning: class 'Base' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class Base : public ClonableBase
       ^
-/Users/clausklein/Workspace/cpp/samples/ClonableBase.cpp:42:7: warning: class 'Derived' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+/home/klein_cl/Workspace/cpp/samples/ClonableBase.cpp:42:7: warning: class 'Derived' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class Derived : public Base
       ^
-1902 warnings generated.
-Suppressed 1900 warnings (1900 in non-user code).
+Suppressed 429 warnings (429 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/byteorder.cpp
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:24:17: warning: variable 'v' is not initialized [cppcoreguidelines-init-variables]
-    const void *v;
-                ^
-                  = nullptr
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:81:12: warning: variable 'i' is not initialized [cppcoreguidelines-init-variables]
-    size_t i, j = 0;
+239 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:39:7: warning: class 'Command' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class Command
+      ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:145:5: warning: initializing non-owner 'Light *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *light = new Light;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:146:5: warning: initializing non-owner 'Fan *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    Fan *fan = new Fan;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:149:5: warning: initializing non-owner 'LightOnCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *lightOn = new LightOnCommand(light);
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:150:5: warning: initializing non-owner 'LightOffCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *lightOff = new LightOffCommand(light);
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:151:5: warning: initializing non-owner 'FanOnCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *fanOn = new FanOnCommand(fan);
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:152:5: warning: initializing non-owner 'FanOffCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *fanOff = new FanOffCommand(fan);
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:153:5: warning: initializing non-owner 'NullCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *nullOn = new NullCommand();
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:154:5: warning: initializing non-owner 'NullCommand *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *nullOff = new NullCommand();
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:157:5: warning: initializing non-owner 'RemoteControl *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    auto *control = new RemoteControl;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:174:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete light;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:145:5: note: variable declared here
+    auto *light = new Light;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:175:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete lightOn;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:149:5: note: variable declared here
+    auto *lightOn = new LightOnCommand(light);
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:176:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete lightOff;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:150:5: note: variable declared here
+    auto *lightOff = new LightOffCommand(light);
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:178:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete fan;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:146:5: note: variable declared here
+    Fan *fan = new Fan;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:179:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete fanOn;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:151:5: note: variable declared here
+    auto *fanOn = new FanOnCommand(fan);
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:180:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete fanOff;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:152:5: note: variable declared here
+    auto *fanOff = new FanOffCommand(fan);
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:182:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete nullOn;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:153:5: note: variable declared here
+    auto *nullOn = new NullCommand();
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:183:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete nullOff;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:154:5: note: variable declared here
+    auto *nullOff = new NullCommand();
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:185:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete control;
+    ^
+/home/klein_cl/Workspace/cpp/samples/command-pattern.cpp:157:5: note: variable declared here
+    auto *control = new RemoteControl;
+    ^
+Suppressed 220 warnings (220 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+1202 warnings generated.
+Suppressed 1202 warnings (1202 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+373 warnings generated.
+Suppressed 373 warnings (373 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/vokable2.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/test_iomanip.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/stream_operators.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/vector.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/sorted_set.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/sorted_map.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/SFINAE-cxx11.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/substr.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/timevalue.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/slide.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/u8string.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/set2.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/unordered_set.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/Round.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/dependency-injection.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/CloneShapes.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/ClonableBase.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/callback.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/command-pattern.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/friend-class.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/DoNotSlice.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/test_filbuf.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/at_test.cpp
+204 warnings generated.
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+206 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/DoNotSlice.cpp:71:7: warning: slicing object from type 'Manager' to 'Employee' discards 40 bytes of state [cppcoreguidelines-slicing]
+    f(designer);
+      ^
+/home/klein_cl/Workspace/cpp/samples/DoNotSlice.cpp:71:7: warning: slicing object from type 'Manager' to 'Employee' discards override 'print' [cppcoreguidelines-slicing]
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+230 warnings generated.
+Suppressed 230 warnings (230 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+970 warnings generated.
+Suppressed 985 warnings (970 in non-user code, 15 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+205 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/NonCopyable.cpp:19:7: warning: class 'Noncopyable' defines a copy constructor and a copy assignment operator but does not define a destructor, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class Noncopyable
+      ^
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+205 warnings generated.
+Suppressed 205 warnings (205 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+204 warnings generated.
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+918 warnings generated.
+Suppressed 931 warnings (918 in non-user code, 13 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+205 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/chainOfResponsibility.cpp:22:7: warning: class 'PhotoProcessor' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class PhotoProcessor
+      ^
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+6 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/byteorder.cpp:61:5: warning: uninitialized record type: 'dest' [cppcoreguidelines-pro-type-member-init]
+    union
+    ^
+/home/klein_cl/Workspace/cpp/samples/byteorder.cpp:61:5: warning: uninitialized record type: 'source' [cppcoreguidelines-pro-type-member-init]
+    union
+    ^
+/home/klein_cl/Workspace/cpp/samples/byteorder.cpp:67:12: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+    source.u = u;
            ^
-             = 0
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:169:9: warning: variable 'i' is not initialized [cppcoreguidelines-init-variables]
-    int i;
-        ^
-          = 0
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:170:11: warning: variable 'last' is not initialized [cppcoreguidelines-init-variables]
-    char *last, *addr;
-          ^
-               = nullptr
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:170:18: warning: variable 'addr' is not initialized [cppcoreguidelines-init-variables]
-    char *last, *addr;
-                 ^
-                      = nullptr
-/Users/clausklein/Workspace/cpp/samples/byteorder.cpp:193:21: warning: variable 'v' is not initialized [cppcoreguidelines-init-variables]
-        const void *v;
-                    ^
-                      = nullptr
-2226 warnings generated.
-Suppressed 2220 warnings (2220 in non-user code).
+/home/klein_cl/Workspace/cpp/samples/byteorder.cpp:70:14: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        dest.u8[k] = source.u8[sizeof(T) - k - 1];
+             ^
+/home/klein_cl/Workspace/cpp/samples/byteorder.cpp:70:29: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+        dest.u8[k] = source.u8[sizeof(T) - k - 1];
+                            ^
+/home/klein_cl/Workspace/cpp/samples/byteorder.cpp:73:17: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+    return dest.u;
+                ^
+380 warnings generated.
+Suppressed 380 warnings (380 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp
-/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:32:7: warning: class 'Host_IF' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+233 warnings generated.
+Suppressed 233 warnings (233 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+332 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/delegate-pattern.cpp:32:7: warning: class 'Host_IF' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class Host_IF
       ^
-/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:70:5: warning: initializing non-owner 'RemoteHost *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+/home/klein_cl/Workspace/cpp/samples/delegate-pattern.cpp:70:5: warning: initializing non-owner 'RemoteHost *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
     auto *remote = new RemoteHost();
     ^
-/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:80:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+/home/klein_cl/Workspace/cpp/samples/delegate-pattern.cpp:80:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
     delete remote;
     ^
-/Users/clausklein/Workspace/cpp/samples/delegate-pattern.cpp:70:5: note: variable declared here
+/home/klein_cl/Workspace/cpp/samples/delegate-pattern.cpp:70:5: note: variable declared here
     auto *remote = new RemoteHost();
     ^
-2426 warnings generated.
-Suppressed 2423 warnings (2423 in non-user code).
+Suppressed 329 warnings (329 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/friend-class.cpp
-2404 warnings generated.
-Suppressed 2404 warnings (2404 in non-user code).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/clone.cpp
-/Users/clausklein/Workspace/cpp/samples/clone.cpp:18:7: warning: class 'B' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+220 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/factory_function.cpp:8:7: warning: class 'B' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class B
       ^
-/Users/clausklein/Workspace/cpp/samples/clone.cpp:30:7: warning: class 'D' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+Suppressed 219 warnings (219 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+776 warnings generated.
+Suppressed 798 warnings (776 in non-user code, 22 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+268 warnings generated.
+Suppressed 268 warnings (268 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+255 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/example-style.cpp:19:13: warning: initialization of 'stringWithNull' with static storage duration may throw an exception that cannot be caught [cert-err58-cpp]
+std::string stringWithNull = "abc\0\0def"s;
+            ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/8/../../../../include/c++/8/bits/basic_string.h:6711:5: note: possibly throwing function declared here
+    operator""s(const char* __str, size_t __len)
+    ^
+/home/klein_cl/Workspace/cpp/samples/example-style.cpp:21:6: warning: initialization of 'hello' with static storage duration may throw an exception that cannot be caught [cert-err58-cpp]
+auto hello = "Hello!"s; // a std::string
+     ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/8/../../../../include/c++/8/bits/basic_string.h:6711:5: note: possibly throwing function declared here
+    operator""s(const char* __str, size_t __len)
+    ^
+/home/klein_cl/Workspace/cpp/samples/example-style.cpp:23:6: warning: initialization of 'interval' with static storage duration may throw an exception that cannot be caught [cert-err58-cpp]
+auto interval = 100ms;  // using <chrono>
+     ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/8/../../../../include/c++/8/chrono:946:7: note: possibly throwing function declared here
+      operator""ms()
+      ^
+Suppressed 252 warnings (252 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+723 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/bounds_test.cpp:19:5: warning: uninitialized record type: 'a' [cppcoreguidelines-pro-type-member-init]
+    std::array<int, 10> a, b;
+    ^                    ~
+                         {}
+/home/klein_cl/Workspace/cpp/samples/bounds_test.cpp:19:5: warning: uninitialized record type: 'b' [cppcoreguidelines-pro-type-member-init]
+    std::array<int, 10> a, b;
+    ^                       ~
+                            {}
+/home/klein_cl/Workspace/cpp/samples/bounds_test.cpp:34:5: warning: uninitialized record type: 'a' [cppcoreguidelines-pro-type-member-init]
+    std::array<int, 10> a, b, c{}; // c is initialized to zero
+    ^                    ~
+                         {}
+/home/klein_cl/Workspace/cpp/samples/bounds_test.cpp:34:5: warning: uninitialized record type: 'b' [cppcoreguidelines-pro-type-member-init]
+    std::array<int, 10> a, b, c{}; // c is initialized to zero
+    ^                       ~
+                            {}
+Suppressed 735 warnings (719 in non-user code, 16 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+204 warnings generated.
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+449 warnings generated.
+Suppressed 449 warnings (449 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+550 warnings generated.
+Suppressed 550 warnings (550 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+289 warnings generated.
+Suppressed 289 warnings (289 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+382 warnings generated.
+Suppressed 382 warnings (382 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/bitset.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/NonCopyable.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/classOutput.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/chainOfResponsibility.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/bounds_test.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/map.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/delegate-pattern.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/EreaseRemoveIdiom.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/byteorder.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/factory_function.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/hash.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/trim_example.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/permissive.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/ideone_nWFr9w.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/example-style.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/immutableString.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/testclock.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/Pimple.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/use_span.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/sets.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/InnerClassIdiom.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/konto.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/l1083.cpp
+596 warnings generated.
+Suppressed 596 warnings (596 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+204 warnings generated.
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+428 warnings generated.
+Suppressed 434 warnings (428 in non-user code, 6 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+278 warnings generated.
+Suppressed 279 warnings (278 in non-user code, 1 NOLINT).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+222 warnings generated.
+Suppressed 222 warnings (222 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+309 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/PostInitialize.cpp:41:7: warning: class 'D' defines a non-default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
 class D : public B
       ^
-/Users/clausklein/Workspace/cpp/samples/clone.cpp:56:5: warning: initializing non-owner 'D *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+Suppressed 308 warnings (308 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+349 warnings generated.
+Suppressed 349 warnings (349 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+205 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/access_privates.cpp:29:43: warning: initialization of 'filler_obj' with static storage duration may throw an exception that cannot be caught [cert-err58-cpp]
+typename rob<Tag, p>::filler rob<Tag, p>::filler_obj;
+                                          ^
+/home/klein_cl/Workspace/cpp/samples/access_privates.cpp:23:9: note: possibly throwing constructor declared here
+        filler() { result<Tag>::ptr = p; }
+        ^
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+204 warnings generated.
+Suppressed 204 warnings (204 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+282 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:10:7: warning: class 'base' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class base
+      ^
+/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:55:5: warning: constructor does not initialize these fields: m_b, m_a [cppcoreguidelines-pro-type-member-init]
+    SUT() : m_base(nullptr) { cout << "SUT()" << endl; };
+    ^
+/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:56:5: warning: constructor does not initialize these fields: m_b, m_a [cppcoreguidelines-pro-type-member-init]
+    SUT(const base *_b, int t, const string _id = "")
+    ^
+/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:66:21: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+            return *m_a;
+                    ^
+/home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp:75:21: warning: do not access members of unions; use (boost::)variant instead [cppcoreguidelines-pro-type-union-access]
+            return *m_b;
+                    ^
+Suppressed 277 warnings (277 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+233 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/test_rdbuf.cpp:18:5: warning: initializing non-owner 'char *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
+    char *buffer = new char[CHUNCK_SIZE];
+    ^
+/home/klein_cl/Workspace/cpp/samples/test_rdbuf.cpp:39:5: warning: deleting a pointer through a type that is not marked 'gsl::owner<>'; consider using a smart pointer instead [cppcoreguidelines-owning-memory]
+    delete[] buffer;
+    ^
+/home/klein_cl/Workspace/cpp/samples/test_rdbuf.cpp:18:5: note: variable declared here
+    char *buffer = new char[CHUNCK_SIZE];
+    ^
+Suppressed 231 warnings (231 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+347 warnings generated.
+Suppressed 347 warnings (347 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+304 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/clone.cpp:18:7: warning: class 'B' defines a default destructor, a copy constructor and a copy assignment operator but does not define a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class B
+      ^
+/home/klein_cl/Workspace/cpp/samples/clone.cpp:30:7: warning: class 'D' defines a default destructor but does not define a copy constructor, a copy assignment operator, a move constructor or a move assignment operator [cppcoreguidelines-special-member-functions]
+class D : public B
+      ^
+/home/klein_cl/Workspace/cpp/samples/clone.cpp:56:5: warning: initializing non-owner 'D *' with a newly created 'gsl::owner<>' [cppcoreguidelines-owning-memory]
     auto d2 = d1.clone();
     ^
-/Users/clausklein/Workspace/cpp/samples/clone.cpp:56:5: note: type deduction did not result in an owner
-2399 warnings generated.
-Suppressed 2396 warnings (2396 in non-user code).
+/home/klein_cl/Workspace/cpp/samples/clone.cpp:56:5: note: type deduction did not result in an owner
+Suppressed 307 warnings (301 in non-user code, 6 NOLINT).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/at_test.cpp
-4317 warnings generated.
-Suppressed 4318 warnings (4317 in non-user code, 1 NOLINT).
+204 warnings generated.
+Suppressed 204 warnings (204 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/trim_example.cpp
-9954 warnings generated.
-Suppressed 9954 warnings (9954 in non-user code).
+336 warnings generated.
+/home/klein_cl/Workspace/cpp/samples/priority_queue.cpp:13:16: warning: rand() has limited randomness; use C++11 random library instead [cert-msc30-c]
+        q.push(rand() % 10);
+               ^
+Suppressed 328 warnings (328 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/stripws.cpp
-10070 warnings generated.
-Suppressed 10070 warnings (10070 in non-user code).
+515 warnings generated.
+Suppressed 515 warnings (515 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/u8string.cpp
-11598 warnings generated.
-Suppressed 11599 warnings (11598 in non-user code, 1 NOLINT).
+1143 warnings generated.
+Suppressed 1143 warnings (1143 in non-user code).
 Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
-clang-tidy -header-filter=/Users/clausklein/Workspace/cpp/samples/.*\.h$ -checks=-*,cppcoreguidelines-*,-cppcoreguidelines-pro-*,-cppcoreguidelines-avoid-*,-cppcoreguidelines-pro-bounds-array-to-pointer-decay -p=/Users/clausklein/Workspace/cpp/samples /Users/clausklein/Workspace/cpp/samples/bounds_test.cpp
-4081 warnings generated.
-Suppressed 4082 warnings (4081 in non-user code, 1 NOLINT).
-Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/PostInitialize.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/nested-classes.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/unordered_map.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/access_privates.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/NonVirtualBaseClassTest.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/Pythagorean_triple.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/test_rdbuf.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/stripws.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/clone.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/point.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/priority_queue.cpp
+clang-tidy-7 -header-filter=/home/klein_cl/Workspace/cpp/samples/.*\.h$ -checks=-*non-private-member-*,-cppcoreguidelines-pro-bounds-*,-cppcoreguidelines-pro-type-vararg,-cppcoreguidelines-macro-usage,-cppcoreguidelines-avoid-*,-modernize-avoid-*,-readability-magic-numbers -p=/home/klein_cl/Workspace/cpp/samples /home/klein_cl/Workspace/cpp/samples/result_of.cpp
